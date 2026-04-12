@@ -1,16 +1,13 @@
-## Hi there 👋
+# Hi, I'm Sharan 👋
 
-<!--
-**SharanCreatedThis/SharanCreatedThis** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.
+Creative Director & Visual Storyteller based in Delhi, India.
 
-Here are some ideas to get you started:
+🎬 Video Producer | 📸 Photographer | 🎨 Creative Director at StoneX India
+🌐 Building premium websites with AI-powered tools
 
-- 🔭 I’m currently working on ...
-- 🌱 I’m currently learning ...
-- 👯 I’m looking to collaborate on ...
-- 🤔 I’m looking for help with ...
-- 💬 Ask me about ...
-- 📫 How to reach me: ...
-- 😄 Pronouns: ...
-- ⚡ Fun fact: ...
--->
+### Current Project
+🌿 [Season Coir](https://github.com/SharanCreatedThis/Season-Coir) — Premium eco-luxury website for a Kerala coir exporter
+
+### Connect
+- 📷 [@sharan.created.this](https://instagram.com/sharan.created.this)
+- 💼 [LinkedIn](https://linkedin.com/in/sharan-m-542413292)
