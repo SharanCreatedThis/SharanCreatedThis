@@ -3,7 +3,7 @@
 Creative Director & Visual Storyteller based in Delhi, India.
 
 🎬 Video Producer | 📸 Photographer | 🎨 Creative Director at StoneX India
-🌐 Building premium websites with AI-powered tools
+🌐 Building premium websites
 
 ### Current Project
 🌿 [Season Coir](https://github.com/SharanCreatedThis/Season-Coir) — Premium eco-luxury website for a Kerala coir exporter
