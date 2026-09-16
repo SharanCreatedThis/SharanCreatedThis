@@ -1,15 +1,12 @@
-import React from "react";
-import "./vision.css";
+import type { Metadata } from 'next';
+import localFont from 'next/font/local';
+import './vision.css';
 
-export const metadata = {
-  title: "Vision | Security and unlocking experience for Mac",
-  description: "Face ID-inspired security and unlocking experience for Mac.",
+const inter = localFont({ src: '../../../../public/vision/fonts/inter-latin-variable.woff2', weight: '100 900', display: 'swap', variable: '--font-inter' });
+export const metadata: Metadata = {
+  title: 'Vision — Face recognition. Reimagined for Mac.',
+  description: 'Local face recognition, a beautifully native notch experience, and access that recognizes you.',
 };
-
-export default function VisionLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
-  return <div className="vision-container w-full min-h-screen">{children}</div>;
+export default function VisionLayout({ children }: { children: React.ReactNode }) {
+  return <div className={`vision-container w-full min-h-screen ${inter.variable}`}>{children}</div>;
 }
