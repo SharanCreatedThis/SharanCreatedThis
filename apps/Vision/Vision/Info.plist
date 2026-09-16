@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>SUFeedURL</key>
-	<string>https://www.sharancreatedthis.in/products/vision/appcast.xml</string>
+	<string>https://sharancreatedthis.in/products/vision/appcast.xml</string>
 	<key>SUPublicEDKey</key>
 	<string>CT82PIW9/Iha6VlYi5InrpuoL6ITzRnAoE3THbVYaow=</string>
 	<key>SUAutomaticallyUpdate</key>

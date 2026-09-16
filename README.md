@@ -1,51 +1,30 @@
-# SharanCreatedThis
+# Sharan Created This
 
-Monorepo consolidating all personal brand web platforms and native macOS software applications created by Sharan.
+## Overview
+Sharan Created This is a unified monorepo housing personal brand web platforms and native macOS software applications designed and developed by Sharan.
 
-## Structure
+## Products
 
-```text
-SharanCreatedThis/
-├── website/            # Production Next.js web portal (sharancreatedthis.in)
-│   ├── src/            # App router, pages, components, and product showcases
-│   └── public/         # Static assets and Sparkle software update feeds
-│
-├── apps/
-│   ├── Vision/         # Face ID-inspired security & unlock companion for Mac
-│   └── Hangly/         # Physics-powered menu bar companions for macOS
-│
-├── assets/             # Shared brand identity, design assets, and logos
-└── docs/               # Monorepo architecture and release documentation
-```
+### Vision
+- Face ID-inspired security, notch companion, and authentication experience for macOS.
+- Native Swift application utilizing Apple Vision framework, Core ML face embeddings, and AppKit notch overlays.
 
-## Projects Overview
+### Hangly
+- Physics-powered menu bar companions and desktop charms for macOS.
+- Native Swift application built with custom Verlet physics simulation, interactive charm interactions, and screen placement integration.
 
-### 1. Website (`website/`)
-- **Domain**: [sharancreatedthis.in](https://sharancreatedthis.in)
-- **Framework**: Next.js 15 (App Router), React 19, TypeScript, Tailwind CSS v4, Framer Motion, Vercel Analytics.
-- **Routes**:
-  - `/` — Brand Hub ("Sharan Created This")
-  - `/products` — Product Showcase (Hangly & Vision)
-  - `/products/hangly` — Hangly Landing Page
-  - `/products/vision` — Vision Landing Page
-  - `/portfolio`, `/about`, `/contact` — Brand sections
+## Website
 
-### 2. Vision (`apps/Vision/`)
-- Native macOS Face ID-inspired unlock experience and notch interaction companion.
-- Built with Swift, Apple Vision framework, Core ML face embeddings, and AppKit.
+### sharancreatedthis.in
+- The primary brand hub and product landing portal, deployed at [https://sharancreatedthis.in](https://sharancreatedthis.in).
+- Built with Next.js 15 (App Router), React 19, TypeScript, Tailwind CSS v4, Framer Motion, and Vercel Analytics.
+- Serves the central brand hub along with dedicated, isolated product landing pages and Sparkle update feeds.
 
-### 3. Hangly (`apps/Hangly/`)
-- Physics-powered interactive menu bar charms and companions for macOS.
-- Built with Swift, custom Verlet physics engine, and native AppKit overlays.
+## Repository Structure
 
-## Getting Started
-
-### Developing the Website
-```bash
-cd website
-npm install
-npm run dev
-```
-
-### Building the macOS Apps
-Open `apps/Vision/Vision.xcodeproj` or `apps/Hangly/Hangly.xcodeproj` in Xcode 16+.
+- **`website/`**: Main Next.js public website and Sparkle update hosting.
+- **`apps/Vision/`**: Native macOS Xcode project and Swift source code for Vision.
+- **`apps/Hangly/`**: Native macOS Xcode project, Swift source code, and specs for Hangly.
+- **`releases/`**: Centralized distribution builds and release packages for Vision and Hangly.
+- **`assets/`**: Shared branding, vector logos, and design assets.
+- **`docs/`**: Monorepo architecture, development guides, and release procedures.

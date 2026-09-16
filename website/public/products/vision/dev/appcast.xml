@@ -2,7 +2,7 @@
 <rss version="2.0" xmlns:sparkle="http://www.andymatuschak.org/xml-namespaces/sparkle" xmlns:dc="http://purl.org/dc/elements/1.1/">
     <channel>
         <title>Vision Development Updates</title>
-        <link>https://www.sharancreatedthis.in/products/vision/dev/appcast.xml</link>
+        <link>https://sharancreatedthis.in/products/vision/dev/appcast.xml</link>
         <description>Development and testing updates for Vision app.</description>
         <language>en</language>
 
@@ -10,7 +10,7 @@
             <title>Vision 0.9.1 (Dev Beta)</title>
             <pubDate>Wed, 16 Sep 2026 12:00:00 +0000</pubDate>
             <sparkle:releaseNotesLink>
-                https://www.sharancreatedthis.in/products/vision/dev/release-notes.html
+                https://sharancreatedthis.in/products/vision/dev/release-notes.html
             </sparkle:releaseNotesLink>
             <sparkle:minimumSystemVersion>15.0</sparkle:minimumSystemVersion>
             <enclosure 
