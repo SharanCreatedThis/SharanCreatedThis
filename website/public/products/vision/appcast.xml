@@ -14,7 +14,7 @@
             </sparkle:releaseNotesLink>
             <sparkle:minimumSystemVersion>15.0</sparkle:minimumSystemVersion>
             <enclosure 
-                url="https://github.com/SharanCreatedThis/Vision/releases/download/v1.1/Vision-1.1.dmg"
+                url="https://github.com/SharanCreatedThis/SharanCreatedThis/releases/download/v1.1/Vision-1.1.dmg"
                 sparkle:version="3"
                 sparkle:shortVersionString="1.1"
                 length="15036074"
