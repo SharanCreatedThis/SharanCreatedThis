@@ -9,9 +9,16 @@ DerivedData
 build
 *.xcworkspace
 
+# Xcode user settings
+xcuserdata/
+*.xcuserstate
+
 # Swift
 .swiftpm
 .build
+
+# Swift Package Manager
+Package.resolved
 
 # Distribution
 dist
@@ -21,6 +28,8 @@ dist
 
 # macOS
 .DS_Store
+.AppleDouble
+.LSOverride
 
 # Logs
 *.log
