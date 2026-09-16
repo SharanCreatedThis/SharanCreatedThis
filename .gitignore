@@ -36,3 +36,9 @@ dist
 
 # Vercel
 .vercel
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
