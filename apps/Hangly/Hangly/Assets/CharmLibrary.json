@@ -1,0 +1,761 @@
+{
+  "version": 1,
+  "categories": [
+    {
+      "id": "protection",
+      "name": "Protection"
+    },
+    {
+      "id": "luck",
+      "name": "Luck & Fortune"
+    },
+    {
+      "id": "ritual",
+      "name": "Ritual & Home"
+    },
+    {
+      "id": "classic",
+      "name": "Classic"
+    },
+    {
+      "id": "seasonal",
+      "name": "Seasonal"
+    },
+    {
+      "id": "marvel",
+      "name": "Marvel"
+    },
+    {
+      "id": "dc",
+      "name": "DC"
+    },
+    {
+      "id": "tamilSpiritual",
+      "name": "Tamil Spiritual"
+    },
+    {
+      "id": "bts",
+      "name": "BTS"
+    }
+  ],
+  "charms": [
+    {
+      "id": "nazar",
+      "name": "Nazar boncuğu",
+      "region": "Turkey and the Mediterranean",
+      "category": "protection",
+      "description": "A glass eye bead hung to deflect the evil eye, the envious glance believed to bring misfortune. Found across Turkey, Greece and the wider Mediterranean, on doorways, cradles and dashboards alike.",
+      "tags": [
+        "evil eye",
+        "glass",
+        "blue",
+        "amulet",
+        "Turkey",
+        "Greece"
+      ],
+      "previewImage": "charm-preview-nazar"
+    },
+    {
+      "id": "hamsa",
+      "name": "Hamsa",
+      "region": "Middle East and North Africa",
+      "category": "protection",
+      "description": "An open right hand, often with an eye in the palm, carried as protection against harm. Shared by Jewish, Muslim and Christian communities from Morocco to the Levant.",
+      "tags": [
+        "hand",
+        "eye",
+        "amulet",
+        "Fatima",
+        "Miriam"
+      ],
+      "previewImage": "charm-preview-hamsa"
+    },
+    {
+      "id": "nimbuMirchi",
+      "name": "Nimbu-mirchi",
+      "region": "India",
+      "category": "protection",
+      "description": "A lemon and green chillies strung together and hung at shop doors and on vehicles across India to ward off the evil eye, and to give bad luck something sour to chew on instead.",
+      "tags": [
+        "lemon",
+        "chilli",
+        "evil eye",
+        "doorway",
+        "totka"
+      ],
+      "previewImage": "charm-preview-nimbuMirchi"
+    },
+    {
+      "id": "ghanta",
+      "name": "Ghanta",
+      "region": "India",
+      "category": "ritual",
+      "description": "The temple bell of Hindu and Buddhist worship. Its ring is said to clear the mind of the person who strikes it and to announce their arrival to the divine.",
+      "tags": [
+        "bell",
+        "temple",
+        "copper",
+        "puja",
+        "sound"
+      ],
+      "previewImage": "charm-preview-ghanta"
+    },
+    {
+      "id": "drishtiBommai",
+      "name": "Drishti bommai",
+      "region": "South India",
+      "category": "protection",
+      "description": "A fierce painted face hung outside homes and building sites in Tamil Nadu. Its job is to draw the evil eye onto itself and away from whatever it guards.",
+      "tags": [
+        "mask",
+        "demon",
+        "evil eye",
+        "Tamil Nadu",
+        "guardian"
+      ],
+      "previewImage": "charm-preview-drishtiBommai"
+    },
+    {
+      "id": "panchangJie",
+      "name": "Pánchángjié",
+      "region": "China",
+      "category": "luck",
+      "description": "The endless knot, tied from a single red cord with no beginning and no end. A symbol of longevity, unity and good fortune, hung at Lunar New Year.",
+      "tags": [
+        "knot",
+        "red",
+        "tassel",
+        "New Year",
+        "longevity",
+        "Chinese knot"
+      ],
+      "previewImage": "charm-preview-panchangJie"
+    },
+    {
+      "id": "daruma",
+      "name": "Daruma",
+      "region": "Japan",
+      "category": "luck",
+      "description": "A round, weighted doll modelled on the monk Bodhidharma. You paint one eye while making a wish and the other when it comes true, and it always rights itself when knocked over.",
+      "tags": [
+        "doll",
+        "wish",
+        "perseverance",
+        "red",
+        "Bodhidharma"
+      ],
+      "previewImage": "charm-preview-daruma"
+    },
+    {
+      "id": "manekiNeko",
+      "name": "Maneki-neko",
+      "region": "Japan",
+      "category": "luck",
+      "description": "The beckoning cat, raised paw inviting good fortune through the door. A raised right paw is said to bring money; a raised left paw brings customers.",
+      "tags": [
+        "cat",
+        "beckoning",
+        "calico",
+        "shop",
+        "fortune"
+      ],
+      "previewImage": "charm-preview-manekiNeko"
+    },
+    {
+      "id": "horseshoe",
+      "name": "Horseshoe",
+      "region": "Europe and the Americas",
+      "category": "luck",
+      "description": "Iron shaped by fire, nailed above a door for luck. Hung open end up it holds the luck in; open end down it pours the luck over those who pass beneath.",
+      "tags": [
+        "iron",
+        "door",
+        "luck",
+        "seven nails",
+        "blacksmith"
+      ],
+      "previewImage": "charm-preview-horseshoe"
+    },
+    {
+      "id": "scarab",
+      "name": "Scarab",
+      "region": "Ancient Egypt",
+      "category": "protection",
+      "description": "The dung beetle, sacred to the sun's rebirth each morning as it rolls its ball across the sky. Worn as an amulet in ancient Egypt for protection and renewal.",
+      "tags": [
+        "beetle",
+        "Egypt",
+        "turquoise",
+        "rebirth",
+        "amulet",
+        "sun"
+      ],
+      "previewImage": "charm-preview-scarab"
+    },
+    {
+      "id": "himmeli",
+      "name": "Himmeli",
+      "region": "Finland",
+      "category": "ritual",
+      "description": "A geometric mobile of rye straw hung above the table at midwinter in Finland to bless the coming harvest. The name comes from the Swedish word for sky.",
+      "tags": [
+        "straw",
+        "geometric",
+        "mobile",
+        "midwinter",
+        "harvest",
+        "gold"
+      ],
+      "previewImage": "charm-preview-himmeli"
+    },
+    {
+      "id": "circle",
+      "name": "Bead",
+      "region": "Universal",
+      "category": "classic",
+      "description": "A plain glass bead, the charm Hangly ships with. Simple, weighty and never out of place.",
+      "tags": [
+        "bead",
+        "simple",
+        "default",
+        "violet"
+      ],
+      "previewImage": "charm-preview-circle"
+    },
+    {
+      "id": "star",
+      "name": "Star",
+      "region": "Universal",
+      "category": "classic",
+      "description": "Everyone's first lucky charm. The lightest in the set, so it swings the fastest.",
+      "tags": [
+        "star",
+        "gold",
+        "light",
+        "wish"
+      ],
+      "previewImage": "charm-preview-star"
+    },
+    {
+      "id": "heart",
+      "name": "Heart",
+      "region": "Universal",
+      "category": "classic",
+      "description": "Worn on the sleeve, or in this case at the top of the screen.",
+      "tags": [
+        "heart",
+        "red",
+        "love"
+      ],
+      "previewImage": "charm-preview-heart"
+    },
+    {
+      "id": "diamond",
+      "name": "Diamond",
+      "region": "Universal",
+      "category": "classic",
+      "description": "Cut, faceted and indestructible. Heavy enough to hang the rope nearly straight.",
+      "tags": [
+        "gem",
+        "ice",
+        "faceted",
+        "blue"
+      ],
+      "previewImage": "charm-preview-diamond"
+    },
+    {
+      "id": "camera",
+      "name": "Camera",
+      "region": "Universal",
+      "category": "classic",
+      "description": "For photographers and the perpetually nostalgic. The heaviest charm in the box.",
+      "tags": [
+        "camera",
+        "photo",
+        "graphite",
+        "heavy"
+      ],
+      "previewImage": "charm-preview-camera"
+    },
+    {
+      "id": "snowflake",
+      "name": "Snowflake",
+      "region": "Northern winters",
+      "category": "seasonal",
+      "description": "No two alike, and none lasting — which is most of why they are worn. A six-armed crystal of ice, the shape water takes when it freezes slowly enough to be careful about it.",
+      "tags": [
+        "winter",
+        "ice",
+        "christmas",
+        "crystal",
+        "cold"
+      ],
+      "previewImage": "charm-preview-snowflake"
+    },
+    {
+      "id": "bell",
+      "name": "Bell",
+      "region": "Europe",
+      "category": "seasonal",
+      "description": "Hung on doors and harnesses through midwinter, when a bell was how you found the way home in weather that hid the road. Brass, so it carries.",
+      "tags": [
+        "christmas",
+        "brass",
+        "winter",
+        "sound",
+        "door"
+      ],
+      "previewImage": "charm-preview-bell"
+    },
+    {
+      "id": "candyCane",
+      "name": "Candy Cane",
+      "region": "Germany and the United States",
+      "category": "seasonal",
+      "description": "A shepherd's crook in boiled sugar, hung on trees since the nineteenth century. The red stripe came later, and nobody is quite sure who added it.",
+      "tags": [
+        "christmas",
+        "sugar",
+        "sweet",
+        "red",
+        "winter"
+      ],
+      "previewImage": "charm-preview-candyCane"
+    },
+    {
+      "id": "pumpkin",
+      "name": "Pumpkin",
+      "region": "Ireland and North America",
+      "category": "seasonal",
+      "description": "Carved first from turnips in Ireland, then from the far more obliging pumpkins of North America. A light in a face in a window, to keep the dark occupied.",
+      "tags": [
+        "halloween",
+        "autumn",
+        "lantern",
+        "orange",
+        "carved"
+      ],
+      "previewImage": "charm-preview-pumpkin"
+    },
+    {
+      "id": "ghost",
+      "name": "Ghost",
+      "region": "Worldwide",
+      "category": "seasonal",
+      "description": "The oldest costume there is: a sheet, two holes, and the entire idea of a visitor who has not quite left. Hung at Halloween, when the door is said to be ajar.",
+      "tags": [
+        "halloween",
+        "spirit",
+        "autumn",
+        "white",
+        "haunt"
+      ],
+      "previewImage": "charm-preview-ghost"
+    },
+    {
+      "id": "bat",
+      "name": "Bat",
+      "region": "Worldwide",
+      "category": "seasonal",
+      "description": "An omen in Europe and a blessing in China, where the word for bat sounds like the word for fortune. It depends entirely on who is doing the looking.",
+      "tags": [
+        "halloween",
+        "night",
+        "autumn",
+        "luck",
+        "wings"
+      ],
+      "previewImage": "charm-preview-bat"
+    },
+    {
+      "id": "diya",
+      "name": "Diya",
+      "region": "India",
+      "category": "seasonal",
+      "description": "A clay lamp filled with oil and lit at Diwali, set in rows along walls and windowsills. The festival is named for them: a row of lights, against a new-moon night.",
+      "tags": [
+        "diwali",
+        "lamp",
+        "flame",
+        "clay",
+        "India",
+        "festival"
+      ],
+      "previewImage": "charm-preview-diya"
+    },
+    {
+      "id": "lotus",
+      "name": "Lotus",
+      "region": "India and East Asia",
+      "category": "seasonal",
+      "description": "Rooted in mud and opening clean above it, which is the whole of what it is taken to mean. Drawn at Diwali in rangoli on the threshold, to invite Lakshmi in.",
+      "tags": [
+        "diwali",
+        "flower",
+        "India",
+        "purity",
+        "festival"
+      ],
+      "previewImage": "charm-preview-lotus"
+    },
+    {
+      "id": "lantern",
+      "name": "Lantern",
+      "region": "India and China",
+      "category": "seasonal",
+      "description": "Paper and silk over a frame, hung in strings at Diwali and at the lunar new year. Light you can carry, and light that says the house is keeping the festival.",
+      "tags": [
+        "diwali",
+        "lantern",
+        "light",
+        "red",
+        "festival"
+      ],
+      "previewImage": "charm-preview-lantern"
+    },
+    {
+      "id": "firework",
+      "name": "Firework",
+      "region": "China",
+      "category": "seasonal",
+      "description": "Invented to frighten off what the new year might otherwise bring, and kept for a thousand years after anyone believed that, because it turned out to be a good way to begin.",
+      "tags": [
+        "new year",
+        "fireworks",
+        "celebration",
+        "gold",
+        "night"
+      ],
+      "previewImage": "charm-preview-firework"
+    },
+    {
+      "id": "luckyCoin",
+      "name": "Lucky Coin",
+      "region": "China",
+      "category": "seasonal",
+      "description": "A round coin with a square hole, strung on red cord: heaven round, earth square, and the year ahead threaded through the middle of both.",
+      "tags": [
+        "new year",
+        "coin",
+        "luck",
+        "fortune",
+        "gold",
+        "China"
+      ],
+      "previewImage": "charm-preview-luckyCoin"
+    },
+    {
+      "id": "spiderMan",
+      "name": "Spider-Man",
+      "region": "Marvel",
+      "category": "marvel",
+      "description": "Hanging head-down from a thread of his own, which is the way he is most often drawn and the only pose in this set that was already a charm before anybody hung it. Pair him with Spider Thread.",
+      "tags": [
+        "Spider-Man",
+        "web",
+        "upside down",
+        "Marvel"
+      ],
+      "previewImage": "charm-preview-spiderMan"
+    },
+    {
+      "id": "captainAmericaShield",
+      "name": "Captain America Shield",
+      "region": "Marvel",
+      "category": "marvel",
+      "description": "Concentric rings and a white star, struck face on. The heaviest thing in the set after the hammer, and it hangs like it.",
+      "tags": [
+        "Captain America",
+        "shield",
+        "star",
+        "Marvel"
+      ],
+      "previewImage": "charm-preview-captainAmericaShield"
+    },
+    {
+      "id": "ironManHelmet",
+      "name": "Iron Man Helmet",
+      "region": "Marvel",
+      "category": "marvel",
+      "description": "Red and gold plate with the eye slits lit. Faces forward, so it reads as a mask rather than as a head.",
+      "tags": [
+        "Iron Man",
+        "helmet",
+        "gold",
+        "Marvel"
+      ],
+      "previewImage": "charm-preview-ironManHelmet"
+    },
+    {
+      "id": "thorHammer",
+      "name": "Thor Hammer",
+      "region": "Marvel",
+      "category": "marvel",
+      "description": "Mjölnir, head square on, a rune lit on its face. The heaviest charm in the app, and on a chain it barely moves.",
+      "tags": [
+        "Thor",
+        "Mjölnir",
+        "hammer",
+        "Marvel"
+      ],
+      "previewImage": "charm-preview-thorHammer"
+    },
+    {
+      "id": "hulkFist",
+      "name": "Hulk Fist",
+      "region": "Marvel",
+      "category": "marvel",
+      "description": "A closed green fist inside a ring. Solid, and the dullest-sounding charm here — nothing about it rings.",
+      "tags": [
+        "Hulk",
+        "fist",
+        "green",
+        "Marvel"
+      ],
+      "previewImage": "charm-preview-hulkFist"
+    },
+    {
+      "id": "batmanSymbol",
+      "name": "Batman Symbol",
+      "region": "DC",
+      "category": "dc",
+      "description": "Wings spread wide and brushed steel-dark. The widest charm in the app, which is why it hangs at a smaller size than the rest of its set.",
+      "tags": [
+        "Batman",
+        "bat",
+        "wings",
+        "DC"
+      ],
+      "previewImage": "charm-preview-batmanSymbol"
+    },
+    {
+      "id": "supermanShield",
+      "name": "Superman Shield",
+      "region": "DC",
+      "category": "dc",
+      "description": "The crest, cut as a shield and set in silver. Red on chrome, and it catches the light from the same corner every other charm does.",
+      "tags": [
+        "Superman",
+        "shield",
+        "crest",
+        "DC"
+      ],
+      "previewImage": "charm-preview-supermanShield"
+    },
+    {
+      "id": "wonderWomanEmblem",
+      "name": "Wonder Woman Emblem",
+      "region": "DC",
+      "category": "dc",
+      "description": "Gold wings folded into a W, over red and blue. Broad across the shoulders and narrow at the point, so it settles nose-down.",
+      "tags": [
+        "Wonder Woman",
+        "emblem",
+        "gold",
+        "DC"
+      ],
+      "previewImage": "charm-preview-wonderWomanEmblem"
+    },
+    {
+      "id": "shazamLightning",
+      "name": "Shazam Lightning",
+      "region": "DC",
+      "category": "dc",
+      "description": "A single bolt in red and gold. The lightest charm in the set and the quickest to swing.",
+      "tags": [
+        "Shazam",
+        "lightning",
+        "bolt",
+        "DC"
+      ],
+      "previewImage": "charm-preview-shazamLightning"
+    },
+    {
+      "id": "greenLanternRing",
+      "name": "Green Lantern Ring",
+      "region": "DC",
+      "category": "dc",
+      "description": "A lit green stone in a silver ring. The one charm in this set that glows rather than shines.",
+      "tags": [
+        "Green Lantern",
+        "ring",
+        "green",
+        "DC"
+      ],
+      "previewImage": "charm-preview-greenLanternRing"
+    },
+    {
+      "id": "vel",
+      "name": "Vel",
+      "region": "Tamil Nadu, South India",
+      "category": "tamilSpiritual",
+      "description": "Murugan's spear, and the sign of the god himself rather than a weapon he carries. A vel is planted at his hill shrines and carried by pilgrims at Thaipusam; the leaf-shaped blade is read as wisdom, broad at the base and sharp at the point.",
+      "tags": [
+        "Murugan",
+        "vel",
+        "spear",
+        "Thaipusam",
+        "Tamil Nadu"
+      ],
+      "previewImage": "charm-preview-vel"
+    },
+    {
+      "id": "vinayagarCoin",
+      "name": "Vinayagar Coin",
+      "region": "Tamil Nadu, South India",
+      "category": "tamilSpiritual",
+      "description": "Vinayagar — Ganesha — struck in relief inside a wreath. He is asked first, before any journey, any examination and any new venture, because he is the one who removes what is in the way.",
+      "tags": [
+        "Vinayagar",
+        "Ganesha",
+        "coin",
+        "elephant",
+        "beginnings"
+      ],
+      "previewImage": "charm-preview-vinayagarCoin"
+    },
+    {
+      "id": "omSymbol",
+      "name": "OM Symbol",
+      "region": "Tamil Nadu, South India",
+      "category": "tamilSpiritual",
+      "description": "The Om, set in gold and stoned in red and green. It opens a prayer and closes one, and is cut above doorways so that the sound is there whether or not anyone is saying it.",
+      "tags": [
+        "Om",
+        "syllable",
+        "gold",
+        "doorway",
+        "Tamil Nadu"
+      ],
+      "previewImage": "charm-preview-omSymbol"
+    },
+    {
+      "id": "karuppuStatue",
+      "name": "Karuppu Statue",
+      "region": "Tamil Nadu, South India",
+      "category": "tamilSpiritual",
+      "description": "Karuppasamy, a guardian deity of the village boundary, cast dark and standing with his aruval raised. He is set at the edge of a settlement facing outward: the one who keeps watch on what a house cannot see.",
+      "tags": [
+        "Karuppasamy",
+        "guardian",
+        "village deity",
+        "aruval",
+        "boundary"
+      ],
+      "previewImage": "charm-preview-karuppuStatue"
+    },
+    {
+      "id": "templeBell",
+      "name": "Temple Bell",
+      "region": "Tamil Nadu, South India",
+      "category": "tamilSpiritual",
+      "description": "The mani, rung on the way in and not on the way out. The note is meant to clear the mind of whatever it walked in carrying, so that what happens next is the only thing in it.",
+      "tags": [
+        "mani",
+        "bell",
+        "brass",
+        "temple",
+        "Tamil Nadu"
+      ],
+      "previewImage": "charm-preview-templeBell"
+    },
+    {
+      "id": "btsMemberOne",
+      "name": "BTS Member 1",
+      "region": "BTS",
+      "category": "bts",
+      "description": "A standing figure cast as a hanging ornament, one of seven. Taller than it is wide, so it hangs long and swings slowly.",
+      "tags": [
+        "BTS",
+        "figure",
+        "collectible",
+        "member 1"
+      ],
+      "previewImage": "charm-preview-btsMemberOne"
+    },
+    {
+      "id": "btsMemberTwo",
+      "name": "BTS Member 2",
+      "region": "BTS",
+      "category": "bts",
+      "description": "A standing figure cast as a hanging ornament, one of seven. Taller than it is wide, so it hangs long and swings slowly.",
+      "tags": [
+        "BTS",
+        "figure",
+        "collectible",
+        "member 2"
+      ],
+      "previewImage": "charm-preview-btsMemberTwo"
+    },
+    {
+      "id": "btsMemberThree",
+      "name": "BTS Member 3",
+      "region": "BTS",
+      "category": "bts",
+      "description": "A standing figure cast as a hanging ornament, one of seven. Taller than it is wide, so it hangs long and swings slowly.",
+      "tags": [
+        "BTS",
+        "figure",
+        "collectible",
+        "member 3"
+      ],
+      "previewImage": "charm-preview-btsMemberThree"
+    },
+    {
+      "id": "btsMemberFour",
+      "name": "BTS Member 4",
+      "region": "BTS",
+      "category": "bts",
+      "description": "A standing figure cast as a hanging ornament, one of seven. Taller than it is wide, so it hangs long and swings slowly.",
+      "tags": [
+        "BTS",
+        "figure",
+        "collectible",
+        "member 4"
+      ],
+      "previewImage": "charm-preview-btsMemberFour"
+    },
+    {
+      "id": "btsMemberFive",
+      "name": "BTS Member 5",
+      "region": "BTS",
+      "category": "bts",
+      "description": "A standing figure cast as a hanging ornament, one of seven. Taller than it is wide, so it hangs long and swings slowly.",
+      "tags": [
+        "BTS",
+        "figure",
+        "collectible",
+        "member 5"
+      ],
+      "previewImage": "charm-preview-btsMemberFive"
+    },
+    {
+      "id": "btsMemberSix",
+      "name": "BTS Member 6",
+      "region": "BTS",
+      "category": "bts",
+      "description": "A standing figure cast as a hanging ornament, one of seven. Taller than it is wide, so it hangs long and swings slowly.",
+      "tags": [
+        "BTS",
+        "figure",
+        "collectible",
+        "member 6"
+      ],
+      "previewImage": "charm-preview-btsMemberSix"
+    },
+    {
+      "id": "btsMemberSeven",
+      "name": "BTS Member 7",
+      "region": "BTS",
+      "category": "bts",
+      "description": "A standing figure cast as a hanging ornament, one of seven. Taller than it is wide, so it hangs long and swings slowly.",
+      "tags": [
+        "BTS",
+        "figure",
+        "collectible",
+        "member 7"
+      ],
+      "previewImage": "charm-preview-btsMemberSeven"
+    }
+  ]
+}

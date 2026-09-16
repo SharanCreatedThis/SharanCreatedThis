@@ -1,0 +1,22 @@
+{
+  "1.1": {
+    "version": "1.1",
+    "title": "What's New in Vision 1.1",
+    "notes": [
+      "Enhanced Face Recognition pipeline powered by Apple Vision & Core ML",
+      "Vision Guard platform for automatic Mac security and return detection",
+      "Vision Vault protection with Touch ID and face verification",
+      "Refined notch animation modes and instant lock screen wake",
+      "Optimized battery and background thermal efficiency"
+    ]
+  },
+  "1.0": {
+    "version": "1.0",
+    "title": "Initial Release",
+    "notes": [
+      "Face ID for Mac on-device face unlock",
+      "Interactive 9-pose guided head enrollment",
+      "Dynamic notch and pill overlay animations"
+    ]
+  }
+}

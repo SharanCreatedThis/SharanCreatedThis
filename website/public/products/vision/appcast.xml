@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rss version="2.0" xmlns:sparkle="http://www.andymatuschak.org/xml-namespaces/sparkle" xmlns:dc="http://purl.org/dc/elements/1.1/">
+    <channel>
+        <title>Vision App Updates</title>
+        <link>https://www.sharancreatedthis.in/products/vision/appcast.xml</link>
+        <description>Most recent software updates for Vision.</description>
+        <language>en</language>
+
+        <item>
+            <title>Vision 1.1</title>
+            <pubDate>Thu, 17 Sep 2026 01:22:00 +0000</pubDate>
+            <sparkle:releaseNotesLink>
+                https://www.sharancreatedthis.in/products/vision/release-notes.html
+            </sparkle:releaseNotesLink>
+            <sparkle:minimumSystemVersion>15.0</sparkle:minimumSystemVersion>
+            <enclosure 
+                url="https://github.com/SharanCreatedThis/Vision/releases/download/v1.1/Vision-1.1.dmg"
+                sparkle:version="3"
+                sparkle:shortVersionString="1.1"
+                length="15036074"
+                type="application/octet-stream"
+                sparkle:edSignature="6PykoyBb8TDbT8qoupfODKf8extUr665aI6OyPWIsmdTMWBvQz737sQZdSonhFhibs76aC+voIQmNgK5tVj+Dg==" />
+        </item>
+    </channel>
+</rss>
