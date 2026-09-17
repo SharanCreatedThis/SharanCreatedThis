@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rss version="2.0" xmlns:sparkle="http://www.andymatuschak.org/xml-namespaces/sparkle"  xmlns:dc="http://purl.org/dc/elements/1.1/">
+    <channel>
+        <title>Hangly Changelog</title>
+        <link>https://www.sharancreatedthis.in/products/hangly/appcast.xml</link>
+        <description>Most recent updates to Hangly</description>
+        <language>en</language>
+        <item>
+            <title>Hangly 2.0.0</title>
+            <!-- Replace the date with the actual release date -->
+            <pubDate>Thu, 17 Sep 2026 12:00:00 +0000</pubDate>
+            
+            <!-- Adjust to your minimum system version -->
+            <sparkle:minimumSystemVersion>14.0</sparkle:minimumSystemVersion>
+            
+            <!-- 
+              REPLACE spark:edSignature with the generated signature from: 
+              ./generate_appcast (or sign_update)
+            -->
+            <!-- 
+              sparkle:version is the CFBundleVersion (build number, e.g. "2") 
+              sparkle:shortVersionString is CFBundleShortVersionString (e.g. "2.0.0")
+            -->
+            <enclosure url="https://www.sharancreatedthis.in/products/hangly/releases/Hangly-2.0.0.dmg"
+                       sparkle:version="2"
+                       sparkle:shortVersionString="2.0.0"
+                       type="application/octet-stream"
+                       sparkle:edSignature="YOUR_EDDSA_SIGNATURE_HERE" />
+            
+            <!-- The release notes can be provided as CDATA HTML -->
+            <description><![CDATA[
+            <h2>Hangly 2.0.0</h2>
+            <ul>
+                <li>Integrated Sparkle 2 for completely silent, automatic background updates.</li>
+                <li>Added beautiful release notes UI shown on the first launch of a new version.</li>
+                <li>Added "Check for Updates" button to the About page.</li>
+            </ul>
+            ]]></description>
+        </item>
+    </channel>
+</rss>

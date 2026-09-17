@@ -147,3 +147,35 @@
 .vision-container .creator-copy .support-card-inline .button{grid-column:2;justify-self:start;margin:0;width:auto;padding:13px 18px;min-height:46px;font-size:13px}
 @media(max-width:800px){.vision-container .creator-copy .support-card-inline{grid-template-columns:1fr;padding:20px;gap:16px}.vision-container .support-card-inline .support-symbol{display:none}.vision-container .creator-copy .support-card-inline .button{grid-column:1}.vision-container .support-card-inline .support-copy h3{font-size:22px}}
 @media(max-width:580px){.vision-container .creator-copy .support-card-inline{grid-template-columns:42px minmax(0,1fr);gap:16px}.vision-container .support-card-inline .support-symbol{display:grid;width:42px;height:42px;grid-row:1}.vision-container .creator-copy .support-card-inline .button{grid-column:1 / -1}.vision-container .support-card-inline .support-copy h3{font-size:22px}}
+
+/* Restrained hero typography; preserve the artwork's established geometry. */
+.vision-container .hero-copy {
+  max-width: 620px;
+  min-width: 0;
+  padding-top: 40px;
+}
+.vision-container .hero h1 {
+  font-family: "SF Pro Display", -apple-system, BlinkMacSystemFont, var(--font-inter), sans-serif;
+  font-weight: 600;
+  font-size: clamp(76px, 8vw, 122px);
+  line-height: .98;
+  letter-spacing: -.025em;
+  color: #dededb;
+  margin-left: 0;
+}
+.vision-container .hero h1 > span {
+  padding-bottom: 0;
+}
+.vision-container .hero h1 > .accent-text {
+  color: #ff7a1a;
+  font-weight: 550;
+}
+@media (max-width: 1199px) {
+  .vision-container .hero h1 { font-size: 8.6vw; }
+}
+@media (max-width: 800px) {
+  .vision-container .hero h1 { font-size: 9.2vw; }
+}
+@media (max-width: 580px) {
+  .vision-container .hero h1 { font-size: 20vw; }
+}
