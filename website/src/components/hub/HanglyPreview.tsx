@@ -1,5 +1,6 @@
 "use client";
 
+import { ArrowUpRight } from "lucide-react";
 import { useEffect, useRef } from "react";
 import { useInView, useReducedMotion } from "framer-motion";
 
@@ -304,7 +305,7 @@ export function HanglyPreview() {
           <i /> LITTLE THINGS. REAL PERSONALITY.
         </span>
         <button onClick={() => nudge()} disabled={!!reduced}>
-          {reduced ? "Made for your Mac" : "Give them a nudge ↗"}
+          {reduced ? "Made for your Mac" : <>Give them a nudge <ArrowUpRight className="inline-arrow" aria-hidden="true" /></>}
         </button>
       </div>
     </div>

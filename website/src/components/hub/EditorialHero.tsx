@@ -1,10 +1,28 @@
 "use client";
 
 import Link from "next/link";
+import { useEffect, useRef, useState } from "react";
 import { ArrowUpRight, Instagram, Linkedin } from "lucide-react";
 import { profile } from "@/data/portfolio";
 
 export function EditorialHero() {
+  const portrait = useRef<HTMLImageElement>(null);
+  const [portraitReady, setPortraitReady] = useState(false);
+
+  useEffect(() => {
+    let cancelled = false;
+    const image = portrait.current;
+    if (!image) return;
+
+    // Keep the server-rendered image hidden until its pixels are decoded.
+    // This also handles cached images without restarting a visible portrait.
+    image.decode().catch(() => {}).then(() => {
+      if (!cancelled) setPortraitReady(true);
+    });
+
+    return () => { cancelled = true; };
+  }, []);
+
   return (
     <section
       className="editorial-hero"
@@ -17,21 +35,26 @@ export function EditorialHero() {
           <i />
           <i />
         </div>
+        <noscript>
+          <style>{`.editorial-hero .editorial-portrait img { opacity: 1 !important; }`}</style>
+        </noscript>
         <div className="editorial-portrait">
           <img
+            ref={portrait}
+            data-ready={portraitReady}
             src="/portfolio/sharan-white-suit.webp"
             alt="Sharan, filmmaker, designer and product builder"
             fetchPriority="high"
+            loading="eager"
+            decoding="async"
           />
         </div>
         <div className="editorial-intro">
-          <span className="editorial-pill">Sharan — Creative Technologist</span>
+          <span className="editorial-pill">Sharan · Creative Technologist</span>
           <h1>
-            Sharan
-            <br />
-            created
-            <br />
-            this.
+            <span className="editorial-title-line">Sharan</span>{" "}
+            <span className="editorial-title-line">created</span>{" "}
+            <span className="editorial-title-line">this.</span>
           </h1>
           <Link className="editorial-button" href="/portfolio">
             Explore my world <ArrowUpRight size={16} />
@@ -58,7 +81,7 @@ export function EditorialHero() {
         <div className="editorial-stats">
           <div>
             <span>
-              Stories created <i>↗</i>
+              Stories created <i><ArrowUpRight className="inline-arrow" aria-hidden="true" /></i>
             </span>
             <strong>
               180<span>+</span>
@@ -67,7 +90,7 @@ export function EditorialHero() {
           </div>
           <div>
             <span>
-              Across India <i>↗</i>
+              Across India <i><ArrowUpRight className="inline-arrow" aria-hidden="true" /></i>
             </span>
             <strong>
               20<span>+</span>
@@ -115,7 +138,7 @@ export function EditorialHero() {
             Same restless mind.”
           </p>
           <span className="editorial-quote-link">
-            The story behind the work ↗
+            The story behind the work <ArrowUpRight className="inline-arrow" aria-hidden="true" />
           </span>
         </Link>
       </div>

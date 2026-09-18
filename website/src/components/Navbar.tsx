@@ -1,4 +1,5 @@
 "use client";
+import { BrandMark } from "@/components/BrandMark";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
@@ -35,7 +36,7 @@ export function Navbar() {
       className={`hub-nav ${scrolled ? "compressed" : ""} ${path === "/" ? (scrolled ? "home-scrolled-nav" : "editorial-nav") : "home-scrolled-nav"}`}
     >
       <Link className="wordmark" href="/" aria-label="Sharan Created This home">
-        <span className="brand-symbol">✳</span>
+        <span className="brand-symbol"><BrandMark /></span>
         <span>
           SHARAN
           <br />

@@ -1,0 +1,56 @@
+/* A first-paint entrance, independent of scrolling and JavaScript hydration. */
+.editorial-title-line {
+  display: block;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  /* Hidden from first paint; reveal once, after decoding, without rescaling. */
+  .editorial-hero .editorial-portrait img {
+    opacity: 0;
+    transition: opacity 400ms cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  .editorial-hero .editorial-portrait img[data-ready="true"] {
+    opacity: 1;
+  }
+
+  .editorial-hero .editorial-frame {
+    animation: editorial-frame-enter 800ms cubic-bezier(0.22, 1, 0.36, 1) both;
+  }
+
+  .editorial-hero .editorial-pill,
+  .editorial-hero .editorial-title-line,
+  .editorial-hero .editorial-button,
+  .editorial-hero .editorial-note,
+  .editorial-hero .editorial-stats > div,
+  .editorial-hero .editorial-socials > a,
+  .editorial-hero .editorial-quote {
+    animation: editorial-content-enter 700ms cubic-bezier(0.22, 1, 0.36, 1) backwards;
+  }
+
+  .editorial-hero .editorial-pill { animation-delay: 80ms; }
+  .editorial-hero .editorial-title-line:nth-child(1) { animation-delay: 140ms; }
+  .editorial-hero .editorial-title-line:nth-child(2) { animation-delay: 240ms; }
+  .editorial-hero .editorial-title-line:nth-child(3) { animation-delay: 340ms; }
+  .editorial-hero .editorial-button { animation-delay: 420ms; }
+  .editorial-hero .editorial-note { animation-delay: 320ms; }
+  .editorial-hero .editorial-stats > div:nth-child(1) { animation-delay: 460ms; }
+  .editorial-hero .editorial-stats > div:nth-child(2) { animation-delay: 540ms; }
+  .editorial-hero .editorial-socials > a { animation-delay: 500ms; }
+  .editorial-hero .editorial-quote { animation-delay: 480ms; }
+
+  /* Keyboard navigation never has to wait for the entrance. */
+  .editorial-hero :focus-visible {
+    animation: none;
+  }
+}
+
+@keyframes editorial-frame-enter {
+  from { opacity: 0.35; transform: translateY(12px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes editorial-content-enter {
+  from { opacity: 0; transform: translateY(16px); }
+  to { opacity: 1; transform: translateY(0); }
+}

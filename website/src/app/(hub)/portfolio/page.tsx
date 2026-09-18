@@ -1,5 +1,5 @@
 import { Label, Work, ContactCTA } from "@/components/hub/Experience";
-export const metadata = { title: "Selected Work — Sharan Created This" };
+export const metadata = { title: "Selected Work · Sharan Created This" };
 export default function Portfolio() {
   return (
     <>

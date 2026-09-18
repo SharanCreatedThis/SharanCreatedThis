@@ -156,7 +156,7 @@ export function Worlds() {
                 />
               ) : active === 2 ? (
                 <span className="design-letter">
-                  Aa<span>↗</span>
+                  Aa<span><ArrowUpRight className="inline-arrow" aria-hidden="true" /></span>
                 </span>
               ) : (
                 <div className="product-orbits">
@@ -520,7 +520,7 @@ export function ProductShowcase({ full = false }: { full?: boolean }) {
           >
             <div className="gateway-top">
               <span>INDEPENDENT SOFTWARE</span>
-              <span>macOS ↗</span>
+              <span>macOS <ArrowUpRight className="inline-arrow" aria-hidden="true" /></span>
             </div>
             <div className="product-visual">
               {i === 0 ? (
@@ -577,7 +577,7 @@ export function ContactCTA() {
       </Link>
       <div className="cta-bottom">
         <p>A film. A brand. A product. Something entirely new.</p>
-        <Link href="/contact">Let’s create something together ↗</Link>
+        <Link href="/contact">Let’s create something together <ArrowUpRight className="inline-arrow" aria-hidden="true" /></Link>
       </div>
     </section>
   );

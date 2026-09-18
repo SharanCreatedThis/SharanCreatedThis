@@ -3,7 +3,7 @@ import {
   ProductShowcase,
   ContactCTA,
 } from "@/components/hub/Experience";
-export const metadata = { title: "Independent Products — Sharan Created This" };
+export const metadata = { title: "Independent Products · Sharan Created This" };
 export default function Products() {
   return (
     <>

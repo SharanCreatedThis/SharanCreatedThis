@@ -64,7 +64,7 @@
   color: white;
   border-color: #b75116;
 }
-.home-introduction {
+:where(.hub) .home-introduction {
   max-width: 1320px;
   margin: 0 auto;
   padding: 85px 30px 55px;
@@ -73,7 +73,7 @@
   align-items: center;
   gap: 35px;
 }
-.home-intro-mark {
+:where(.hub) .home-intro-mark {
   font-size: 83px;
   font-weight: 300;
   line-height: 1;
@@ -85,10 +85,10 @@
   letter-spacing: -2px;
   color: #292720;
 }
-.home-introduction > p > span {
+:where(.hub) .home-introduction > p > span {
   color: #9a8879;
 }
-.home-introduction > div {
+:where(.hub) .home-introduction > div {
   font-size: 12px;
   line-height: 1.9;
   color: #82786d;
@@ -516,31 +516,31 @@
 .hub.editorial-theme > .hub-footer .red {
   color: #b75116;
 }
-.hub-nav.home-scrolled-nav {
+:where(.hub) .hub-nav.home-scrolled-nav {
   background: #fffdf5ed;
   border: 1px solid #e3dbcd;
   box-shadow: 0 5px 30px #6d4b1810;
   border-radius: 16px;
   color: #362e22;
 }
-.home-scrolled-nav .brand-symbol,
-.home-scrolled-nav .red {
+:where(.hub) .home-scrolled-nav .brand-symbol,
+:where(.hub) .home-scrolled-nav .red {
   color: #b75116;
 }
-.home-scrolled-nav nav a {
+:where(.hub) .home-scrolled-nav nav a {
   color: #93816b;
 }
-.home-scrolled-nav nav a:hover,
-.home-scrolled-nav nav a[aria-current] {
+:where(.hub) .home-scrolled-nav nav a:hover,
+:where(.hub) .home-scrolled-nav nav a[aria-current] {
   color: #362e22;
 }
-.home-scrolled-nav nav a[aria-current]:after {
+:where(.hub) .home-scrolled-nav nav a[aria-current]:after {
   background: #b75116;
 }
-.home-scrolled-nav .nav-contact {
+:where(.hub) .home-scrolled-nav .nav-contact {
   border-color: #c3b199;
 }
-.home-scrolled-nav .menu-toggle {
+:where(.hub) .home-scrolled-nav .menu-toggle {
   color: #362e22;
 }
 .editorial-theme :focus-visible {
@@ -584,15 +584,15 @@
   }
 }
 @media (max-width: 1000px) {
-  .home-introduction {
+  :where(.hub) .home-introduction {
     grid-template-columns: 60px 1fr;
     padding: 65px 6% 35px;
     gap: 24px;
   }
-  .home-intro-mark {
+  :where(.hub) .home-intro-mark {
     font-size: 62px;
   }
-  .home-introduction > div {
+  :where(.hub) .home-introduction > div {
     grid-column: 2;
     justify-self: start;
   }
@@ -619,19 +619,19 @@
   .editorial-theme h2 {
     font-size: 37px;
   }
-  .home-introduction {
+  :where(.hub) .home-introduction {
     padding: 50px 7% 30px;
     gap: 17px;
     grid-template-columns: 45px 1fr;
   }
-  .home-intro-mark {
+  :where(.hub) .home-intro-mark {
     font-size: 50px;
   }
   .hub .home-introduction > p {
     font-size: 27px;
     letter-spacing: -1.2px;
   }
-  .home-introduction > div {
+  :where(.hub) .home-introduction > div {
     font-size: 10px;
   }
   .editorial-theme .section-heading {
@@ -746,7 +746,7 @@
   .editorial-theme .cta-bottom a {
     font-size: 10px;
   }
-  .home-scrolled-nav nav.is-open {
+  :where(.hub) .home-scrolled-nav nav.is-open {
     background: #fffdf6;
     border-color: #e0d7c8;
   }
@@ -1006,4 +1006,88 @@
     margin-top: 40px;
     line-height: 1.8;
   }
+}
+
+/* Use vector symbols consistently across desktop and iOS. */
+.hub .inline-arrow {
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+  vertical-align: -0.12em;
+  flex-shrink: 0;
+}
+.hub .brand-symbol svg,
+.hub .home-intro-mark svg,
+.hub .portrait-signature svg {
+  display: block;
+}
+
+@media (max-width: 700px) {
+  /* Blend the portrait into the lower paper panel, above the image only. */
+  .hub .editorial-frame::after {
+    content: "";
+    position: absolute;
+    left: 10px;
+    right: 10px;
+    bottom: 285px;
+    height: 76px;
+    z-index: 2;
+    pointer-events: none;
+    background: linear-gradient(to bottom, #ffffff00, #ffffffaa 58%, #fff 88%);
+  }
+}
+
+/* Mobile hero: portrait and social links left, editorial content right. */
+@media (max-width: 700px) {
+  .hub .editorial-portrait {
+    left: -40%;
+    right: auto;
+    width: 105%;
+  }
+  .hub .editorial-intro {
+    left: auto;
+    right: 6%;
+    width: 48%;
+    top: 112px;
+    text-align: right;
+  }
+  .hub .editorial-intro h1 {
+    font-size: clamp(40px, 12.5vw, 62px);
+  }
+  .hub .editorial-pill {
+    max-width: 100%;
+    line-height: 1.4;
+  }
+  .hub .editorial-button {
+    max-width: 100%;
+    padding: 14px 12px;
+    gap: 8px;
+    white-space: nowrap;
+  }
+  .hub .editorial-button svg { flex-shrink: 0; }
+  .hub .editorial-stats {
+    left: auto;
+    right: 6%;
+    width: 48%;
+    gap: 6px;
+  }
+  .hub .editorial-stats > div {
+    flex: 1;
+    min-width: 0;
+    width: auto;
+    padding: 9px 7px;
+  }
+  .hub .editorial-stats > div > span { gap: 3px; }
+  .hub .editorial-stats i { flex-shrink: 0; }
+  .hub .editorial-stats strong { font-size: clamp(26px, 7.3vw, 32px); }
+  .hub .editorial-socials {
+    left: 6%;
+    right: auto;
+    transform: none;
+    gap: 4px;
+  }
+}
+@media (max-width: 360px) {
+  .hub .editorial-button { font-size: 9px; padding-inline: 9px; }
+  .hub .editorial-socials a { width: 26px; height: 26px; }
 }

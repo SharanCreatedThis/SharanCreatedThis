@@ -1,3 +1,4 @@
+import { BrandMark } from "@/components/BrandMark";
 import {
   Label,
   Reveal,
@@ -5,7 +6,7 @@ import {
   Numbers,
   ContactCTA,
 } from "@/components/hub/Experience";
-export const metadata = { title: "The Story — Sharan Created This" };
+export const metadata = { title: "The Story · Sharan Created This" };
 export default function About() {
   return (
     <>
@@ -35,7 +36,7 @@ export default function About() {
               Sharan<span className="portrait-role">Creator &amp; builder</span>
             </span>
             <span className="portrait-signature" aria-hidden="true">
-              ✳
+              <BrandMark />
             </span>
           </figcaption>
         </figure>

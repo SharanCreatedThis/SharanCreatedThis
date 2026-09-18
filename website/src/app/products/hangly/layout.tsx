@@ -8,7 +8,7 @@ import "@fontsource/inter-tight/700.css";
 import "./hangly.css";
 
 export const metadata = {
-  title: "Hangly — A little magic for your desktop",
+  title: "Hangly · A little magic for your desktop",
   description:
     "Beautiful digital charms. Real swinging physics. Make your Mac feel a little more you. Free for macOS 14 and later.",
 };
