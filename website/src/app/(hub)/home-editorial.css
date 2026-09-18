@@ -1,0 +1,1009 @@
+/* Shared warm editorial system for the portfolio hub. Product landing pages are isolated. */
+.editorial-theme {
+  --red: #b75116;
+  --muted: #998471;
+  --paper: #f3f3f1;
+  --ink: #24241e;
+  background: var(--paper);
+  color: var(--ink);
+  padding-bottom: 32px;
+}
+.editorial-theme .section {
+  max-width: 1500px;
+  padding: 90px 5.5%;
+}
+.editorial-theme h2 {
+  font-weight: 430;
+  letter-spacing: -0.065em;
+  font-size: clamp(38px, 4.6vw, 72px);
+  line-height: 1.04;
+}
+.editorial-theme .muted {
+  color: #9a8879;
+}
+.editorial-theme p {
+  color: #736d65;
+}
+.editorial-theme .eyebrow {
+  color: #817365;
+  font-size: 9px;
+  letter-spacing: 1.2px;
+}
+.editorial-theme .eyebrow > span {
+  border-radius: 50%;
+  background: #c86d24;
+}
+.editorial-theme .small-note {
+  color: #817365;
+}
+.editorial-theme .section-heading {
+  margin-bottom: 45px;
+}
+.editorial-theme .text-link {
+  color: #3e382f;
+  border-color: #c8beb2;
+  gap: 24px;
+}
+.editorial-theme .text-link:hover {
+  color: #b75116;
+}
+.editorial-theme .button {
+  border-radius: 30px;
+  border-color: #dbd3c8;
+  color: #36322c;
+  background: white;
+  padding: 15px 24px;
+  gap: 32px;
+}
+.editorial-theme .button:hover {
+  background: #f6e8d6;
+  transform: translateY(-2px);
+}
+.editorial-theme .button-red {
+  background: #b75116;
+  color: white;
+  border-color: #b75116;
+}
+.home-introduction {
+  max-width: 1320px;
+  margin: 0 auto;
+  padding: 85px 30px 55px;
+  display: grid;
+  grid-template-columns: 85px 1.5fr 1fr;
+  align-items: center;
+  gap: 35px;
+}
+.home-intro-mark {
+  font-size: 83px;
+  font-weight: 300;
+  line-height: 1;
+  color: #c7621c;
+}
+.hub .home-introduction > p {
+  font-size: clamp(27px, 3vw, 46px);
+  line-height: 1.14;
+  letter-spacing: -2px;
+  color: #292720;
+}
+.home-introduction > p > span {
+  color: #9a8879;
+}
+.home-introduction > div {
+  font-size: 12px;
+  line-height: 1.9;
+  color: #82786d;
+  justify-self: end;
+}
+/* Four creative chapters, presented as an editorial spread. */
+.editorial-theme .world-tabs {
+  border: 0;
+  background: #e9e6e0;
+  border-radius: 50px;
+  padding: 6px;
+  gap: 4px;
+  margin-bottom: 20px;
+}
+.editorial-theme .world-tabs button {
+  border: 0;
+  border-radius: 40px;
+  font-size: 16px;
+  padding: 20px;
+  color: #85786b;
+  transition:
+    background 0.25s,
+    color 0.25s,
+    box-shadow 0.25s;
+}
+.editorial-theme .world-tabs button span {
+  color: #988a7a;
+}
+.editorial-theme .world-tabs button[aria-selected="true"] {
+  background: white;
+  color: #24241e;
+  box-shadow: 0 3px 15px #7364480c;
+}
+.editorial-theme .world-tabs button[aria-selected="true"] span {
+  color: #b75116;
+}
+.editorial-theme .world-panel {
+  border-radius: 25px;
+  gap: 0;
+  background: white;
+  grid-template-columns: 1.2fr 1fr;
+  border: 1px solid #e9e4dc;
+  min-height: 420px;
+}
+.editorial-theme .world-art {
+  margin: 12px;
+  border-radius: 17px;
+  min-height: 395px;
+}
+.editorial-theme .world-description {
+  padding: 45px 50px;
+}
+.editorial-theme .world-description h3 {
+  font-size: clamp(45px, 4.8vw, 72px);
+  font-weight: 430;
+}
+.editorial-theme .world-description p {
+  font-size: 13px;
+  max-width: 320px;
+  margin: 24px 0;
+}
+.editorial-theme .frame-corner {
+  border-radius: 5px;
+  border-color: #ffffff50;
+}
+.editorial-theme .timecode {
+  color: #fff;
+  background: #0005;
+  border-radius: 15px;
+  padding: 6px 10px;
+  left: 28px;
+  bottom: 28px;
+}
+.editorial-theme .design-world .world-art {
+  background: linear-gradient(135deg, #a33d07, #ee941c 70%, #ffdb72);
+}
+.editorial-theme .design-letter {
+  color: #fff8e8;
+  font-family: Georgia, serif;
+  font-weight: 400;
+}
+.editorial-theme .design-letter span {
+  color: #6b390c;
+}
+.editorial-theme .product-world .world-art {
+  background: radial-gradient(ellipse at 40% 35%, #f2d5a5, #b96d2c);
+}
+.editorial-theme .product-orbits {
+  color: #fff9ef;
+  border-color: #ffffff55;
+  box-shadow:
+    0 0 0 25px #fff8eb15,
+    0 0 0 70px #fff8eb10;
+}
+/* An inset amber spread gives the achievements their own visual rhythm. */
+.editorial-theme .numbers {
+  max-width: calc(100% - 7.6%);
+  border: 0;
+  border-radius: 30px;
+  background: radial-gradient(
+    ellipse at 5% 100%,
+    #ffdf68,
+    #eea238 55%,
+    #b9541c
+  );
+  padding: 70px 5.5%;
+  margin: 35px auto;
+  color: #42290e;
+}
+.editorial-theme .numbers .eyebrow,
+.editorial-theme .numbers .small-note {
+  color: #713912;
+}
+.editorial-theme .numbers .eyebrow > span {
+  background: #713912;
+}
+.editorial-theme .numbers h2 .muted {
+  color: #fff8e7;
+}
+.editorial-theme .metrics {
+  gap: 15px;
+  grid-template-columns: repeat(3, 1fr);
+}
+.editorial-theme .metric {
+  border: 1px solid #ffffff7a;
+  background: #fffdf4ed;
+  border-radius: 18px;
+  padding: 25px;
+  min-height: 210px;
+  box-shadow: 0 10px 30px #71340a08;
+}
+.editorial-theme .metric-index {
+  font-size: 9px;
+  letter-spacing: 1px;
+  color: #9b8268;
+  margin-bottom: 24px;
+}
+.editorial-theme .metric > span:nth-child(2) {
+  font-size: clamp(55px, 5vw, 85px);
+  font-weight: 400;
+  letter-spacing: -5px;
+  color: #2f2a23;
+}
+.editorial-theme .metric i {
+  color: #be722a;
+}
+.editorial-theme .metric p {
+  font-size: 11px;
+  color: #83715e;
+  margin-top: 12px;
+}
+.editorial-theme .metric-bars {
+  bottom: 24px;
+  right: 24px;
+  gap: 3px;
+  opacity: 0.6;
+}
+.editorial-theme .metric-bars i {
+  background: #c6a476;
+  width: 3px;
+  border-radius: 2px;
+}
+/* Career chapters are tactile, horizontally browsable story cards. */
+.editorial-theme .journey-track {
+  gap: 15px;
+  padding: 5px 0 20px;
+  scrollbar-color: #cfbda2 #e8e4dd;
+}
+.editorial-theme .journey-track article {
+  background: #fff;
+  border: 1px solid #e4dfd5;
+  border-radius: 20px;
+  flex-basis: 29%;
+  padding: 22px 24px 30px;
+  min-height: 265px;
+}
+.editorial-theme .journey-line {
+  border-color: #e7dfd2;
+  color: #a2835e;
+  padding: 5px 0 25px;
+}
+.editorial-theme .journey-track h3 {
+  font-size: 29px;
+  font-weight: 450;
+  margin-top: 32px;
+}
+.editorial-theme .journey-track p {
+  font-size: 12px;
+  max-width: 280px;
+}
+.editorial-theme .journey-track article:last-child {
+  background: #f1d8ad;
+  border-color: #e5c895;
+}
+.editorial-theme .current-tag {
+  font-size: 7px;
+  display: inline-block;
+  border-radius: 20px;
+  padding: 6px 9px;
+  color: #8c5527;
+  background: #fff8e880;
+}
+/* Selected work: a spacious three-column gallery with warm captions. */
+.editorial-theme .work-list {
+  background: #fff;
+  border-radius: 30px;
+  max-width: calc(100% - 7.6%);
+  padding: 70px 5.5%;
+  margin: 20px auto 35px;
+}
+.editorial-theme .project-grid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 38px 22px;
+  align-items: start;
+}
+.editorial-theme .project-card {
+  color: #282720;
+}
+.editorial-theme .project-card:nth-child(even) {
+  margin-top: 0;
+}
+.editorial-theme .project-card:nth-child(3n + 2) {
+  margin-top: 50px;
+}
+.editorial-theme .project-cover {
+  border-radius: 17px;
+  aspect-ratio: 1.13;
+  isolation: isolate;
+}
+.editorial-theme .cover-photography .project-cover {
+  aspect-ratio: 1.13;
+}
+.editorial-theme .cover-title {
+  font-size: clamp(27px, 3vw, 46px);
+  letter-spacing: -2px;
+  color: white;
+}
+.editorial-theme .cover-design .cover-title {
+  color: #25291f;
+}
+.editorial-theme .project-cover img {
+  object-fit: cover;
+}
+.editorial-theme .project-open {
+  height: 32px;
+  width: 32px;
+  top: 14px;
+  right: 14px;
+  background: #ffffffea;
+  color: #343129;
+  border: 0;
+  z-index: 2;
+}
+.editorial-theme .project-card:hover .project-open {
+  background: #ebba73;
+  color: #352c20;
+}
+.editorial-theme .project-meta {
+  padding: 16px 3px 0;
+}
+.editorial-theme .project-meta h3 {
+  font-size: 20px;
+  font-weight: 500;
+  letter-spacing: -0.7px;
+}
+.editorial-theme .project-meta span {
+  color: #948779;
+  font-size: 8px;
+}
+.editorial-theme .cover-number {
+  font-size: 7px;
+  left: 18px;
+  top: 18px;
+}
+.editorial-theme .cover-caption {
+  font-size: 6px;
+  left: 18px;
+  bottom: 18px;
+}
+.editorial-theme .project-dialog {
+  background: #fffdf8;
+  color: #302b24;
+  border: 1px solid #d8cdbc;
+  border-radius: 22px;
+  box-shadow: 0 20px 80px #211b1733;
+}
+.editorial-theme .project-dialog p {
+  color: #776c60;
+}
+.editorial-theme .dialog-close {
+  color: #4b4135;
+}
+.editorial-theme .dialog-image {
+  border-radius: 12px;
+}
+/* The products remain the stars inside warm, rounded display cases. */
+.editorial-theme .product-grid {
+  gap: 24px;
+}
+.editorial-theme .gateway {
+  background: #fff;
+  border: 1px solid #e4dfd5;
+  border-radius: 25px;
+  box-shadow: 0 10px 40px #5b452403;
+}
+.editorial-theme .gateway-top {
+  padding: 25px 30px;
+  color: #8a7d6c;
+  letter-spacing: 1px;
+}
+.editorial-theme .gateway-content {
+  padding: 30px 35px 38px;
+}
+.editorial-theme .gateway h3 {
+  font-size: 60px;
+  font-weight: 430;
+  letter-spacing: -3px;
+}
+.editorial-theme .gateway p {
+  color: #817669;
+  max-width: 350px;
+  min-height: 64px;
+}
+.editorial-theme .hangly-stage-glow {
+  background: radial-gradient(ellipse, #f0d5a950, transparent 68%);
+}
+.editorial-theme .hangly-preview-caption {
+  color: #877861;
+}
+.editorial-theme .hangly-preview-caption button {
+  color: #836f54;
+}
+.editorial-theme .hangly-preview-caption button:hover {
+  color: #aa571c;
+}
+.editorial-theme .vision-demo {
+  background: radial-gradient(
+    ellipse at center,
+    #eddbc0 0%,
+    #f6f0e5 40%,
+    #fff 73%
+  );
+}
+.editorial-theme .vision-caption {
+  color: #97846a;
+}
+.editorial-theme .face-orbit {
+  border-color: #b9996833;
+}
+/* A final warm frame mirrors the first. */
+.editorial-theme .contact-cta {
+  max-width: calc(100% - 7.6%);
+  margin: 20px auto 0;
+  padding: 75px 5.5% 45px;
+  border: 0;
+  border-radius: 30px;
+  overflow: hidden;
+  isolation: isolate;
+  background: radial-gradient(
+    ellipse at 5% 100%,
+    #ffe270,
+    #f0a83b 50%,
+    #b85119
+  );
+  color: #fffdf3;
+}
+.editorial-theme .contact-cta:before {
+  content: "";
+  position: absolute;
+  width: 65%;
+  height: 220%;
+  right: 0;
+  top: -70%;
+  border-radius: 45%;
+  transform: rotate(-35deg);
+  background: linear-gradient(150deg, #ffffff14, #8a3a1310);
+  z-index: -1;
+  pointer-events: none;
+}
+.editorial-theme .contact-cta .eyebrow {
+  color: #fff1d3;
+}
+.editorial-theme .contact-cta .eyebrow > span {
+  background: #fff1d3;
+}
+.editorial-theme .contact-cta h2 {
+  font-size: clamp(50px, 7vw, 106px);
+  font-weight: 400;
+}
+.editorial-theme .contact-cta em {
+  color: #70401c;
+  font-weight: 400;
+}
+.editorial-theme .contact-arrow {
+  background: #fffdf3;
+  color: #9b581e;
+  border: 0;
+  width: 90px;
+  height: 90px;
+  box-shadow: 0 8px 35px #793b0915;
+}
+.editorial-theme .contact-arrow:hover {
+  background: #ffedc3;
+}
+.editorial-theme .cta-bottom {
+  border-color: #8f521b3d;
+  margin-top: 65px;
+  color: #694019;
+}
+.editorial-theme .cta-bottom p {
+  color: #694019;
+}
+.hub.editorial-theme {
+  background: #f3f3f1;
+}
+.hub.editorial-theme > .hub-footer {
+  background: #f3f3f1;
+  color: #92826f;
+  border: 0;
+  padding: 35px 6.5% 50px;
+}
+.hub.editorial-theme > .hub-footer .wordmark {
+  color: #4b4032;
+}
+.hub.editorial-theme > .hub-footer .red {
+  color: #b75116;
+}
+.hub-nav.home-scrolled-nav {
+  background: #fffdf5ed;
+  border: 1px solid #e3dbcd;
+  box-shadow: 0 5px 30px #6d4b1810;
+  border-radius: 16px;
+  color: #362e22;
+}
+.home-scrolled-nav .brand-symbol,
+.home-scrolled-nav .red {
+  color: #b75116;
+}
+.home-scrolled-nav nav a {
+  color: #93816b;
+}
+.home-scrolled-nav nav a:hover,
+.home-scrolled-nav nav a[aria-current] {
+  color: #362e22;
+}
+.home-scrolled-nav nav a[aria-current]:after {
+  background: #b75116;
+}
+.home-scrolled-nav .nav-contact {
+  border-color: #c3b199;
+}
+.home-scrolled-nav .menu-toggle {
+  color: #362e22;
+}
+.editorial-theme :focus-visible {
+  outline-color: #a95417;
+}
+@media (min-width: 701px) and (prefers-reduced-motion: no-preference) {
+  .editorial-theme .world-panel {
+    min-height: 350px;
+  }
+  .editorial-theme .world-art {
+    min-height: 326px;
+  }
+}
+@media (min-width: 701px) and (max-height: 820px) {
+  .editorial-theme .worlds h2 {
+    font-size: 40px;
+  }
+  .editorial-theme .worlds .section-heading {
+    margin-bottom: 22px;
+  }
+  .editorial-theme .worlds .eyebrow {
+    margin-bottom: 16px;
+  }
+  .editorial-theme .world-art {
+    min-height: 265px;
+  }
+  .editorial-theme .world-panel {
+    min-height: 289px;
+  }
+  .editorial-theme .world-description {
+    padding: 25px 35px;
+  }
+  .editorial-theme .world-tabs button {
+    padding: 15px;
+  }
+  .editorial-theme .world-description h3 {
+    font-size: 46px;
+  }
+  .editorial-theme .world-description p {
+    margin: 14px 0;
+  }
+}
+@media (max-width: 1000px) {
+  .home-introduction {
+    grid-template-columns: 60px 1fr;
+    padding: 65px 6% 35px;
+    gap: 24px;
+  }
+  .home-intro-mark {
+    font-size: 62px;
+  }
+  .home-introduction > div {
+    grid-column: 2;
+    justify-self: start;
+  }
+  .editorial-theme .project-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .editorial-theme .project-card:nth-child(3n + 2) {
+    margin-top: 0;
+  }
+  .editorial-theme .project-card:nth-child(even) {
+    margin-top: 40px;
+  }
+  .editorial-theme .journey-track article {
+    flex-basis: 40%;
+  }
+}
+@media (max-width: 700px) {
+  .editorial-theme {
+    padding-bottom: 12px;
+  }
+  .editorial-theme .section {
+    padding: 60px 6%;
+  }
+  .editorial-theme h2 {
+    font-size: 37px;
+  }
+  .home-introduction {
+    padding: 50px 7% 30px;
+    gap: 17px;
+    grid-template-columns: 45px 1fr;
+  }
+  .home-intro-mark {
+    font-size: 50px;
+  }
+  .hub .home-introduction > p {
+    font-size: 27px;
+    letter-spacing: -1.2px;
+  }
+  .home-introduction > div {
+    font-size: 10px;
+  }
+  .editorial-theme .section-heading {
+    margin-bottom: 30px;
+  }
+  .editorial-theme .world-tabs {
+    border-radius: 20px;
+    gap: 3px;
+    padding: 5px;
+  }
+  .editorial-theme .world-tabs button {
+    font-size: 14px;
+    padding: 15px 12px;
+    border-radius: 15px;
+  }
+  .editorial-theme .world-panel {
+    grid-template-columns: 1fr;
+    border-radius: 20px;
+    min-height: 0;
+  }
+  .editorial-theme .world-art {
+    min-height: 240px;
+    margin: 9px;
+    border-radius: 13px;
+  }
+  .editorial-theme .world-description {
+    padding: 25px;
+  }
+  .editorial-theme .world-description h3 {
+    font-size: 47px;
+  }
+  .editorial-theme .world-description p {
+    font-size: 12px;
+    margin: 17px 0;
+  }
+  .editorial-theme .numbers,
+  .editorial-theme .work-list,
+  .editorial-theme .contact-cta {
+    max-width: calc(100% - 24px);
+    border-radius: 22px;
+    padding: 40px 20px;
+    margin: 15px auto;
+  }
+  .editorial-theme .metrics {
+    gap: 10px;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .editorial-theme .metric {
+    border-radius: 13px;
+    padding: 18px 15px;
+    min-height: 167px;
+  }
+  .editorial-theme .metric > span:nth-child(2) {
+    font-size: 49px;
+    letter-spacing: -3px;
+  }
+  .editorial-theme .metric-index {
+    margin-bottom: 24px;
+  }
+  .editorial-theme .metric p {
+    font-size: 9px;
+  }
+  .editorial-theme .journey-track article {
+    flex-basis: 86%;
+    padding: 22px;
+    min-height: 260px;
+  }
+  .editorial-theme .project-grid {
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+  .editorial-theme .project-card:nth-child(even) {
+    margin-top: 0;
+  }
+  .editorial-theme .project-cover,
+  .editorial-theme .cover-photography .project-cover {
+    aspect-ratio: 1.3;
+  }
+  .editorial-theme .cover-title {
+    font-size: 40px;
+  }
+  .editorial-theme .gateway {
+    border-radius: 21px;
+  }
+  .editorial-theme .gateway-content {
+    padding: 25px;
+  }
+  .editorial-theme .gateway p {
+    min-height: 0;
+    margin-bottom: 25px;
+  }
+  .editorial-theme .gateway h3 {
+    font-size: 54px;
+  }
+  .editorial-theme .contact-cta h2 {
+    font-size: 46px;
+  }
+  .editorial-theme .contact-arrow {
+    width: 44px;
+    height: 44px;
+    top: 29px;
+    right: 20px;
+  }
+  .editorial-theme .contact-cta .eyebrow {
+    font-size: 7px;
+  }
+  .editorial-theme .cta-bottom {
+    margin-top: 35px;
+    gap: 15px;
+  }
+  .editorial-theme .cta-bottom p,
+  .editorial-theme .cta-bottom a {
+    font-size: 10px;
+  }
+  .home-scrolled-nav nav.is-open {
+    background: #fffdf6;
+    border-color: #e0d7c8;
+  }
+  .hub.editorial-theme > .hub-footer {
+    padding: 25px 7% 35px;
+  }
+}
+
+/* Inner pages carry the same generous spacing and warm material palette. */
+.editorial-theme .page-intro.section {
+  padding-top: 180px;
+}
+.editorial-theme .page-intro h1 {
+  font-weight: 430;
+  letter-spacing: -0.065em;
+}
+.editorial-theme .page-intro > p {
+  max-width: 490px;
+}
+.editorial-theme .page-intro .work-list {
+  max-width: 100%;
+  padding: 35px;
+  margin-top: 55px;
+}
+.editorial-theme .filters {
+  gap: 8px;
+  padding-bottom: 25px;
+  border-bottom: 1px solid #e9e1d6;
+}
+.editorial-theme .filters button {
+  background: #f5f2ec;
+  border-color: #e5ded3;
+  color: #756858;
+  transition:
+    background 0.2s,
+    color 0.2s;
+}
+.editorial-theme .filters button:hover {
+  background: #f0dec3;
+}
+.editorial-theme .filters button[aria-pressed="true"] {
+  background: #b75116;
+  border-color: #b75116;
+  color: #fff;
+}
+.editorial-theme .empty-state {
+  background: #faf6ee;
+  border: 1px solid #e5ded3;
+  border-radius: 20px;
+}
+.editorial-theme .full .gateway {
+  min-height: 520px;
+  overflow: hidden;
+}
+.editorial-theme .full .gateway h3 {
+  font-size: clamp(60px, 6vw, 90px);
+}
+.editorial-theme .full .gateway-content {
+  padding: 40px 50px 55px;
+}
+.editorial-theme .about-intro {
+  position: relative;
+  gap: 6%;
+  padding-bottom: 70px;
+}
+/* A quiet photographic plate, with headroom independent of image proportions. */
+.editorial-theme .about-portrait {
+  margin: 0;
+  padding: 12px;
+  background: #fffdf8;
+  border: 1px solid #e3dbce;
+  border-radius: 24px;
+  box-shadow: 0 18px 50px #5b452408;
+  min-width: 0;
+}
+.editorial-theme .about-portrait-image {
+  height: 510px;
+  padding-top: 0;
+  overflow: hidden;
+  border-radius: 15px;
+  background: radial-gradient(
+    ellipse at 25% 35%,
+    #f6eee1,
+    #e9d8bd 65%,
+    #d5b48c
+  );
+}
+.editorial-theme .about-portrait-image img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 35%;
+}
+.editorial-theme .about-portrait figcaption {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 19px 13px 8px;
+  font-size: 16px;
+  color: #42372b;
+}
+.editorial-theme .portrait-role {
+  display: block;
+  margin-top: 5px;
+  font-size: 10px;
+  color: #877562;
+  letter-spacing: 0.04em;
+}
+.editorial-theme .portrait-signature {
+  font-size: 36px;
+  line-height: 1;
+  color: #b66a34;
+}
+.editorial-theme .about-story {
+  border-color: #ded7cc;
+}
+.editorial-theme .about-story h2 {
+  font-size: clamp(32px, 3.7vw, 55px);
+}
+.editorial-theme .philosophy {
+  width: calc(100% - 7.6%);
+  background: #fff;
+  border-radius: 30px;
+  margin: 40px auto;
+}
+.editorial-theme .philosophy > div:not(.eyebrow) {
+  border-color: #e7dfd2;
+  padding: 35px 0;
+}
+.editorial-theme .philosophy > div > span {
+  color: #ad7b49;
+}
+.editorial-theme .contact-page h1 {
+  font-size: clamp(48px, 6.7vw, 102px);
+}
+.editorial-theme .contact-page h1 .red {
+  font-family: Georgia, serif;
+  font-style: italic;
+  font-weight: 400;
+}
+.editorial-theme .contact-layout {
+  background: #fff;
+  border: 1px solid #e9e0d3;
+  border-radius: 28px;
+  padding: 45px;
+  gap: 50px;
+  align-items: center;
+}
+.editorial-theme .contact-layout > div:first-child {
+  padding: 40px 30px;
+  background: radial-gradient(
+    ellipse at bottom left,
+    #ffe394,
+    #f3c171 65%,
+    #e7a26a
+  );
+  border-radius: 20px;
+}
+.editorial-theme .contact-layout p {
+  color: #674829;
+}
+.editorial-theme .contact-links > a {
+  border-color: #e7dfd2;
+  padding: 25px 12px;
+  border-radius: 10px;
+  transition:
+    background 0.2s,
+    padding 0.2s;
+}
+.editorial-theme .contact-links > a:hover {
+  background: #fbf2e5;
+  padding-left: 22px;
+}
+.editorial-theme .contact-links h2 {
+  font-size: 30px;
+}
+.editorial-theme .contact-links span,
+.editorial-theme .contact-signoff {
+  color: #927c62;
+}
+.editorial-theme ::selection {
+  background: #e5af69;
+  color: #332419;
+}
+@media (max-width: 1000px) {
+  .editorial-theme .contact-layout {
+    gap: 25px;
+    padding: 25px;
+  }
+  .editorial-theme .about-portrait-image {
+    height: 410px;
+  }
+}
+@media (max-width: 700px) {
+  .editorial-theme .page-intro.section {
+    padding-top: 130px;
+  }
+  .editorial-theme .page-intro h1 {
+    font-size: 49px;
+  }
+  .editorial-theme .page-intro .work-list {
+    padding: 20px 15px;
+    margin-top: 35px;
+  }
+  .editorial-theme .filters {
+    gap: 7px;
+    margin-bottom: 25px;
+  }
+  .editorial-theme .filters button {
+    font-size: 10px;
+    padding: 10px 12px;
+  }
+  .editorial-theme .full .gateway {
+    min-height: 0;
+  }
+  .editorial-theme .full .gateway-content {
+    padding: 25px;
+  }
+  .editorial-theme .full .gateway h3 {
+    font-size: 54px;
+  }
+  .editorial-theme .about-intro {
+    gap: 35px;
+  }
+  .editorial-theme .about-portrait-image {
+    height: 390px;
+    padding-top: 0;
+  }
+  .editorial-theme .philosophy {
+    width: calc(100% - 24px);
+    padding: 40px 22px;
+  }
+  .editorial-theme .philosophy h2 {
+    font-size: 29px;
+  }
+  .editorial-theme .philosophy > div:not(.eyebrow) {
+    gap: 15px;
+  }
+  .editorial-theme .contact-page h1 {
+    font-size: clamp(39px, 10.5vw, 49px);
+  }
+  .editorial-theme .contact-layout {
+    padding: 12px;
+    border-radius: 22px;
+    gap: 20px;
+    margin-top: 35px;
+  }
+  .editorial-theme .contact-layout > div:first-child {
+    padding: 30px 20px;
+    border-radius: 14px;
+  }
+  .editorial-theme .contact-links {
+    padding: 0 10px 10px;
+  }
+  .editorial-theme .contact-signoff {
+    margin-top: 40px;
+    line-height: 1.8;
+  }
+}

@@ -1,16 +1,15 @@
-import React from "react";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
-
-export default function HubLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+import "./hub.css";
+import "./home-editorial.css";
+export default function HubLayout({ children }: { children: React.ReactNode }) {
   return (
-    <div className="min-h-screen flex flex-col bg-[#09090b]">
+    <div className="hub editorial-theme" id="top">
+      <a className="skip-link" href="#main">
+        Skip to content
+      </a>
       <Navbar />
-      <main className="flex-grow">{children}</main>
+      <main id="main">{children}</main>
       <Footer />
     </div>
   );
