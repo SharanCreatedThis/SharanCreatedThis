@@ -1,41 +1,41 @@
-<?xml version="1.0" encoding="utf-8"?>
-<rss version="2.0" xmlns:sparkle="http://www.andymatuschak.org/xml-namespaces/sparkle"  xmlns:dc="http://purl.org/dc/elements/1.1/">
+<?xml version="1.0" standalone="yes"?>
+<rss xmlns:sparkle="http://www.andymatuschak.org/xml-namespaces/sparkle" version="2.0">
     <channel>
         <title>Hangly Changelog</title>
         <link>https://www.sharancreatedthis.in/products/hangly/appcast.xml</link>
         <description>Most recent updates to Hangly</description>
         <language>en</language>
         <item>
-            <title>Hangly 2.0.0</title>
-            <!-- Replace the date with the actual release date -->
-            <pubDate>Thu, 17 Sep 2026 12:00:00 +0000</pubDate>
-            
-            <!-- Adjust to your minimum system version -->
+            <title>2.0.0</title>
+            <pubDate>Sat, 19 Sep 2026 00:22:46 +0530</pubDate>
+            <link>https://www.sharancreatedthis.in/products/hangly</link>
+            <sparkle:version>200</sparkle:version>
+            <sparkle:shortVersionString>2.0.0</sparkle:shortVersionString>
             <sparkle:minimumSystemVersion>14.0</sparkle:minimumSystemVersion>
-            
-            <!-- 
-              REPLACE spark:edSignature with the generated signature from: 
-              ./generate_appcast (or sign_update)
-            -->
-            <!-- 
-              sparkle:version is the CFBundleVersion (build number, e.g. "2") 
-              sparkle:shortVersionString is CFBundleShortVersionString (e.g. "2.0.0")
-            -->
-            <enclosure url="https://www.sharancreatedthis.in/products/hangly/releases/Hangly-2.0.0.dmg"
-                       sparkle:version="2"
-                       sparkle:shortVersionString="2.0.0"
-                       type="application/octet-stream"
-                       sparkle:edSignature="YOUR_EDDSA_SIGNATURE_HERE" />
-            
-            <!-- The release notes can be provided as CDATA HTML -->
-            <description><![CDATA[
-            <h2>Hangly 2.0.0</h2>
-            <ul>
-                <li>Integrated Sparkle 2 for completely silent, automatic background updates.</li>
-                <li>Added beautiful release notes UI shown on the first launch of a new version.</li>
-                <li>Added "Check for Updates" button to the About page.</li>
-            </ul>
-            ]]></description>
+            <description><![CDATA[<h2>Hangly 2.0.0</h2>
+
+<p>The rope release, and the first one that can update itself.</p>
+
+<ul>
+  <li><strong>Automatic updates.</strong> Hangly now checks for a new version once a
+      week and installs it quietly in the background. Nothing to click, and nothing
+      to download by hand again.</li>
+  <li><strong>Release notes when a version arrives</strong>, shown once on the first
+      launch after an update, plus a <em>Check for Updates</em> button on the About
+      page for anyone who would rather ask.</li>
+  <li><strong>Four more charms.</strong> A dream catcher joins the world collection;
+      the RV joins Breaking Bad; The Weeknd joins Music Legends; and Spider-Man
+      gets a second pose, hanging from the web line in his own hand.</li>
+  <li><strong>A lighter download.</strong> The app ships its artwork as the vector
+      files it actually draws from rather than as a compiled catalogue that also
+      carried a bitmap of every charm it never used. The download went from 89 MB
+      to 33 MB, and nothing about the artwork changed.</li>
+  <li><strong>Five cords, up to three charms on one rope, eleven seasonal charms
+      that arrive on their own, weather, and one Customize window</strong> in place
+      of the three it used to take.</li>
+</ul>
+]]></description>
+            <enclosure url="https://www.sharancreatedthis.in/products/hangly/releases/Hangly-2.0.0.dmg" length="34238650" type="application/octet-stream" sparkle:edSignature="jdprRAOnuU/RlmlBuF9J1+U7gWV3QhR0U81JibAWQQwPb0LshNuixHCQWbKvaaa60Alrxk20+s/uf6vbVUp5AA=="/>
         </item>
     </channel>
 </rss>
