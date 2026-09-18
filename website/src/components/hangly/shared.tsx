@@ -2,7 +2,10 @@
 import { motion, useReducedMotion, useScroll, useTransform } from 'framer-motion';
 import { useRef } from 'react';
 import { ArrowDownToLine, ArrowUpRight } from 'lucide-react';
-export const DOWNLOAD = 'https://github.com/sharancreatedthis/Hangly/releases/latest/download/Hangly.dmg';
+// Resolved to the newest release at build time by the redirect in next.config.ts,
+// which reads the Sparkle feed. Never a versioned file name, and never the app's
+// own repository: that one is private, and its release assets 404 for everybody else.
+export const DOWNLOAD = '/products/hangly/download';
 export function DownloadButton({ label = 'Download for macOS', className = '' }: { label?: string; className?: string }) { return <a className={`button button-primary ${className}`} href={DOWNLOAD}><ArrowDownToLine size={17}/>{label}<ArrowUpRight size={17}/></a>; }
 export function Charm({ name, alt, className = '' }: { name: string; alt?: string; className?: string }) { return <img className={`charm-art ${className}`} src={`/charms/connected/${name}.svg`} alt={alt ?? ''} draggable={false}/>; }
 export function Reveal({ children, className = '' }: { children: React.ReactNode; className?: string }) {
