@@ -2,52 +2,39 @@
  * Generates the download redirects for both hosts, from the Sparkle feeds.
  *
  * `/products/<product>/download` is a stable URL: the buttons on the site, the
- * README and anything anyone has ever linked all point at it, and it has to keep
+ * README and anything anyone has ever linked point at it, and it has to keep
  * resolving to whatever the newest build is. The newest build is whatever the
  * Sparkle feed says it is — the updater will not install anything that is not in
- * the feed — so the feed is the single source of truth here too, and the button
- * and the update can never offer different builds.
+ * the feed — so the feed is the single source of truth, and the button and the
+ * update can never offer different builds.
  *
- * Two files come out, because two hosts serve this site during the migration:
+ * **Including the host.** The enclosure URL is used as published: R2 today, the
+ * site itself for anything still served from public/. That is the whole rule, and
+ * it replaces an earlier arrangement where the destination was assembled from an
+ * environment variable. That arrangement broke: DNS moved to Cloudflare before the
+ * variable was set, the redirect kept pointing at a path that used to be Vercel's
+ * copy of the archive, and Pages does not carry that archive because it is over
+ * the 25 MiB per-file limit. The button and the updater both 404ed. Reading the
+ * host from the feed removes the possibility: to move a download somewhere else,
+ * put it there and say so in the appcast.
  *
- *   public/_redirects   Cloudflare Pages. Copied into the export as out/_redirects.
- *   vercel.json         Vercel. Read from the repository, so it must be committed;
- *                       a static export makes next.config's redirects() dead.
+ * Two files come out, because two hosts can serve this site:
  *
- * Delete vercel.json once DNS has moved and Vercel is gone.
- *
- * ## Where the files are served from
- *
- * Today the DMGs sit in public/ and are served by the site itself, which is what
- * production does right now and what must keep working until the cutover. Setting
- * DOWNLOADS_BASE switches every destination to R2:
- *
- *   DOWNLOADS_BASE=https://downloads.sharancreatedthis.in npm run build
- *
- * Do that only once the bucket is filled and downloads.sharancreatedthis.in
- * resolves, and in the same change that removes the DMGs from public/ — a
- * Cloudflare Pages deploy rejects any file over 25 MiB, and Hangly's DMG is 32.6.
+ *   public/_redirects   Cloudflare Pages, which serves production.
+ *   vercel.json         Vercel, kept until that project is decommissioned.
  */
 
 import { readFileSync, writeFileSync } from "node:fs";
-import { join, basename, dirname } from "node:path";
+import { join, dirname } from "node:path";
 import { fileURLToPath } from "node:url";
 
 const root = join(dirname(fileURLToPath(import.meta.url)), "..");
 
-/** Where the DMGs are served from, or null while the site serves them itself. */
-const downloadsBase = process.env.DOWNLOADS_BASE?.replace(/\/$/, "") || null;
-
-/**
- * Where a Cloudflare Pages build should send downloads before R2 exists.
- *
- * Pages cannot carry the archives — they are over its 25 MiB per-file limit and
- * postbuild strips them — but Vercel still serves production, so a Pages preview
- * points at the copy living there and the button works. Interim only: setting
- * DOWNLOADS_BASE at the R2 cutover takes precedence and this stops applying.
- */
-const vercelOrigin = "https://www.sharancreatedthis.in";
-const interimOnPages = Boolean(process.env.CF_PAGES) && !downloadsBase;
+/** The site's own origin, so a same-origin enclosure becomes a plain path. */
+const siteOrigins = new Set([
+  "https://www.sharancreatedthis.in",
+  "https://sharancreatedthis.in",
+]);
 
 /** Each product's feed, and the prefix its files take inside the R2 bucket. */
 const products = [
@@ -83,21 +70,11 @@ const routes = products.map(({ name, feed }) => {
   return {
     name,
     from: `/products/${name}/download`,
-    // The path the feed names; the same file under the downloads host once R2 is
-    // live; or, on a Pages build before then, the copy Vercel is still serving.
-    to: downloadsBase
-      ? `${downloadsBase}/${name}/${basename(enclosure.pathname)}`
-      : interimOnPages
-        ? `${vercelOrigin}${enclosure.pathname}`
-        : enclosure.pathname,
-    // Vercel serves the archives itself, so its redirect is always same-origin
-    // until R2 takes over. The interim above is a Pages-only arrangement and must
-    // never end up in vercel.json.
-    vercelTo: downloadsBase
-      ? `${downloadsBase}/${name}/${basename(enclosure.pathname)}`
-      : enclosure.pathname,
-    // Where the file lives today, so old links keep working after it moves.
-    legacy: enclosure.pathname,
+    // Exactly where the feed says the file is. Off-site keeps its host; on-site
+    // becomes a path, so previews and both hosts serve their own copy.
+    to: siteOrigins.has(enclosure.origin) ? enclosure.pathname : enclosure.href,
+    // Whether this product's archive has left the site.
+    offSite: !siteOrigins.has(enclosure.origin),
   };
 });
 
@@ -111,14 +88,13 @@ const redirects = [
   ...routes.map((route) => `${route.from}  ${route.to}  302`),
 ];
 
-if (downloadsBase) {
+// Anything still linking the archives where they used to live follows them.
+const hangly = routes.find((route) => route.name === "hangly");
+if (hangly?.offSite) {
   redirects.push(
     "",
-    "# The files moved to R2; anything still linking the old paths follows.",
-    `/products/hangly/releases/*  ${downloadsBase}/hangly/:splat  301`,
-    ...routes
-      .filter((route) => !route.legacy.includes("/releases/"))
-      .map((route) => `${route.legacy}  ${route.to}  301`),
+    "# The archive moved off the site; old links follow it.",
+    `/products/hangly/releases/*  ${new URL(hangly.to).origin}/:splat  301`,
   );
 }
 
@@ -134,7 +110,7 @@ writeFileSync(
       $schema: "https://openapi.vercel.sh/vercel.json",
       redirects: routes.map((route) => ({
         source: route.from,
-        destination: route.vercelTo,
+        destination: route.to,
         // Never permanent: the destination changes with every release, and a 308
         // would sit in browser caches long after it stopped being true.
         permanent: false,
@@ -149,10 +125,3 @@ for (const route of routes) {
   console.log(`  ${route.from}  ->  ${route.to}`);
 }
 
-if (interimOnPages) {
-  console.log(
-    "  (Pages build before R2: downloads point at the copies Vercel still serves.\n" +
-      "   Set DOWNLOADS_BASE once the bucket is live — before DNS moves, or this\n" +
-      "   points at a host that is no longer serving the files.)",
-  );
-}

@@ -3,7 +3,7 @@
   "redirects": [
     {
       "source": "/products/hangly/download",
-      "destination": "/products/hangly/releases/Hangly-2.0.0.dmg",
+      "destination": "https://downloads.sharancreatedthis.in/Hangly-2.0.0.dmg",
       "permanent": false
     },
     {
