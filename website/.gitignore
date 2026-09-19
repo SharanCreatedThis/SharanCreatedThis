@@ -1,1 +1,4 @@
 .vercel
+
+# Local wrangler/miniflare state from `wrangler pages dev`.
+.wrangler/

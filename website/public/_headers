@@ -5,3 +5,14 @@
   Cache-Control: public, max-age=31536000, immutable
 /vision-orbit-*.webp
   Cache-Control: public, max-age=86400
+
+# The Sparkle feeds. Every installed copy of Hangly and Vision reads these, so they
+# are served as XML and kept fresh: a long cache here delays every future update by
+# however long the edge holds the old copy.
+/products/*/appcast.xml
+  Content-Type: application/xml; charset=utf-8
+  Cache-Control: public, max-age=300, must-revalidate
+
+# Release archives are immutable — the version is in the file name.
+/products/hangly/releases/*
+  Cache-Control: public, max-age=31536000, immutable

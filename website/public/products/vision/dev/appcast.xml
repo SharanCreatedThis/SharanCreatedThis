@@ -6,20 +6,25 @@
         <description>Development and testing updates for Vision app.</description>
         <language>en</language>
 
-        <item>
-            <title>Vision 0.9.1 (Dev Beta)</title>
-            <pubDate>Wed, 16 Sep 2026 12:00:00 +0000</pubDate>
-            <sparkle:releaseNotesLink>
-                https://sharancreatedthis.in/products/vision/dev/release-notes.html
-            </sparkle:releaseNotesLink>
-            <sparkle:minimumSystemVersion>15.0</sparkle:minimumSystemVersion>
-            <enclosure 
-                url="https://github.com/SharanCreatedThis/SharanCreatedThis/releases/download/v0.9.1-dev/Vision-0.9.1.dmg"
-                sparkle:version="2"
-                sparkle:shortVersionString="0.9.1"
-                length="15420124"
-                type="application/octet-stream"
-                sparkle:edSignature="PASTE_DEV_ED25519_SIGNATURE_HERE" />
-        </item>
+        <!--
+            Empty on purpose. Sparkle reads a channel with no items as "you are up to
+            date", which is the truthful answer while no dev build is published.
+
+            This carried a Vision 0.9.1 item until it was removed, and that item could
+            never have installed. Its sparkle:edSignature was the literal string
+            PASTE_DEV_ED25519_SIGNATURE_HERE, and the file it named —
+            .../releases/download/v0.9.1-dev/Vision-0.9.1.dmg — returns 404, because
+            that release was never published, so there are no bytes to sign. It also
+            declared sparkle:version="2", below the production feed's "3", so a tester
+            on 1.1 would have been offered a downgrade.
+
+            To publish a dev build, add an item with:
+              - sparkle:version above whatever production is on (3 today)
+              - an enclosure URL that resolves, and length matching the file's bytes
+              - a real signature, from Sparkle's sign_update against that DMG, using
+                the EdDSA key Vision already trusts: SUPublicEDKey in
+                apps/Vision/Vision/Info.plist, whose private half is in the login
+                keychain and is the same key Hangly signs with.
+        -->
     </channel>
 </rss>

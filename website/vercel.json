@@ -1,0 +1,15 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "redirects": [
+    {
+      "source": "/products/hangly/download",
+      "destination": "/products/hangly/releases/Hangly-2.0.0.dmg",
+      "permanent": false
+    },
+    {
+      "source": "/products/vision/download",
+      "destination": "/products/vision/Vision-1.1.dmg",
+      "permanent": false
+    }
+  ]
+}
