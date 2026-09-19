@@ -7,7 +7,8 @@
     "build": "next build",
     "start": "next start",
     "typecheck": "tsc --noEmit",
-    "prebuild": "node scripts/generate-download-redirects.mjs"
+    "prebuild": "node scripts/generate-download-redirects.mjs",
+    "postbuild": "node scripts/strip-oversized-for-pages.mjs"
   },
   "dependencies": {
     "@fontsource/inter": "^5.3.0",

@@ -59,8 +59,17 @@ today because Vercel redirects the apex to `www` and Sparkle follows redirects.
 3. Deploy. The first build serves at `<project>.pages.dev`. Test everything there.
 4. Attach the custom domain only at cutover.
 
-**A deploy will fail until the DMGs leave `public/`.** Pages rejects any file over
-25 MiB, and `Hangly-2.0.0.dmg` is 32.6 MiB.
+**Before R2, Pages strips the oversized archive rather than failing.** Pages rejects
+any file over 25 MiB and `Hangly-2.0.0.dmg` is 32.65 MiB, so `postbuild` removes it
+from `out/` on Pages builds only — `CF_PAGES` is set there and nowhere else. The file
+stays committed, because Vercel still serves production and the Hangly appcast points
+at its copy; deleting it would break updates for every installed copy. On those
+builds the download redirects point at the copies Vercel is serving, so the preview
+works too.
+
+**That arrangement has an expiry.** It points at `www.sharancreatedthis.in`, which
+stops being Vercel the moment DNS moves. Set `DOWNLOADS_BASE` and remove the archives
+from `public/` *before* the cutover, not after.
 
 ## R2
 

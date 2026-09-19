@@ -38,6 +38,17 @@ const root = join(dirname(fileURLToPath(import.meta.url)), "..");
 /** Where the DMGs are served from, or null while the site serves them itself. */
 const downloadsBase = process.env.DOWNLOADS_BASE?.replace(/\/$/, "") || null;
 
+/**
+ * Where a Cloudflare Pages build should send downloads before R2 exists.
+ *
+ * Pages cannot carry the archives — they are over its 25 MiB per-file limit and
+ * postbuild strips them — but Vercel still serves production, so a Pages preview
+ * points at the copy living there and the button works. Interim only: setting
+ * DOWNLOADS_BASE at the R2 cutover takes precedence and this stops applying.
+ */
+const vercelOrigin = "https://www.sharancreatedthis.in";
+const interimOnPages = Boolean(process.env.CF_PAGES) && !downloadsBase;
+
 /** Each product's feed, and the prefix its files take inside the R2 bucket. */
 const products = [
   { name: "hangly", feed: "public/products/hangly/appcast.xml" },
@@ -72,8 +83,17 @@ const routes = products.map(({ name, feed }) => {
   return {
     name,
     from: `/products/${name}/download`,
-    // The path the feed names, or the same file under the downloads host.
+    // The path the feed names; the same file under the downloads host once R2 is
+    // live; or, on a Pages build before then, the copy Vercel is still serving.
     to: downloadsBase
+      ? `${downloadsBase}/${name}/${basename(enclosure.pathname)}`
+      : interimOnPages
+        ? `${vercelOrigin}${enclosure.pathname}`
+        : enclosure.pathname,
+    // Vercel serves the archives itself, so its redirect is always same-origin
+    // until R2 takes over. The interim above is a Pages-only arrangement and must
+    // never end up in vercel.json.
+    vercelTo: downloadsBase
       ? `${downloadsBase}/${name}/${basename(enclosure.pathname)}`
       : enclosure.pathname,
     // Where the file lives today, so old links keep working after it moves.
@@ -114,7 +134,7 @@ writeFileSync(
       $schema: "https://openapi.vercel.sh/vercel.json",
       redirects: routes.map((route) => ({
         source: route.from,
-        destination: route.to,
+        destination: route.vercelTo,
         // Never permanent: the destination changes with every release, and a 308
         // would sit in browser caches long after it stopped being true.
         permanent: false,
@@ -127,4 +147,12 @@ writeFileSync(
 
 for (const route of routes) {
   console.log(`  ${route.from}  ->  ${route.to}`);
+}
+
+if (interimOnPages) {
+  console.log(
+    "  (Pages build before R2: downloads point at the copies Vercel still serves.\n" +
+      "   Set DOWNLOADS_BASE once the bucket is live — before DNS moves, or this\n" +
+      "   points at a host that is no longer serving the files.)",
+  );
 }
