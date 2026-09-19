@@ -4,6 +4,21 @@
 <dict>
 	<key>com.apple.security.device.camera</key>
 	<true/>
+
+	<!-- Required while the build is ad-hoc signed, because the hardened runtime is
+	     on and Sparkle.framework is embedded. Library validation asks that loaded
+	     code carry the same Team ID as the app; an ad-hoc signature carries none,
+	     so dyld refuses Sparkle and the app does not launch at all.
+
+	     Until now the build sidestepped this by not signing at all, which left the
+	     app linker-signed — and Sparkle's generate_appcast refuses to publish an
+	     unsigned app, which is why this release was assembled by hand. Signing
+	     ad-hoc fixes the publishing and needs this key to keep launching.
+
+	     A Developer ID build signs the app and the framework with one team and
+	     needs none of this; remove this key at the same time as the identity stops
+	     being ad-hoc. -->
+	<key>com.apple.security.cs.disable-library-validation</key>
+	<true/>
 </dict>
 </plist>
-
