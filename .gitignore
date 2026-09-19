@@ -42,3 +42,7 @@ __pycache__/
 *.pyc
 *.pyo
 *.pyd
+
+# Release archives are build output; the signed feed beside them is not.
+releases/*/*.dmg
+releases/*/*.zip
