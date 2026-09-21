@@ -10,7 +10,7 @@ import "./hangly.css";
 export const metadata = {
   title: "Hangly · A little magic for your desktop",
   description:
-    "Beautiful digital charms. Real swinging physics. Make your Mac feel a little more you. Free for macOS 14 and later.",
+    "Beautiful digital charms. Real swinging physics. Make your desktop feel a little more you. Free for macOS 14+ and Windows 10+.",
 };
 
 export default function HanglyLayout({

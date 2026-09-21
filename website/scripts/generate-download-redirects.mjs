@@ -43,6 +43,39 @@ const products = [
 ];
 
 /**
+ * The Windows builds of Hangly, which do not come from a Sparkle feed.
+ *
+ * Windows updates through Velopack, whose feed lives in the release itself, so
+ * there is no local file to read the newest build out of the way the appcast is
+ * read above. The tag is therefore written down here, and this is the one place
+ * to change when a new Windows build ships.
+ *
+ * The obvious alternative is `/releases/latest/download/<asset>`, which GitHub
+ * resolves to the newest release without anyone editing anything — the asset
+ * names are already version-free, so it would just work. It cannot be used yet:
+ * `latest` skips pre-releases, and every Windows build so far is one. Switch to
+ * it the moment a Windows release is published as a full release, and delete
+ * the tag below.
+ */
+const windows = {
+  repository: "https://github.com/SharanCreatedThis/Hangly-Windows",
+  tag: "v0.9.2",
+  // The installers, not the .nupkg packages: those are what Velopack feeds the
+  // updater, and a person who downloads one has nothing that will open it.
+  builds: [
+    { slug: "windows-x64", asset: "Hangly-win-x64-Setup.exe" },
+    { slug: "windows-arm64", asset: "Hangly-win-arm64-Setup.exe" },
+  ],
+};
+
+const windowsRoutes = windows.builds.map(({ slug, asset }) => ({
+  name: `hangly (${slug})`,
+  from: `/products/hangly/download/${slug}`,
+  to: `${windows.repository}/releases/download/${windows.tag}/${asset}`,
+  offSite: true,
+}));
+
+/**
  * The newest enclosure in a feed, by build number rather than by position.
  *
  * Deliberately strict: a feed that cannot be read, or that carries no enclosure,
@@ -65,7 +98,7 @@ function newestEnclosure(feedPath) {
   return new URL(releases[0].url);
 }
 
-const routes = products.map(({ name, feed }) => {
+const feedRoutes = products.map(({ name, feed }) => {
   const enclosure = newestEnclosure(feed);
   return {
     name,
@@ -78,6 +111,10 @@ const routes = products.map(({ name, feed }) => {
   };
 });
 
+// Windows first: Cloudflare takes the first rule that matches, and
+// /products/hangly/download would otherwise be tried against the longer paths.
+const routes = [...windowsRoutes, ...feedRoutes];
+
 // ---------------------------------------------------------------------------
 // Cloudflare Pages
 // ---------------------------------------------------------------------------
@@ -89,7 +126,7 @@ const redirects = [
 ];
 
 // Anything still linking the archives where they used to live follows them.
-const hangly = routes.find((route) => route.name === "hangly");
+const hangly = feedRoutes.find((route) => route.name === "hangly");
 if (hangly?.offSite) {
   redirects.push(
     "",

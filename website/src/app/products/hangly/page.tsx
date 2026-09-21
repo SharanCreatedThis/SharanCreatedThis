@@ -8,6 +8,7 @@ import Demo from "@/components/hangly/Demo";
 import Creator from "@/components/hangly/Creator";
 import CTA from "@/components/hangly/CTA";
 import Footer from "@/components/hangly/Footer";
+import { PlatformSheet } from "@/components/hangly/Download";
 
 export default function Home() {
   return (
@@ -27,6 +28,7 @@ export default function Home() {
         <CTA />
       </main>
       <Footer />
+      <PlatformSheet />
     </>
   );
 }
