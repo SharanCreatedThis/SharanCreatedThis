@@ -189,3 +189,71 @@ export function SoftwareApplicationJsonLd({ app }: { app: AppFacts }) {
     />
   );
 }
+
+/**
+ * The questions already answered on the page, restated for the engine.
+ *
+ * Google only shows an FAQ rich result when every question and answer is also
+ * visible to a visitor — which is the whole reason this takes the page's own
+ * FAQ data as its argument rather than carrying a second copy that could say
+ * something different.
+ */
+export function FaqJsonLd({
+  faqs,
+  path,
+}: {
+  /** Question, then answer. Widened past a tuple so the page's own array can
+   *  be passed as it is written, without an `as const` it does not need. */
+  faqs: readonly (readonly string[])[];
+  path: string;
+}) {
+  return (
+    <JsonLd
+      id={`faq-${path}`}
+      schema={{
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "@id": `${absoluteUrl(path)}#faq`,
+        mainEntity: faqs
+          // A half-written entry would publish a Question with no Answer,
+          // which is an invalid rich result rather than a partial one.
+          .filter(([question, answer]) => question && answer)
+          .map(([question, answer]) => ({
+            "@type": "Question",
+            name: question,
+            acceptedAnswer: { "@type": "Answer", text: answer },
+          })),
+      }}
+    />
+  );
+}
+
+/**
+ * Breadcrumbs for the nested pages.
+ *
+ * Google replaces the URL line in a result with this trail, so
+ * "Sharan Created This › Products › Hangly" appears instead of a raw path. It
+ * also states the hierarchy, which a flat set of canonical URLs cannot.
+ *
+ * The trail must match what the page actually shows. The product pages carry
+ * their own navigation rather than the site's, so the crumbs describe the URL
+ * structure — which is what a visitor arriving from a search result sees in
+ * the address bar.
+ */
+export function BreadcrumbJsonLd({ trail }: { trail: { name: string; path: string }[] }) {
+  return (
+    <JsonLd
+      id={`breadcrumb-${trail[trail.length - 1]?.path}`}
+      schema={{
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        itemListElement: trail.map((step, index) => ({
+          "@type": "ListItem",
+          position: index + 1,
+          name: step.name,
+          item: absoluteUrl(step.path),
+        })),
+      }}
+    />
+  );
+}

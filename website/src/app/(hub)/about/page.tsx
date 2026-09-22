@@ -28,10 +28,10 @@ export default function About() {
         <figure className="about-portrait">
           <div className="about-portrait-image">
             <img
-              src="/portfolio/sharan-about.png"
+              src="/portfolio/sharan-about.webp"
               alt="Portrait of Sharan, filmmaker and creative technologist"
-              width={1684}
-              height={2528}
+              width={1400}
+              height={2102}
             />
           </div>
           <figcaption>

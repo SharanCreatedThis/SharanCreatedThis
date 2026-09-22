@@ -1,6 +1,6 @@
 'use client';
 
-import { SoftwareApplicationJsonLd } from '@/components/JsonLd';
+import { BreadcrumbJsonLd, FaqJsonLd, SoftwareApplicationJsonLd } from '@/components/JsonLd';
 import { PAGES, absoluteUrl } from '@/lib/seo';
 import HeroNotch from '@/components/vision/hero-notch';
 import Biometric from '@/components/vision/biometric';
@@ -99,6 +99,14 @@ export default function Home() {
   const StepIcon = steps[activeStep].icon;
 
   return <>
+    <BreadcrumbJsonLd
+      trail={[
+        { name: 'Home', path: '/' },
+        { name: 'Products', path: '/products' },
+        { name: 'Vision', path: PAGES.vision.path },
+      ]}
+    />
+    <FaqJsonLd faqs={faqs} path={PAGES.vision.path} />
     <SoftwareApplicationJsonLd
       app={{
         name: 'Vision',
@@ -152,6 +160,6 @@ export default function Home() {
       <StoryBridge from="BUILT FOR YOU" to="CREATED BY SHARAN" />
       <Creator />
     </main>
-    <footer className="site-footer"><div className="footer-signoff"><span>THE NEXT WAY IN.</span><a href="#top" aria-label="Back to top"><ArrowUpRight size={26}/></a></div><div className="footer-main"><div><Brand footer /><p>Face recognition.<br />Reimagined for Mac.</p><div className="footer-build"><span className="status-dot"/>VISION 1.1<span>macOS 15+ / Swift + SwiftUI</span></div></div><div className="footer-links"><div><h3>NAVIGATION</h3><a href="#features">The experience</a><a href="#experience">Unlock journey</a><a href="#download">The roadmap</a></div><div><h3>RESOURCES</h3><a href="#privacy">Privacy</a><a href={DOCS}>Documentation</a><a href="#faq">Questions</a><a href="https://github.com/jonnyoo/glance">GitHub · upstream <ArrowUpRight size={13}/></a></div><div><h3>THE CREATOR</h3><a href="#creator">Created by Sharan</a><a href="https://www.instagram.com/sharan.created.this/">Instagram <ArrowUpRight size={13}/></a><a href="https://sharancreatedthis.in">Website <ArrowUpRight size={13}/></a><a href="https://github.com/SharanCreatedThis">GitHub <ArrowUpRight size={13}/></a></div></div></div><div className="footer-bottom"><span>© {new Date().getFullYear()} Vision. An independent macOS app.</span><span>Made with ❤️ by <a href="https://www.instagram.com/sharan.created.this/">Sharan</a></span><span>WEBSITE BUILD / 2026.09</span></div></footer>
+    <footer className="site-footer"><div className="footer-signoff"><span>THE NEXT WAY IN.</span><a href="#top" aria-label="Back to top"><ArrowUpRight size={26}/></a></div><div className="footer-main"><div><Brand footer /><p>Face recognition.<br />Reimagined for Mac.</p><div className="footer-build"><span className="status-dot"/>VISION 1.1<span>macOS 15+ / Swift + SwiftUI</span></div></div><div className="footer-links"><div><h3>NAVIGATION</h3><a href="#features">The experience</a><a href="#experience">Unlock journey</a><a href="#download">The roadmap</a></div><div><h3>RESOURCES</h3><a href="#privacy">Privacy</a><a href={DOCS}>Documentation</a><a href="#faq">Questions</a><a href="https://github.com/jonnyoo/glance">GitHub · upstream <ArrowUpRight size={13}/></a></div><div><h3>THE CREATOR</h3><a href="#creator">Created by Sharan</a><a href="https://www.instagram.com/sharan.created.this/">Instagram <ArrowUpRight size={13}/></a><a href="/">Website <ArrowUpRight size={13}/></a><a href="https://github.com/SharanCreatedThis">GitHub <ArrowUpRight size={13}/></a></div></div></div><div className="footer-bottom"><span>© {new Date().getFullYear()} Vision. An independent macOS app.</span><span>Made with ❤️ by <a href="https://www.instagram.com/sharan.created.this/">Sharan</a></span><span>WEBSITE BUILD / 2026.09</span></div></footer>
   </>;
 }

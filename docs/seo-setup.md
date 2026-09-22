@@ -26,6 +26,7 @@ Settings → Variables and Secrets → Production**, then redeploy.
 | `NEXT_PUBLIC_GA_MEASUREMENT_ID` | `G-XXXXXXXXXX` | 2 |
 | `NEXT_PUBLIC_BING_SITE_VERIFICATION` | a 32-character hex string | 3 |
 | `NEXT_PUBLIC_CLARITY_PROJECT_ID` | `abcdefghij` | 4 |
+| `INDEXNOW_KEY` | 32 hex characters you invent | 6 |
 
 Anything left unset is skipped cleanly: no tag is emitted, no script is loaded,
 nothing errors. The site works fully without any of them.
@@ -151,6 +152,23 @@ make the difference and both are already in place:
 
 ---
 
+## 6. IndexNow (Bing, Yandex, and everything downstream)
+
+IndexNow turns discovery from days into minutes for the engines that support
+it. Google does not participate; Bing, Yandex, Seznam and Naver do, and through
+Bing that reaches DuckDuckGo and a share of what several AI assistants answer
+with.
+
+1. Invent a key — any 8 to 128 hex characters. `openssl rand -hex 16` will do
+2. Set `INDEXNOW_KEY` in Cloudflare and redeploy. The build writes
+   `public/<key>.txt` containing the key, which is how ownership is proved
+3. Confirm `https://www.sharancreatedthis.in/<key>.txt` returns the key
+4. After each deploy, run `npm run ping` from the repository
+
+It is deliberately not part of the build: every preview and every local
+`npm run build` would otherwise announce itself to the outside world. Without
+the variable set, the key file is never written and the ping does nothing.
+
 ## Deployment checklist
 
 The build itself enforces most of this — `scripts/check-seo.mjs` fails the build
@@ -175,6 +193,8 @@ After a deploy:
 - [ ] `/favicon.ico`, `/icon.png`, `/apple-touch-icon.png`, `/manifest.webmanifest`
       all return 200
 - [ ] `/humans.txt` returns 200
+- [ ] No charm images 404 on `/products/hangly` — open DevTools → Network and
+      filter for `charms`. Thirty of them used to.
 - [ ] `/products/hangly/download` still 302s to the newest DMG
 - [ ] `/products/vision/download` still 302s to the newest DMG
 - [ ] `/products/hangly/appcast.xml` and `/products/vision/appcast.xml` are

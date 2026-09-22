@@ -203,6 +203,34 @@ export const PAGES: Record<PageKey, PageSeo> = {
   },
 };
 
+/**
+ * Images worth submitting for Google Images, per page.
+ *
+ * Only images that carry meaning: the work itself and the portraits. Decorative
+ * artwork, charm SVGs and the social cards are all left out — a sitemap full of
+ * ornament teaches an engine nothing and dilutes what the real images say.
+ *
+ * Image search matters more here than for most sites: this is a photographer's
+ * and filmmaker's portfolio, and a photograph that ranks is a way in that no
+ * amount of text on the page provides.
+ */
+export const PAGE_IMAGES: Partial<Record<PageKey, { url: string; title: string }[]>> = {
+  home: [
+    { url: "/portfolio/sharan-white-suit.webp", title: "Sharan — filmmaker, designer and product builder" },
+    { url: "/portfolio/lapse.jpg", title: "Lapse — a Malayalam short film directed by Sharan" },
+    { url: "/portfolio/photography-03.webp", title: "Portrait photography by Sharan" },
+  ],
+  portfolio: [
+    { url: "/portfolio/lapse.jpg", title: "Lapse — a Malayalam short film directed by Sharan" },
+    { url: "/portfolio/shaivi.jpg", title: "Shaivi Chavann — trailer" },
+    { url: "/portfolio/photography-01.webp", title: "Photography portfolio by Sharan" },
+    { url: "/portfolio/photography-03.webp", title: "Portrait photography by Sharan" },
+  ],
+  about: [
+    { url: "/portfolio/sharan-about.webp", title: "Portrait of Sharan, filmmaker and creative technologist" },
+  ],
+};
+
 /** Absolute URL for a root-relative path. Crawlers need absolute; humans don't. */
 export function absoluteUrl(path: string): string {
   return path === "/" ? `${SITE_URL}/` : `${SITE_URL}${path}`;

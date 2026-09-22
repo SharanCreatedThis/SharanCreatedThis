@@ -30,7 +30,10 @@ Hangly is the product with the widest audience and the shortest explanation.
       download links use GitHub's `latest` alias instead of a pinned tag
 - [ ] The six unfinished collections finished: Football, Stranger Things,
       Singers, Breaking Bad, Friends, Dream Catcher — real charm names in place
-      of "Football charm 1", and the artwork wired to the right path
+      of "Football charm 1". Their artwork now renders using the plain drawing;
+      what is still missing is the *connected* rendering with the hanging thread
+      drawn in, which is per-charm artwork. Drop the files into
+      `public/charms/connected/` and the next build picks them up on its own.
 - [ ] Per-collection pages, so each collection can rank on its own terms
 - [ ] Charm artwork optimised — several SVGs are over 500 KB of embedded raster
 

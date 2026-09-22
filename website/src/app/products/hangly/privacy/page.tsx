@@ -1,4 +1,6 @@
 import { pageMetadata } from "@/lib/metadata";
+import { BreadcrumbJsonLd } from "@/components/JsonLd";
+import { PAGES } from "@/lib/seo";
 import type { Metadata } from 'next';
 import { ArrowLeft } from 'lucide-react';
 import { Logo } from '@/components/hangly/shared';
@@ -12,6 +14,15 @@ export const metadata = pageMetadata("hanglyPrivacy");
  */
 export default function Privacy() {
   return (
+    <>
+      <BreadcrumbJsonLd
+        trail={[
+          { name: "Home", path: "/" },
+          { name: "Products", path: "/products" },
+          { name: "Hangly", path: "/products/hangly" },
+          { name: "Privacy", path: PAGES.hanglyPrivacy.path },
+        ]}
+      />
     <main className="wrap legal">
       <header className="legal-header">
         <Logo />
@@ -176,5 +187,6 @@ export default function Privacy() {
         Hangly is an independent macOS app. Not affiliated with Apple.
       </p>
     </main>
+    </>
   );
 }

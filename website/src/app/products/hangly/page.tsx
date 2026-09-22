@@ -9,12 +9,19 @@ import Creator from "@/components/hangly/Creator";
 import CTA from "@/components/hangly/CTA";
 import Footer from "@/components/hangly/Footer";
 import { PlatformSheet } from "@/components/hangly/Download";
-import { SoftwareApplicationJsonLd } from "@/components/JsonLd";
+import { BreadcrumbJsonLd, SoftwareApplicationJsonLd } from "@/components/JsonLd";
 import { PAGES, absoluteUrl } from "@/lib/seo";
 
 export default function Home() {
   return (
     <>
+      <BreadcrumbJsonLd
+        trail={[
+          { name: "Home", path: "/" },
+          { name: "Products", path: "/products" },
+          { name: "Hangly", path: PAGES.hangly.path },
+        ]}
+      />
       <SoftwareApplicationJsonLd
         app={{
           name: "Hangly",

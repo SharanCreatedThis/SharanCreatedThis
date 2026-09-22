@@ -1,6 +1,7 @@
 'use client';
 import { motion, useReducedMotion, useScroll, useTransform } from 'framer-motion';
 import { useRef } from 'react';
+import { CHARM_ART } from '@/data/charms.generated';
 // The macOS archive. Resolved to the newest release at build time by the
 // redirects in scripts/generate-download-redirects.mjs, which read the Sparkle
 // feed. Never a versioned file name, and never the app's own repository: that
@@ -8,7 +9,12 @@ import { useRef } from 'react';
 // builds and the button that picks between all three live in ./Download.
 export const DOWNLOAD = '/products/hangly/download';
 export { DownloadButton, DownloadNote, PlatformSheet, openPlatformSheet } from './Download';
-export function Charm({ name, alt, className = '' }: { name: string; alt?: string; className?: string }) { return <img className={`charm-art ${className}`} src={`/charms/connected/${name}.svg`} alt={alt ?? ''} draggable={false}/>; }
+// Where a charm's artwork lives, resolved at build time by
+// scripts/generate-charm-manifest.mjs. Never assemble this path by hand: six
+// collections have no connected rendering drawn yet, and guessing the path is
+// what had thirty charms rendering as broken images.
+export function charmArt(name: string) { return CHARM_ART[name] ?? `/charms/${name}.svg`; }
+export function Charm({ name, alt, className = '' }: { name: string; alt?: string; className?: string }) { return <img className={`charm-art ${className}`} src={charmArt(name)} alt={alt ?? ''} draggable={false} loading="lazy" decoding="async"/>; }
 export function Reveal({ children, className = '' }: { children: React.ReactNode; className?: string }) {
   const reduced = useReducedMotion();
   const interactive = /feature-card|stat/.test(className);

@@ -7,8 +7,9 @@
     "build": "next build",
     "start": "next start",
     "typecheck": "tsc --noEmit",
-    "prebuild": "node scripts/generate-download-redirects.mjs",
-    "postbuild": "node scripts/strip-oversized-for-pages.mjs && node scripts/check-seo.mjs"
+    "prebuild": "node scripts/generate-charm-manifest.mjs && node scripts/generate-download-redirects.mjs && node scripts/generate-indexnow-key.mjs",
+    "postbuild": "node scripts/strip-oversized-for-pages.mjs && node scripts/check-seo.mjs",
+    "ping": "node scripts/ping-indexnow.mjs"
   },
   "dependencies": {
     "@fontsource/inter": "^5.3.0",

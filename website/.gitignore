@@ -2,3 +2,4 @@
 
 # Local wrangler/miniflare state from `wrangler pages dev`.
 .wrangler/
+/src/data/charms.generated.ts
