@@ -80,9 +80,23 @@ export const VERIFICATION = {
   bing: process.env.NEXT_PUBLIC_BING_SITE_VERIFICATION,
 } as const;
 
-/** Analytics, all optional: absent id means the script is never loaded at all. */
+/**
+ * Analytics, all optional: an absent id means the script is never loaded at all.
+ *
+ * These are read at build time, not at run time. A static export has no server
+ * to read an environment at, so `process.env.NEXT_PUBLIC_*` is substituted for
+ * its literal value while the site is being compiled and the result is baked
+ * into the HTML. Changing one therefore takes a rebuild, not a restart, and a
+ * variable added to Cloudflare after a deploy does nothing until the next one.
+ *
+ * `NEXT_PUBLIC_` also means public: the measurement id is visible in the page
+ * source of every page, as it has to be for the browser to send anything. It is
+ * an identifier for a property, not a credential, and it is committed in
+ * .env.production for that reason. A real environment variable still wins over
+ * the file, so Cloudflare can override it without a commit.
+ */
 export const ANALYTICS = {
-  ga4: process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID,
+  ga4: process.env.NEXT_PUBLIC_GA_ID,
   clarity: process.env.NEXT_PUBLIC_CLARITY_PROJECT_ID,
 } as const;
 

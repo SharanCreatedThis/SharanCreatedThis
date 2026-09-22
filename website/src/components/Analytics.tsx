@@ -33,6 +33,33 @@ declare global {
 }
 
 /**
+ * Queues a gtag call, whether or not gtag.js has finished loading.
+ *
+ * Calling `window.gtag` directly is a race. Both scripts below load with
+ * `afterInteractive`, which means they are injected *after* React hydrates, so
+ * an effect that fires on mount can run while `window.gtag` is still undefined
+ * — and the previous version gave up at that point and never ran again, losing
+ * that page's page_view for good.
+ *
+ * It has not been seen to happen: every route was verified firing correctly
+ * both before and after this change. It is a real hazard on a slow connection
+ * rather than an observed failure, and the cost of removing it is three lines.
+ *
+ * Writing to `dataLayer` instead has no such ordering problem. The array is
+ * created here if it does not exist yet, gtag.js drains whatever is waiting in
+ * it the moment it loads, and a call made before the library arrives is
+ * delivered rather than dropped.
+ *
+ * `arguments` is pushed rather than a rest array because that is what Google's
+ * own snippet pushes, and the processor reads these entries positionally.
+ */
+function queue(this: void) {
+  window.dataLayer = window.dataLayer || [];
+  // eslint-disable-next-line prefer-rest-params
+  window.dataLayer.push(arguments);
+}
+
+/**
  * Reports a page_view on every client-side navigation.
  *
  * Reads useSearchParams, which opts the tree into client rendering, so it sits
@@ -44,9 +71,8 @@ function RouteTracker({ measurementId }: { measurementId: string }) {
   const searchParams = useSearchParams();
 
   useEffect(() => {
-    if (!window.gtag) return;
     const query = searchParams.toString();
-    window.gtag("event", "page_view", {
+    (queue as (...args: unknown[]) => void)("event", "page_view", {
       page_path: query ? `${pathname}?${query}` : pathname,
       page_location: window.location.href,
       page_title: document.title,
@@ -112,5 +138,8 @@ export function Clarity() {
  * Safe to call when analytics is switched off — it simply does nothing.
  */
 export function trackEvent(name: string, params?: Record<string, unknown>) {
-  window.gtag?.("event", name, params ?? {});
+  if (typeof window === "undefined") return;
+  // Queued the same way, so a click on a download button in the first moments
+  // after load is still counted rather than silently dropped.
+  (queue as (...args: unknown[]) => void)("event", name, params ?? {});
 }

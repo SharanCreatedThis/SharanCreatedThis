@@ -23,7 +23,7 @@ Settings → Variables and Secrets → Production**, then redeploy.
 | Variable | Looks like | Set in which step |
 |---|---|---|
 | `NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION` | `google-site-verification=abc123…` value only | 1 |
-| `NEXT_PUBLIC_GA_MEASUREMENT_ID` | `G-XXXXXXXXXX` | 2 |
+| `NEXT_PUBLIC_GA_ID` | `G-5WXREN35KS` — already set in `.env.production` | 2 |
 | `NEXT_PUBLIC_BING_SITE_VERIFICATION` | a 32-character hex string | 3 |
 | `NEXT_PUBLIC_CLARITY_PROJECT_ID` | `abcdefghij` | 4 |
 | `INDEXNOW_KEY` | 32 hex characters you invent | 6 |
@@ -74,7 +74,10 @@ and Vision's update feed lives on the apex while Hangly's lives on `www`.
 1. <https://analytics.google.com> → **Admin → Create → Property**
 2. Name it `sharancreatedthis.in`, timezone **India**, currency **INR**
 3. **Data streams → Add stream → Web**, URL `https://www.sharancreatedthis.in`
-4. Copy the **Measurement ID** (`G-…`) into `NEXT_PUBLIC_GA_MEASUREMENT_ID`
+4. Copy the **Measurement ID** (`G-…`) into `NEXT_PUBLIC_GA_ID`. This is done:
+   `G-5WXREN35KS` is committed in `website/.env.production`, because a
+   measurement id is a public identifier that ships in the page source, not a
+   credential. Setting the same variable in Cloudflare overrides the file
 5. Redeploy, then open the site and check **Reports → Realtime**
 
 ### What is already instrumented
