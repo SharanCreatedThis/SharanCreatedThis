@@ -34,7 +34,16 @@
 # changelog with no navigation — thin content that competes with the product
 # page. Excluded here rather than in the files, which are update infrastructure
 # and are never edited.
+# Both spellings. Pages 308s the .html form to the extensionless one, and it is
+# the extensionless URL a crawler ends up indexing — a rule on the .html alone
+# is applied only to the redirect and never reaches the page itself.
+/products/vision/release-notes
+  X-Robots-Tag: noindex, nofollow
+
 /products/vision/release-notes.html
+  X-Robots-Tag: noindex, nofollow
+
+/products/vision/dev/release-notes
   X-Robots-Tag: noindex, nofollow
 
 /products/vision/dev/release-notes.html
