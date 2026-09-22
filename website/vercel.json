@@ -3,12 +3,12 @@
   "redirects": [
     {
       "source": "/products/hangly/download/windows-x64",
-      "destination": "https://github.com/SharanCreatedThis/Hangly-Windows/releases/download/v0.9.2/Hangly-win-x64-Setup.exe",
+      "destination": "https://github.com/SharanCreatedThis/Hangly-Windows/releases/download/v0.9.4/Hangly-win-x64-Setup.exe",
       "permanent": false
     },
     {
       "source": "/products/hangly/download/windows-arm64",
-      "destination": "https://github.com/SharanCreatedThis/Hangly-Windows/releases/download/v0.9.2/Hangly-win-arm64-Setup.exe",
+      "destination": "https://github.com/SharanCreatedThis/Hangly-Windows/releases/download/v0.9.4/Hangly-win-arm64-Setup.exe",
       "permanent": false
     },
     {

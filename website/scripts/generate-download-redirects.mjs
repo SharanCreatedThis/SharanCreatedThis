@@ -45,21 +45,27 @@ const products = [
 /**
  * The Windows builds of Hangly, which do not come from a Sparkle feed.
  *
- * Windows updates through Velopack, whose feed lives in the release itself, so
- * there is no local file to read the newest build out of the way the appcast is
- * read above. The tag is therefore written down here, and this is the one place
- * to change when a new Windows build ships.
+ * Windows updates through Velopack, whose feed lives inside the release itself,
+ * so there is no local file to read the newest build out of the way the appcast
+ * is read above. The newest release is asked of GitHub at build time instead.
  *
- * The obvious alternative is `/releases/latest/download/<asset>`, which GitHub
- * resolves to the newest release without anyone editing anything — the asset
- * names are already version-free, so it would just work. It cannot be used yet:
- * `latest` skips pre-releases, and every Windows build so far is one. Switch to
- * it the moment a Windows release is published as a full release, and delete
- * the tag below.
+ * `/releases/latest/download/<asset>` would need no build step at all — the
+ * asset names are already version-free — but `latest` skips pre-releases, and
+ * every Windows build so far is one. Hence the API call, which does not skip
+ * them. Switch to `latest` and delete all of this once Windows leaves beta.
+ *
+ * Unlike the appcasts, a failure here does not fail the build. The API is
+ * unauthenticated and rate limited per IP, and Pages builds run from shared
+ * addresses, so a refusal is a question of whose build ran before yours rather
+ * than of anything being wrong. The pinned tag below answers it: an older build
+ * that installs and then updates itself on first launch, which is what Velopack
+ * is for. Set GITHUB_TOKEN to raise the limit from 60 requests an hour to 5000.
  */
 const windows = {
-  repository: "https://github.com/SharanCreatedThis/Hangly-Windows",
-  tag: "v0.9.2",
+  repository: "SharanCreatedThis/Hangly-Windows",
+  // Used when the API cannot be reached. Worth moving forward now and then, but
+  // nothing breaks while it lags: it only has to be a real release.
+  fallbackTag: "v0.9.4",
   // The installers, not the .nupkg packages: those are what Velopack feeds the
   // updater, and a person who downloads one has nothing that will open it.
   builds: [
@@ -68,10 +74,56 @@ const windows = {
   ],
 };
 
+/**
+ * The newest published release's tag, pre-releases included, or null.
+ *
+ * Ordered by creation date by the API, which is what "newest" should mean here:
+ * tags are sorted as strings elsewhere and v0.9.10 would lose to v0.9.9. Drafts
+ * are invisible to an unauthenticated caller and excluded anyway, because their
+ * assets are not downloadable.
+ */
+async function newestWindowsTag() {
+  const url = `https://api.github.com/repos/${windows.repository}/releases?per_page=10`;
+  try {
+    const response = await fetch(url, {
+      headers: {
+        accept: "application/vnd.github+json",
+        "user-agent": "sharancreatedthis-website-build",
+        ...(process.env.GITHUB_TOKEN
+          ? { authorization: `Bearer ${process.env.GITHUB_TOKEN}` }
+          : {}),
+      },
+      signal: AbortSignal.timeout(10_000),
+    });
+    if (!response.ok) throw new Error(`GitHub answered ${response.status}`);
+
+    const release = (await response.json()).find(
+      (candidate) =>
+        !candidate.draft &&
+        // Only a release that actually carries every installer. A release
+        // published while its assets are still uploading would otherwise win
+        // and point both buttons at a 404.
+        windows.builds.every(({ asset }) =>
+          candidate.assets?.some((uploaded) => uploaded.name === asset),
+        ),
+    );
+    if (!release) throw new Error("no release carries both installers yet");
+    return release.tag_name;
+  } catch (error) {
+    console.warn(
+      `  ! could not ask GitHub for the newest Windows release (${error.message});` +
+        ` falling back to ${windows.fallbackTag}`,
+    );
+    return null;
+  }
+}
+
+const windowsTag = (await newestWindowsTag()) ?? windows.fallbackTag;
+
 const windowsRoutes = windows.builds.map(({ slug, asset }) => ({
   name: `hangly (${slug})`,
   from: `/products/hangly/download/${slug}`,
-  to: `${windows.repository}/releases/download/${windows.tag}/${asset}`,
+  to: `https://github.com/${windows.repository}/releases/download/${windowsTag}/${asset}`,
   offSite: true,
 }));
 
