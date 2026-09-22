@@ -52,6 +52,13 @@ Hangly is the product with the widest audience and the shortest explanation.
 
 ## Phase 5 — Blog
 
+> **The SEO architecture already supports this.** `PLANNED_SECTIONS` in
+> `website/src/lib/seo.ts` reserves `/blog`, `/press` and `/case-studies`;
+> `dynamicPages()` in the same file is where a post list plugs into the sitemap,
+> and `ArticleJsonLd` in `components/JsonLd.tsx` is written and waiting. None of
+> the three routes exists yet, on purpose: an empty route that an engine indexes
+> teaches it the site has nothing to say.
+
 The first thing on this list that compounds. Everything above is a fixed number
 of pages; writing is the only part that keeps adding surface area.
 

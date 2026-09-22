@@ -13,6 +13,7 @@
  */
 
 import {
+  CATEGORY_SCHEMA,
   DEFAULT_DESCRIPTION,
   PERSON,
   SITE_NAME,
@@ -110,31 +111,82 @@ export function SiteJsonLd() {
   );
 }
 
-/** A CollectionPage of the work, for /portfolio. */
-export function PortfolioJsonLd({
-  works,
-}: {
-  works: { name: string; url?: string }[];
-}) {
+type Work = {
+  id: string;
+  title: string;
+  category: string;
+  /** "Malayalam short film", "Trailer" — shown on the card, and a good `genre`. */
+  type: string;
+  /** Empty for work that is finished but not published anywhere yet. */
+  image?: string;
+  url?: string;
+};
+
+/**
+ * One portfolio project, described as the kind of thing it actually is.
+ *
+ * Every project in data/portfolio.ts becomes one of these, which is what makes
+ * this scale: a new project is a new entry in that array and nothing here
+ * changes. The type comes from its category through CATEGORY_SCHEMA.
+ *
+ * Six of the nine projects have no public URL and no still — they are real work
+ * that simply is not published anywhere yet. They are still described, because
+ * the body of work is the claim being made, but only with what is true: a name,
+ * a genre and their creator. Nothing is invented to fill a field, and a project
+ * with no URL gets an `@id` to be referred to by rather than a link that would
+ * 404. Fabricating dates or ratings to satisfy a validator is how a site earns
+ * a manual action.
+ */
+function workNode(work: Work) {
+  const id = `${absoluteUrl("/portfolio")}#${work.id}`;
+  return {
+    "@type": CATEGORY_SCHEMA[work.category] ?? "CreativeWork",
+    "@id": id,
+    name: work.title,
+    genre: work.category,
+    // The card's own subtitle: "Malayalam short film", "Trailer", "Series".
+    description: `${work.type} by ${PERSON.name}.`,
+    creator: { "@id": PERSON_ID },
+    author: { "@id": PERSON_ID },
+    inLanguage: "en",
+    isPartOf: { "@id": `${absoluteUrl("/portfolio")}#collection` },
+    ...(work.url ? { url: work.url, sameAs: work.url } : { url: id }),
+    ...(work.image ? { image: absoluteUrl(work.image) } : {}),
+  };
+}
+
+/**
+ * The portfolio as a CollectionPage, with every project described inside it.
+ *
+ * The projects sit in the ItemList as whole objects rather than as names, which
+ * is the difference between telling an engine that nine things exist and
+ * telling it what each of them is and who made it.
+ */
+export function PortfolioJsonLd({ works }: { works: Work[] }) {
   return (
     <JsonLd
       id="portfolio"
       schema={{
         "@context": "https://schema.org",
-        "@type": "CollectionPage",
-        name: "Selected Work",
-        url: absoluteUrl("/portfolio"),
-        isPartOf: { "@id": SITE_ID },
-        about: { "@id": PERSON_ID },
-        mainEntity: {
-          "@type": "ItemList",
-          itemListElement: works.map((work, index) => ({
-            "@type": "ListItem",
-            position: index + 1,
-            name: work.name,
-            ...(work.url ? { url: work.url } : {}),
-          })),
-        },
+        "@graph": [
+          {
+            "@type": "CollectionPage",
+            "@id": `${absoluteUrl("/portfolio")}#collection`,
+            name: "Selected Work",
+            url: absoluteUrl("/portfolio"),
+            isPartOf: { "@id": SITE_ID },
+            about: { "@id": PERSON_ID },
+            mainEntity: {
+              "@type": "ItemList",
+              numberOfItems: works.length,
+              itemListElement: works.map((work, index) => ({
+                "@type": "ListItem",
+                position: index + 1,
+                item: workNode(work),
+              })),
+            },
+          },
+        ],
       }}
     />
   );
@@ -253,6 +305,52 @@ export function BreadcrumbJsonLd({ trail }: { trail: { name: string; path: strin
           name: step.name,
           item: absoluteUrl(step.path),
         })),
+      }}
+    />
+  );
+}
+
+/**
+ * An article, for when there is a blog to put one on.
+ *
+ * Unused today and deliberately written now, because the fields Google wants
+ * from an Article are the ones that are hard to reconstruct later: a headline
+ * under 110 characters, a publication date, an image, and an author that
+ * resolves to a real person rather than a bare string. Knowing that before the
+ * first post is written is worth more than adding it after fifty.
+ */
+export function ArticleJsonLd({
+  headline,
+  description,
+  path,
+  image,
+  published,
+  modified,
+}: {
+  headline: string;
+  description: string;
+  path: string;
+  image: string;
+  /** ISO 8601. Google treats a missing or invented date as a quality problem. */
+  published: string;
+  modified?: string;
+}) {
+  return (
+    <JsonLd
+      id={`article-${path}`}
+      schema={{
+        "@context": "https://schema.org",
+        "@type": "Article",
+        "@id": `${absoluteUrl(path)}#article`,
+        headline: headline.slice(0, 110),
+        description,
+        image: absoluteUrl(image),
+        datePublished: published,
+        dateModified: modified ?? published,
+        author: { "@id": PERSON_ID },
+        publisher: { "@id": ORG_ID },
+        isPartOf: { "@id": SITE_ID },
+        mainEntityOfPage: { "@type": "WebPage", "@id": absoluteUrl(path) },
       }}
     />
   );

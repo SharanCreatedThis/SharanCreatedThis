@@ -207,6 +207,66 @@ After a deploy:
 
 ---
 
+## Validating what is deployed
+
+Every one of these takes a URL. Use the `www` host: it is the canonical one, and
+a validator pointed at the apex will report on a page whose canonical tag names
+somewhere else.
+
+### Structured data
+
+| Tool | URL | What it checks |
+|---|---|---|
+| Google Rich Results Test | <https://search.google.com/test/rich-results> | Only the types Google can show a rich result for: FAQ, Breadcrumb, SoftwareApplication. It says nothing about Person or CreativeWork, which is not a failure |
+| Schema Markup Validator | <https://validator.schema.org> | Every type, against schema.org itself. This is the one to use for Person, Organization, WebSite and the portfolio's CreativeWork nodes |
+| Bing URL Inspection | Bing Webmaster Tools → **URL Inspection** | Bing reads the same JSON-LD; no separate markup is needed |
+
+Worth testing, and what each should report:
+
+```
+https://www.sharancreatedthis.in/                  Person, Organization, WebSite
+https://www.sharancreatedthis.in/portfolio         + CollectionPage, 9 CreativeWork nodes
+https://www.sharancreatedthis.in/products/hangly   + BreadcrumbList, SoftwareApplication
+https://www.sharancreatedthis.in/products/vision   + BreadcrumbList, FAQPage, SoftwareApplication
+```
+
+From a terminal, which is faster than any of them for a quick check:
+
+```sh
+curl -s https://www.sharancreatedthis.in/portfolio \
+  | grep -o '<script type="application/ld+json">[^<]*' \
+  | sed 's/.*json">//' | python3 -m json.tool | head -40
+```
+
+### Social cards
+
+| Tool | URL |
+|---|---|
+| Open Graph, all platforms | <https://www.opengraph.xyz> |
+| Facebook Sharing Debugger | <https://developers.facebook.com/tools/debug/> |
+| LinkedIn Post Inspector | <https://www.linkedin.com/post-inspector/> |
+
+X retired its own Card Validator. X reads the same `twitter:` tags, and the
+quickest honest check is to paste the URL into a draft post and look at the
+preview without sending it.
+
+**Both Facebook and LinkedIn cache aggressively.** After changing an OG image,
+use the Debugger's *Scrape Again* and the Inspector's *Inspect* to force a
+refetch, or the old card persists for days.
+
+### Everything at once
+
+```sh
+for p in / /portfolio /products /products/hangly /products/vision /about /contact; do
+  echo "== $p"
+  curl -s "https://www.sharancreatedthis.in$p" \
+    | grep -oE '<meta (property|name)="(og:|twitter:)[^>]*>' \
+    | sed 's/^/   /'
+done
+```
+
+---
+
 ## The one thing still outstanding
 
 **The apex and `www` both serve the site, and neither redirects to the other.**

@@ -1,5 +1,5 @@
 import type { MetadataRoute } from "next";
-import { PAGES, PAGE_IMAGES, absoluteUrl, type PageKey } from "@/lib/seo";
+import { PAGES, PAGE_IMAGES, absoluteUrl, dynamicPages, type PageKey } from "@/lib/seo";
 
 /**
  * The sitemap, derived from `PAGES` rather than listed again here.
@@ -23,7 +23,7 @@ export const dynamic = "force-static";
 export default function sitemap(): MetadataRoute.Sitemap {
   const lastModified = new Date();
 
-  return (Object.entries(PAGES) as [PageKey, (typeof PAGES)[PageKey]][])
+  const fixed = (Object.entries(PAGES) as [PageKey, (typeof PAGES)[PageKey]][])
     .filter(([, page]) => !page.excludeFromSitemap)
     .map(([key, page]) => {
       const images = PAGE_IMAGES[key];
@@ -35,4 +35,17 @@ export default function sitemap(): MetadataRoute.Sitemap {
         ...(images ? { images: images.map((image) => absoluteUrl(image.url)) } : {}),
       };
     });
+
+  // Empty today. When a blog, a press page or case studies exist, their entries
+  // arrive here and land in the sitemap with nothing in this file changing.
+  const dynamic = dynamicPages()
+    .filter((page) => !page.excludeFromSitemap)
+    .map((page) => ({
+      url: absoluteUrl(page.path),
+      lastModified,
+      changeFrequency: page.changeFrequency,
+      priority: page.priority,
+    }));
+
+  return [...fixed, ...dynamic];
 }

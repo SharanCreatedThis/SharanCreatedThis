@@ -204,6 +204,62 @@ export const PAGES: Record<PageKey, PageSeo> = {
 };
 
 /**
+ * How a portfolio category becomes a schema.org type.
+ *
+ * `CreativeWork` describes anything a person made and is always correct, but a
+ * more specific type earns a more specific result — a film understood as a film
+ * can surface differently from a generic work. So each category maps to the
+ * narrowest type that is honestly true, and anything unmapped falls back to
+ * `CreativeWork` rather than guessing.
+ *
+ * Adding a category to `categories` in data/portfolio.ts and leaving it out of
+ * this map is safe: it still gets described, just less specifically.
+ */
+export const CATEGORY_SCHEMA: Record<string, string> = {
+  Films: "Movie",
+  Documentary: "Movie",
+  Photography: "ImageGallery",
+  "Creative Direction": "CreativeWork",
+  "Brand Campaigns": "CreativeWork",
+  CSR: "CreativeWork",
+  Editorial: "CreativeWorkSeries",
+};
+
+/**
+ * Sections the site does not have yet.
+ *
+ * Nothing is built here — these are the paths a blog, a press page and case
+ * studies will take when they exist, written down now so that the decision is
+ * made once. A section becomes real by adding its pages to `PAGES` and, for
+ * anything with many entries, by returning them from `dynamicPages()` below.
+ *
+ * Reserved rather than implemented, deliberately: a route that exists and is
+ * empty is worse than one that does not exist, because an engine indexes the
+ * empty one and learns the site has nothing to say.
+ */
+export const PLANNED_SECTIONS = {
+  blog: "/blog",
+  press: "/press",
+  caseStudies: "/case-studies",
+} as const;
+
+/**
+ * Pages that are not known until build time, for the sitemap to include.
+ *
+ * Empty today. A blog's posts, a press page's entries and each case study will
+ * come from here — read from MDX files, a CMS, or wherever they end up living —
+ * so that adding a section never means editing the sitemap. The shape matches
+ * `PageSeo` minus the parts a listing page supplies for itself.
+ *
+ * `scripts/check-seo.mjs` compares this and `PAGES` against what was actually
+ * exported, so a section that ships without being listed here fails the build
+ * instead of quietly never being crawled.
+ */
+export function dynamicPages(): PageSeo[] {
+  return [];
+}
+
+/**
  * Images worth submitting for Google Images, per page.
  *
  * Only images that carry meaning: the work itself and the portraits. Decorative

@@ -84,6 +84,39 @@ if (phantom.length) {
   );
 }
 
+// A PNG that has a WebP beside it and is referenced by nothing is dead weight
+// in the deployment: the page loads the WebP and the PNG is uploaded to the
+// edge for nobody. Three of these were shipping 12 MB between them.
+const publicDir = join(root, "public");
+function strayPngs(dir, found = []) {
+  for (const entry of readdirSync(dir)) {
+    const full = join(dir, entry);
+    if (statSync(full).isDirectory()) strayPngs(full, found);
+    else if (entry.endsWith(".png") && existsSync(full.replace(/\.png$/, ".webp"))) {
+      const name = relative(publicDir, full);
+      const referenced = sources.some((source) => source.includes(entry));
+      if (!referenced) found.push(name);
+    }
+  }
+  return found;
+}
+const sources = [];
+(function readSources(dir) {
+  for (const entry of readdirSync(dir)) {
+    const full = join(dir, entry);
+    if (statSync(full).isDirectory()) readSources(full);
+    else if (/\.(tsx|ts|css|html)$/.test(entry)) sources.push(readFileSync(full, "utf8"));
+  }
+})(join(root, "src"));
+
+const stray = strayPngs(publicDir);
+if (stray.length) {
+  problems.push(
+    `PNG(s) with an unused WebP twin, shipping to the edge for nobody:\n` +
+      stray.map((name) => `      ${name}`).join("\n"),
+  );
+}
+
 // Things that are only ever wrong, and cheap to catch here rather than in
 // Search Console three weeks later.
 for (const file of ["robots.txt", "manifest.webmanifest", "favicon.ico"]) {

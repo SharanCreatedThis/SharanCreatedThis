@@ -8,10 +8,11 @@ export default function Portfolio() {
     <>
       <PortfolioJsonLd
         works={projects.map((project) => ({
-          name: project.title,
-          // Unpublished work has no URL yet; listing it without one is still
-          // useful, listing it with an empty one is a broken link.
+          ...project,
+          // Empty strings are how unpublished work is recorded in the data;
+          // the schema wants the field absent rather than blank.
           url: project.url || undefined,
+          image: project.image || undefined,
         }))}
       />
       <div className="page-intro section">

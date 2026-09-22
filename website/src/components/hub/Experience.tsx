@@ -355,6 +355,10 @@ export function Work({ filterable = false }: { filterable?: boolean }) {
             <motion.button
               layout
               key={p.id}
+              // Each work's schema.org @id is /portfolio#<id>. The anchor has
+              // to exist for that to point anywhere, and it makes every project
+              // linkable on its own.
+              id={p.id}
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
