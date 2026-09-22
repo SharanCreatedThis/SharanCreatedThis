@@ -60,6 +60,12 @@
 /humans.txt
   Cache-Control: public, max-age=86400
 
+# The IndexNow key file. Bing refetches it on every submission to confirm the
+# domain is still ours, so it is served as plain text and not cached for long.
+/ddbcaf092f91e1b55e8e39c6e5d326ef.txt
+  Content-Type: text/plain; charset=utf-8
+  Cache-Control: public, max-age=3600
+
 /manifest.webmanifest
   Content-Type: application/manifest+json; charset=utf-8
   Cache-Control: public, max-age=86400

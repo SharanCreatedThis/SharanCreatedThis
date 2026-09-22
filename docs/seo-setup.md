@@ -26,7 +26,7 @@ Settings → Variables and Secrets → Production**, then redeploy.
 | `NEXT_PUBLIC_GA_ID` | `G-5WXREN35KS` — already set in `.env.production` | 2 |
 | `NEXT_PUBLIC_BING_SITE_VERIFICATION` | a 32-character hex string | 3 |
 | `NEXT_PUBLIC_CLARITY_PROJECT_ID` | `abcdefghij` | 4 |
-| `INDEXNOW_KEY` | 32 hex characters you invent | 6 |
+| `INDEXNOW_KEY` | `ddbcaf092f91e1b55e8e39c6e5d326ef` — already set | 6 |
 
 Anything left unset is skipped cleanly: no tag is emitted, no script is loaded,
 nothing errors. The site works fully without any of them.
@@ -157,20 +157,52 @@ make the difference and both are already in place:
 
 ## 6. IndexNow (Bing, Yandex, and everything downstream)
 
+**Already set up.** Nothing to configure; this section is here so the mechanism
+is not a mystery later.
+
 IndexNow turns discovery from days into minutes for the engines that support
 it. Google does not participate; Bing, Yandex, Seznam and Naver do, and through
 Bing that reaches DuckDuckGo and a share of what several AI assistants answer
 with.
 
-1. Invent a key — any 8 to 128 hex characters. `openssl rand -hex 16` will do
-2. Set `INDEXNOW_KEY` in Cloudflare and redeploy. The build writes
-   `public/<key>.txt` containing the key, which is how ownership is proved
-3. Confirm `https://www.sharancreatedthis.in/<key>.txt` returns the key
-4. After each deploy, run `npm run ping` from the repository
+### How it works here
 
-It is deliberately not part of the build: every preview and every local
-`npm run build` would otherwise announce itself to the outside world. Without
-the variable set, the key file is never written and the ping does nothing.
+| Piece | Where |
+|---|---|
+| The key | `INDEXNOW_KEY` in `website/.env.production` |
+| The proof | `public/<key>.txt`, whose name *is* the key and whose contents *are* the key — written by `scripts/generate-indexnow-key.mjs` on every build |
+| The submission | `scripts/ping-indexnow.mjs`, run with `npm run ping` |
+| The guard | `scripts/check-seo.mjs` fails the build if the key is set and the file is missing or disagrees with it |
+
+The key is not a secret. Publishing it at a URL on this domain is the entire
+proof of ownership — anyone can read it, and knowing it lets them submit URLs
+for this domain and nothing else. It is committed for the same reason the GA
+measurement id is.
+
+### Submitting after a deploy
+
+```sh
+cd website && npm run ping
+```
+
+It reads every URL out of `out/sitemap.xml` and posts the list. It is
+deliberately **not** part of the build: every preview and every local
+`npm run build` would otherwise announce itself to Bing. It never fails
+anything either — being unable to reach the API is not a reason to break a
+deploy that already worked.
+
+### Rotating the key
+
+Change `INDEXNOW_KEY`, rebuild, deploy. The generator deletes the old key file
+and writes the new one, so the two can never both be live — which matters,
+because a stale key file left beside a new key is how submissions start being
+accepted for a key nobody is using any more.
+
+### When it answers 422
+
+That means Bing could not read the key file. Check that
+`https://www.sharancreatedthis.in/<key>.txt` returns 200 as `text/plain` and
+contains exactly the key, with no trailing newline problems.
 
 ## Deployment checklist
 
@@ -196,6 +228,9 @@ After a deploy:
 - [ ] `/favicon.ico`, `/icon.png`, `/apple-touch-icon.png`, `/manifest.webmanifest`
       all return 200
 - [ ] `/humans.txt` returns 200
+- [ ] `/ddbcaf092f91e1b55e8e39c6e5d326ef.txt` returns 200 as `text/plain` and
+      contains exactly that string — IndexNow refuses submissions otherwise
+- [ ] `npm run ping` reports 200 or 202
 - [ ] No charm images 404 on `/products/hangly` — open DevTools → Network and
       filter for `charms`. Thirty of them used to.
 - [ ] `/products/hangly/download` still 302s to the newest DMG

@@ -11,6 +11,9 @@ import { writeFileSync, rmSync, readdirSync } from "node:fs";
 import { join, dirname } from "node:path";
 import { fileURLToPath } from "node:url";
 
+// Populates process.env from .env.production, which npm does not do.
+import "./load-env.mjs";
+
 const root = join(dirname(fileURLToPath(import.meta.url)), "..");
 const publicDir = join(root, "public");
 const key = process.env.INDEXNOW_KEY;

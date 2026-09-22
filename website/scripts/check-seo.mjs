@@ -15,6 +15,9 @@ import { readFileSync, existsSync, readdirSync, statSync } from "node:fs";
 import { join, dirname, relative } from "node:path";
 import { fileURLToPath } from "node:url";
 
+// So INDEXNOW_KEY from .env.production is visible to the check below.
+import "./load-env.mjs";
+
 const root = join(dirname(fileURLToPath(import.meta.url)), "..");
 const out = join(root, "out");
 
@@ -115,6 +118,20 @@ if (stray.length) {
     `PNG(s) with an unused WebP twin, shipping to the edge for nobody:\n` +
       stray.map((name) => `      ${name}`).join("\n"),
   );
+}
+
+// A key set with no file beside it means every IndexNow submission is refused
+// with a 422, which is only visible to whoever runs the ping. Catch it here.
+if (process.env.INDEXNOW_KEY) {
+  const keyFile = `${process.env.INDEXNOW_KEY}.txt`;
+  if (!existsSync(join(out, keyFile))) {
+    problems.push(
+      `INDEXNOW_KEY is set but out/${keyFile} was not generated — ` +
+        `IndexNow would answer 422. Check scripts/generate-indexnow-key.mjs ran.`,
+    );
+  } else if (readFileSync(join(out, keyFile), "utf8").trim() !== process.env.INDEXNOW_KEY) {
+    problems.push(`out/${keyFile} does not contain the key it is named after.`);
+  }
 }
 
 // Things that are only ever wrong, and cheap to catch here rather than in
