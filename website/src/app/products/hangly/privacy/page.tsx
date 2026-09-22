@@ -1,12 +1,9 @@
+import { pageMetadata } from "@/lib/metadata";
 import type { Metadata } from 'next';
 import { ArrowLeft } from 'lucide-react';
 import { Logo } from '@/components/hangly/shared';
 
-export const metadata: Metadata = {
-  title: 'Hangly · Privacy',
-  description:
-    'What Hangly sends, what it never sends, and how to switch it off. Three things leave your Mac, and two of them are optional.',
-};
+export const metadata = pageMetadata("hanglyPrivacy");
 
 /**
  * The same document as PRIVACY.md in the app repository, which is private — so this

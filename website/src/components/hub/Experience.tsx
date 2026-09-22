@@ -141,8 +141,10 @@ export function Worlds() {
                   <img
                     className="world-photo"
                     src="/portfolio/lapse.jpg"
-                    alt="Lapse, Malayalam short film"
+                    alt="Lapse, a Malayalam short film directed by Sharan"
                     loading="lazy"
+                    width={480}
+                    height={360}
                   />
                   <span className="frame-corner" />
                   <span className="timecode">REC • 00:01:24:08</span>
@@ -151,8 +153,10 @@ export function Worlds() {
                 <img
                   className="world-photo"
                   src="/portfolio/photography-03.webp"
-                  alt="Photography by Sharan"
+                  alt="Portrait photography by Sharan"
                   loading="lazy"
+                  width={1400}
+                  height={991}
                 />
               ) : active === 2 ? (
                 <span className="design-letter">
@@ -359,7 +363,7 @@ export function Work({ filterable = false }: { filterable?: boolean }) {
             >
               <div className="project-cover">
                 {p.image ? (
-                  <img src={p.image} alt="" loading="lazy" />
+                  <img src={p.image} alt={`${p.title} — ${p.type}`} loading="lazy" decoding="async" />
                 ) : (
                   <>
                     <div className="cover-geometry" />
@@ -432,7 +436,8 @@ export function Work({ filterable = false }: { filterable?: boolean }) {
               <img
                 className="dialog-image"
                 src={selected.image}
-                alt={selected.title}
+                alt={`${selected.title} — ${selected.type}`}
+                decoding="async"
               />
             )}
             {!selected.url && (

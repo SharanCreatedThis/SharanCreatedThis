@@ -6,12 +6,9 @@ import "@fontsource/inter-tight/500.css";
 import "@fontsource/inter-tight/600.css";
 import "@fontsource/inter-tight/700.css";
 import "./hangly.css";
+import { pageMetadata } from "@/lib/metadata";
 
-export const metadata = {
-  title: "Hangly · A little magic for your desktop",
-  description:
-    "Beautiful digital charms. Real swinging physics. Make your desktop feel a little more you. Free for macOS 14+ and Windows 10+.",
-};
+export const metadata = pageMetadata("hangly");
 
 export default function HanglyLayout({
   children,

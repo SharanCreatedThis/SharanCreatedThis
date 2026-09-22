@@ -1,3 +1,4 @@
+import { pageMetadata } from "@/lib/metadata";
 import { BrandMark } from "@/components/BrandMark";
 import {
   Hero,
@@ -9,11 +10,7 @@ import {
   ContactCTA,
 } from "@/components/hub/Experience";
 
-export const metadata = {
-  title: "Sharan Created This · Creative Technologist",
-  description:
-    "Films, experiences, and software. Filmmaker, photographer, designer, and product builder.",
-};
+export const metadata = pageMetadata("home");
 export default function Home() {
   return (
     <div className="home-editorial">

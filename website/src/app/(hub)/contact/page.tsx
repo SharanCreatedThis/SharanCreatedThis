@@ -1,7 +1,8 @@
+import { pageMetadata } from "@/lib/metadata";
 import { ArrowUpRight } from "lucide-react";
 import { Label } from "@/components/hub/Experience";
 import { profile } from "@/data/portfolio";
-export const metadata = { title: "Let’s Talk · Sharan Created This" };
+export const metadata = pageMetadata("contact");
 export default function Contact() {
   const links = [
     { label: "Email", href: profile.email ? `mailto:${profile.email}` : "" },

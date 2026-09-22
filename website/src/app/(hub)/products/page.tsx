@@ -1,9 +1,10 @@
+import { pageMetadata } from "@/lib/metadata";
 import {
   Label,
   ProductShowcase,
   ContactCTA,
 } from "@/components/hub/Experience";
-export const metadata = { title: "Independent Products · Sharan Created This" };
+export const metadata = pageMetadata("products");
 export default function Products() {
   return (
     <>

@@ -1,3 +1,4 @@
+import { pageMetadata } from "@/lib/metadata";
 import { BrandMark } from "@/components/BrandMark";
 import {
   Label,
@@ -6,7 +7,7 @@ import {
   Numbers,
   ContactCTA,
 } from "@/components/hub/Experience";
-export const metadata = { title: "The Story · Sharan Created This" };
+export const metadata = pageMetadata("about");
 export default function About() {
   return (
     <>
@@ -28,7 +29,9 @@ export default function About() {
           <div className="about-portrait-image">
             <img
               src="/portfolio/sharan-about.png"
-              alt="Portrait of Sharan"
+              alt="Portrait of Sharan, filmmaker and creative technologist"
+              width={1684}
+              height={2528}
             />
           </div>
           <figcaption>

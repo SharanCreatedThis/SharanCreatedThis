@@ -44,6 +44,8 @@ export function EditorialHero() {
             data-ready={portraitReady}
             src="/portfolio/sharan-white-suit.webp"
             alt="Sharan, filmmaker, designer and product builder"
+            width={1757}
+            height={2220}
             fetchPriority="high"
             loading="eager"
             decoding="async"
@@ -126,7 +128,7 @@ export function EditorialHero() {
         </div>
         <Link href="/about" className="editorial-quote">
           <div className="editorial-quote-author">
-            <img src={profile.portrait} alt="" />
+            <img src={profile.portrait} alt="" width={900} height={1351} />
             <span>
               Sharan<small>Creator & builder</small>
             </span>
