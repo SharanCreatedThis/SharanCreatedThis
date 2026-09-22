@@ -20,13 +20,36 @@ property.
 Set them in **Cloudflare dashboard → Workers & Pages → sharancreatedthis →
 Settings → Variables and Secrets → Production**, then redeploy.
 
-| Variable | Looks like | Set in which step |
+| Variable | Value | Required? |
 |---|---|---|
-| `NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION` | `google-site-verification=abc123…` value only | 1 |
-| `NEXT_PUBLIC_GA_ID` | `G-5WXREN35KS` — already set in `.env.production` | 2 |
-| `NEXT_PUBLIC_BING_SITE_VERIFICATION` | a 32-character hex string | 3 |
-| `NEXT_PUBLIC_CLARITY_PROJECT_ID` | `abcdefghij` | 4 |
-| `INDEXNOW_KEY` | `ddbcaf092f91e1b55e8e39c6e5d326ef` — already set | 6 |
+| `NEXT_PUBLIC_GA_ID` | `G-5WXREN35KS` | Set. Without it no analytics load |
+| `NEXT_PUBLIC_CLARITY_ID` | `ymfvvjj5ij` | Set. Without it no recordings |
+| `INDEXNOW_KEY` | `ddbcaf092f91e1b55e8e39c6e5d326ef` | Set. Without it no URL submissions |
+| `NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION` | — | **Not required.** Unset on purpose — Google is verified by DNS |
+| `NEXT_PUBLIC_BING_SITE_VERIFICATION` | — | **Not required.** Only needed if Bing is not imported from Search Console |
+
+All values live in `website/.env.production`, which is committed. Setting the
+same name in Cloudflare overrides the file.
+
+### Are the two verification variables required?
+
+No. Each does exactly one thing — emit a single `<meta>` tag — and nothing else
+in the codebase reads either one:
+
+| Variable | Produces | Read by |
+|---|---|---|
+| `NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION` | `<meta name="google-site-verification" …>` | `src/lib/metadata.ts` only |
+| `NEXT_PUBLIC_BING_SITE_VERIFICATION` | `<meta name="msvalidate.01" …>` | `src/lib/metadata.ts` only |
+
+Both are conditional: unset means the tag is not emitted at all, rather than
+emitted empty — a blank value reads as a *failed* check to some verifiers, not
+an absent one. Nothing breaks, no build step depends on them, and no other
+feature reads them.
+
+**Google is verified by DNS through the domain provider, which is the better
+method** and makes the tag redundant. DNS covers the apex, `www` and every
+subdomain at once — including `downloads.sharancreatedthis.in` — and survives a
+change of host. A meta tag proves one hostname and vanishes if a deploy breaks.
 
 Anything left unset is skipped cleanly: no tag is emitted, no script is loaded,
 nothing errors. The site works fully without any of them.
@@ -114,18 +137,46 @@ session, which the route tracking now guarantees.
 ## 3. Bing Webmaster Tools
 
 Worth ten minutes: Bing feeds DuckDuckGo, Ecosia and a share of ChatGPT's web
-results, and it has far less competition than Google.
+results, with far less competition than Google.
+
+### The easy path — no verification value needed
 
 1. <https://www.bing.com/webmasters> → **Add site**
-2. Choose **Import from Google Search Console** — it carries the verification
-   and the sitemap across in one click, and is much faster than the alternative
-3. If importing fails, verify manually: copy the `msvalidate.01` value into
-   `NEXT_PUBLIC_BING_SITE_VERIFICATION` and redeploy
-4. **Sitemaps** → submit `https://www.sharancreatedthis.in/sitemap.xml`
-5. Turn on **IndexNow** — Bing then picks up changes within minutes rather than
-   waiting for a crawl
+2. Choose **Import from Google Search Console** and authorise it
 
----
+Because Search Console is already verified by DNS, Bing accepts that proof and
+carries the sitemap across in the same step. **No meta tag, and
+`NEXT_PUBLIC_BING_SITE_VERIFICATION` stays unset.** This is the recommended
+route.
+
+### If the import fails — where the value actually lives
+
+Only then is the variable needed. Bing offers three methods; the meta tag is
+the one this codebase supports:
+
+1. <https://www.bing.com/webmasters> → **Add site** → enter
+   `https://www.sharancreatedthis.in`
+2. On the verification screen, pick **Option 2: Copy and paste a `<meta>` tag**
+3. Bing shows a line like:
+
+   ```html
+   <meta name="msvalidate.01" content="A1B2C3D4E5F6A7B8C9D0E1F2A3B4C5D6" />
+   ```
+
+4. **Copy only the `content` value** — the 32-character string, not the whole
+   tag. The tag itself is generated for you
+5. Put it in `NEXT_PUBLIC_BING_SITE_VERIFICATION` in `.env.production`, rebuild,
+   deploy, then press **Verify**
+
+Bing's other two methods need no code: **Option 1** hosts a `BingSiteAuth.xml`
+file — which would go in `website/public/` and be committed — and **Option 3**
+is a DNS `CNAME`, which like Google's DNS method covers every subdomain and is
+the most durable of the three.
+
+After verification, whichever route:
+
+- **Sitemaps** → submit `https://www.sharancreatedthis.in/sitemap.xml`
+- **IndexNow** is already wired; see section 6
 
 ## 4. Microsoft Clarity
 
@@ -134,7 +185,7 @@ it does not sample.
 
 1. <https://clarity.microsoft.com> → **New project**
 2. Name `sharancreatedthis.in`, site URL `https://www.sharancreatedthis.in`
-3. Copy the project ID into `NEXT_PUBLIC_CLARITY_PROJECT_ID`
+3. Copy the project ID into `NEXT_PUBLIC_CLARITY_ID`. Done: `ymfvvjj5ij`
 4. Redeploy. Recordings appear within about half an hour
 
 **What to watch first:** the Hangly page heatmap, specifically whether anyone
@@ -170,7 +221,7 @@ with.
 | Piece | Where |
 |---|---|
 | The key | `INDEXNOW_KEY` in `website/.env.production` |
-| The proof | `public/<key>.txt`, whose name *is* the key and whose contents *are* the key — written by `scripts/generate-indexnow-key.mjs` on every build |
+| The proof | `public/<key>.txt` → served at `https://www.sharancreatedthis.in/<key>.txt`. Today that is `/ddbcaf092f91e1b55e8e39c6e5d326ef.txt`. Its **name is the key and its contents are the key**, with no trailing newline. Written by `scripts/generate-indexnow-key.mjs` on every build — never by hand |
 | The submission | `scripts/ping-indexnow.mjs`, run with `npm run ping` |
 | The guard | `scripts/check-seo.mjs` fails the build if the key is set and the file is missing or disagrees with it |
 

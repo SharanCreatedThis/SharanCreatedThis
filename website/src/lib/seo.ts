@@ -68,12 +68,23 @@ export const PERSON = {
 } as const;
 
 /**
- * Verification tokens, supplied at build time.
+ * Optional verification tokens. Neither is required, and both are unset.
  *
- * Each is a public string that only proves control of the property, so there is
- * nothing secret here — they live in the environment purely so a token can be
- * rotated without a commit. An unset one is simply omitted rather than emitted
- * empty, which some verifiers treat as a failed check rather than an absent one.
+ * Each does exactly one thing: emit a `<meta>` tag that proves control of the
+ * property to one search engine. Nothing else in the site reads them, nothing
+ * fails without them, and an unset one is omitted entirely rather than emitted
+ * empty — some verifiers treat a blank value as a failed check rather than an
+ * absent one.
+ *
+ * **Google is verified by DNS**, through the domain provider, which is the
+ * stronger method: it covers the apex, `www` and every subdomain at once
+ * — including downloads.sharancreatedthis.in — and survives a change of host,
+ * where a meta tag proves one hostname and disappears if a deploy goes wrong.
+ * The tag below is a second, redundant proof and is deliberately not used.
+ *
+ * Bing is the same story, and can skip verification altogether by importing
+ * the already-verified property from Search Console. Set `bing` only if that
+ * import is not used; see docs/seo-setup.md.
  */
 export const VERIFICATION = {
   google: process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION,
@@ -97,7 +108,7 @@ export const VERIFICATION = {
  */
 export const ANALYTICS = {
   ga4: process.env.NEXT_PUBLIC_GA_ID,
-  clarity: process.env.NEXT_PUBLIC_CLARITY_PROJECT_ID,
+  clarity: process.env.NEXT_PUBLIC_CLARITY_ID,
 } as const;
 
 export type PageKey =
