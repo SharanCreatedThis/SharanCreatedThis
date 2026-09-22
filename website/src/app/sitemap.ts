@@ -1,5 +1,6 @@
 import type { MetadataRoute } from "next";
 import { PAGES, PAGE_IMAGES, absoluteUrl, dynamicPages, type PageKey } from "@/lib/seo";
+import { CONTENT_LAST_MODIFIED } from "@/data/content-date.generated";
 
 /**
  * The sitemap, derived from `PAGES` rather than listed again here.
@@ -13,15 +14,18 @@ import { PAGES, PAGE_IMAGES, absoluteUrl, dynamicPages, type PageKey } from "@/l
  * into Google Images without waiting to be discovered. For a portfolio whose
  * work *is* the images, that is a separate way in entirely.
  *
- * `lastModified` is the build time. The honest alternative is each page's git
- * mtime, but the repository is deployed from a fresh clone where every file has
- * the same checkout timestamp, so it would be the build time wearing a disguise.
- * Engines treat the field as a hint and verify it against what they fetch.
+ * `lastModified` is the last commit that changed anything a visitor sees, not
+ * the build time. It used to be the build time, which meant a rebuild with no
+ * changes at all moved every page's date — and Google only honours lastmod
+ * where it has found it accurate, so a date that is always "now" is worse than
+ * none: it trains the field to be ignored. See
+ * scripts/generate-content-date.mjs, including why this is one date for the
+ * site rather than nine guesses.
  */
 export const dynamic = "force-static";
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const lastModified = new Date();
+  const lastModified = new Date(CONTENT_LAST_MODIFIED);
 
   const fixed = (Object.entries(PAGES) as [PageKey, (typeof PAGES)[PageKey]][])
     .filter(([, page]) => !page.excludeFromSitemap)

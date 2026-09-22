@@ -103,7 +103,13 @@ export function GoogleAnalytics() {
             // Sent manually by RouteTracker, which also covers client-side
             // navigation. Leaving this on would double-count the first page.
             send_page_view: false,
-            anonymize_ip: true
+            anonymize_ip: true,
+            // navigator.sendBeacon, which the browser delivers even after the
+            // page goes away. GA4 batches anything that is not a page_view and
+            // flushes on a timer — measured at five to eight seconds — so a
+            // download click followed by a quick tab close would otherwise be
+            // lost. A beacon survives that; the default transport does not.
+            transport_type: 'beacon'
           });
         `}
       </Script>

@@ -3,6 +3,7 @@
 # Local wrangler/miniflare state from `wrangler pages dev`.
 .wrangler/
 /src/data/charms.generated.ts
+/src/data/content-date.generated.ts
 
 # Local overrides only. .env.production is committed on purpose — see it.
 .env.local

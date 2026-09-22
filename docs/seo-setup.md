@@ -122,9 +122,49 @@ A `download` event fires when someone takes a build, carrying:
 That last field is the useful one. A high `sheet_corrected` rate means platform
 detection is guessing wrong and should be looked at.
 
-**Mark `download` as a key event** (GA4's name for a conversion): **Admin →
-Events → Mark as key event**. It has to exist before it can be marked, so fire
-one download on the live site first.
+### Making download events actually usable
+
+Two steps, and the second is the one people miss.
+
+**1. Mark `download` as a key event.** GA4's name for a conversion.
+**Admin → Events → Mark as key event.** The event must have been received at
+least once before it can be marked, so click a download on the live site first
+and give it a few minutes.
+
+**2. Register the parameters as custom dimensions.** This is the step that
+decides whether the data is usable at all. GA4 receives `platform` and `source`
+on every download event, but **it will not report on a custom parameter until
+that parameter is registered** — until then the event shows up as a bare count
+with no way to break it down, which looks exactly like tracking that is not
+working.
+
+**Admin → Custom definitions → Create custom dimension**, twice:
+
+| Dimension name | Scope | Event parameter |
+|---|---|---|
+| `platform` | Event | `platform` |
+| `source` | Event | `source` |
+
+Registration is not retroactive. Data arriving before the dimension exists is
+not backfilled, so do this early.
+
+**A note on timing.** Custom events appear in **Realtime** and **DebugView**
+within seconds, but take up to **24–48 hours** to show in the standard reports.
+An empty Events report on day one means the reports have not caught up, not
+that nothing was sent.
+
+### What each value tells you
+
+`source` is the field worth watching:
+
+| Value | Meaning |
+|---|---|
+| `recommended_button` | Took the build the site guessed for them |
+| `sheet_confirmed` | Opened the chooser and picked the guessed build anyway |
+| `sheet_corrected` | Opened the chooser and picked a *different* build |
+
+A high `sheet_corrected` rate means platform detection is guessing wrong and is
+worth investigating.
 
 ### Traffic sources and session duration
 
