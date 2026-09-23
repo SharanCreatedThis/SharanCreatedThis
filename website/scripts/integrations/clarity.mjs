@@ -15,6 +15,7 @@ import { STATUS, request, result } from "./lib.mjs";
 
 export async function check() {
   const token = process.env.CLARITY_API_TOKEN;
+  const project = process.env.NEXT_PUBLIC_CLARITY_ID;
   if (!token) {
     return [result("Clarity · Data Export API", STATUS.unconfigured,
       "needs CLARITY_API_TOKEN — Clarity → Settings → Data export → generate an API token")];
@@ -40,7 +41,9 @@ export async function check() {
   const sets = Array.isArray(response.json) ? response.json : [];
   const traffic = sets.find((s) => s.metricName === "Traffic");
   const sessions = traffic?.information?.[0]?.totalSessionCount;
-  return [result("Clarity · Data Export API", STATUS.ok,
+  // A Clarity token is scoped to one project, so a token that works is itself
+  // the project check — there is no separate "is this project alive" endpoint.
+  return [result(`Clarity · project ${project ?? "(id unknown)"}`, STATUS.ok,
     sets.length
       ? `${sets.length} metric sets over 3 days${sessions ? `, ${sessions} sessions` : ""}`
       : "connected, no data in the window yet",

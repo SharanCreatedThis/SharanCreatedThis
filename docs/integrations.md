@@ -3,10 +3,28 @@
 What Claude Code — or you, or a cron job — can reach directly, how the
 credentials work, and what has to stay manual.
 
-Run this first. It works before anything is configured:
+Two commands. `site:health` is the one to run daily; `integrations:check` is
+the one to run when `site:health` says something is wrong.
 
 ```sh
-cd website && npm run integrations:check
+cd website
+npm run site:health          # is the site up, and is anything watching it
+npm run integrations:check   # does every credential actually work
+```
+
+`site:health` has nine fixed rows and answers most of them with no credentials
+at all, so it stays useful on a machine that has none. A row never disappears:
+a service that is not set up says so in place, because a dashboard that
+silently drops what it cannot check is worse than one that admits it.
+
+A single service can be checked on its own:
+
+```sh
+npm run integrations:cloudflare
+npm run integrations:github
+npm run integrations:google
+npm run integrations:bing
+npm run integrations:clarity
 ```
 
 It reports four states, and the difference between the middle two is the point
@@ -193,6 +211,26 @@ npm run integrations:check bing
 All Read, deliberately. Nothing in this repository writes DNS.
 
 ---
+
+## On pasting credentials
+
+Two credentials were once sent through a chat message. They were rotated rather
+than reused, and the reason is worth keeping written down: a chat transcript is
+stored as plaintext JSONL under `~/.claude/projects/`, retained for thirty days
+by default, and it is not encrypted. A secret that reaches it has to be treated
+as disclosed, however briefly it was visible.
+
+Two specifics from that episode:
+
+- The **Bing key can submit URLs**, not only read. It is the one write-capable
+  credential in `.env.local`, which makes it the one worth rotating first.
+- The **Clarity token was issued for a hundred years** (it decoded to an expiry
+  in 2126). Clarity offers no shorter default, so it never ages out on its own —
+  rotation is the only way it stops being valid.
+
+The safe path, and the one used here: leave the value out of the conversation
+and paste it straight into `.env.local`, which is gitignored and never leaves
+the machine.
 
 ## Security review
 

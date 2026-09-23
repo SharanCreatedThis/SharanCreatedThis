@@ -39,6 +39,16 @@ export async function check() {
       `${data.visibility.toLowerCase()}, default ${data.defaultBranchRef?.name}, last push ${data.pushedAt?.slice(0, 10)}`));
   }
 
+  // What is actually deployed starts here, so the dashboard reports it.
+  const head = cli("gh", ["api", "repos/SharanCreatedThis/SharanCreatedThis/commits/main",
+    "--jq", "{sha:.sha,msg:.commit.message,date:.commit.author.date,author:.commit.author.name}"]);
+  if (head.ok) {
+    const c = JSON.parse(head.out);
+    out.push(result("GitHub · latest commit", STATUS.ok,
+      `${c.sha.slice(0, 7)} ${c.date.slice(0, 10)} — ${c.msg.split("\n")[0].slice(0, 58)}`,
+      { sha: c.sha.slice(0, 7), subject: c.msg.split("\n")[0] }));
+  }
+
   // Releases matter here: the Windows download URLs are generated from them.
   const releases = cli("gh", ["release", "list", "--repo", "SharanCreatedThis/Hangly-Windows", "--limit", "5"]);
   if (releases.ok) {

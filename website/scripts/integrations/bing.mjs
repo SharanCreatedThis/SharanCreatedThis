@@ -33,6 +33,13 @@ export async function check() {
 
   const target = list.find((s) => s.Url?.includes("sharancreatedthis.in"))?.Url ?? SITE;
 
+  // A site only appears in GetUserSites once it is verified, so its presence
+  // is the verification. Saying so explicitly beats inferring it from traffic.
+  out.push(result("Bing Webmaster · verification", list.some((s) => s.Url?.includes("sharancreatedthis.in")) ? STATUS.ok : STATUS.error,
+    list.some((s) => s.Url?.includes("sharancreatedthis.in"))
+      ? `sharancreatedthis.in verified as ${target}`
+      : "not verified on this account — the API lists only verified sites"));
+
   const quota = await request(`${API}/GetUrlSubmissionQuota?apikey=${encodeURIComponent(key)}&siteUrl=${encodeURIComponent(target)}`);
   if (quota.ok && quota.json?.d) {
     out.push(result("Bing Webmaster · submission quota", STATUS.ok,

@@ -90,6 +90,14 @@ export async function check() {
     return out;
   }
 
+  // Confirm the property is the one the site actually reports to, rather than
+  // assuming the numeric id and the deployed G- id belong together.
+  const meta = await request(`https://analyticsadmin.googleapis.com/v1beta/properties/${property}`, { headers: auth });
+  out.push(result("GA4 · property", meta.ok ? STATUS.ok : STATUS.unconfigured,
+    meta.ok
+      ? `${meta.json.displayName ?? property} (${meta.json.currencyCode ?? "?"}, ${meta.json.timeZone ?? "?"})`
+      : `id ${property} — Admin API not enabled, so the name cannot be confirmed (harmless)`));
+
   const report = await request(`https://analyticsdata.googleapis.com/v1beta/properties/${property}:runReport`, {
     method: "POST",
     headers: { ...auth, "content-type": "application/json" },
