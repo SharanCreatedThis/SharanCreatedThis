@@ -166,6 +166,21 @@ that nothing was sent.
 A high `sheet_corrected` rate means platform detection is guessing wrong and is
 worth investigating.
 
+### `download_intent` — Vision, before it ships
+
+Vision has no public build, so it has no download event. Its button opens a
+dialog saying the download is coming, and that click fires `download_intent`
+with `product: vision` and `reason: not_yet_released`.
+
+It is a separate event on purpose. Counting it as a download would inflate the
+one number that says whether the product is working. Before launch it is the
+more interesting figure anyway: how many people tried.
+
+**Mark it as a key event too** — same path, Admin → Events — and register
+`reason` as a custom dimension alongside `platform` and `source`. When Vision
+ships, the button changes where it points and the call becomes `trackDownload`;
+the two metrics stay comparable across the launch.
+
 ### Traffic sources and session duration
 
 Both work with no extra setup — they are derived from the page views above.
@@ -410,6 +425,7 @@ Sparkle does follow redirects, so an apex → `www` 301 is safe in principle —
 it should be made deliberately and verified against a real Vision install before
 it is trusted, not slipped in alongside a metadata change.
 
-When you do it: **Cloudflare → Rules → Redirect Rules**, `sharancreatedthis.in/*`
-→ `https://www.sharancreatedthis.in/$1`, status 301. Then confirm an older Vision
-build still finds, downloads and installs an update.
+**The full plan, with the verification steps, is in
+[apex-to-www-plan.md](./apex-to-www-plan.md).** It is deliberately not a
+one-liner: the failure mode is every installed copy of Vision silently never
+updating again, and it does not announce itself.
