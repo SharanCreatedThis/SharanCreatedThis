@@ -121,6 +121,10 @@ npx wrangler whoami            # OAuth, account visible
 
 ### 1. Google service account (unlocks Search Console **and** GA4)
 
+**Full console walkthrough: [google-service-account.md](./google-service-account.md).**
+`npm run google:doctor` checks each step and stops at the first one that is
+wrong. The condensed version, if you have `gcloud`:
+
 ```sh
 # Pick or create a project, then enable both APIs.
 gcloud projects create sharancreatedthis-seo          # or use an existing one
