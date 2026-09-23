@@ -8,6 +8,22 @@
 
 import { googleAccessToken, request } from "../integrations/lib.mjs";
 
+/**
+ * Two scopes covering three APIs, both read-only.
+ *
+ *   webmasters.readonly  -> Search Console API (sites, sitemaps, search
+ *                           analytics, URL Inspection)
+ *   analytics.readonly   -> BOTH the GA4 Data API (reports, realtime) and the
+ *                           GA4 Admin API's read methods. The Admin API needs
+ *                           no scope of its own for reads, which is why there
+ *                           is no third entry here.
+ *
+ * The writable siblings — `webmasters` without the suffix, and
+ * `analytics.edit` — are deliberately absent. Search Console's writable scope
+ * would allow submitting and deleting sitemaps; `analytics.edit` would allow
+ * reshaping your reporting. Nothing here needs either, and a credential that
+ * cannot write is a credential that cannot be turned against you.
+ */
 export const SCOPES = [
   "https://www.googleapis.com/auth/webmasters.readonly",
   "https://www.googleapis.com/auth/analytics.readonly",

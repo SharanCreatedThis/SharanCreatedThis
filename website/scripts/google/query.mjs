@@ -163,6 +163,62 @@ const commands = {
     data.length ? table(data) : console.log("  No queries yet.\n");
   },
 
+  /**
+   * Where people are, from both sources, because they answer different things.
+   *
+   * Search Console says which countries *see* the site in results — demand that
+   * has not converted yet. GA4 says which countries actually arrived, by any
+   * route. A country high in one and absent from the other is the interesting
+   * case: impressions without visits means the listing is being passed over.
+   *
+   * Search Console reports ISO-3166 alpha-3 codes; GA4 reports names. They are
+   * printed as each returns them rather than being mapped, because a mapping
+   * that silently mislabels a country is worse than two columns that need
+   * reading side by side.
+   */
+  async countries() {
+    const search = await gsc(`/webmasters/v3/sites/${encodeURIComponent(PROPERTY)}/searchAnalytics/query`, {
+      method: "POST",
+      body: JSON.stringify({ ...GSC_RANGE, dimensions: ["country"], rowLimit: 15 }),
+    });
+    console.log(`\nSearch impressions by country · ${GSC_RANGE.startDate} to ${GSC_RANGE.endDate}\n`);
+    if (!search.ok) {
+      explain(search, "Search analytics");
+    } else {
+      const data = (search.json.rows ?? []).map((r) => ({
+        country: r.keys[0].toUpperCase(),
+        clicks: r.clicks,
+        impressions: r.impressions,
+        ctr: `${(r.ctr * 100).toFixed(1)}%`,
+        position: r.position.toFixed(1),
+      }));
+      data.length ? table(data) : console.log("  No impressions yet.\n");
+    }
+
+    if (!GA4) {
+      console.log(`\nVisitors by country: GA4_PROPERTY_ID is not set.\n`);
+      return;
+    }
+    const visitors = await ga("runReport", {
+      dateRanges: [{ startDate: `${DAYS}daysAgo`, endDate: "today" }],
+      dimensions: [{ name: "country" }],
+      metrics: [{ name: "activeUsers" }, { name: "sessions" }, { name: "screenPageViews" }],
+      orderBys: [{ metric: { metricName: "activeUsers" }, desc: true }],
+      limit: 15,
+    });
+    console.log(`\nVisitors by country · last ${DAYS} days\n`);
+    if (!visitors.ok) return explain(visitors, "GA4 countries"), process.exit(1);
+    const rowsOut = rows(visitors.json).map((r) => ({
+      country: r.country,
+      users: r.activeUsers,
+      sessions: r.sessions,
+      views: r.screenPageViews,
+    }));
+    rowsOut.length
+      ? table(rowsOut)
+      : console.log("  No visitors recorded yet in this window.\n");
+  },
+
   /** Who is on the site right now. */
   async realtime() {
     const response = await ga("runRealtimeReport", {
@@ -223,7 +279,7 @@ const commands = {
 
   /** Everything at once, for a morning look. */
   async all() {
-    for (const name of ["sitemaps", "indexed", "pages", "queries", "downloads", "realtime"]) {
+    for (const name of ["sitemaps", "indexed", "pages", "queries", "countries", "downloads", "realtime"]) {
       try {
         await commands[name]();
       } catch (error) {
@@ -241,6 +297,7 @@ if (!name || !commands[name]) {
   console.log(`  errors     crawl problems, per sitemap and per URL`);
   console.log(`  pages      clicks and impressions by page`);
   console.log(`  queries    what people searched for`);
+  console.log(`  countries  impressions and visitors by country, from both sources`);
   console.log(`  realtime   who is on the site now`);
   console.log(`  downloads  download and download_intent events`);
   console.log(`  all        every one of the above\n`);

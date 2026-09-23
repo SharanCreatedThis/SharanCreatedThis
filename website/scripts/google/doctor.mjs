@@ -130,6 +130,25 @@ if (auth) {
     } else {
       step(6, "GA4 access granted", true, "runReport answered");
 
+      // The Admin API is a separate API on the same scope. Reporting works
+      // without it; it is what confirms the numeric property id belongs to the
+      // property you think it does, rather than to someone else's.
+      const admin = await request(`https://analyticsadmin.googleapis.com/v1beta/properties/${GA4}`, { headers: auth });
+      const adminMessage = admin.json?.error?.message ?? "";
+      console.log(`  ${admin.ok ? "\u2713" : "!"} 6b. GA4 Admin API`);
+      console.log(`       ${admin.ok
+        ? `${admin.json.displayName} \u00b7 ${admin.json.currencyCode} \u00b7 ${admin.json.timeZone}`
+        : /has not been used|disabled/i.test(adminMessage)
+          ? "not enabled — optional, but it is what confirms the property id is the right one"
+          : adminMessage.slice(0, 110)}`);
+      if (!admin.ok && /has not been used|disabled/i.test(adminMessage)) {
+        console.log("");
+        console.log("       Google Cloud Console -> APIs & Services -> Library");
+        console.log("         \"Google Analytics Admin API\" -> Enable");
+        console.log("       Uses the same analytics.readonly scope; nothing else to grant.");
+        console.log("");
+      }
+
       // Not fatal: the events work without this, they are just not reportable.
       const dims = await request(`https://analyticsdata.googleapis.com/v1beta/properties/${GA4}:runReport`, {
         method: "POST",

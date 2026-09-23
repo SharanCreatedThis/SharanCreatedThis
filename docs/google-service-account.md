@@ -46,22 +46,42 @@ No billing is needed. Both APIs have free quotas far above anything this uses.
 
 ---
 
-## Step 2 — enable the two APIs
+## Step 2 — enable the three APIs
 
-Both, or the account authenticates successfully and then gets `403` on every
-call — which is the confusing failure the doctor exists to name.
+All three, or the account authenticates successfully and then gets `403` on
+every call — which is the confusing failure the doctor exists to name.
 
 1. <https://console.cloud.google.com/apis/library/searchconsole.googleapis.com>
    → **Enable**
 2. <https://console.cloud.google.com/apis/library/analyticsdata.googleapis.com>
    → **Enable**
+3. <https://console.cloud.google.com/apis/library/analyticsadmin.googleapis.com>
+   → **Enable**
+
+The third is optional in the sense that every report works without it. What it
+buys is confirmation that the numeric property id you configured belongs to the
+property you think it does, rather than to someone else's — worth thirty
+seconds, given the id is a bare number with nothing self-describing about it.
 
 Check the project name in the top bar before clicking. Enabling an API on the
 wrong project is the most common way to end up stuck here.
 
 Give it a minute to propagate.
 
----
+### Which scope covers what
+
+Three APIs, two scopes, both read-only:
+
+| Scope | Unlocks |
+|---|---|
+| `webmasters.readonly` | Search Console: sites, sitemaps, search analytics, URL Inspection |
+| `analytics.readonly` | **Both** the GA4 Data API and the GA4 Admin API's read methods |
+
+The Admin API needs no scope of its own for reads, which is why there is no
+third entry. The writable siblings are deliberately absent: `webmasters`
+without the suffix would allow submitting and deleting sitemaps, and
+`analytics.edit` would allow reshaping your reporting. Nothing here needs
+either.
 
 ## Step 3 — create the service account
 
@@ -176,7 +196,7 @@ GA4_PROPERTY_ID=483920174
 ```
 
 ```sh
-npm run google:doctor     # all seven should pass
+npm run google:doctor     # all seven should pass, plus 6b for the Admin API
 ```
 
 ---
@@ -217,6 +237,7 @@ npm run google -- <command>
 | `errors` | Crawl problems, per sitemap and per URL |
 | `pages` | Clicks, impressions, CTR and position by page |
 | `queries` | What people searched before arriving |
+| `countries` | Impressions by country **and** visitors by country, side by side |
 | `realtime` | Who is on the site right now |
 | `downloads` | `download` and `download_intent` broken down by platform and source |
 | `all` | Every one of the above |
@@ -229,6 +250,14 @@ DAYS=90 npm run google -- queries    # widen the window; default is 28
 
 **Search Console lags two to three days.** The date range asked for ends three
 days ago on purpose; asking for today returns nothing and looks like a fault.
+
+**`countries` prints two tables, from two sources.** Search Console says which
+countries *see* the site in results; GA4 says which actually arrived. A country
+high in one and absent from the other is the interesting case — impressions
+without visits means the listing is being passed over. The two use different
+notations (ISO alpha-3 codes versus country names) and are printed as each
+returns them, because a mapping that silently mislabels a country is worse than
+two columns that need reading side by side.
 
 **`indexed` inspects one URL at a time** because Search Console has no API for
 the Index Coverage report — the list of indexed pages is not exposed, only
