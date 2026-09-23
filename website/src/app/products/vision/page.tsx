@@ -1,5 +1,6 @@
 'use client';
 
+import { trackDownloadIntent } from '@/components/Analytics';
 import { BreadcrumbJsonLd, FaqJsonLd, SoftwareApplicationJsonLd } from '@/components/JsonLd';
 import { PAGES, absoluteUrl } from '@/lib/seo';
 import HeroNotch from '@/components/vision/hero-notch';
@@ -61,7 +62,7 @@ export default function Home() {
   const [heroStatus, setHeroStatus] = useState<RecognitionPhase>('scanning');
   const [releaseOpen, setReleaseOpen] = useState(false);
   const releaseDialog = useRef<HTMLDialogElement>(null);
-  useEffect(() => { const handler = (e: MouseEvent) => { const link = (e.target as HTMLElement).closest('a[href="#release"]'); if (link) { e.preventDefault(); setReleaseOpen(true); } }; document.addEventListener('click', handler); return () => document.removeEventListener('click', handler); }, []);
+  useEffect(() => { const handler = (e: MouseEvent) => { const link = (e.target as HTMLElement).closest('a[href="#release"]'); if (link) { e.preventDefault(); setReleaseOpen(true); /* Every "Get Vision" on the page routes through here, so this is the one place demand can be counted. Not a download: there is no build to download yet, and the dialog says so. */ trackDownloadIntent({ product: 'vision', reason: 'not_yet_released' }); } }; document.addEventListener('click', handler); return () => document.removeEventListener('click', handler); }, []);
   useEffect(() => { if (releaseOpen) releaseDialog.current?.showModal(); else releaseDialog.current?.close(); }, [releaseOpen]);
   const [tagline, setTagline] = useState(0);
   const [activeStep, setActiveStep] = useState(0);

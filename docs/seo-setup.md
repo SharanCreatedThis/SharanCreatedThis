@@ -22,7 +22,7 @@ Settings → Variables and Secrets → Production**, then redeploy.
 
 | Variable | Value | Required? |
 |---|---|---|
-| `NEXT_PUBLIC_GA_ID` | `G-5WXREN35KS` | Set. Without it no analytics load |
+| `NEXT_PUBLIC_GA_ID` | `G-P36BKMQ2NG` | Set. Without it no analytics load |
 | `NEXT_PUBLIC_CLARITY_ID` | `ymfvvjj5ij` | Set. Without it no recordings |
 | `INDEXNOW_KEY` | `ddbcaf092f91e1b55e8e39c6e5d326ef` | Set. Without it no URL submissions |
 | `NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION` | — | **Not required.** Unset on purpose — Google is verified by DNS |
@@ -98,7 +98,7 @@ and Vision's update feed lives on the apex while Hangly's lives on `www`.
 2. Name it `sharancreatedthis.in`, timezone **India**, currency **INR**
 3. **Data streams → Add stream → Web**, URL `https://www.sharancreatedthis.in`
 4. Copy the **Measurement ID** (`G-…`) into `NEXT_PUBLIC_GA_ID`. This is done:
-   `G-5WXREN35KS` is committed in `website/.env.production`, because a
+   `G-P36BKMQ2NG` is committed in `website/.env.production`, because a
    measurement id is a public identifier that ships in the page source, not a
    credential. Setting the same variable in Cloudflare overrides the file
 5. Redeploy, then open the site and check **Reports → Realtime**

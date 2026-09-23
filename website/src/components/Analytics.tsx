@@ -149,3 +149,36 @@ export function trackEvent(name: string, params?: Record<string, unknown>) {
   // after load is still counted rather than silently dropped.
   (queue as (...args: unknown[]) => void)("event", name, params ?? {});
 }
+
+/**
+ * A download, reported the same way whichever product it belongs to.
+ *
+ * One helper rather than a `trackEvent("download", …)` call per button, so the
+ * parameter names cannot drift between products. They have to match exactly:
+ * GA4 reports on a custom parameter only after it is registered as a custom
+ * dimension, and `platform` registered once does not cover a `os` somewhere
+ * else — that second spelling is simply unreportable, silently.
+ */
+export function trackDownload(params: {
+  /** "hangly" | "vision" — the product, not the page. */
+  product: string;
+  /** "mac" | "windows-x64" | "windows-arm64". */
+  platform: string;
+  /** Which affordance was used: see docs/seo-setup.md for what each means. */
+  source: string;
+}) {
+  trackEvent("download", params);
+}
+
+/**
+ * Someone asked for a download that does not exist yet.
+ *
+ * Vision has no public build: its button opens a dialog saying the download is
+ * coming. That click is still the most valuable number on the page — it is
+ * demand, measured before launch — but it is emphatically not a download, and
+ * counting it as one would inflate the metric that decides whether the product
+ * is working. Separate event, separate name.
+ */
+export function trackDownloadIntent(params: { product: string; reason: string }) {
+  trackEvent("download_intent", params);
+}

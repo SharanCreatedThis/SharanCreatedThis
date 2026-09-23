@@ -17,7 +17,7 @@
  */
 
 import { useCallback, useEffect, useRef, useState } from 'react';
-import { trackEvent } from '@/components/Analytics';
+import { trackDownload } from '@/components/Analytics';
 import { ArrowDownToLine, ArrowUpRight, Check, ChevronRight, X } from 'lucide-react';
 
 export type PlatformId = 'mac' | 'windows-x64' | 'windows-arm64';
@@ -200,7 +200,7 @@ export function DownloadButton({ label, className = '' }: { label?: string; clas
       data-platform={ready ? recommended.id : undefined}
       // Which build people actually leave with, and whether the guess was the
       // one they took. Pageviews cannot answer either.
-      onClick={() => trackEvent('download', { product: 'hangly', platform: recommended.id, source: 'recommended_button' })}
+      onClick={() => trackDownload({ product: 'hangly', platform: recommended.id, source: 'recommended_button' })}
     >
       {mark({ size: 17 })}
       {label ?? recommended.button}
@@ -311,7 +311,7 @@ export function PlatformSheet() {
                 href={option.href}
                 className={recommended ? 'platform-option recommended' : 'platform-option'}
                 onClick={() => {
-                  trackEvent('download', {
+                  trackDownload({
                     product: 'hangly',
                     platform: id,
                     // A download from here is either one the guess got wrong or
