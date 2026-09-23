@@ -155,18 +155,18 @@ if (auth) {
         headers: { ...auth, "content-type": "application/json" },
         body: JSON.stringify({
           dateRanges: [{ startDate: "28daysAgo", endDate: "today" }],
-          dimensions: [{ name: "customEvent:platform" }],
+          dimensions: [{ name: "customEvent:download_platform" }],
           metrics: [{ name: "eventCount" }],
           limit: 1,
         }),
       });
       const registered = dims.ok;
       console.log(`  ${registered ? "✓" : "!"} 7. Custom dimensions registered`);
-      console.log(`       ${registered ? "platform is queryable" : "platform is not registered — download events cannot be broken down"}`);
+      console.log(`       ${registered ? "download_platform is queryable" : "download_platform is not registered — download events cannot be broken down"}`);
       if (!registered) {
         console.log("");
         console.log("       GA4 -> Admin -> Custom definitions -> Create custom dimension");
-        console.log("         Scope: Event.  Parameters: platform, source, reason");
+        console.log("         Scope: Event.  Parameters: download_platform, download_source, download_reason");
         console.log("       Not retroactive: data arriving before this is not backfilled.");
         console.log("");
       }

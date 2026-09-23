@@ -171,18 +171,28 @@ export function trackDownload(params: {
   /** Which affordance was used: see docs/seo-setup.md for what each means. */
   source: string;
 }) {
-  trackEvent("download", params);
+  trackEvent("download", {
+    product: params.product,
+    // Prefixed, and not negotiable. `source` is a RESERVED GA4 parameter: it
+    // feeds traffic attribution, so an event carrying one is read as "this
+    // session came from there". Sending source: "recommended_button" put
+    // thirty-eight sessions in the acquisition report under a button name and
+    // left customEvent:source blank, because the value never reached the
+    // custom dimension at all. `platform` collides with a built-in dimension
+    // of the same name for the same reason.
+    //
+    // Reserved parameters worth never using as custom ones: source, medium,
+    // campaign, term, content, and the gclid family.
+    download_platform: params.platform,
+    download_source: params.source,
+  });
 }
 
-/**
- * Someone asked for a download that does not exist yet.
- *
- * Vision has no public build: its button opens a dialog saying the download is
- * coming. That click is still the most valuable number on the page — it is
- * demand, measured before launch — but it is emphatically not a download, and
- * counting it as one would inflate the metric that decides whether the product
- * is working. Separate event, separate name.
- */
 export function trackDownloadIntent(params: { product: string; reason: string }) {
-  trackEvent("download_intent", params);
+  // Prefixed for the same reason, and for symmetry: one naming rule across
+  // both events is one rule to remember when registering the dimensions.
+  trackEvent("download_intent", {
+    product: params.product,
+    download_reason: params.reason,
+  });
 }

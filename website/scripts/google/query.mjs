@@ -241,8 +241,8 @@ const commands = {
       dateRanges: [{ startDate: `${DAYS}daysAgo`, endDate: "today" }],
       dimensions: [
         { name: "eventName" },
-        { name: "customEvent:platform" },
-        { name: "customEvent:source" },
+        { name: "customEvent:download_platform" },
+        { name: "customEvent:download_source" },
       ],
       metrics: [{ name: "eventCount" }],
       dimensionFilter: {
@@ -258,7 +258,7 @@ const commands = {
       // makes the parameters unqueryable rather than merely empty.
       if (/customEvent/.test(response.json?.error?.message ?? "")) {
         console.error("\nGA4 rejected the custom dimensions.");
-        console.error("  `platform` and `source` must be registered first:");
+        console.error("  `download_platform` and `download_source` must be registered first:");
         console.error("  GA4 → Admin → Custom definitions → Create custom dimension, scope Event.");
         console.error("  Registration is not retroactive, so do it before the data you want arrives.\n");
         return process.exit(1);
@@ -268,8 +268,8 @@ const commands = {
     console.log(`\nDownload events · last ${DAYS} days · property ${GA4}\n`);
     const data = rows(response.json).map((r) => ({
       event: r.eventName,
-      platform: r["customEvent:platform"] === "(not set)" ? "-" : r["customEvent:platform"],
-      source: r["customEvent:source"] === "(not set)" ? "-" : r["customEvent:source"],
+      platform: r["customEvent:download_platform"] === "(not set)" ? "-" : r["customEvent:download_platform"],
+      source: r["customEvent:download_source"] === "(not set)" ? "-" : r["customEvent:download_source"],
       count: r.eventCount,
     }));
     data.length

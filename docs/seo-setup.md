@@ -142,8 +142,7 @@ working.
 
 | Dimension name | Scope | Event parameter |
 |---|---|---|
-| `platform` | Event | `platform` |
-| `source` | Event | `source` |
+
 
 Registration is not retroactive. Data arriving before the dimension exists is
 not backfilled, so do this early.
