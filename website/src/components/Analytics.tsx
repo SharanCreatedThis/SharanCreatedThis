@@ -103,7 +103,11 @@ export function GoogleAnalytics() {
             // Sent manually by RouteTracker, which also covers client-side
             // navigation. Leaving this on would double-count the first page.
             send_page_view: false,
-            anonymize_ip: true,
+            // anonymize_ip is deliberately absent: it is a Universal Analytics
+            // field that GA4 ignores, since GA4 anonymises unconditionally.
+            // gtag echoes config fields onto every event as ep.*, so leaving it
+            // in put a parameter that means nothing on all 1100 of them.
+            //
             // navigator.sendBeacon, which the browser delivers even after the
             // page goes away. GA4 batches anything that is not a page_view and
             // flushes on a timer — measured at five to eight seconds — so a
