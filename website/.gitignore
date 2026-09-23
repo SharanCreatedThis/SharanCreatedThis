@@ -8,3 +8,6 @@
 # Local overrides only. .env.production is committed on purpose — see it.
 .env.local
 .env*.local
+# Editor backups of the env files — stale copies of live values.
+.env*.save
+.env*~
