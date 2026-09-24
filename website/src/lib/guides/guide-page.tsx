@@ -10,7 +10,8 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
-import { GUIDES, getGuide, type Guide } from "./guide-data";
+import { GUIDES, getGuide } from "./guide-data";
+import type { Guide, GuideSection } from "./entries";
 import { PERSON_ID, ORG_ID, SITE_ID } from "@/components/JsonLd";
 import { Alternatives, InShort, KeyTakeaways } from "@/components/aeo/AnswerBlocks";
 import { DownloadButton, DownloadNote, PlatformSheet } from "@/components/hangly/shared";
@@ -94,6 +95,43 @@ function guideSchema(g: Guide) {
   };
 }
 
+const anchor = (heading: string) => heading.replace(/\W+/g, "-").toLowerCase().replace(/^-|-$/g, "");
+
+/**
+ * One section: heading, prose, an optional list and an optional table of its
+ * own. The table is a section's rather than the guide's because the question
+ * worth tabulating differs from guide to guide — "does it interrupt you"
+ * earns a column in the pet guide and nowhere else.
+ */
+function Section({ section }: { section: GuideSection }) {
+  const id = anchor(section.heading);
+  return (
+    <section aria-labelledby={id}>
+      <h2 id={id}>{section.heading}</h2>
+      {section.body.map((p) => <p key={p.slice(0, 40)}>{p}</p>)}
+      {section.list && <ul className="guide-list">{section.list.map((l) => <li key={l}>{l}</li>)}</ul>}
+      {section.table && (
+        <div className="comparison-table-wrap">
+          <table className="comparison-table guide-table">
+            <caption className="sr-only">{section.table.caption}</caption>
+            <thead>
+              <tr>{section.table.columns.map((c) => <th key={c} scope="col">{c}</th>)}</tr>
+            </thead>
+            <tbody>
+              {section.table.rows.map((row) => (
+                <tr key={row[0]}>
+                  <th scope="row">{row[0]}</th>
+                  {row.slice(1).map((cell, i) => <td key={section.table!.columns[i + 1]}>{cell}</td>)}
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      )}
+    </section>
+  );
+}
+
 export function GuidePage({ slug }: { slug: string }) {
   const g = getGuide(slug);
   if (!g) return null;
@@ -119,13 +157,7 @@ export function GuidePage({ slug }: { slug: string }) {
 
         <KeyTakeaways points={g.takeaways} />
 
-        {g.sections.map((s) => (
-          <section key={s.heading} aria-labelledby={s.heading.replace(/\W+/g, "-").toLowerCase()}>
-            <h2 id={s.heading.replace(/\W+/g, "-").toLowerCase()}>{s.heading}</h2>
-            {s.body.map((p) => <p key={p.slice(0, 40)}>{p}</p>)}
-            {s.list && <ul className="guide-list">{s.list.map((l) => <li key={l}>{l}</li>)}</ul>}
-          </section>
-        ))}
+        {g.sections.map((s) => <Section key={s.heading} section={s} />)}
 
         <section aria-labelledby="the-apps">
           <h2 id="the-apps">The apps, compared</h2>
@@ -168,12 +200,7 @@ export function GuidePage({ slug }: { slug: string }) {
           </p>
         </section>
 
-        {g.closing.map((s) => (
-          <section key={s.heading} aria-labelledby={s.heading.replace(/\W+/g, "-").toLowerCase()}>
-            <h2 id={s.heading.replace(/\W+/g, "-").toLowerCase()}>{s.heading}</h2>
-            {s.body.map((p) => <p key={p.slice(0, 40)}>{p}</p>)}
-          </section>
-        ))}
+        {g.closing.map((s) => <Section key={s.heading} section={s} />)}
 
         <section aria-labelledby="guide-faq">
           <h2 id="guide-faq">Frequently asked questions</h2>
