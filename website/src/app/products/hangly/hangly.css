@@ -179,6 +179,14 @@
   :where(.hangly-container) .cta-cord{height:45px}
 }
 
+/* Collection-specific atmosphere for the Charms 3.0 additions. */
+:where(.hangly-container) .collection-card.football{background:radial-gradient(ellipse at 50% 30%,#358a4b38,transparent 70%),#111712}
+:where(.hangly-container) .collection-card.stranger-things{background:radial-gradient(ellipse at 50% 30%,#9d1d2c42,transparent 70%),#1b1114}
+:where(.hangly-container) .collection-card.singers{background:radial-gradient(ellipse at 50% 30%,#7a4cb43b,transparent 70%),#17121c}
+:where(.hangly-container) .collection-card.breaking-bad{background:radial-gradient(ellipse at 50% 30%,#4e8f5c3b,transparent 70%),#111713}
+:where(.hangly-container) .collection-card.friends{background:radial-gradient(ellipse at 50% 30%,#c95d4240,transparent 70%),#1a1412}
+:where(.hangly-container) .collection-card.dream-catcher{background:radial-gradient(ellipse at 50% 30%,#6b719942,transparent 70%),#13141a}
+
 /* The privacy page: one column of prose, in the same voice as the rest. */
 :where(.hangly-container) .legal{padding:40px 0 120px;max-width:760px}
 :where(.hangly-container) .legal-header{display:flex;align-items:center;justify-content:space-between;gap:24px;margin-bottom:64px}
