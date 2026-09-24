@@ -19,7 +19,9 @@
     "integrations:clarity": "node scripts/integrations/check.mjs clarity",
     "integrations:cloudflare": "node scripts/integrations/check.mjs cloudflare",
     "integrations:github": "node scripts/integrations/check.mjs github",
-    "site:health": "node scripts/integrations/health.mjs"
+    "site:health": "node scripts/integrations/health.mjs",
+    "bing": "node scripts/bing/report.mjs",
+    "clarity": "node scripts/clarity/report.mjs"
   },
   "dependencies": {
     "@fontsource/inter": "^5.3.0",

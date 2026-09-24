@@ -28,8 +28,48 @@ export function result(name, status, detail, extra = {}) {
   return { name, status, detail, ...extra };
 }
 
-/** A fetch that never throws: a network failure is a result, not a crash. */
+/**
+ * A fetch that never throws: a network failure is a result, not a crash.
+ *
+ * `retries` turns transient failures into successes rather than reporting them.
+ * Three classes of failure are worth retrying and no others:
+ *
+ *   - a timeout or socket error (status 0), which is what a slow upstream looks
+ *     like from here
+ *   - 429, where the service is asking us to slow down and usually says how
+ *     long to wait in Retry-After
+ *   - 5xx, which is the service's own fault and often momentary
+ *
+ * A 4xx other than 429 is never retried: a wrong token or a missing property
+ * will be just as wrong three seconds later, and retrying only delays the
+ * report of a problem the caller needs to see.
+ *
+ * Backoff is exponential with full jitter. Without jitter, several callers that
+ * fail together retry together and reproduce the burst that caused the failure.
+ */
 export async function request(url, options = {}) {
+  const attempts = (options.retries ?? 0) + 1;
+  let last;
+  for (let attempt = 1; attempt <= attempts; attempt++) {
+    last = await once(url, options);
+    const retryable = last.status === 0 || last.status === 429 || last.status >= 500;
+    if (!retryable || attempt === attempts) return { ...last, attempts: attempt };
+
+    // Honour Retry-After when the service states one; it knows better than a
+    // formula does. Capped so a hostile or mistaken header cannot stall a run.
+    const stated = Number(last.retryAfter);
+    const backoff = Math.min(1000 * 2 ** (attempt - 1), 8000);
+    const wait = Number.isFinite(stated) && stated > 0
+      ? Math.min(stated * 1000, 30_000)
+      : Math.random() * backoff;
+    options.onRetry?.({ attempt, of: attempts, status: last.status, waitMs: Math.round(wait) });
+    await new Promise((r) => setTimeout(r, wait));
+  }
+  return { ...last, attempts };
+}
+
+/** One attempt. Separated so the retry loop above stays readable. */
+async function once(url, options = {}) {
   try {
     const response = await fetch(url, {
       ...options,
@@ -42,7 +82,13 @@ export async function request(url, options = {}) {
     } catch {
       /* Not every API answers in JSON, and an error page never does. */
     }
-    return { ok: response.ok, status: response.status, json, text };
+    return {
+      ok: response.ok,
+      status: response.status,
+      json,
+      text,
+      retryAfter: response.headers.get("retry-after"),
+    };
   } catch (error) {
     return { ok: false, status: 0, json: null, text: String(error.message ?? error) };
   }

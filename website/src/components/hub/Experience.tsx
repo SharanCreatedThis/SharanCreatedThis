@@ -561,6 +561,11 @@ export function ProductShowcase({ full = false }: { full?: boolean }) {
               <Link className="button" href={product.link}>
                 Explore {product.title} <ArrowUpRight size={17} />
               </Link>
+              {product.secondary && (
+                <Link className="product-secondary-link" href={product.secondary.link}>
+                  {product.secondary.label}
+                </Link>
+              )}
             </div>
           </motion.article>
         ))}

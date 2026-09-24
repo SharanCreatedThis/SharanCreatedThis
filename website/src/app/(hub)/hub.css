@@ -2130,3 +2130,20 @@
 @media (min-width: 701px) {
   :where(.hub) .editorial-portrait { height: 120%; bottom: -22%; }
 }
+
+/* The second link on a product card. Quiet on purpose: it exists so deeper
+   pages have more than one inbound link, not to compete with the main call
+   to action beside it. */
+.product-secondary-link {
+  margin-left: 18px;
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.55);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  text-decoration-color: rgba(255, 255, 255, 0.2);
+  transition: color 0.25s, text-decoration-color 0.25s;
+}
+.product-secondary-link:hover {
+  color: rgba(255, 255, 255, 0.9);
+  text-decoration-color: currentColor;
+}

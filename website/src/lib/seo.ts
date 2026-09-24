@@ -312,7 +312,17 @@ export const PAGE_IMAGES: Partial<Record<PageKey, { url: string; title: string }
   ],
 };
 
-/** Absolute URL for a root-relative path. Crawlers need absolute; humans don't. */
+/**
+ * Absolute URL for a root-relative path. Crawlers need absolute; humans don't.
+ *
+ * The root deliberately has no trailing slash. Next resolves `alternates.
+ * canonical: "/"` against metadataBase to `https://host` with none, so a
+ * sitemap that wrote `https://host/` disagreed with the canonical tag on the
+ * one page most likely to be crawled. The two are the same resource and Google
+ * normalises them, but a sitemap entry and a canonical tag that do not match
+ * character for character is the kind of small contradiction that is free to
+ * remove and annoying to diagnose later.
+ */
 export function absoluteUrl(path: string): string {
-  return path === "/" ? `${SITE_URL}/` : `${SITE_URL}${path}`;
+  return path === "/" ? SITE_URL : `${SITE_URL}${path}`;
 }

@@ -63,6 +63,52 @@ export async function gsc(path, options = {}) {
   });
 }
 
+/**
+ * One URL Inspection call, with the timeout and retries that endpoint needs.
+ *
+ * Measured against this property: a mean of 8.6 seconds per call and a p99 past
+ * twenty. The shared default of twenty seconds was therefore not a safety net
+ * but a coin toss — `/about` aborted at 20006ms and took the whole command with
+ * it. Inspection is slow because it is not a cache read: Google resolves the
+ * URL's current index state per request.
+ *
+ * Sixty seconds and two retries. Slower than everything else here and
+ * deliberately so.
+ */
+export function inspect(url) {
+  return gsc("/v1/urlInspection/index:inspect", {
+    method: "POST",
+    body: JSON.stringify({ inspectionUrl: url, siteUrl: PROPERTY }),
+    timeoutMs: 60_000,
+    retries: 2,
+    onRetry: ({ attempt, of, status, waitMs }) =>
+      console.log(`    retry ${attempt}/${of} after ${status === 0 ? "timeout" : status} \u2014 waiting ${waitMs}ms`),
+  });
+}
+
+/**
+ * Runs a job over each item with a bounded number in flight.
+ *
+ * Nine inspections in series took 78 seconds, which is long enough that a
+ * person stops watching and a CI step looks hung. Google's quota is 600 a
+ * minute against 2000 a day, so the daily allowance binds long before the rate
+ * does and there is room to run several at once. Four is deliberately modest:
+ * the aim is to stop the command feeling broken, not to race the quota.
+ */
+export async function mapLimit(items, limit, job) {
+  const results = new Array(items.length);
+  let next = 0;
+  await Promise.all(
+    Array.from({ length: Math.min(limit, items.length) }, async () => {
+      while (next < items.length) {
+        const i = next++;
+        results[i] = await job(items[i], i);
+      }
+    }),
+  );
+  return results;
+}
+
 export async function ga(method, body) {
   if (!GA4) {
     console.error("\nGA4_PROPERTY_ID is not set — the numeric id from GA4 → Admin → Property details.");
