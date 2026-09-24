@@ -14,11 +14,16 @@ machines. They cannot be changed, and they do not agree on a host:
 | Product | `SUFeedURL` compiled into every installed copy | Host |
 |---|---|---|
 | Hangly | `https://www.sharancreatedthis.in/products/hangly/appcast.xml` | **www** |
-| Vision | `https://sharancreatedthis.in/products/vision/appcast.xml` | **apex** |
+| Vision | `https://www.sharancreatedthis.in/products/vision/appcast.xml` | **www** |
 
-A redirect from the apex to `www` therefore moves Vision's feed and leaves
-Hangly's alone. Sparkle follows redirects, so it *should* be transparent — and
-"should" is the word that makes this worth testing rather than assuming.
+**Corrected 2026-09-24.** Vision's feed was believed to be on the apex. Reading
+`Info.plist` inside the shipped `Vision-1.1.dmg` shows otherwise: its
+`SUFeedURL` is `www`. **Neither product depends on the apex**, which removes
+the specific hazard this plan was written around.
+
+A redirect from the apex to `www` therefore moves neither feed: both already
+point at `www` and would not be redirected at all. The remaining risk is a
+badly written rule, not a moved feed — which is what stage 1 tests.
 
 Two specific things deserve checking rather than trust:
 

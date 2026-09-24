@@ -6,6 +6,7 @@ import Collections from "@/components/hangly/Collections";
 import HowItWorks from "@/components/hangly/HowItWorks";
 import Demo from "@/components/hangly/Demo";
 import Creator from "@/components/hangly/Creator";
+import Compare from "@/components/hangly/Compare";
 import Faq from "@/components/hangly/Faq";
 import FaqJsonLd from "@/components/hangly/FaqJsonLd";
 import CTA from "@/components/hangly/CTA";
@@ -51,6 +52,7 @@ export default function Home() {
         <Collections />
         <HowItWorks />
         <Demo />
+        <Compare />
         <Faq />
         <Creator />
         <CTA />

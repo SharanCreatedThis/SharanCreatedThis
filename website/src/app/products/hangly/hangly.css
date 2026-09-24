@@ -306,3 +306,12 @@
 :where(.hangly-container) .comparison-others a{display:inline-block;padding:9px 15px;border:1px solid var(--border);border-radius:30px;font-size:13.5px;color:var(--muted);transition:border-color .25s,color .25s}
 :where(.hangly-container) .comparison-others a:hover{border-color:#ffb36b45;color:var(--text)}
 @media(max-width:720px){:where(.hangly-container) .comparison-wins-grid{grid-template-columns:1fr}}
+
+/* Links out to the comparison pages. */
+:where(.hangly-container) .hangly-compare{padding-block:80px}
+:where(.hangly-container) .compare-grid{list-style:none;padding:0;margin:44px 0 0;display:grid;grid-template-columns:repeat(auto-fit,minmax(248px,1fr));gap:11px}
+:where(.hangly-container) .compare-grid a{display:flex;align-items:center;justify-content:space-between;gap:14px;padding:17px 19px;border:1px solid var(--border);border-radius:14px;background:#ffffff05;font-size:14.5px;color:var(--text);transition:border-color .25s,background .25s,transform .25s}
+:where(.hangly-container) .compare-grid a:hover{border-color:#ffb36b45;background:#ff7a1a0d;transform:translateY(-2px)}
+:where(.hangly-container) .compare-grid svg{flex:none;color:#8d8176;transition:color .25s,transform .25s}
+:where(.hangly-container) .compare-grid a:hover svg{color:var(--glow);transform:translate(3px,-3px)}
+@media(prefers-reduced-motion:reduce){:where(.hangly-container) .compare-grid a:hover{transform:none}}
