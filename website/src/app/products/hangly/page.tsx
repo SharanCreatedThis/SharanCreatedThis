@@ -37,9 +37,9 @@ export default function Home() {
         <Collections />
         <HowItWorks />
         <Demo />
+        <Creator />
         <Compare />
         <Faq />
-        <Creator />
         <CTA />
       </main>
       <Footer />
