@@ -58,6 +58,14 @@ export type Comparison = {
   /** The five AEO questions every comparison answers. */
   answers: AnswerBlock[];
   faqs: Faq[];
+  /** 40-80 words. The answer, before the argument. */
+  quickAnswer: string;
+  /** 3-5 bullets. */
+  takeaways: string[];
+  /** One paragraph, at the end. */
+  inShort: string;
+  /** Specific use cases, named. */
+  bestFor: { who: string; why: string }[];
   /** Date the competitor's site was read. */
   checked: string;
 };
@@ -71,6 +79,22 @@ const MENU_BAR_ANSWER =
 export const COMPARISONS: Comparison[] = [
   {
     slug: "lucky-dangle",
+    quickAnswer:
+      "Both hang a charm on a cord from the top of your screen, on Mac and Windows, and neither intercepts clicks. Hangly is free and ships over thirty charms across eleven collections plus charms made from your own images. Choose Lucky Dangle if its curated set is what you want and you prefer a smaller product.",
+    takeaways: [
+      "Both are click-through: neither blocks what is underneath",
+      "Hangly is free; check Lucky Dangle's current pricing",
+      "Hangly ships 30+ charms across 11 collections and accepts your own images",
+      "Only Hangly publishes a native Windows ARM64 build",
+      "Lucky Dangle is the simpler product, which some people prefer",
+    ],
+    inShort:
+      "These are the two closest products in the category. Hangly wins on breadth \u2014 charm count, collections, custom images, cord styles, ARM64 \u2014 and is free. Lucky Dangle wins if you want fewer decisions and its designs suit you. Both cost nothing to try.",
+    bestFor: [
+      { who: "Someone who wants their own photo hanging on screen", why: "Hangly turns any image into a charm; Lucky Dangle does not advertise this." },
+      { who: "A Windows-on-ARM laptop", why: "Hangly ships a native ARM64 binary rather than running under x64 emulation." },
+      { who: "Someone who finds options tiring", why: "Lucky Dangle's curated set means fewer decisions." },
+    ],
     name: "Lucky Dangle",
     url: "https://luckydangle.app",
     title: "Hangly vs Lucky Dangle: Desktop Charms Compared",
@@ -158,6 +182,22 @@ export const COMPARISONS: Comparison[] = [
   },
   {
     slug: "screen-dangle",
+    quickAnswer:
+      "Both are free desktop charm apps for Mac and Windows. Screen Dangle is a studio: you build the charm. Hangly is a library: you pick from eleven finished collections, with your own images available when nothing fits. Neither costs anything, so the fastest way to decide is to try both.",
+    takeaways: [
+      "Both free, both Mac and Windows",
+      "Screen Dangle is built around configuring a charm yourself",
+      "Hangly is built around eleven finished collections",
+      "Screen Dangle has by far the larger published content surface",
+      "Only Hangly publishes a native Windows ARM64 build",
+    ],
+    inShort:
+      "A genuine toss-up, and both are free. Take Screen Dangle if building the charm is the appeal; take Hangly if you would rather hang something finished in under a minute.",
+    bestFor: [
+      { who: "Someone who enjoys configuring things", why: "Screen Dangle's studio is built for exactly that." },
+      { who: "Someone who wants a charm on screen immediately", why: "Hangly's eleven collections mean no setup." },
+      { who: "Anyone wanting a specific cultural charm", why: "Hangly's Protection and Tamil Divine sets ship them ready-made." },
+    ],
     name: "Screen Dangle",
     url: "https://od2.in/screen-dangle",
     title: "Hangly vs Screen Dangle: Free Desktop Charms",
@@ -239,6 +279,22 @@ export const COMPARISONS: Comparison[] = [
   },
   {
     slug: "danglejoy",
+    quickAnswer:
+      "Both hang animated cultural and lucky charms that sway on screen. Hangly is free, publishes exactly what it ships \u2014 over thirty charms across eleven named collections \u2014 accepts your own images, and runs on Windows including native ARM64. DangleJoy's designs may simply be the ones you prefer.",
+    takeaways: [
+      "Both centre on cultural and lucky charm designs",
+      "Hangly is free with no paid tier",
+      "Hangly names its collections and publishes a charm count",
+      "Only Hangly accepts your own images as charms",
+      "DangleJoy's own designs are a matter of taste",
+    ],
+    inShort:
+      "Overlapping almost exactly in intent. Hangly publishes more and costs nothing; DangleJoy is worth checking if its particular animations appeal.",
+    bestFor: [
+      { who: "Someone wanting Indian charms specifically", why: "Hangly ships a named Tamil Divine collection plus Nazar and Drishti Bommai." },
+      { who: "Someone on Windows ARM", why: "Hangly has the native build." },
+      { who: "Someone who likes DangleJoy's art", why: "Design taste is a legitimate reason to choose either." },
+    ],
     name: "DangleJoy",
     url: "https://danglejoy.com",
     title: "Hangly vs DangleJoy: Animated Desktop Charms",
@@ -311,6 +367,22 @@ export const COMPARISONS: Comparison[] = [
   },
   {
     slug: "charmly",
+    quickAnswer:
+      "Near-identical in concept: a charm on a cord with real pendulum physics that never intercepts a click. Charmly is a focused Mac app. Hangly adds Windows including native ARM64, eleven collections, custom charms from your own images, three cord styles and adjustable sizing, and is free.",
+    takeaways: [
+      "Same core idea, down to the pendulum physics",
+      "Charmly is Mac only; Hangly also runs on Windows including ARM64",
+      "Hangly ships 30+ charms across 11 collections",
+      "Only Hangly accepts your own images",
+      "Charmly is the more focused product",
+    ],
+    inShort:
+      "If you are on a Mac and want the simplest version of this idea, Charmly is a reasonable choice. If you want more charms, your own images, or Windows, Hangly.",
+    bestFor: [
+      { who: "Anyone on Windows", why: "Charmly is presented as a Mac app; Hangly runs on Windows 10+ including ARM64." },
+      { who: "Someone who wants one charm and no settings", why: "Charmly is deliberately focused." },
+      { who: "Someone with a photo they want hanging", why: "Hangly turns any image into a charm." },
+    ],
     name: "Charmly",
     url: "https://www.glaze.app/app/charmly-rmKwV7",
     title: "Hangly vs Charmly: Mac Desktop Charms",
@@ -387,6 +459,22 @@ export const COMPARISONS: Comparison[] = [
   },
   {
     slug: "shimeji",
+    quickAnswer:
+      "Shimeji characters roam, climb windows and drag them about, and the popular version today is a browser extension confined to web pages. Hangly is a native app that hangs one charm across every application and never interrupts. Both accept your own artwork; only Hangly needs a single image rather than a sprite sheet.",
+    takeaways: [
+      "Shimeji roams and manipulates windows; Hangly stays put",
+      "Shimeji's popular form is a browser extension, limited to web pages",
+      "Hangly is a native app visible across every application",
+      "Shimeji has a vast community character library",
+      "Hangly needs one image; Shimeji needs a sprite sheet",
+    ],
+    inShort:
+      "Different products for different wants. Shimeji for an animated character with a huge library; Hangly for something present everywhere that cannot interrupt and is signed and notarised.",
+    bestFor: [
+      { who: "Someone who lives in the browser", why: "Shimeji runs there with nothing to install." },
+      { who: "Someone who wants it visible in every app", why: "Hangly is a native app, not an extension." },
+      { who: "Someone with one image and no patience for sprite sheets", why: "Hangly takes a single image." },
+    ],
     name: "Shimeji",
     url: "https://shimejis.xyz",
     title: "Hangly vs Shimeji: Desktop Companions Compared",
@@ -468,6 +556,22 @@ export const COMPARISONS: Comparison[] = [
   },
   {
     slug: "desktop-goose",
+    quickAnswer:
+      "Desktop Goose interferes with your work on purpose \u2014 mud on the screen, stolen cursor, notes dragged into view. Hangly cannot interfere at all: it is click-through and never takes focus. They appeal to the same instinct for company on screen and behave in opposite ways. Choose by whether you want to be interrupted.",
+    takeaways: [
+      "Desktop Goose is deliberately disruptive; that is the joke",
+      "Hangly is click-through and never takes focus",
+      "Hangly is safe during meetings, demos and screen shares",
+      "Desktop Goose has a cultural following Hangly does not",
+      "If you loved the goose for the chaos, Hangly will disappoint you",
+    ],
+    inShort:
+      "Opposites. Keep Desktop Goose for the joke on a day you can afford it; take Hangly if you want presence on screen without any risk of interruption.",
+    bestFor: [
+      { who: "Anyone who screen-shares for work", why: "Hangly cannot interrupt; Desktop Goose will." },
+      { who: "Someone who wants to laugh", why: "Desktop Goose is genuinely funny and Hangly is not trying to be." },
+      { who: "Someone on a laptop on battery", why: "Hangly stops animating at rest; the goose never stops moving." },
+    ],
     name: "Desktop Goose",
     url: "https://samperson.itch.io/desktop-goose",
     title: "Hangly vs Desktop Goose: Calm or Chaos",
@@ -549,6 +653,22 @@ export const COMPARISONS: Comparison[] = [
   },
   {
     slug: "runcat",
+    quickAnswer:
+      "These are not alternatives. RunCat animates a menu bar icon at a speed set by CPU load, so it is a system monitor. Hangly hangs a decorative charm and reports nothing. They occupy different slots and running both is common and sensible.",
+    takeaways: [
+      "RunCat reports CPU, memory and network through animation speed",
+      "Hangly is decoration with no monitoring function",
+      "RunCat is macOS only; Hangly also runs on Windows",
+      "Neither replaces the other",
+      "Running both together is normal",
+    ],
+    inShort:
+      "Not competitors. If you want to know what your machine is doing, RunCat. If you want the top of the screen to be pleasant, Hangly. Most people who want both simply install both.",
+    bestFor: [
+      { who: "Someone watching CPU load", why: "RunCat is a monitor; Hangly reports nothing." },
+      { who: "Someone on Windows", why: "RunCat is Mac only." },
+      { who: "Someone who wants both", why: "They do not conflict \u2014 different slots, different jobs." },
+    ],
     name: "RunCat",
     url: "https://kyome.io/runcat",
     title: "Hangly vs RunCat: Decoration or Monitoring",
@@ -627,6 +747,22 @@ export const COMPARISONS: Comparison[] = [
   },
   {
     slug: "dockling",
+    quickAnswer:
+      "Dockling generates a pixel pet from a photo and attaches Pomodoro timers, streaks and notes, for $2.99 on Mac. Hangly hangs a charm and deliberately adds nothing to your workflow, free, on Mac and Windows. Choose by whether you want your ornament to also prompt you.",
+    takeaways: [
+      "Dockling adds Pomodoro timers, streaks and quick notes",
+      "Hangly adds no workflow features, on purpose",
+      "Dockling is $2.99 and Mac only; Hangly is free and cross-platform",
+      "Both turn your own photo into something on screen",
+      "Hangly ships 30+ ready-made charms; Dockling generates from your photo",
+    ],
+    inShort:
+      "Dockling if you want the character to also run your timer. Hangly if you want decoration that asks nothing of you, free, on either platform.",
+    bestFor: [
+      { who: "Someone who wants a Pomodoro timer with a face", why: "That is exactly what Dockling is for." },
+      { who: "Someone who finds productivity features distracting", why: "Hangly has none." },
+      { who: "Anyone on Windows", why: "Dockling is Mac only." },
+    ],
     name: "Dockling",
     url: "https://dockling.space",
     title: "Hangly vs Dockling: Charm or Productivity Pet",

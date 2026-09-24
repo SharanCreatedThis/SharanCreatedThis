@@ -21,6 +21,7 @@ import {
   absoluteUrl,
 } from "@/lib/seo";
 import { profile } from "@/data/portfolio";
+import { ID, siteGraph, softwareNode, HANGLY_APP, VISION_APP } from "@/lib/schema/entities";
 
 type Schema = Record<string, unknown>;
 
@@ -46,9 +47,9 @@ function JsonLd({ id, schema }: { id: string; schema: Schema | Schema[] }) {
  * second entity as far as a knowledge graph is concerned — the whole value of
  * an `@id` is that separate pages resolve to one thing.
  */
-export const PERSON_ID = `${SITE_URL}/#person`;
-export const SITE_ID = `${SITE_URL}/#website`;
-export const ORG_ID = `${SITE_URL}/#organization`;
+export const PERSON_ID = ID.person;
+export const SITE_ID = ID.website;
+export const ORG_ID = ID.organization;
 
 /**
  * The site-wide graph: who made this, what the site is, and who publishes it.
@@ -64,55 +65,11 @@ export function SiteJsonLd() {
       id="site"
       schema={{
         "@context": "https://schema.org",
-        "@graph": [
-          {
-            "@type": "Person",
-            "@id": PERSON_ID,
-            name: PERSON.name,
-            alternateName: PERSON.alternateName,
-            jobTitle: PERSON.jobTitle,
-            description: DEFAULT_DESCRIPTION,
-            url: SITE_URL,
-            email: `mailto:${PERSON.email}`,
-            image: absoluteUrl(profile.portrait),
-            sameAs: PERSON.sameAs,
-            knowsAbout: [
-              "Filmmaking",
-              "Cinematography",
-              "Photography",
-              "Creative Direction",
-              "macOS Development",
-              "SwiftUI",
-              "Product Design",
-            ],
-            nationality: { "@type": "Country", name: "India" },
-          },
-          {
-            "@type": "Organization",
-            "@id": ORG_ID,
-            name: SITE_NAME,
-            url: SITE_URL,
-            description: DEFAULT_DESCRIPTION,
-            founder: { "@id": PERSON_ID },
-            logo: {
-              "@type": "ImageObject",
-              url: absoluteUrl("/icon.png"),
-              width: 512,
-              height: 512,
-            },
-            sameAs: PERSON.sameAs,
-          },
-          {
-            "@type": "WebSite",
-            "@id": SITE_ID,
-            name: SITE_NAME,
-            url: SITE_URL,
-            description: DEFAULT_DESCRIPTION,
-            inLanguage: "en-IN",
-            publisher: { "@id": ORG_ID },
-            author: { "@id": PERSON_ID },
-          },
-        ],
+        // Person, Organization, WebSite and both applications, on every page.
+        // A page that references #hangly without the node existing anywhere is
+        // a dangling pointer; emitting the set once site-wide removes the
+        // question of which page happens to define it.
+        "@graph": [...siteGraph(), softwareNode(HANGLY_APP), softwareNode(VISION_APP)],
       }}
     />
   );

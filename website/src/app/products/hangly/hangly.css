@@ -357,3 +357,56 @@
 :where(.hangly-container) .comparison-head .eyebrow,:where(.hangly-container) .guide-head .eyebrow,:where(.hangly-container) .faq-page-head .eyebrow{font-size:10.5px;letter-spacing:2.1px;color:var(--glow)}
 @media(prefers-reduced-motion:reduce){:where(.hangly-container) .compare-index a:hover{transform:none}}
 @media(max-width:640px){:where(.hangly-container) .guide-cta{padding:24px 20px}}
+
+/* ── AEO blocks ───────────────────────────────────────────────────────── */
+:where(.hangly-container) .aeo-quick{border-left:3px solid var(--accent);padding:2px 0 2px 22px;margin:38px 0 10px}
+:where(.hangly-container) .aeo-quick h2{font-size:12px!important;letter-spacing:2px;text-transform:uppercase;color:var(--glow);margin:0 0 10px!important}
+:where(.hangly-container) .aeo-quick p{font-size:17.5px;line-height:1.72;color:var(--text);max-width:68ch;margin:0}
+:where(.hangly-container) .aeo-takeaways ul{list-style:none;padding:0;margin:0;display:grid;gap:11px}
+:where(.hangly-container) .aeo-takeaways li{position:relative;padding-left:24px;font-size:15.5px;line-height:1.7;color:var(--muted);max-width:68ch}
+:where(.hangly-container) .aeo-takeaways li::before{content:"";position:absolute;left:4px;top:10px;width:7px;height:7px;border-radius:50%;background:var(--accent)}
+:where(.hangly-container) .aeo-bestfor dl{margin:0;display:grid;gap:16px}
+:where(.hangly-container) .aeo-bestfor dt{font-size:15.5px;font-weight:600;color:var(--text);margin-bottom:4px}
+:where(.hangly-container) .aeo-bestfor dd{margin:0;font-size:14.5px;line-height:1.7;color:var(--muted);max-width:68ch}
+:where(.hangly-container) .aeo-alternatives ul{list-style:none;padding:0;margin:0;display:grid;gap:13px}
+:where(.hangly-container) .aeo-alternatives a{display:inline-flex;align-items:center;gap:6px;font-size:15px;font-weight:500;color:var(--accent)}
+:where(.hangly-container) .aeo-alternatives span{display:block;margin-top:3px;font-size:14px;line-height:1.65;color:var(--muted);max-width:66ch}
+:where(.hangly-container) .aeo-inshort{border-top:1px solid var(--border);padding-top:28px;margin-top:56px}
+:where(.hangly-container) .aeo-inshort p{font-size:16px;line-height:1.78;color:var(--muted);max-width:70ch}
+
+/* ── Install steps and the changelog ─────────────────────────────────────
+   Both are lists of things that happened in an order, so both are numbered
+   and both keep the number out of the text rather than inside it. */
+.install-steps { counter-reset: step; list-style: none; padding: 0; margin: 1.6rem 0 0; }
+.install-steps > li { counter-increment: step; position: relative; padding: 0 0 1.5rem 3.1rem; }
+.install-steps > li::before {
+  content: counter(step);
+  position: absolute; left: 0; top: .1rem;
+  display: grid; place-items: center;
+  width: 2.1rem; height: 2.1rem; border-radius: 50%;
+  background: color-mix(in srgb, var(--accent, #f0803c) 14%, transparent);
+  color: var(--accent, #f0803c);
+  font: 600 .85rem/1 var(--font-display, inherit);
+  font-variant-numeric: tabular-nums;
+}
+.install-steps > li > h3 { margin: 0 0 .35rem; font-size: 1.02rem; }
+.install-steps > li > p { margin: 0; }
+
+.changelog { display: grid; gap: 2.2rem; margin-top: 1.4rem; }
+.changelog-entry { border-left: 2px solid color-mix(in srgb, currentColor 12%, transparent); padding-left: 1.4rem; }
+.changelog-entry > h3 { margin: 0 0 .3rem; display: flex; align-items: baseline; gap: .6rem; flex-wrap: wrap; }
+.changelog-platform {
+  font: 500 .68rem/1 var(--font-body, inherit); letter-spacing: .08em; text-transform: uppercase;
+  padding: .3rem .5rem; border-radius: 999px;
+  background: color-mix(in srgb, currentColor 8%, transparent); opacity: .8;
+}
+.changelog-meta { margin: 0 0 .8rem; font-size: .86rem; opacity: .62; }
+
+/* ── The shared footer on the compare/guides/faq/download sections ─────── */
+.section-footer { margin-top: 5rem; padding: 3.2rem 0 2rem; border-top: 1px solid color-mix(in srgb, currentColor 10%, transparent); }
+.section-footer-inner { display: grid; gap: 2.2rem; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); }
+.section-footer h2 { margin: 0 0 .8rem; font: 600 .72rem/1 var(--font-body, inherit); letter-spacing: .1em; text-transform: uppercase; opacity: .5; }
+.section-footer ul { list-style: none; margin: 0; padding: 0; display: grid; gap: .48rem; }
+.section-footer a { font-size: .92rem; opacity: .78; text-decoration: none; }
+.section-footer a:hover { opacity: 1; text-decoration: underline; }
+.section-footer-bottom { display: flex; justify-content: space-between; gap: 1rem; flex-wrap: wrap; margin-top: 2.6rem; font-size: .82rem; opacity: .5; }

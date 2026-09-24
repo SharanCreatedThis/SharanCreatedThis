@@ -10,6 +10,8 @@ export function Footer() {
             one click. That is what holds crawl depth at three from the home
             page, and it is how those sections earn inbound links from pages
             Google already crawls rather than from the sitemap alone. */}
+        <Link href="/download">Download</Link>
+        <Link href="/install">Install</Link>
         <Link href="/faq">FAQ</Link>
         <Link href="/compare">Compare</Link>
         <Link href="/guides">Guides</Link>

@@ -12,6 +12,7 @@ import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
 import { GUIDES, getGuide, type Guide } from "./guide-data";
 import { PERSON_ID, ORG_ID, SITE_ID } from "@/components/JsonLd";
+import { Alternatives, InShort, KeyTakeaways } from "@/components/aeo/AnswerBlocks";
 import { DownloadButton, DownloadNote, PlatformSheet } from "@/components/hangly/shared";
 import { SITE_NAME, absoluteUrl } from "@/lib/seo";
 
@@ -116,6 +117,8 @@ export function GuidePage({ slug }: { slug: string }) {
           <p className="guide-summary">{g.summary}</p>
         </header>
 
+        <KeyTakeaways points={g.takeaways} />
+
         {g.sections.map((s) => (
           <section key={s.heading} aria-labelledby={s.heading.replace(/\W+/g, "-").toLowerCase()}>
             <h2 id={s.heading.replace(/\W+/g, "-").toLowerCase()}>{s.heading}</h2>
@@ -181,6 +184,8 @@ export function GuidePage({ slug }: { slug: string }) {
           </div>
         </section>
 
+        <InShort>{g.inShort}</InShort>
+
         <section className="guide-cta" aria-labelledby="try-hangly">
           <h2 id="try-hangly">Try Hangly</h2>
           <p>
@@ -196,15 +201,14 @@ export function GuidePage({ slug }: { slug: string }) {
           <DownloadNote />
         </section>
 
-        <section aria-labelledby="read-next">
-          <h2 id="read-next">Read next</h2>
-          <ul className="comparison-others">
-            {g.related.map((r) => <li key={r.href}><Link href={r.href}>{r.label}</Link></li>)}
-            {GUIDES.filter((x) => x.slug !== g.slug && !g.related.some((r) => r.href.endsWith(x.slug)))
+        <Alternatives
+          items={[
+            ...g.related.map((r) => ({ label: r.label, href: r.href, note: "" })),
+            ...GUIDES.filter((x) => x.slug !== g.slug && !g.related.some((r) => r.href.endsWith(x.slug)))
               .slice(0, 3)
-              .map((x) => <li key={x.slug}><Link href={`/guides/${x.slug}`}>{x.h1}</Link></li>)}
-          </ul>
-        </section>
+              .map((x) => ({ label: x.h1, href: `/guides/${x.slug}`, note: x.summary.split(". ")[0] + "." })),
+          ]}
+        />
       </main>
       <PlatformSheet />
     </>

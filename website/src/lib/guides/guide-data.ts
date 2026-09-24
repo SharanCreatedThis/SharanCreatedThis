@@ -36,6 +36,10 @@ export type Guide = {
   h1: string;
   /** The direct answer, first thing on the page and first thing liftable. */
   summary: string;
+  /** 3-5 bullets, straight after the summary. The page in a glance. */
+  takeaways: string[];
+  /** One paragraph at the end, for someone who scrolled past everything. */
+  inShort: string;
   /** Long-form body before the table. */
   sections: GuideSection[];
   /** The comparison table. */
@@ -236,6 +240,15 @@ const TYPIBARA: GuideEntry = {
 export const GUIDES: Guide[] = [
   {
     slug: "best-desktop-charm-apps-for-mac",
+    takeaways: [
+      "Hangly, Screen Dangle and Screen Charms are free; Drishti Dangle is \u20b999",
+      "Only Hangly and Screen Dangle also run on Windows, and only Hangly ships a native ARM64 build",
+      "Drishti Dangle is the only one with musical wind chimes",
+      "Screen Dangle is a studio for building a charm; Hangly is a library of finished ones",
+      "All of them are click-through, so none will interrupt your work",
+    ],
+    inShort:
+      "Four of the five are free, so the cost of trying is your time. Take Hangly for the widest ready-made collection and the only Windows ARM64 build, Screen Dangle if configuring the charm is the appeal, Drishti Dangle if you want wind chimes, and Screen Charms if you want the smallest possible Mac app.",
     title: "Best Desktop Charm Apps for Mac (2026)",
     description:
       "Eight desktop charm apps for macOS compared — Hangly, Lucky Dangle, Screen Dangle, Charmly, Screen Charms, Drishti Dangle and more. Prices and platforms.",
@@ -315,6 +328,15 @@ export const GUIDES: Guide[] = [
   },
   {
     slug: "best-desktop-pets-for-mac",
+    takeaways: [
+      "MicroJoyz is the most feature-rich; Cat Fidget the most privacy-clean",
+      "Dockling is $2.99 and doubles as a Pomodoro timer",
+      "Desktop Goose is disruptive on purpose \u2014 that is the whole joke",
+      "OpenPets is the only open-source option",
+      "If you want presence without interruption, a charm app such as Hangly fits better than a pet",
+    ],
+    inShort:
+      "Desktop pets move, and movement is either the point or the problem. If it is the point, MicroJoyz or Cat Fidget. If you want a timer attached, Dockling. If you want to laugh once, Desktop Goose. If you want something on screen that cannot interrupt a meeting, you want a charm rather than a pet.",
     title: "Best Desktop Pets for Mac (2026)",
     description:
       "Desktop pets for macOS compared — MicroJoyz, Cat Fidget, Dockitty, Dockling, Shimeji, Desktop Goose and OpenPets. What each does and what it costs.",
@@ -387,6 +409,15 @@ export const GUIDES: Guide[] = [
   },
   {
     slug: "best-menu-bar-customisation-apps-for-mac",
+    takeaways: [
+      "Organising the bar is Bartender (paid) or Ice (free, open source)",
+      "Monitoring through the bar is RunCat, which animates at the speed of your CPU",
+      "Decorating is Cat Fidget in the bar, or Hangly hanging a charm below it",
+      "These are three separate jobs and most people only want one",
+      "Nothing here conflicts: an organiser, a monitor and a decoration can all run at once",
+    ],
+    inShort:
+      "Decide which of the three jobs you actually want and the choice makes itself. Bartender or Ice to tidy, RunCat to monitor, Cat Fidget or Hangly to decorate. Running one of each together is normal and none of them fight.",
     title: "Best Menu Bar Customisation Apps for Mac (2026)",
     description:
       "What the macOS menu bar can be made to do — organising, monitoring and decorating. RunCat, Cat Fidget, Hangly and where each genuinely fits.",
@@ -456,6 +487,15 @@ export const GUIDES: Guide[] = [
   },
   {
     slug: "lucky-dangle-alternatives",
+    takeaways: [
+      "Hangly is the closest match: free, 30+ charms, custom images, Windows including ARM64",
+      "Screen Dangle is also free and built around configuring your own charm",
+      "Drishti Dangle at \u20b999 for Indian designs and wind chimes",
+      "Screen Charms for a minimal Mac-only app",
+      "Lucky Dangle itself remains a reasonable choice if its charm set is the one you want",
+    ],
+    inShort:
+      "Most people leaving Lucky Dangle want more charms, their own images, or Windows \u2014 and Hangly covers all three at no cost. Screen Dangle suits the opposite instinct, building the charm yourself. Neither costs anything, so try both before deciding.",
     title: "Lucky Dangle Alternatives (2026)",
     description:
       "Seven alternatives to Lucky Dangle compared — Hangly, Screen Dangle, Charmly, Screen Charms and more. Free options, Windows support and custom charms.",
@@ -512,6 +552,15 @@ export const GUIDES: Guide[] = [
   },
   {
     slug: "screen-dangle-alternatives",
+    takeaways: [
+      "Hangly is the closest alternative: free, 30+ charms across 11 named collections",
+      "Hangly still accepts your own images, so you lose nothing by picking rather than building",
+      "Drishti Dangle at \u20b999 adds Indian designs and musical wind chimes",
+      "Screen Charms and Charmly are minimal Mac-only options",
+      "Only Hangly publishes a native Windows ARM64 build",
+    ],
+    inShort:
+      "Screen Dangle is a studio and Hangly is a library, which is the whole difference. If configuring a charm stopped being fun, Hangly gives you eleven finished collections and still takes your own images. Both are free.",
     title: "Screen Dangle Alternatives (2026)",
     description:
       "Alternatives to Screen Dangle — Hangly, Lucky Dangle, Charmly, Screen Charms and Drishti Dangle. Free options with ready-made charm collections.",
@@ -567,6 +616,15 @@ export const GUIDES: Guide[] = [
   },
   {
     slug: "desktop-goose-alternatives",
+    takeaways: [
+      "The first question is whether you want to keep the chaos or lose it",
+      "Keep it: Shimeji, which roams and drags your windows about",
+      "Lose it but keep the company: MicroJoyz or Cat Fidget",
+      "Lose it completely: Hangly, which is click-through and cannot steal focus",
+      "Only the last group is safe during a meeting or a screen share",
+    ],
+    inShort:
+      "Desktop Goose is funny precisely because it interferes, so replacing it means deciding how much interference you still want. Shimeji keeps the mischief, MicroJoyz and Cat Fidget keep the company without the sabotage, and Hangly keeps only the presence.",
     title: "Desktop Goose Alternatives (2026)",
     description:
       "Alternatives to Desktop Goose for Mac and Windows — calmer pets and charms that do not interrupt. Shimeji, MicroJoyz, Cat Fidget and Hangly compared.",
@@ -635,6 +693,15 @@ export const GUIDES: Guide[] = [
   },
   {
     slug: "charmly-alternatives",
+    takeaways: [
+      "The usual reasons to leave Charmly are wanting Windows or more charms",
+      "Hangly covers both: free, 30+ charms, Windows including native ARM64",
+      "Only Hangly turns your own images into charms",
+      "Screen Charms is the closest free Mac-only equivalent",
+      "Charmly is still the right pick if you want one charm and no settings",
+    ],
+    inShort:
+      "Charmly does one thing well and that is a real virtue. Move if you need Windows, a larger collection, or your own photo on a cord; stay if the simplicity is what you liked about it.",
     title: "Charmly Alternatives (2026)",
     description:
       "Alternatives to Charmly for Mac and Windows — Hangly, Screen Dangle, Screen Charms, Lucky Dangle and Drishti Dangle. Free options and Windows support.",

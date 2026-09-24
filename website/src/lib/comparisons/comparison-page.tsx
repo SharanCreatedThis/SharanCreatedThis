@@ -19,6 +19,7 @@ import Link from "next/link";
 import { ArrowUpRight, Check, Minus } from "lucide-react";
 import { COMPARISONS, getComparison, type Comparison } from "./comparison-data";
 import { comparisonSchema, serialise } from "./comparison-schema";
+import { Alternatives, BestFor, InShort, KeyTakeaways, QuickAnswer } from "@/components/aeo/AnswerBlocks";
 import { DownloadButton, DownloadNote, PlatformSheet } from "@/components/hangly/shared";
 import { SITE_NAME, absoluteUrl } from "@/lib/seo";
 
@@ -85,6 +86,9 @@ export function ComparisonPage({ slug }: { slug: string }) {
           </div>
           <DownloadNote />
         </header>
+
+        <QuickAnswer>{c.quickAnswer}</QuickAnswer>
+        <KeyTakeaways points={c.takeaways} />
 
         <Section id="what-is" heading={`What is ${c.name}?`}>
           <p>{c.whatIsIt}</p>
@@ -177,16 +181,24 @@ export function ComparisonPage({ slug }: { slug: string }) {
           </p>
         </section>
 
-        <section aria-labelledby="other-cmp">
-          <h2 id="other-cmp">Other comparisons</h2>
-          <ul className="comparison-others">
-            {others.map((o) => (
-              <li key={o.slug}>
-                <Link href={`/compare/${o.slug}`}>Hangly vs {o.name}</Link>
-              </li>
-            ))}
-          </ul>
-        </section>
+        <BestFor cases={c.bestFor} />
+
+        <Alternatives
+          items={[
+            ...others.map((o) => ({
+              label: `Hangly vs ${o.name}`,
+              href: `/compare/${o.slug}`,
+              note: o.verdict,
+            })),
+            {
+              label: "Every desktop charm app for Mac, compared",
+              href: "/guides/best-desktop-charm-apps-for-mac",
+              note: "The whole category in one table, including the ones with no page here.",
+            },
+          ]}
+        />
+
+        <InShort>{c.inShort}</InShort>
       </main>
       <PlatformSheet />
     </>

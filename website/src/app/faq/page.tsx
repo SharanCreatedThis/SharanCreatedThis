@@ -6,6 +6,7 @@ import { COMPARISONS } from "@/lib/comparisons";
 import { PERSON_ID, ORG_ID, SITE_ID } from "@/components/JsonLd";
 import { DownloadButton, DownloadNote, PlatformSheet } from "@/components/hangly/shared";
 import { SITE_NAME, absoluteUrl } from "@/lib/seo";
+import { ID } from "@/lib/schema/entities";
 
 /**
  * The FAQ, as its own indexable page.
@@ -50,7 +51,7 @@ const schema = {
       isPartOf: { "@id": SITE_ID },
       author: { "@id": PERSON_ID },
       publisher: { "@id": ORG_ID },
-      about: { "@id": `${absoluteUrl("/products/hangly")}#app` },
+      about: { "@id": ID.hangly },
       mainEntity: ALL_FAQS.map((f) => ({
         "@type": "Question",
         name: f.q,

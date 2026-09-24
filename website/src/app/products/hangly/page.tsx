@@ -12,7 +12,7 @@ import FaqJsonLd from "@/components/hangly/FaqJsonLd";
 import CTA from "@/components/hangly/CTA";
 import Footer from "@/components/hangly/Footer";
 import { PlatformSheet } from "@/components/hangly/Download";
-import { BreadcrumbJsonLd, SoftwareApplicationJsonLd } from "@/components/JsonLd";
+import { BreadcrumbJsonLd } from "@/components/JsonLd";
 import { PAGES, absoluteUrl } from "@/lib/seo";
 
 export default function Home() {
@@ -24,21 +24,6 @@ export default function Home() {
           { name: "Products", path: "/products" },
           { name: "Hangly", path: PAGES.hangly.path },
         ]}
-      />
-      <SoftwareApplicationJsonLd
-        app={{
-          name: "Hangly",
-          description: PAGES.hangly.description,
-          url: absoluteUrl(PAGES.hangly.path),
-          // Both, because the same product page now serves both downloads.
-          operatingSystem: ["macOS 14", "Windows 10"],
-          applicationCategory: "DesktopEnhancementApplication",
-          // The macOS version, which is the mature one. Windows is still 0.9.x
-          // and claiming it here would understate the product.
-          softwareVersion: "2.0.0",
-          downloadUrl: absoluteUrl("/products/hangly/download"),
-          screenshot: absoluteUrl(PAGES.hangly.image),
-        }}
       />
       <FaqJsonLd />
       <PageMotion />

@@ -12,6 +12,7 @@
 
 import { PERSON_ID, ORG_ID, SITE_ID } from "@/components/JsonLd";
 import { SITE_NAME, absoluteUrl } from "@/lib/seo";
+import { ID } from "@/lib/schema/entities";
 import type { Comparison } from "./comparison-data";
 
 /** Escapes the one character that could close the script tag early. */
@@ -34,7 +35,7 @@ export function comparisonSchema(c: Comparison) {
         description: c.description,
         inLanguage: "en-IN",
         isPartOf: { "@id": SITE_ID },
-        about: { "@id": `${absoluteUrl("/products/hangly")}#app` },
+        about: { "@id": ID.hangly },
         primaryImageOfPage: { "@type": "ImageObject", url: absoluteUrl("/og/hangly.png") },
         datePublished: c.checked,
         dateModified: c.checked,

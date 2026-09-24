@@ -66,7 +66,24 @@ const isAsset = (p) => /\.[a-z0-9]{2,12}$/i.test(p);
 const isRedirect = (p) => redirects.has(p) || [...redirects].some((r) => r.endsWith("/") && p.startsWith(r));
 
 const one = (html, re) => (html.match(re) || [, ""])[1]?.trim() ?? "";
-const text = (html) => html.replace(/<script[\s\S]*?<\/script>/g, " ").replace(/<style[\s\S]*?<\/style>/g, " ").replace(/<[^>]+>/g, " ").replace(/\s+/g, " ").trim();
+/**
+ * Visible text, with entities decoded.
+ *
+ * Decoding is not cosmetic. React escapes a quotation mark in a text node to
+ * `&quot;`, so a FAQ answer or a HowTo step containing quoted UI text — "Windows
+ * protected your PC" — never matched the schema string it came from, and the
+ * checks below reported perfectly visible content as missing.
+ */
+const ENTITIES = { amp: "&", lt: "<", gt: ">", quot: '"', apos: "'", nbsp: " ", "#x27": "'", "#39": "'" };
+const decode = (s) =>
+  s.replace(/&(#x?[0-9a-f]+|[a-z]+);/gi, (whole, name) => {
+    const key = name.toLowerCase();
+    if (key in ENTITIES) return ENTITIES[key];
+    if (/^#x/i.test(name)) return String.fromCodePoint(parseInt(name.slice(2), 16));
+    if (/^#/.test(name)) return String.fromCodePoint(Number(name.slice(1)));
+    return whole;
+  });
+const text = (html) => decode(html.replace(/<script[\s\S]*?<\/script>/g, " ").replace(/<style[\s\S]*?<\/style>/g, " ").replace(/<[^>]+>/g, " ")).replace(/\s+/g, " ").trim();
 
 /* ── per-page metadata ────────────────────────────────────────────────── */
 const titles = new Map();
@@ -149,6 +166,77 @@ for (const [path, html] of pages) {
         }
       }
     }
+  }
+}
+
+/* ── breadcrumbs and HowTo ────────────────────────────────────────────────
+   A BreadcrumbList that names a page Google cannot reach, or a HowTo whose
+   steps exist only in schema, are both invisible in a browser and both a
+   guidelines problem. Neither announces itself, so both are checked here. */
+for (const [path, html] of pages) {
+  const visible = text(html);
+  for (const m of html.matchAll(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/g)) {
+    let parsed;
+    try { parsed = JSON.parse(m[1]); } catch { continue; }
+    for (const node of parsed["@graph"] ?? [parsed]) {
+      if (node["@type"] === "BreadcrumbList") {
+        const trail = node.itemListElement ?? [];
+        if (!trail.length) { errors.push(`${path}: BreadcrumbList with no items`); continue; }
+        trail.forEach((step, i) => {
+          if (step.position !== i + 1) errors.push(`${path}: breadcrumb position ${step.position} at index ${i + 1}`);
+          if (!step.name) errors.push(`${path}: breadcrumb step ${i + 1} has no name`);
+        });
+        const last = trail[trail.length - 1];
+        const here = SITE + (path === "/" ? "" : path);
+        if (last?.item && last.item.replace(/\/$/, "") !== here) {
+          errors.push(`${path}: breadcrumb ends at ${last.item}, not this page`);
+        }
+      }
+      if (node["@type"] === "HowTo") {
+        const steps = node.step ?? [];
+        if (steps.length < 2) errors.push(`${path}: HowTo with ${steps.length} step(s)`);
+        for (const step of steps) {
+          const probe = (step.text ?? "").replace(/\s+/g, " ").slice(0, 45);
+          if (probe.length > 20 && !visible.includes(probe)) {
+            errors.push(`${path}: HowTo step not visible on the page — "${(step.name ?? "").slice(0, 40)}"`);
+            break;
+          }
+        }
+      }
+    }
+  }
+}
+
+/* ── pages that must carry a breadcrumb ──────────────────────────────────
+   Anything below the root. A crawler works out a hierarchy from links alone,
+   but a breadcrumb is what puts the path into the result itself. */
+for (const [path, html] of pages) {
+  if (path === "/" || path.split("/").length < 3) continue;
+  if (!html.includes('"BreadcrumbList"')) errors.push(`${path}: nested page with no BreadcrumbList`);
+}
+
+/* ── the entity graph resolves ────────────────────────────────────────────
+   A reference like {"@id": ".../products/hangly#app"} with no node of that id
+   on the page is a pointer into nothing. Schema validators do not complain —
+   the JSON is valid — and the page renders identically, so the only symptom is
+   that the entity quietly does not connect. Renaming an id and missing one
+   reference is exactly how it happens. */
+for (const [path, html] of pages) {
+  const declared = new Set();
+  const referenced = new Set();
+  for (const m of html.matchAll(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/g)) {
+    let parsed;
+    try { parsed = JSON.parse(m[1]); } catch { continue; }
+    (function visit(node) {
+      if (Array.isArray(node)) return node.forEach(visit);
+      if (!node || typeof node !== "object") return;
+      // A node declares an id; a bare {"@id": …} only points at one.
+      if (node["@id"]) (node["@type"] ? declared : referenced).add(node["@id"]);
+      Object.values(node).forEach(visit);
+    })(parsed);
+  }
+  for (const id of referenced) {
+    if (!declared.has(id)) errors.push(`${path}: JSON-LD references @id ${id}, which nothing on the page defines`);
   }
 }
 

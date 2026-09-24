@@ -1,7 +1,7 @@
 'use client';
 
 import { trackDownloadIntent } from '@/components/Analytics';
-import { BreadcrumbJsonLd, FaqJsonLd, SoftwareApplicationJsonLd } from '@/components/JsonLd';
+import { BreadcrumbJsonLd, FaqJsonLd } from '@/components/JsonLd';
 import { PAGES, absoluteUrl } from '@/lib/seo';
 import HeroNotch from '@/components/vision/hero-notch';
 import Biometric from '@/components/vision/biometric';
@@ -108,21 +108,6 @@ export default function Home() {
       ]}
     />
     <FaqJsonLd faqs={faqs} path={PAGES.vision.path} />
-    <SoftwareApplicationJsonLd
-      app={{
-        name: 'Vision',
-        description: PAGES.vision.description,
-        url: absoluteUrl(PAGES.vision.path),
-        // The footer and the app itself both say macOS 15; kept in step here.
-        operatingSystem: ['macOS 15'],
-        applicationCategory: 'UtilitiesApplication',
-        // Matches public/products/vision/appcast.xml, which is never edited
-        // from here: every installed copy of Vision reads that feed.
-        softwareVersion: '1.1',
-        downloadUrl: absoluteUrl('/products/vision/download'),
-        screenshot: absoluteUrl(PAGES.vision.image),
-      }}
-    />
     <dialog ref={releaseDialog} className="release-dialog" aria-labelledby="release-title" onCancel={() => setReleaseOpen(false)} onClick={e => { if (e.target === e.currentTarget) setReleaseOpen(false); }}><div className="release-inner"><button type="button" className="dialog-close" aria-label="Close release information" onClick={() => setReleaseOpen(false)} autoFocus><X size={20} /></button><span className="release-icon"><ScanFace size={36} strokeWidth={1.2} /></span><Eyebrow>THE NEXT WAY IN</Eyebrow><h2 id="release-title">A little closer<br />to the future.</h2><p>Vision’s public download is coming soon.</p><span className="release-detail">The preview is here. A verified macOS release link will be available when the app is ready.</span><div className="release-requirements"><span><Check size={15} />macOS 15 Sequoia or later</span><span><Check size={15} />Apple Silicon or Intel</span><span><Check size={15} />Camera & Accessibility permissions</span></div><a href={DOCS} className="button button-orange">Read the getting-started guide<ArrowUpRight size={16} /></a><button type="button" className="text-button" onClick={() => { setReleaseOpen(false); playDemo(); }}>Explore the interactive demo<Play size={13} /></button></div></dialog>
     <a className="skip-link" href="#main">Skip to content</a>
     <header className="site-header"><div className="header-inner"><Brand /><nav className="desktop-nav" aria-label="Main navigation"><a href="#features">Discover</a><a href="#experience">Experience</a><a href="#privacy">Privacy</a><a href="#faq">FAQs</a></nav><a href={DOWNLOAD} className="nav-download">Get Vision <ArrowUpRight size={15} /></a><button className="menu-toggle" type="button" aria-label={menuOpen ? 'Close menu' : 'Open menu'} aria-expanded={menuOpen} aria-controls="mobile-navigation" onClick={() => setMenuOpen(!menuOpen)}>{menuOpen ? <X /> : <Menu />}</button></div><AnimatePresence>{menuOpen && <motion.nav id="mobile-navigation" className="mobile-nav" aria-label="Mobile navigation" initial={{ opacity: 0, height: 0 }} animate={{ opacity: 1, height: 'auto' }} exit={{ opacity: 0, height: 0 }}>{['features', 'experience', 'privacy', 'faq'].map((id, i) => <a key={id} href={`#${id}`} onClick={() => setMenuOpen(false)}>{['Discover', 'Experience', 'Privacy', 'FAQs'][i]}<ArrowUpRight size={18} /></a>)}</motion.nav>}</AnimatePresence></header>

@@ -5,7 +5,8 @@ import "@fontsource/inter/500.css";
 import "@fontsource/inter-tight/600.css";
 import "@fontsource/inter-tight/700.css";
 
-export default function GuidesLayout({ children }: { children: React.ReactNode }) {
+/** Borrows Hangly's visual language: a visitor here is mid-download. */
+export default function Layout({ children }: { children: React.ReactNode }) {
   return <div className="hangly-container w-full min-h-screen">{children}
       <SectionFooter /></div>;
 }

@@ -290,6 +290,14 @@ export function dynamicPages(): PageSeo[] {
   // data/hangly-comparisons.ts; it reaches the sitemap from here.
   const shared = { image: "/og/hangly.png", changeFrequency: "monthly" as const };
   return [
+    // The download, install and changelog pages. They carry the queries that
+    // convert — "download hangly for windows arm", "hangly smartscreen" — which
+    // a product page cannot rank for without burying its own pitch.
+    { path: "/download", title: "Download Hangly", description: "Every build.", ...shared, priority: 0.9 },
+    { path: "/download/mac", title: "Hangly for Mac", description: "The macOS build.", ...shared, priority: 0.8 },
+    { path: "/download/windows", title: "Hangly for Windows", description: "x64 and ARM64.", ...shared, priority: 0.8 },
+    { path: "/install", title: "Installing Hangly", description: "Step by step, both platforms.", ...shared, priority: 0.7 },
+    { path: "/changelog", title: "Changelog", description: "Every release of both apps.", ...shared, priority: 0.6 },
     { path: "/faq", title: "Hangly FAQ", description: "Fifty answers about Hangly.", ...shared, priority: 0.8 },
     { path: "/compare", title: "Hangly compared", description: "Eight honest comparisons.", ...shared, priority: 0.7 },
     { path: "/guides", title: "Guides", description: "Desktop charms, pets and Mac customisation.", ...shared, priority: 0.7 },
