@@ -15,8 +15,8 @@ export const products: Product[] = [
   {
     id: "hangly",
     title: "Hangly",
-    tagline: "Mac Menu Bar Companions",
-    description: "Physics-powered menu bar companions for macOS. Interactive, charming, and responsive workspace accessories.",
+    tagline: "Desktop Charm Companion",
+    description: "Physics-powered desktop charms for macOS and Windows. Interactive, charming, and responsive workspace accessories.",
     buttonText: "Open Hangly",
     link: "/products/hangly",
     badge: "Available Now",

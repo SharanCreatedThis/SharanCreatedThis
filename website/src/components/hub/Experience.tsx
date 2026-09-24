@@ -499,7 +499,7 @@ export function ProductShowcase({ full = false }: { full?: boolean }) {
             <p>
               Small ideas. Real software.
               <br />
-              Made for your Mac.
+              Made for your desktop.
             </p>
           </div>
         </Reveal>
@@ -529,7 +529,7 @@ export function ProductShowcase({ full = false }: { full?: boolean }) {
           >
             <div className="gateway-top">
               <span>INDEPENDENT SOFTWARE</span>
-              <span>macOS <ArrowUpRight className="inline-arrow" aria-hidden="true" /></span>
+              <span>{product.id === "hangly" ? "macOS + Windows" : "macOS"} <ArrowUpRight className="inline-arrow" aria-hidden="true" /></span>
             </div>
             <div className="product-visual">
               {i === 0 ? (

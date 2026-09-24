@@ -86,7 +86,7 @@ export default function Privacy() {
             else, and it is used for nothing but counting installs.
           </li>
           <li>
-            <strong>Build and system.</strong> App version, build number, macOS version.
+            <strong>Build and system.</strong> App version, build number, operating-system version.
           </li>
           <li>
             <strong>Lifecycle.</strong> First launch, launch, quit.
@@ -184,7 +184,7 @@ export default function Privacy() {
       </section>
 
       <p className="legal-foot">
-        Hangly is an independent macOS app. Not affiliated with Apple.
+        Hangly is an independent desktop app for macOS and Windows. Not affiliated with Apple or Microsoft.
       </p>
     </main>
     </>

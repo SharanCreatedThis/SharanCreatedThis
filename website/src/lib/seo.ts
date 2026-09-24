@@ -165,9 +165,9 @@ export const PAGES: Record<PageKey, PageSeo> = {
   },
   products: {
     path: "/products",
-    title: "Independent Products · Mac Apps by Sharan Created This",
+    title: "Independent Desktop Apps by Sharan Created This",
     description:
-      "Hangly and Vision: small, independent Mac and Windows apps built for people who care how their desktop feels. Free to download.",
+      "Hangly for macOS and Windows, and Vision for Mac: small, independent desktop apps built for people who care how their desktop feels. Free to download.",
     image: "/og/products.png",
     changeFrequency: "monthly",
     priority: 0.9,
@@ -185,7 +185,7 @@ export const PAGES: Record<PageKey, PageSeo> = {
     path: "/products/hangly/privacy",
     title: "Hangly · Privacy",
     description:
-      "What Hangly sends, what it never sends, and how to switch it off. Three things leave your Mac, and two of them are optional.",
+      "What Hangly sends, what it never sends, and how to switch it off. Three things leave your desktop, and two of them are optional.",
     image: "/og/hangly.png",
     changeFrequency: "yearly",
     priority: 0.3,
