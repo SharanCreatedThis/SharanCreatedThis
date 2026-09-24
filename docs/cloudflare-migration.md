@@ -35,10 +35,19 @@ build emits redirects for both hosts.
 | Product | `SUFeedURL` compiled into every installed copy |
 |---|---|
 | Hangly | `https://www.sharancreatedthis.in/products/hangly/appcast.xml` |
-| Vision | `https://sharancreatedthis.in/products/vision/appcast.xml` |
+| Vision | `https://www.sharancreatedthis.in/products/vision/appcast.xml` |
 
-Note the difference: **Hangly's is `www`, Vision's is the apex.** Vision only works
-today because Vercel redirects the apex to `www` and Sparkle follows redirects.
+**Corrected 2026-09-24.** This table previously said Vision's feed was on the
+apex. It is not: `CFBundleVersion 3` inside `Vision-1.1.dmg` declares
+`SUFeedURL = https://www.sharancreatedthis.in/products/vision/appcast.xml`,
+read straight from the shipped app's Info.plist. **Both products read `www`.**
+
+That materially lowers the risk of the apex → www redirect, which had been
+deferred on the belief that Vision depended on the apex. Nothing installed
+does. The redirect still deserves the verification in
+[apex-to-www-plan.md](./apex-to-www-plan.md) — a rule that drops the path would
+still break `www` requests — but the specific hazard that justified waiting
+turns out not to exist.
 
 > **Mandatory cutover item: the apex → www redirect must exist on Cloudflare before
 > DNS moves.** Without it every installed copy of Vision silently stops updating.

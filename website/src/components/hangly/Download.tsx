@@ -19,8 +19,12 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
 import { trackDownload } from '@/components/Analytics';
 import { ArrowDownToLine, ArrowUpRight, Check, ChevronRight, X } from 'lucide-react';
+// The facts about each build live outside this file so that the download,
+// install and changelog pages — all server components — can read them without
+// pulling a client module into the server graph.
+import { BUILDS, BUILD_ORDER, type BuildId } from '@/lib/downloads';
 
-export type PlatformId = 'mac' | 'windows-x64' | 'windows-arm64';
+export type PlatformId = BuildId;
 
 function AppleMark({ size = 18 }: { size?: number }) {
   return (
@@ -38,55 +42,22 @@ function WindowsMark({ size = 17 }: { size?: number }) {
   );
 }
 
-type Platform = {
-  id: PlatformId;
-  /** Where the button points. A stable site path, resolved to the real archive
-   *  by the redirects in scripts/generate-download-redirects.mjs. */
-  href: string;
-  /** On the button, once this platform is the recommended one. */
-  button: string;
-  /** In the chooser. */
-  name: string;
-  requirement: string;
-  detail: string;
+type Platform = (typeof BUILDS)[BuildId] & {
+  /** The mark is the only thing the chooser adds to a build's facts. */
   mark: (props: { size?: number }) => React.ReactElement;
-  /** Windows is still at 0.9.x and published as a pre-release. Say so. */
-  beta?: boolean;
 };
 
-export const PLATFORMS: Record<PlatformId, Platform> = {
-  mac: {
-    id: 'mac',
-    href: '/products/hangly/download',
-    button: 'Download for macOS',
-    name: 'macOS',
-    requirement: 'macOS 14+',
-    detail: 'Apple Silicon & Intel',
-    mark: AppleMark,
-  },
-  'windows-x64': {
-    id: 'windows-x64',
-    href: '/products/hangly/download/windows-x64',
-    button: 'Download for Windows',
-    name: 'Windows',
-    requirement: 'Windows 10+',
-    detail: 'Intel & AMD 64-bit',
-    mark: WindowsMark,
-    beta: true,
-  },
-  'windows-arm64': {
-    id: 'windows-arm64',
-    href: '/products/hangly/download/windows-arm64',
-    button: 'Download for Windows',
-    name: 'Windows on ARM',
-    requirement: 'Windows 11+',
-    detail: 'Snapdragon & ARM64',
-    mark: WindowsMark,
-    beta: true,
-  },
+const MARKS: Record<PlatformId, Platform['mark']> = {
+  mac: AppleMark,
+  'windows-x64': WindowsMark,
+  'windows-arm64': WindowsMark,
 };
 
-const ORDER: PlatformId[] = ['mac', 'windows-x64', 'windows-arm64'];
+export const PLATFORMS: Record<PlatformId, Platform> = Object.fromEntries(
+  BUILD_ORDER.map(id => [id, { ...BUILDS[id], mark: MARKS[id] }]),
+) as Record<PlatformId, Platform>;
+
+const ORDER: PlatformId[] = BUILD_ORDER;
 
 // ---------------------------------------------------------------------------
 // Detection

@@ -8,7 +8,7 @@
  * further wrapping.
  */
 
-import { GA4, PROPERTY, SITE, explain, ga, gsc, rows, table, token } from "./api.mjs";
+import { GA4, PROPERTY, SITE, explain, ga, gsc, inspect, mapLimit, rows, table, token } from "./api.mjs";
 
 const DAYS = Number(process.env.DAYS ?? 28);
 const since = (n) => new Date(Date.now() - n * 864e5).toISOString().slice(0, 10);
@@ -32,27 +32,40 @@ const commands = {
   async indexed() {
     const sitemap = await fetch(`${SITE}/sitemap.xml`).then((r) => r.text());
     const urls = [...sitemap.matchAll(/<loc>([^<]+)<\/loc>/g)].map((m) => m[1]);
-    console.log(`\nIndexing status · ${urls.length} URLs from the sitemap\n`);
+    console.log(`\nIndexing status \u00b7 ${urls.length} URLs from the sitemap\n`);
 
-    const out = [];
-    for (const url of urls) {
-      const response = await gsc("/v1/urlInspection/index:inspect", {
-        method: "POST",
-        body: JSON.stringify({ inspectionUrl: url, siteUrl: PROPERTY }),
-      });
-      if (!response.ok) return explain(response, "URL inspection"), process.exit(1);
-      const result = response.json.inspectionResult?.indexStatusResult ?? {};
-      out.push({
-        page: new URL(url).pathname,
-        verdict: result.verdict ?? "?",
-        coverage: (result.coverageState ?? "").slice(0, 44),
-        crawled: result.lastCrawlTime?.slice(0, 10) ?? "never",
-        robots: result.robotsTxtState ?? "?",
-      });
-    }
+    // A failed inspection is reported in its own row rather than ending the
+    // run. One URL Google is slow about should not cost you the other eight.
+    const out = await mapLimit(urls, 4, async (url) => {
+      const response = await inspect(url);
+      const path = new URL(url).pathname;
+      if (!response.ok) {
+        return {
+          page: path,
+          verdict: "ERROR",
+          coverage: response.status === 0
+            ? `unreachable after ${response.attempts} attempts`
+            : `HTTP ${response.status}`,
+          crawled: "-",
+          robots: "-",
+        };
+      }
+      const r = response.json.inspectionResult?.indexStatusResult ?? {};
+      return {
+        page: path,
+        verdict: r.verdict ?? "?",
+        coverage: (r.coverageState ?? "").slice(0, 44),
+        crawled: r.lastCrawlTime?.slice(0, 10) ?? "never",
+        robots: (r.robotsTxtState ?? "").replace("ROBOTS_TXT_STATE_UNSPECIFIED", "not checked"),
+      };
+    });
+
     table(out);
     const indexed = out.filter((r) => r.verdict === "PASS").length;
-    console.log(`\n  ${indexed}/${out.length} indexed. "never" crawled means Google has not reached it yet.\n`);
+    const failed = out.filter((r) => r.verdict === "ERROR").length;
+    console.log(`\n  ${indexed}/${out.length} indexed.` +
+      (failed ? `  ${failed} could not be inspected.` : "") +
+      `\n  "never" crawled means Google knows the URL but has not fetched it \u2014 crawl budget, not a block.\n`);
   },
 
   /** Sitemap status, including the field that answers "Couldn't fetch". */
@@ -101,12 +114,17 @@ const commands = {
     const sitemap = await fetch(`${SITE}/sitemap.xml`).then((r) => r.text());
     const urls = [...sitemap.matchAll(/<loc>([^<]+)<\/loc>/g)].map((m) => m[1]);
     const problems = [];
-    for (const url of urls) {
-      const response = await gsc("/v1/urlInspection/index:inspect", {
-        method: "POST",
-        body: JSON.stringify({ inspectionUrl: url, siteUrl: PROPERTY }),
-      });
-      if (!response.ok) return explain(response, "URL inspection"), process.exit(1);
+    const inspections = await mapLimit(urls, 4, async (url) => ({ url, response: await inspect(url) }));
+    for (const { url, response } of inspections) {
+      if (!response.ok) {
+        problems.push({
+          page: new URL(url).pathname,
+          verdict: "ERROR",
+          reason: response.status === 0 ? `inspection timed out after ${response.attempts} attempts` : `HTTP ${response.status}`,
+          robots: "",
+        });
+        continue;
+      }
       const r = response.json.inspectionResult ?? {};
       const index = r.indexStatusResult ?? {};
       if (index.verdict !== "PASS") {
@@ -117,8 +135,13 @@ const commands = {
           robots: index.robotsTxtState ?? "?",
         });
       }
-      for (const [name, section] of [["mobile", r.mobileUsabilityResult], ["rich results", r.richResultsResult]]) {
-        if (section && section.verdict && section.verdict !== "PASS") {
+      // VERDICT_UNSPECIFIED means "not evaluated", not "failed". Google retired
+      // the Mobile Usability report in 2023 and the field has returned
+      // UNSPECIFIED for every URL since, so treating it as a problem flagged
+      // all nine pages every run — a report that always cries wolf is one
+      // nobody reads. Only an explicit FAIL is a finding.
+      for (const [name, section] of [["mobile usability", r.mobileUsabilityResult], ["rich results", r.richResultsResult]]) {
+        if (section?.verdict === "FAIL") {
           problems.push({ page: new URL(url).pathname, verdict: section.verdict, reason: `${name} issue`, robots: "" });
         }
       }

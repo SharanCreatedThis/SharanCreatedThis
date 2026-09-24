@@ -1,7 +1,7 @@
 'use client';
 
 import { trackDownloadIntent } from '@/components/Analytics';
-import { BreadcrumbJsonLd, FaqJsonLd, SoftwareApplicationJsonLd } from '@/components/JsonLd';
+import { BreadcrumbJsonLd, FaqJsonLd } from '@/components/JsonLd';
 import { PAGES, absoluteUrl } from '@/lib/seo';
 import HeroNotch from '@/components/vision/hero-notch';
 import Biometric from '@/components/vision/biometric';
@@ -108,21 +108,6 @@ export default function Home() {
       ]}
     />
     <FaqJsonLd faqs={faqs} path={PAGES.vision.path} />
-    <SoftwareApplicationJsonLd
-      app={{
-        name: 'Vision',
-        description: PAGES.vision.description,
-        url: absoluteUrl(PAGES.vision.path),
-        // The footer and the app itself both say macOS 15; kept in step here.
-        operatingSystem: ['macOS 15'],
-        applicationCategory: 'UtilitiesApplication',
-        // Matches public/products/vision/appcast.xml, which is never edited
-        // from here: every installed copy of Vision reads that feed.
-        softwareVersion: '1.1',
-        downloadUrl: absoluteUrl('/products/vision/download'),
-        screenshot: absoluteUrl(PAGES.vision.image),
-      }}
-    />
     <dialog ref={releaseDialog} className="release-dialog" aria-labelledby="release-title" onCancel={() => setReleaseOpen(false)} onClick={e => { if (e.target === e.currentTarget) setReleaseOpen(false); }}><div className="release-inner"><button type="button" className="dialog-close" aria-label="Close release information" onClick={() => setReleaseOpen(false)} autoFocus><X size={20} /></button><span className="release-icon"><ScanFace size={36} strokeWidth={1.2} /></span><Eyebrow>THE NEXT WAY IN</Eyebrow><h2 id="release-title">A little closer<br />to the future.</h2><p>Vision’s public download is coming soon.</p><span className="release-detail">The preview is here. A verified macOS release link will be available when the app is ready.</span><div className="release-requirements"><span><Check size={15} />macOS 15 Sequoia or later</span><span><Check size={15} />Apple Silicon or Intel</span><span><Check size={15} />Camera & Accessibility permissions</span></div><a href={DOCS} className="button button-orange">Read the getting-started guide<ArrowUpRight size={16} /></a><button type="button" className="text-button" onClick={() => { setReleaseOpen(false); playDemo(); }}>Explore the interactive demo<Play size={13} /></button></div></dialog>
     <a className="skip-link" href="#main">Skip to content</a>
     <header className="site-header"><div className="header-inner"><Brand /><nav className="desktop-nav" aria-label="Main navigation"><a href="#features">Discover</a><a href="#experience">Experience</a><a href="#privacy">Privacy</a><a href="#faq">FAQs</a></nav><a href={DOWNLOAD} className="nav-download">Get Vision <ArrowUpRight size={15} /></a><button className="menu-toggle" type="button" aria-label={menuOpen ? 'Close menu' : 'Open menu'} aria-expanded={menuOpen} aria-controls="mobile-navigation" onClick={() => setMenuOpen(!menuOpen)}>{menuOpen ? <X /> : <Menu />}</button></div><AnimatePresence>{menuOpen && <motion.nav id="mobile-navigation" className="mobile-nav" aria-label="Mobile navigation" initial={{ opacity: 0, height: 0 }} animate={{ opacity: 1, height: 'auto' }} exit={{ opacity: 0, height: 0 }}>{['features', 'experience', 'privacy', 'faq'].map((id, i) => <a key={id} href={`#${id}`} onClick={() => setMenuOpen(false)}>{['Discover', 'Experience', 'Privacy', 'FAQs'][i]}<ArrowUpRight size={18} /></a>)}</motion.nav>}</AnimatePresence></header>
@@ -155,7 +140,7 @@ export default function Home() {
       ].map(row => <tr key={row[0]}>{row.map((cell, i) => i === 0 ? <th scope="row" key={i}>{cell}</th> : <td key={i} className={i === 1 ? 'vision-column' : ''}>{cell === 'Yes' ? <span className="table-yes"><Check size={16} /><span>Yes</span></span> : cell}</td>)}</tr>)}</tbody></table><p className="comparison-note">¹ Your password is still required for the first login after a restart. Webcam recognition is not equivalent to Face ID or Touch ID security. Capabilities of other apps vary.</p></Reveal></section>
       <StoryBridge from="TRUST BY DESIGN" to="NATIVE AT THE CORE" />
       <Technology />
-      <section id="faq" className="faq-section section-pad supporting-section"><Reveal className="faq-heading"><Eyebrow>BEFORE THE NEXT CHAPTER</Eyebrow><h2>GOOD<br />QUESTIONS.</h2><p>Curiosity looks good on you.</p><a href={DOCS} className="text-button">Explore the documentation <ArrowUpRight size={16} /></a></Reveal><div className="faq-list">{faqs.map(([question, answer], i) => <motion.div initial={reduce ? false : {opacity:0,y:14}} whileInView={{opacity:1,y:0}} viewport={{once:true}} transition={{duration:.5,delay:i*.04}} className={`faq-item ${openFaq === i ? 'is-open' : ''}`} key={question}><h3><button type="button" id={`question-${i}`} aria-expanded={openFaq === i} aria-controls={`answer-${i}`} onClick={() => setOpenFaq(openFaq === i ? null : i)}><span className="faq-number">0{i + 1}</span>{question}<ChevronDown size={19} /></button></h3><AnimatePresence initial={false}>{openFaq === i && <motion.div id={`answer-${i}`} role="region" aria-labelledby={`question-${i}`} initial={{ height: 0, opacity: 0 }} animate={{ height: 'auto', opacity: 1 }} exit={{ height: 0, opacity: 0 }} transition={{ duration: .3 }}><p>{answer}</p></motion.div>}</AnimatePresence></motion.div>)}</div></section>
+      <section id="faq" className="faq-section section-pad supporting-section"><Reveal className="faq-heading"><Eyebrow>BEFORE THE NEXT CHAPTER</Eyebrow><h2>GOOD<br />QUESTIONS.</h2><p>Curiosity looks good on you.</p><a href={DOCS} className="text-button">Explore the documentation <ArrowUpRight size={16} /></a></Reveal><div className="faq-list">{faqs.map(([question, answer], i) => <motion.div initial={reduce ? false : {opacity:0,y:14}} whileInView={{opacity:1,y:0}} viewport={{once:true}} transition={{duration:.5,delay:i*.04}} className={`faq-item ${openFaq === i ? 'is-open' : ''}`} key={question}><h3><button type="button" id={`question-${i}`} aria-expanded={openFaq === i} aria-controls={`answer-${i}`} onClick={() => setOpenFaq(openFaq === i ? null : i)}><span className="faq-number">0{i + 1}</span>{question}<ChevronDown size={19} /></button></h3><motion.div id={`answer-${i}`} role="region" aria-labelledby={`question-${i}`} initial={false} animate={{ height: openFaq === i ? 'auto' : 0, opacity: openFaq === i ? 1 : 0 }} transition={{ duration: .3 }} style={{ overflow: 'hidden' }}><p>{answer}</p></motion.div></motion.div>)}</div></section>
       <StoryBridge from="A FOUNDATION FOR TODAY" to="A VISION FOR TOMORROW" />
       <section id="download" className="closing-section"><Orbit /><div className="closing-grid" aria-hidden="true" /><Reveal className="closing-content"><Eyebrow light>CHAPTER 08 / THE NEXT WAY IN</Eyebrow><h2>HELLO,<br /><span>FUTURE.</span></h2><p>A glance was just the beginning.<br />A more personal platform comes next.</p><div className="closing-actions"><Magnetic href={DOWNLOAD} className="button-dark"><ArrowDownToLine size={18} />Download Vision<ArrowUpRight size={17} /></Magnetic><a href={DOCS} className="closing-docs">View documentation <ArrowUpRight size={16} /></a></div><span className="closing-meta">MACOS 15+ &nbsp; / &nbsp; APPLE SILICON + INTEL</span></Reveal><Biometric /><Roadmap /></section>
       <StoryBridge from="BUILT FOR YOU" to="CREATED BY SHARAN" />

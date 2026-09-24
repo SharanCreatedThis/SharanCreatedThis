@@ -18,6 +18,8 @@
  */
 
 import { profile } from "@/data/portfolio";
+import { COMPARISONS } from "@/lib/comparisons/comparison-data";
+import { GUIDES } from "@/lib/guides/guide-data";
 
 /** No trailing slash: everything below joins onto this. */
 export const SITE_URL = "https://www.sharancreatedthis.in";
@@ -176,7 +178,7 @@ export const PAGES: Record<PageKey, PageSeo> = {
     path: "/products/hangly",
     title: "Hangly · Digital Charms That Swing On Your Desktop",
     description:
-      "Hang beautiful digital charms with real swinging physics on your Mac or Windows desktop. 30+ charms across 11 collections. Free for macOS 14+ and Windows 10+.",
+      "Hang beautiful digital charms with real swinging physics on your Mac or Windows desktop. 80+ charms across 11 collections. Free for macOS 14+ and Windows 10+.",
     image: "/og/hangly.png",
     changeFrequency: "weekly",
     priority: 0.9,
@@ -281,7 +283,31 @@ export const PLANNED_SECTIONS = {
  * instead of quietly never being crawled.
  */
 export function dynamicPages(): PageSeo[] {
-  return [];
+  // The comparison pages. They exist because a crawl of the category found
+  // Screen Dangle at 1,427 indexed URLs and Hangly at one, and because
+  // competitors already rank for the "X alternative" queries people run
+  // before they choose. Adding a comparison means adding it to
+  // data/hangly-comparisons.ts; it reaches the sitemap from here.
+  const shared = { image: "/og/hangly.png", changeFrequency: "monthly" as const };
+  return [
+    // The download, install and changelog pages. They carry the queries that
+    // convert — "download hangly for windows arm", "hangly smartscreen" — which
+    // a product page cannot rank for without burying its own pitch.
+    { path: "/download", title: "Download Hangly", description: "Every build.", ...shared, priority: 0.9 },
+    { path: "/download/mac", title: "Hangly for Mac", description: "The macOS build.", ...shared, priority: 0.8 },
+    { path: "/download/windows", title: "Hangly for Windows", description: "x64 and ARM64.", ...shared, priority: 0.8 },
+    { path: "/install", title: "Installing Hangly", description: "Step by step, both platforms.", ...shared, priority: 0.7 },
+    { path: "/changelog", title: "Changelog", description: "Every release of both apps.", ...shared, priority: 0.6 },
+    { path: "/faq", title: "Hangly FAQ", description: "Fifty answers about Hangly.", ...shared, priority: 0.8 },
+    { path: "/compare", title: "Hangly compared", description: "Eight honest comparisons.", ...shared, priority: 0.7 },
+    { path: "/guides", title: "Guides", description: "Desktop charms, pets and Mac customisation.", ...shared, priority: 0.7 },
+    ...COMPARISONS.map((c) => ({
+      path: `/compare/${c.slug}`, title: c.title, description: c.description, ...shared, priority: 0.6,
+    })),
+    ...GUIDES.map((g) => ({
+      path: `/guides/${g.slug}`, title: g.title, description: g.description, ...shared, priority: 0.7,
+    })),
+  ];
 }
 
 /**
@@ -312,7 +338,17 @@ export const PAGE_IMAGES: Partial<Record<PageKey, { url: string; title: string }
   ],
 };
 
-/** Absolute URL for a root-relative path. Crawlers need absolute; humans don't. */
+/**
+ * Absolute URL for a root-relative path. Crawlers need absolute; humans don't.
+ *
+ * The root deliberately has no trailing slash. Next resolves `alternates.
+ * canonical: "/"` against metadataBase to `https://host` with none, so a
+ * sitemap that wrote `https://host/` disagreed with the canonical tag on the
+ * one page most likely to be crawled. The two are the same resource and Google
+ * normalises them, but a sitemap entry and a canonical tag that do not match
+ * character for character is the kind of small contradiction that is free to
+ * remove and annoying to diagnose later.
+ */
 export function absoluteUrl(path: string): string {
-  return path === "/" ? `${SITE_URL}/` : `${SITE_URL}${path}`;
+  return path === "/" ? SITE_URL : `${SITE_URL}${path}`;
 }
