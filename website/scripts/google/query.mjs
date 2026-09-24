@@ -135,8 +135,13 @@ const commands = {
           robots: index.robotsTxtState ?? "?",
         });
       }
-      for (const [name, section] of [["mobile", r.mobileUsabilityResult], ["rich results", r.richResultsResult]]) {
-        if (section && section.verdict && section.verdict !== "PASS") {
+      // VERDICT_UNSPECIFIED means "not evaluated", not "failed". Google retired
+      // the Mobile Usability report in 2023 and the field has returned
+      // UNSPECIFIED for every URL since, so treating it as a problem flagged
+      // all nine pages every run — a report that always cries wolf is one
+      // nobody reads. Only an explicit FAIL is a finding.
+      for (const [name, section] of [["mobile usability", r.mobileUsabilityResult], ["rich results", r.richResultsResult]]) {
+        if (section?.verdict === "FAIL") {
           problems.push({ page: new URL(url).pathname, verdict: section.verdict, reason: `${name} issue`, robots: "" });
         }
       }
