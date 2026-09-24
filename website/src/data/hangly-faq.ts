@@ -76,7 +76,7 @@ export const FAQ_GROUPS: FaqGroup[] = [
       },
       {
         q: "How many charms are there?",
-        a: "Thirty or so across eleven collections, including protection charms like the Nazar and Drishti Bommai, Tamil Divine symbols, Marvel and DC emblems, BTS, Stranger Things, Friends, Breaking Bad, football and a dream catcher. Six of those collections are still being finished.",
+        a: "80+ across eleven collections, including protection charms like the Nazar and Drishti Bommai, Tamil Divine symbols, Marvel and DC emblems, BTS, Stranger Things, Friends, Breaking Bad, football and a dream catcher. Six of those collections are still being finished.",
       },
       {
         q: "Can I use my own image as a charm?",
@@ -152,7 +152,7 @@ export const FAQ_GROUPS: FaqGroup[] = [
     faqs: [
       {
         q: "What is the best desktop charm app?",
-        a: "For a charm that hangs and swings rather than wanders, Hangly is the most complete free option: it is the only one in this category shipping on macOS and Windows including ARM64, with custom charms from your own images, over thirty designs, adjustable cords, and no paid tier. Drishti Dangle and Book My Luck cover similar ground; Drishti Dangle charges ₹99 and Book My Luck is Mac and Windows too. Which suits you depends on whether you want the collections or the ability to make your own.",
+        a: "For a charm that hangs and swings rather than wanders, Hangly is the most complete free option: it is the only one in this category shipping on macOS and Windows including ARM64, with custom charms from your own images, over eighty designs, adjustable cords, and no paid tier. Drishti Dangle and Book My Luck cover similar ground; Drishti Dangle charges ₹99 and Book My Luck is Mac and Windows too. Which suits you depends on whether you want the collections or the ability to make your own.",
       },
       {
         q: "What is the difference between a desktop charm and a desktop pet?",

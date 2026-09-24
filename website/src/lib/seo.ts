@@ -178,7 +178,7 @@ export const PAGES: Record<PageKey, PageSeo> = {
     path: "/products/hangly",
     title: "Hangly · Digital Charms That Swing On Your Desktop",
     description:
-      "Hang beautiful digital charms with real swinging physics on your Mac or Windows desktop. 30+ charms across 11 collections. Free for macOS 14+ and Windows 10+.",
+      "Hang beautiful digital charms with real swinging physics on your Mac or Windows desktop. 80+ charms across 11 collections. Free for macOS 14+ and Windows 10+.",
     image: "/og/hangly.png",
     changeFrequency: "weekly",
     priority: 0.9,

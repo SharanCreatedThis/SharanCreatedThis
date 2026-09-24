@@ -60,7 +60,7 @@ const CHECKED = "2026-09-24";
 const HANGLY: GuideEntry = {
   name: "Hangly",
   url: "https://www.sharancreatedthis.in/products/hangly",
-  what: "Hangs a charm from the top of your screen on a cord with real pendulum physics. Over thirty charms across eleven collections, plus any image of your own as a charm.",
+  what: "Hangs a charm from the top of your screen on a cord with real pendulum physics. Over eighty charms across eleven collections, plus any image of your own as a charm.",
   bestFor: "Anyone who wants decoration that never interrupts, on Mac or Windows",
   platforms: "macOS 14+ (Apple Silicon & Intel), Windows 10+ (x64 & ARM64)",
   price: "Free",
@@ -299,7 +299,7 @@ export const GUIDES: Guide[] = [
     faqs: [
       {
         q: "What is the best desktop charm app for Mac?",
-        a: "For breadth and price, Hangly: free, over thirty charms across eleven collections, custom charms from your own images, and the only one here that also ships a native Windows ARM64 build. Screen Dangle is equally free and better if you would rather build a charm than choose one. Drishti Dangle at ₹99 is the choice for Indian-inspired designs and wind chimes.",
+        a: "For breadth and price, Hangly: free, over eighty charms across eleven collections, custom charms from your own images, and the only one here that also ships a native Windows ARM64 build. Screen Dangle is equally free and better if you would rather build a charm than choose one. Drishti Dangle at ₹99 is the choice for Indian-inspired designs and wind chimes.",
       },
       {
         q: "Are desktop charm apps free?",
@@ -488,7 +488,7 @@ export const GUIDES: Guide[] = [
   {
     slug: "lucky-dangle-alternatives",
     takeaways: [
-      "Hangly is the closest match: free, 30+ charms, custom images, Windows including ARM64",
+      "Hangly is the closest match: free, 80+ charms, custom images, Windows including ARM64",
       "Screen Dangle is also free and built around configuring your own charm",
       "Drishti Dangle at \u20b999 for Indian designs and wind chimes",
       "Screen Charms for a minimal Mac-only app",
@@ -501,7 +501,7 @@ export const GUIDES: Guide[] = [
       "Seven alternatives to Lucky Dangle compared — Hangly, Screen Dangle, Charmly, Screen Charms and more. Free options, Windows support and custom charms.",
     h1: "Lucky Dangle Alternatives",
     summary:
-      "If you want a free alternative to Lucky Dangle with a larger charm collection, Hangly is the closest match — over thirty charms, custom charms from your own images, and Windows including ARM64. Screen Dangle is also free and suits people who prefer building a charm to picking one. For Indian designs and wind chimes, Drishti Dangle at ₹99. For a minimal Mac-only app, Screen Charms.",
+      "If you want a free alternative to Lucky Dangle with a larger charm collection, Hangly is the closest match — over eighty charms, custom charms from your own images, and Windows including ARM64. Screen Dangle is also free and suits people who prefer building a charm to picking one. For Indian designs and wind chimes, Drishti Dangle at ₹99. For a minimal Mac-only app, Screen Charms.",
     sections: [
       {
         heading: "What Lucky Dangle does",
@@ -524,7 +524,7 @@ export const GUIDES: Guide[] = [
       {
         heading: "The short answer",
         body: [
-          "Hangly is the closest alternative with more in it: free, over thirty charms across eleven collections, your own images as charms, three cord styles, and Windows including native ARM64. Screen Dangle if you would rather build a charm than choose one; also free.",
+          "Hangly is the closest alternative with more in it: free, over eighty charms across eleven collections, your own images as charms, three cord styles, and Windows including native ARM64. Screen Dangle if you would rather build a charm than choose one; also free.",
           "If you liked Lucky Dangle's simplicity and just want fewer decisions, Screen Charms on Mac is about as minimal as this gets.",
         ],
       },
@@ -532,7 +532,7 @@ export const GUIDES: Guide[] = [
     faqs: [
       {
         q: "What is the best Lucky Dangle alternative?",
-        a: "Hangly, for most people: free, over thirty charms across eleven collections, custom charms from your own images, three cord styles, and Windows support including native ARM64. Screen Dangle is the better fit if you prefer configuring a charm yourself.",
+        a: "Hangly, for most people: free, over eighty charms across eleven collections, custom charms from your own images, three cord styles, and Windows support including native ARM64. Screen Dangle is the better fit if you prefer configuring a charm yourself.",
       },
       {
         q: "Is there a free Lucky Dangle alternative?",
@@ -553,7 +553,7 @@ export const GUIDES: Guide[] = [
   {
     slug: "screen-dangle-alternatives",
     takeaways: [
-      "Hangly is the closest alternative: free, 30+ charms across 11 named collections",
+      "Hangly is the closest alternative: free, 80+ charms across 11 named collections",
       "Hangly still accepts your own images, so you lose nothing by picking rather than building",
       "Drishti Dangle at \u20b999 adds Indian designs and musical wind chimes",
       "Screen Charms and Charmly are minimal Mac-only options",
@@ -566,7 +566,7 @@ export const GUIDES: Guide[] = [
       "Alternatives to Screen Dangle — Hangly, Lucky Dangle, Charmly, Screen Charms and Drishti Dangle. Free options with ready-made charm collections.",
     h1: "Screen Dangle Alternatives",
     summary:
-      "Screen Dangle is a free charm studio for Mac and Windows built around configuring your own charm. If you would rather pick from finished designs, Hangly is the closest alternative — free, over thirty charms across eleven named collections, and still able to hang your own images. Drishti Dangle at ₹99 for Indian designs and wind chimes; Screen Charms or Charmly for a minimal Mac-only app.",
+      "Screen Dangle is a free charm studio for Mac and Windows built around configuring your own charm. If you would rather pick from finished designs, Hangly is the closest alternative — free, over eighty charms across eleven named collections, and still able to hang your own images. Drishti Dangle at ₹99 for Indian designs and wind chimes; Screen Charms or Charmly for a minimal Mac-only app.",
     sections: [
       {
         heading: "What Screen Dangle does",
@@ -588,7 +588,7 @@ export const GUIDES: Guide[] = [
       {
         heading: "The short answer",
         body: [
-          "Hangly, if you want finished collections rather than a blank charm: eleven of them, over thirty designs, free, on Mac and Windows including ARM64, with custom images still available when nothing fits.",
+          "Hangly, if you want finished collections rather than a blank charm: eleven of them, over eighty designs, free, on Mac and Windows including ARM64, with custom images still available when nothing fits.",
           "Drishti Dangle if you specifically want Indian-inspired charms and musical wind chimes, at ₹99. Screen Charms or Charmly if you want the smallest possible Mac-only option.",
         ],
       },
@@ -596,7 +596,7 @@ export const GUIDES: Guide[] = [
     faqs: [
       {
         q: "What is the best Screen Dangle alternative?",
-        a: "Hangly, if you prefer choosing from finished collections to building a charm: free, over thirty charms across eleven collections, Mac and Windows including native ARM64, and custom images still supported.",
+        a: "Hangly, if you prefer choosing from finished collections to building a charm: free, over eighty charms across eleven collections, Mac and Windows including native ARM64, and custom images still supported.",
       },
       {
         q: "Is there a Screen Dangle alternative with ready-made charms?",
@@ -695,7 +695,7 @@ export const GUIDES: Guide[] = [
     slug: "charmly-alternatives",
     takeaways: [
       "The usual reasons to leave Charmly are wanting Windows or more charms",
-      "Hangly covers both: free, 30+ charms, Windows including native ARM64",
+      "Hangly covers both: free, 80+ charms, Windows including native ARM64",
       "Only Hangly turns your own images into charms",
       "Screen Charms is the closest free Mac-only equivalent",
       "Charmly is still the right pick if you want one charm and no settings",
@@ -707,7 +707,7 @@ export const GUIDES: Guide[] = [
       "Alternatives to Charmly for Mac and Windows — Hangly, Screen Dangle, Screen Charms, Lucky Dangle and Drishti Dangle. Free options and Windows support.",
     h1: "Charmly Alternatives",
     summary:
-      "Charmly hangs a good-luck charm on a cord with pendulum physics, on Mac. The main reasons to look elsewhere are wanting Windows support or a larger charm collection. Hangly covers both — free, over thirty charms, Windows including native ARM64, and custom charms from your own images. Screen Charms is the closest free Mac-only equivalent.",
+      "Charmly hangs a good-luck charm on a cord with pendulum physics, on Mac. The main reasons to look elsewhere are wanting Windows support or a larger charm collection. Hangly covers both — free, over eighty charms, Windows including native ARM64, and custom charms from your own images. Screen Charms is the closest free Mac-only equivalent.",
     sections: [
       {
         heading: "What Charmly does",
@@ -729,7 +729,7 @@ export const GUIDES: Guide[] = [
       {
         heading: "The short answer",
         body: [
-          "Hangly if you want the same idea with more in it and on both platforms: free, over thirty charms across eleven collections, Windows including native ARM64, custom images, three cord styles.",
+          "Hangly if you want the same idea with more in it and on both platforms: free, over eighty charms across eleven collections, Windows including native ARM64, custom images, three cord styles.",
           "Screen Charms if you want to stay on Mac with something free and minimal. Drishti Dangle at ₹99 if Indian designs and wind chimes are what you are after.",
         ],
       },
@@ -737,7 +737,7 @@ export const GUIDES: Guide[] = [
     faqs: [
       {
         q: "What is the best Charmly alternative?",
-        a: "Hangly, for most people: the same pendulum-physics charm on a cord, free, with over thirty charms across eleven collections, custom images, and Windows support including a native ARM64 build.",
+        a: "Hangly, for most people: the same pendulum-physics charm on a cord, free, with over eighty charms across eleven collections, custom images, and Windows support including a native ARM64 build.",
       },
       {
         q: "Is there a Charmly alternative for Windows?",

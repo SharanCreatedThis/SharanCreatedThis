@@ -189,7 +189,7 @@ export function GuidePage({ slug }: { slug: string }) {
         <section className="guide-cta" aria-labelledby="try-hangly">
           <h2 id="try-hangly">Try Hangly</h2>
           <p>
-            Free on macOS 14+ and Windows 10+, including native ARM64. Over thirty charms across eleven
+            Free on macOS 14+ and Windows 10+, including native ARM64. Over eighty charms across eleven
             collections, and any image of your own as a charm.
           </p>
           <div className="hero-actions">
