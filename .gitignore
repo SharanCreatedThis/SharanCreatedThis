@@ -46,3 +46,6 @@ __pycache__/
 # Release archives are build output; the signed feed beside them is not.
 releases/*/*.dmg
 releases/*/*.zip
+
+# Cloudflare Wrangler local cache
+.wrangler/
