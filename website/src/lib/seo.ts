@@ -18,7 +18,8 @@
  */
 
 import { profile } from "@/data/portfolio";
-import { COMPARISONS } from "@/data/hangly-comparisons";
+import { COMPARISONS } from "@/lib/comparisons/comparison-data";
+import { GUIDES } from "@/lib/guides/guide-data";
 
 /** No trailing slash: everything below joins onto this. */
 export const SITE_URL = "https://www.sharancreatedthis.in";
@@ -287,14 +288,18 @@ export function dynamicPages(): PageSeo[] {
   // competitors already rank for the "X alternative" queries people run
   // before they choose. Adding a comparison means adding it to
   // data/hangly-comparisons.ts; it reaches the sitemap from here.
-  return COMPARISONS.map((c) => ({
-    path: `/products/hangly/vs/${c.slug}`,
-    title: c.title,
-    description: c.description,
-    image: "/og/hangly.png",
-    changeFrequency: "monthly" as const,
-    priority: 0.6,
-  }));
+  const shared = { image: "/og/hangly.png", changeFrequency: "monthly" as const };
+  return [
+    { path: "/faq", title: "Hangly FAQ", description: "Fifty answers about Hangly.", ...shared, priority: 0.8 },
+    { path: "/compare", title: "Hangly compared", description: "Eight honest comparisons.", ...shared, priority: 0.7 },
+    { path: "/guides", title: "Guides", description: "Desktop charms, pets and Mac customisation.", ...shared, priority: 0.7 },
+    ...COMPARISONS.map((c) => ({
+      path: `/compare/${c.slug}`, title: c.title, description: c.description, ...shared, priority: 0.6,
+    })),
+    ...GUIDES.map((g) => ({
+      path: `/guides/${g.slug}`, title: g.title, description: g.description, ...shared, priority: 0.7,
+    })),
+  ];
 }
 
 /**

@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import { ArrowUpRight } from 'lucide-react';
-import { COMPARISONS } from '@/data/hangly-comparisons';
+import { COMPARISONS, type Comparison } from '@/lib/comparisons/comparison-data';
 import { Label, Reveal } from './shared';
 
 /**
@@ -25,10 +25,10 @@ export default function Compare() {
         <p>Honest comparisons, including where the other one wins.</p>
       </Reveal>
       <ul className="compare-grid">
-        {COMPARISONS.map(c => (
+        {COMPARISONS.map((c: Comparison) => (
           <li key={c.slug}>
-            <Link href={`/products/hangly/vs/${c.slug}`}>
-              <span>Hangly vs {c.rival}</span>
+            <Link href={`/compare/${c.slug}`}>
+              <span>Hangly vs {c.name}</span>
               <ArrowUpRight size={15} />
             </Link>
           </li>

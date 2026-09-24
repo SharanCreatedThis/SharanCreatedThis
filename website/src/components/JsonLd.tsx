@@ -38,10 +38,17 @@ function JsonLd({ id, schema }: { id: string; schema: Schema | Schema[] }) {
   );
 }
 
-/** Stable node ids, so the graph can point at itself instead of repeating. */
-const PERSON_ID = `${SITE_URL}/#person`;
-const SITE_ID = `${SITE_URL}/#website`;
-const ORG_ID = `${SITE_URL}/#organization`;
+/**
+ * Stable node ids, so the graph can point at itself instead of repeating.
+ *
+ * Exported because every page that emits schema must reference the same
+ * person, organization and site. A second page declaring its own author is a
+ * second entity as far as a knowledge graph is concerned — the whole value of
+ * an `@id` is that separate pages resolve to one thing.
+ */
+export const PERSON_ID = `${SITE_URL}/#person`;
+export const SITE_ID = `${SITE_URL}/#website`;
+export const ORG_ID = `${SITE_URL}/#organization`;
 
 /**
  * The site-wide graph: who made this, what the site is, and who publishes it.

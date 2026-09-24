@@ -8,7 +8,7 @@
     "start": "next start",
     "typecheck": "tsc --noEmit",
     "prebuild": "node scripts/generate-charm-manifest.mjs && node scripts/generate-content-date.mjs && node scripts/generate-download-redirects.mjs && node scripts/generate-indexnow-key.mjs",
-    "postbuild": "node scripts/strip-oversized-for-pages.mjs && node scripts/check-seo.mjs",
+    "postbuild": "node scripts/strip-oversized-for-pages.mjs && node scripts/check-seo.mjs && node scripts/seo-validate.mjs",
     "ping": "node scripts/ping-indexnow.mjs",
     "integrations:check": "node scripts/integrations/check.mjs",
     "integrations:json": "node scripts/integrations/check.mjs --json",
@@ -21,7 +21,8 @@
     "integrations:github": "node scripts/integrations/check.mjs github",
     "site:health": "node scripts/integrations/health.mjs",
     "bing": "node scripts/bing/report.mjs",
-    "clarity": "node scripts/clarity/report.mjs"
+    "clarity": "node scripts/clarity/report.mjs",
+    "seo:validate": "node scripts/seo-validate.mjs"
   },
   "dependencies": {
     "@fontsource/inter": "^5.3.0",

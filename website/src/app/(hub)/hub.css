@@ -2147,3 +2147,15 @@
   color: rgba(255, 255, 255, 0.9);
   text-decoration-color: currentColor;
 }
+
+/* Footer links to the FAQ, comparisons and guides — the shortest path from
+   any hub page to the deep content, which is what keeps crawl depth at 3. */
+.hub-footer-links { display: flex; gap: 18px; }
+.hub-footer-links a {
+  color: rgba(255, 255, 255, 0.55);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  text-decoration-color: rgba(255, 255, 255, 0.2);
+  transition: color 0.25s, text-decoration-color 0.25s;
+}
+.hub-footer-links a:hover { color: rgba(255, 255, 255, 0.92); text-decoration-color: currentColor; }
