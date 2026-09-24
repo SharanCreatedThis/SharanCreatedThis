@@ -18,6 +18,7 @@
  */
 
 import { profile } from "@/data/portfolio";
+import { COMPARISONS } from "@/data/hangly-comparisons";
 
 /** No trailing slash: everything below joins onto this. */
 export const SITE_URL = "https://www.sharancreatedthis.in";
@@ -281,7 +282,19 @@ export const PLANNED_SECTIONS = {
  * instead of quietly never being crawled.
  */
 export function dynamicPages(): PageSeo[] {
-  return [];
+  // The comparison pages. They exist because a crawl of the category found
+  // Screen Dangle at 1,427 indexed URLs and Hangly at one, and because
+  // competitors already rank for the "X alternative" queries people run
+  // before they choose. Adding a comparison means adding it to
+  // data/hangly-comparisons.ts; it reaches the sitemap from here.
+  return COMPARISONS.map((c) => ({
+    path: `/products/hangly/vs/${c.slug}`,
+    title: c.title,
+    description: c.description,
+    image: "/og/hangly.png",
+    changeFrequency: "monthly" as const,
+    priority: 0.6,
+  }));
 }
 
 /**

@@ -6,6 +6,8 @@ import Collections from "@/components/hangly/Collections";
 import HowItWorks from "@/components/hangly/HowItWorks";
 import Demo from "@/components/hangly/Demo";
 import Creator from "@/components/hangly/Creator";
+import Faq from "@/components/hangly/Faq";
+import FaqJsonLd from "@/components/hangly/FaqJsonLd";
 import CTA from "@/components/hangly/CTA";
 import Footer from "@/components/hangly/Footer";
 import { PlatformSheet } from "@/components/hangly/Download";
@@ -37,6 +39,7 @@ export default function Home() {
           screenshot: absoluteUrl(PAGES.hangly.image),
         }}
       />
+      <FaqJsonLd />
       <PageMotion />
       <a className="skip-link" href="#features">
         Skip to content
@@ -48,6 +51,7 @@ export default function Home() {
         <Collections />
         <HowItWorks />
         <Demo />
+        <Faq />
         <Creator />
         <CTA />
       </main>

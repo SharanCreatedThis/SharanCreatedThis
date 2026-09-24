@@ -254,3 +254,55 @@
   :where(.hangly-container) .platform-sheet[open]{animation:none}
   :where(.hangly-container) .platform-option:hover{transform:none}
 }
+
+/* ── FAQ ──────────────────────────────────────────────────────────────── */
+:where(.hangly-container) .hangly-faq{padding-block:90px}
+:where(.hangly-container) .faq-group{margin-top:46px}
+:where(.hangly-container) .faq-group-heading{font-family:'Inter Tight',sans-serif;font-size:13px;font-weight:600;letter-spacing:1.8px;text-transform:uppercase;color:var(--glow);margin-bottom:14px}
+:where(.hangly-container) .faq-list{display:grid;gap:9px}
+:where(.hangly-container) .faq-row{border:1px solid var(--border);border-radius:14px;background:#ffffff05;overflow:hidden;transition:border-color .25s,background .25s}
+:where(.hangly-container) .faq-row.is-open{border-color:#ffb36b40;background:#ff7a1a0a}
+:where(.hangly-container) .faq-row h4{margin:0;font-size:inherit;font-weight:inherit}
+:where(.hangly-container) .faq-row button{display:flex;align-items:center;justify-content:space-between;gap:16px;width:100%;padding:17px 20px;background:none;border:0;text-align:left;font-size:15.5px;font-weight:500;color:var(--text);line-height:1.45}
+:where(.hangly-container) .faq-row button svg{flex:none;color:#8d8176;transition:transform .3s,color .25s}
+:where(.hangly-container) .faq-row.is-open button svg{transform:rotate(180deg);color:var(--glow)}
+/* Answers stay in the DOM whether open or not: the FAQ schema requires the
+   text to exist on the page, and hiding it with display:none risks Google
+   treating the markup as unsupported. Height is what changes. */
+:where(.hangly-container) .faq-answer{display:grid;grid-template-rows:0fr;transition:grid-template-rows .3s ease}
+:where(.hangly-container) .faq-row.is-open .faq-answer{grid-template-rows:1fr}
+:where(.hangly-container) .faq-answer>p{overflow:hidden;margin:0;padding:0 20px;font-size:14.5px;line-height:1.75;color:var(--muted)}
+:where(.hangly-container) .faq-row.is-open .faq-answer>p{padding-bottom:19px}
+@media(prefers-reduced-motion:reduce){:where(.hangly-container) .faq-answer{transition:none}}
+
+/* ── Comparison pages ─────────────────────────────────────────────────── */
+:where(.hangly-container) .comparison{padding-block:52px 96px;max-width:920px}
+:where(.hangly-container) .comparison-crumbs{font-size:12.5px;color:var(--muted);margin-bottom:30px}
+:where(.hangly-container) .comparison-crumbs a{color:var(--accent)}
+:where(.hangly-container) .comparison-crumbs span{margin:0 7px;opacity:.5}
+:where(.hangly-container) .comparison-head h1{font-size:clamp(34px,5.4vw,60px);font-weight:700;letter-spacing:-2px;line-height:1.04;margin-top:14px}
+:where(.hangly-container) .comparison-verdict{font-size:18px;line-height:1.65;color:var(--muted);margin-top:22px;max-width:62ch}
+:where(.hangly-container) .comparison h2{font-family:'Inter Tight',sans-serif;font-size:27px;font-weight:600;letter-spacing:-.9px;margin:64px 0 20px}
+:where(.hangly-container) .comparison-table-wrap{overflow-x:auto;border:1px solid var(--border);border-radius:15px}
+:where(.hangly-container) .comparison-table{width:100%;border-collapse:collapse;font-size:14.5px;min-width:520px}
+:where(.hangly-container) .comparison-table th,:where(.hangly-container) .comparison-table td{padding:14px 17px;text-align:left;border-bottom:1px solid var(--border);vertical-align:top}
+:where(.hangly-container) .comparison-table thead th{font-size:11.5px;letter-spacing:1.4px;text-transform:uppercase;color:var(--glow);background:#ffffff06}
+:where(.hangly-container) .comparison-table tbody th{font-weight:500;color:var(--text);width:32%}
+:where(.hangly-container) .comparison-table td{color:var(--muted)}
+:where(.hangly-container) .comparison-table td:nth-child(2){color:var(--text)}
+:where(.hangly-container) .comparison-table tr:last-child th,:where(.hangly-container) .comparison-table tr:last-child td{border-bottom:0}
+:where(.hangly-container) .comparison-checked{font-size:12.5px;color:#8d8176;margin-top:14px;line-height:1.6}
+:where(.hangly-container) .comparison-checked a{color:var(--accent);text-decoration:underline;text-underline-offset:3px}
+:where(.hangly-container) .comparison-wins-grid{display:grid;grid-template-columns:1fr 1fr;gap:22px}
+:where(.hangly-container) .comparison-wins-grid>div{border:1px solid var(--border);border-radius:15px;padding:24px}
+:where(.hangly-container) .comparison-wins-grid h3{font-size:15px;font-weight:600;margin-bottom:15px}
+:where(.hangly-container) .comparison-wins-grid ul{list-style:none;padding:0;margin:0;display:grid;gap:11px}
+:where(.hangly-container) .comparison-wins-grid li{display:flex;gap:10px;align-items:flex-start;font-size:14px;line-height:1.6;color:var(--muted)}
+:where(.hangly-container) .comparison-wins-grid li svg{flex:none;margin-top:3px;color:var(--glow)}
+:where(.hangly-container) .comparison-faq{display:grid;gap:26px}
+:where(.hangly-container) .comparison-faq h3{font-size:16px;font-weight:600;margin-bottom:8px}
+:where(.hangly-container) .comparison-faq p{font-size:14.5px;line-height:1.75;color:var(--muted)}
+:where(.hangly-container) .comparison-others{list-style:none;padding:0;margin:0;display:flex;flex-wrap:wrap;gap:10px}
+:where(.hangly-container) .comparison-others a{display:inline-block;padding:9px 15px;border:1px solid var(--border);border-radius:30px;font-size:13.5px;color:var(--muted);transition:border-color .25s,color .25s}
+:where(.hangly-container) .comparison-others a:hover{border-color:#ffb36b45;color:var(--text)}
+@media(max-width:720px){:where(.hangly-container) .comparison-wins-grid{grid-template-columns:1fr}}
