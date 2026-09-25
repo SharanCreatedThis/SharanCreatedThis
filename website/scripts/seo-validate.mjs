@@ -215,6 +215,40 @@ for (const [path, html] of pages) {
   if (!html.includes('"BreadcrumbList"')) errors.push(`${path}: nested page with no BreadcrumbList`);
 }
 
+/* ── one question, one page ───────────────────────────────────────────────
+   /faq and /products/hangly both rendered the same fifty questions and each
+   emitted a FAQPage containing all of them. Two of our own URLs competed for
+   every FAQ query, and an answer engine had two sources for one fact. None of
+   the existing checks noticed, because they compare titles, descriptions and
+   canonicals — not the questions inside the structured data. */
+const askedOn = new Map();
+for (const [path, html] of pages) {
+  for (const m of html.matchAll(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/g)) {
+    let parsed;
+    try { parsed = JSON.parse(m[1]); } catch { continue; }
+    for (const node of parsed["@graph"] ?? [parsed]) {
+      if (node["@type"] !== "FAQPage") continue;
+      for (const q of node.mainEntity ?? []) {
+        const key = (q.name ?? "").toLowerCase().replace(/\s+/g, " ").trim();
+        if (!key) continue;
+        askedOn.set(key, [...(askedOn.get(key) ?? []), path]);
+      }
+    }
+  }
+}
+for (const [question, paths] of askedOn) {
+  const unique = [...new Set(paths)];
+  if (unique.length > 1) {
+    errors.push(`FAQ question answered in schema on ${unique.join(" and ")}: "${question.slice(0, 60)}"`);
+  }
+}
+
+/* A page may not emit more than one FAQPage node. */
+for (const [path, html] of pages) {
+  const blocks = (html.match(/"@type":"FAQPage"/g) || []).length;
+  if (blocks > 1) errors.push(`${path}: ${blocks} FAQPage nodes, expected at most 1`);
+}
+
 /* ── the entity graph resolves ────────────────────────────────────────────
    A reference like {"@id": ".../products/hangly#app"} with no node of that id
    on the page is a pointer into nothing. Schema validators do not complain —

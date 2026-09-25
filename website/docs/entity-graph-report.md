@@ -9,7 +9,7 @@ This describes the graph a crawler will actually find, not the one intended.
 | Measure | Value |
 | --- | --- |
 | Pages analysed | 38 |
-| Distinct `@id` nodes declared | 119 |
+| Distinct `@id` nodes declared | 118 |
 | `@id` references | 1150 |
 | Dangling references | 0 |
 
@@ -202,7 +202,6 @@ None. Every `@id` referenced on every page is declared on that same page.
 | `/products/hangly/stats#dataset` | Dataset | 1 |
 | `/products/hangly/stats#faq` | FAQPage | 1 |
 | `/products/hangly/stats#page` | WebPage | 1 |
-| `/products/hangly#faq` | FAQPage | 1 |
 | `/products/hangly#hangly` | SoftwareApplication | 36 |
 | `/products/vision#faq` | FAQPage | 1 |
 | `/products/vision#vision` | SoftwareApplication | 36 |

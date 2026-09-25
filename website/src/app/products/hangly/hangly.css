@@ -454,3 +454,24 @@
 .changelog-anchor { position: absolute; left: -1.5rem; top: .35rem; opacity: 0; transition: opacity .15s; padding: .2rem; }
 .changelog-entry:hover .changelog-anchor, .changelog-anchor:focus-visible { opacity: .6; }
 @media (max-width: 640px) { .changelog-anchor { display: none; } }
+
+/* ── The FAQ signpost on the product page ─────────────────────────────────
+   Replaces fifty questions and answers that also lived on /faq. It links by
+   section rather than restating questions: a question repeated here would
+   cannibalise the page it points at. */
+.faq-teaser-lead { max-width: 56ch; margin: 1rem auto 0; opacity: .72; line-height: 1.65; }
+.faq-teaser-groups {
+  list-style: none; margin: 2.4rem auto 0; padding: 0; max-width: 780px;
+  display: grid; gap: .7rem; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+}
+.faq-teaser-groups a {
+  display: flex; flex-direction: column; gap: .3rem; height: 100%;
+  padding: 1rem 1.15rem; border-radius: 12px; text-decoration: none; color: inherit;
+  border: 1px solid color-mix(in srgb, currentColor 12%, transparent);
+  background: color-mix(in srgb, currentColor 3%, transparent);
+  transition: border-color .18s, transform .18s;
+}
+.faq-teaser-groups a:hover { border-color: color-mix(in srgb, var(--accent, #f0803c) 55%, transparent); transform: translateY(-2px); }
+.faq-teaser-groups strong { display: flex; align-items: center; gap: .4rem; font-size: .98rem; font-weight: 600; }
+.faq-teaser-groups span { font-size: .82rem; opacity: .55; }
+.faq-teaser-cta { display: flex; justify-content: center; margin-top: 2rem; }

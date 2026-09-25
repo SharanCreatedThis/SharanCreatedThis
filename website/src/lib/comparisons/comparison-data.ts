@@ -271,8 +271,8 @@ export const COMPARISONS: Comparison[] = [
         a: "Hangly ships seventy-five across eleven named collections and a seasonal set. Screen Dangle emphasises building your own rather than publishing a count.",
       },
       {
-        q: "Is there a Screen Dangle alternative with ready-made charms?",
-        a: "Hangly is that alternative: eleven finished collections including protection charms, Tamil Divine symbols, Marvel, DC and BTS, with custom images still available.",
+        q: "Does Hangly let me build a charm the way Screen Dangle does?",
+        a: "Not in the same way. Screen Dangle is built around configuring a charm yourself; Hangly is built around picking a finished one from eleven collections, and then accepts any image of your own as a charm. If building it is the appeal, Screen Dangle is the better fit and this page says so.",
       },
     ],
     checked: CHECKED,

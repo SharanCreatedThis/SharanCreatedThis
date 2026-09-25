@@ -51,7 +51,7 @@ Every score below is `checks passed / checks applicable`. No figure is estimated
 | --- | --- | --- | --- |
 | Answer pages open with a Quick Answer or Key Takeaways block | pass | 23/23 | — |
 | Answer pages close with an In Short summary | pass | 23/23 | — |
-| Every FAQ answer is visible in the page text | pass | 225/225 answers across 26 FAQPage blocks | — |
+| Every FAQ answer is visible in the page text | pass | 169/169 answers across 25 FAQPage blocks | — |
 | Every HowTo step is visible in the page text | pass | 11/11 steps | — |
 | Answer pages use at least five h2 sections | pass | 23/23 | — |
 | Comparative pages carry at least one table | pass | 19 pages with tables, 16 editorial pages | — |
@@ -65,9 +65,9 @@ None. Every applicable check passes.
 
 | Type | Node count |
 | --- | --- |
-| Question | 225 |
-| Answer | 225 |
 | ListItem | 217 |
+| Question | 169 |
+| Answer | 169 |
 | SoftwareApplication | 81 |
 | Offer | 81 |
 | Country | 70 |
@@ -77,7 +77,7 @@ None. Every applicable check passes.
 | ContactPoint | 35 |
 | WebSite | 35 |
 | BreadcrumbList | 33 |
-| FAQPage | 26 |
+| FAQPage | 25 |
 | ItemList | 21 |
 | WebPage | 21 |
 | HowToStep | 11 |

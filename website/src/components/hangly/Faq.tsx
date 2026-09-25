@@ -1,48 +1,54 @@
-'use client';
-import { useState } from 'react';
-import { ChevronDown } from 'lucide-react';
-import { FAQ_GROUPS } from '@/data/hangly-faq';
-import { Label, Reveal } from './shared';
+import Link from 'next/link';
+import { ArrowUpRight } from 'lucide-react';
+import { FAQ_GROUPS, ALL_FAQS } from '@/data/hangly-faq';
+import { Label } from './shared';
 
 /**
- * The FAQ, rendered so every answer is readable.
+ * A signpost to the FAQ, not a second copy of it.
  *
- * The schema for these lives beside them on the page component. Google will
- * not show an FAQ rich result for questions a visitor cannot read, and marking
- * up hidden answers is a guidelines violation rather than a shortcut — so the
- * answers are in the DOM whether or not their section is expanded, and the
- * toggle only changes height.
+ * This component used to render all fifty questions and answers, and /faq
+ * rendered the same fifty. Measured, the two pages shared 110 sentences and
+ * each emitted a FAQPage block containing the same questions — duplicate
+ * content, duplicated structured data, and two of our own URLs competing for
+ * every FAQ query. /faq exists to own those queries and was losing them to
+ * the stronger product URL.
+ *
+ * So /faq is now canonical for every question, and this section links into it
+ * by section. It deliberately does not restate a single question: a question
+ * string repeated here would cannibalise the page it points at, which is the
+ * problem this was written to solve rather than a smaller version of it.
+ *
+ * No FAQPage schema here either. There is exactly one on the site for these
+ * questions, and it lives on /faq.
  */
 export default function Faq() {
-  const [open, setOpen] = useState<string | null>('basics-0');
   return (
     <section id="faq" className="hangly-faq section wrap" aria-labelledby="faq-title">
-      <Reveal className="center-heading">
+      <div className="center-heading">
         <Label>EVERYTHING WORTH ASKING.</Label>
         <h2 id="faq-title">Good questions,<br /><span className="muted-heading">honest answers.</span></h2>
-      </Reveal>
-      {FAQ_GROUPS.map(group => (
-        <div className="faq-group" key={group.id}>
-          <h3 className="faq-group-heading">{group.heading}</h3>
-          <div className="faq-list">
-            {group.faqs.map((faq, i) => {
-              const id = `${group.id}-${i}`;
-              const isOpen = open === id;
-              return (
-                <div className={`faq-row ${isOpen ? 'is-open' : ''}`} key={id}>
-                  <h4>
-                    <button type="button" aria-expanded={isOpen} aria-controls={`a-${id}`}
-                      onClick={() => setOpen(isOpen ? null : id)}>
-                      {faq.q}<ChevronDown size={18} />
-                    </button>
-                  </h4>
-                  <div id={`a-${id}`} className="faq-answer" role="region"><p>{faq.a}</p></div>
-                </div>
-              );
-            })}
-          </div>
-        </div>
-      ))}
+        <p className="faq-teaser-lead">
+          {ALL_FAQS.length} answers about Hangly — what it costs, how it behaves, what it sends,
+          and what to do when something looks wrong. All of them live in one place.
+        </p>
+      </div>
+
+      <ul className="faq-teaser-groups">
+        {FAQ_GROUPS.map(group => (
+          <li key={group.id}>
+            <Link href={`/faq#${group.id}`}>
+              <strong>{group.heading} <ArrowUpRight size={15} /></strong>
+              <span>{group.faqs.length} questions</span>
+            </Link>
+          </li>
+        ))}
+      </ul>
+
+      <div className="faq-teaser-cta">
+        <Link className="button button-quiet" href="/faq">
+          Read the full FAQ <ArrowUpRight size={17} />
+        </Link>
+      </div>
     </section>
   );
 }

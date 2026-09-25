@@ -20,8 +20,31 @@
  * Grouped so the page can render sections; `ALL_FAQS` flattens them for schema.
  */
 
-export type Faq = { q: string; a: string };
+export type Faq = {
+  q: string;
+  a: string;
+  /**
+   * Set when a more specific page owns this question.
+   *
+   * A question belongs on exactly one page. Where two pages could carry it,
+   * the more specific one wins — "How do I uninstall Hangly?" belongs on the
+   * install page, not in a fifty-question list — and this FAQ links there
+   * instead of repeating the answer. Duplicated answers split the ranking
+   * signal between two of our own URLs and give an answer engine two sources
+   * for one fact.
+   */
+  ownedBy?: { path: string; label: string };
+};
 export type FaqGroup = { id: string; heading: string; faqs: Faq[] };
+
+/** URL-safe anchor for a question, so other pages can link to the answer. */
+export function faqSlug(question: string): string {
+  return question
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/^-+|-+$/g, "")
+    .slice(0, 60);
+}
 
 export const FAQ_GROUPS: FaqGroup[] = [
   {
@@ -58,6 +81,7 @@ export const FAQ_GROUPS: FaqGroup[] = [
       },
       {
         q: "How large is the download?",
+        ownedBy: { path: "/products/hangly/stats", label: "the statistics page" },
         a: "The macOS disk image is about 33 MB. The Windows installers are around 130 MB, because they bundle their runtime.",
       },
     ],
@@ -156,18 +180,22 @@ export const FAQ_GROUPS: FaqGroup[] = [
       },
       {
         q: "What is the difference between a desktop charm and a desktop pet?",
+        ownedBy: { path: "/guides/best-desktop-charm-apps-for-mac", label: "the charm apps guide" },
         a: "A desktop pet — Desktop Goose, Shimeji, Oneko, a Dockling — moves around your screen, reacts to you and sometimes interrupts deliberately. A desktop charm stays where you hang it. If you want company, take a pet. If you want something that makes the screen feel yours without ever demanding attention, take a charm.",
       },
       {
         q: "Is Hangly a good Desktop Goose alternative?",
+        ownedBy: { path: "/compare/desktop-goose", label: "the Desktop Goose comparison" },
         a: "Only if what you liked about Desktop Goose was the presence rather than the chaos. Desktop Goose actively interferes with your work, which is the joke. Hangly is the opposite: it cannot be clicked, never takes focus and never interrupts. Same instinct, opposite behaviour.",
       },
       {
         q: "Is Hangly a Shimeji alternative?",
+        ownedBy: { path: "/compare/shimeji", label: "the Shimeji comparison" },
         a: "Partly. Shimeji characters climb windows and drag them about; Hangly's charms hang from a fixed point. Both let you bring your own artwork. Choose Shimeji for an animated character that roams, Hangly for an ornament that stays put — and note that Shimeji is largely a browser extension now, while Hangly is a native desktop app.",
       },
       {
         q: "Is Hangly a RunCat alternative?",
+        ownedBy: { path: "/compare/runcat", label: "the RunCat comparison" },
         a: "They solve different problems. RunCat animates a menu bar icon at a speed set by your CPU load, so it is a system monitor that happens to be charming. Hangly is decoration with no monitoring function. Plenty of people run both.",
       },
       {
@@ -218,6 +246,7 @@ export const FAQ_GROUPS: FaqGroup[] = [
       },
       {
         q: "How do I uninstall Hangly?",
+        ownedBy: { path: "/install", label: "the installation page" },
         a: "On macOS, quit it and move the app to the Trash. On Windows, use Add or Remove Programs.",
       },
       {
@@ -257,4 +286,12 @@ export const FAQ_GROUPS: FaqGroup[] = [
 ];
 
 /** Flattened, for the FAQPage schema and for counting. */
-export const ALL_FAQS: Faq[] = FAQ_GROUPS.flatMap((g) => g.faqs);
+/**
+ * The questions /faq is canonical for — everything except the six a more
+ * specific page owns. This is what the FAQPage schema is built from, so the
+ * schema and the ownership rule cannot drift apart.
+ */
+export const ALL_FAQS: Faq[] = FAQ_GROUPS.flatMap((g) => g.faqs).filter((f) => !f.ownedBy);
+
+/** Questions answered in full elsewhere, listed on /faq as signposts. */
+export const DELEGATED_FAQS: Faq[] = FAQ_GROUPS.flatMap((g) => g.faqs).filter((f) => !!f.ownedBy);

@@ -16,8 +16,8 @@ const FAQS = [
     a: "Films and documentaries, photography, creative direction, brand campaigns and editorial work, alongside designing and building desktop software. The two halves are not separate practices — the same eye for pacing and detail goes into a cut and into an interface.",
   },
   {
-    q: "Is Hangly free?",
-    a: "Yes, on both platforms, with no account, no trial and no paid tier. It runs on macOS 14 or newer and Windows 10 or newer, including a native Windows ARM64 build.",
+    q: "What should I include when reporting a Hangly bug?",
+    a: "Your macOS or Windows version, which build you installed, and what you expected to happen. If it involves a charm, name the charm. Screenshots help more than descriptions for anything visual. Pricing and platform questions are answered on the Hangly FAQ.",
   },
   {
     q: "Is Vision free?",

@@ -8,7 +8,6 @@ import Demo from "@/components/hangly/Demo";
 import Creator from "@/components/hangly/Creator";
 import Compare from "@/components/hangly/Compare";
 import Faq from "@/components/hangly/Faq";
-import FaqJsonLd from "@/components/hangly/FaqJsonLd";
 import CTA from "@/components/hangly/CTA";
 import Footer from "@/components/hangly/Footer";
 import { PlatformSheet } from "@/components/hangly/Download";
@@ -25,7 +24,6 @@ export default function Home() {
           { name: "Hangly", path: PAGES.hangly.path },
         ]}
       />
-      <FaqJsonLd />
       <PageMotion />
       <a className="skip-link" href="#features">
         Skip to content

@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
-import { FAQ_GROUPS, ALL_FAQS } from "@/data/hangly-faq";
+import { FAQ_GROUPS, ALL_FAQS, faqSlug } from "@/data/hangly-faq";
 import { COMPARISONS } from "@/lib/comparisons";
 import { PERSON_ID, ORG_ID, SITE_ID } from "@/components/JsonLd";
 import { DownloadButton, DownloadNote, PlatformSheet } from "@/components/hangly/shared";
@@ -116,9 +116,18 @@ export default function FaqPage() {
             <h2 id={`h-${group.id}`}>{group.heading}</h2>
             <div className="faq-page-list">
               {group.faqs.map((faq) => (
-                <article key={faq.q}>
+                /* The anchor lets other pages link to one answer rather than
+                   restating it, which is how a question ends up on two URLs. */
+                <article key={faq.q} id={faqSlug(faq.q)}>
                   <h3>{faq.q}</h3>
-                  <p>{faq.a}</p>
+                  {faq.ownedBy ? (
+                    <p>
+                      Answered in full on <Link href={faq.ownedBy.path}>{faq.ownedBy.label}</Link>,
+                      which is the page written for it.
+                    </p>
+                  ) : (
+                    <p>{faq.a}</p>
+                  )}
                 </article>
               ))}
             </div>
