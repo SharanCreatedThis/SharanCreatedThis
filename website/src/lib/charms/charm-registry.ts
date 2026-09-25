@@ -7,7 +7,7 @@
  *
  * **The honest-unknown contract.** A field is `null` when the answer is not
  * recorded anywhere, and `null` is never quietly treated as a default. Of the
- * 75 charms, 20 have no display name in this codebase — they exist only as
+ * 81 charms, 20 have no display name in this codebase — they exist only as
  * `manekiNeko.svg` and similar — and no charm has an authored description,
  * meaning or source. Those gaps are real and are reported by
  * `scripts/validate-charm-registry.mjs` rather than filled in with plausible
@@ -23,7 +23,7 @@
  * **`licensed` is a safety flag, not a category.** It marks charms that are
  * somebody else's intellectual property, and it exists so that no template can
  * ever generate an indexed landing page targeting a trademark. Eight of the
- * eleven collections are licensed. Treat an uncertain charm as licensed: the
+ * fourteen collections are licensed. Treat an uncertain charm as licensed: the
  * cost of being wrong in that direction is a page that does not exist.
  */
 

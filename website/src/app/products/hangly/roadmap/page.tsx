@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { Check, CircleDashed } from "lucide-react";
 import { COLLECTIONS, CHARM_TOTAL, CHARM_IN_COLLECTIONS, COLLECTION_COUNT, SEASONAL_COUNT, RELEASE, GENERATED_AT } from "@/data/stats.generated";
+import { HANGLY_STATS } from "@/lib/stats/hangly";
 import { HANGLY_APP, ID, breadcrumb, faqNode, serialise, softwareNode } from "@/lib/schema/entities";
 import { InShort, KeyTakeaways, QuickAnswer } from "@/components/aeo/AnswerBlocks";
 import { PlatformSheet } from "@/components/hangly/shared";

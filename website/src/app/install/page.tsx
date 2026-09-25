@@ -30,7 +30,7 @@ const MAC_STEPS: Step[] = [
   { name: "Drag Hangly into Applications", text: "Drag the app icon onto the Applications shortcut. Copying takes a second or two." },
   { name: "Eject the disk image", text: "Click the eject arrow beside the mounted image in the Finder sidebar, then move the downloaded .dmg to the Trash. Nothing needs it again." },
   { name: "Launch Hangly", text: "Open Applications and double-click Hangly. It is signed and notarised, so it opens without a Gatekeeper warning." },
-  { name: "Pick a charm", text: "A charm appears hanging from the top of your screen. Use the Hangly icon in the menu bar to open Customize and choose from the eleven collections, change the cord, or drop in an image of your own." },
+  { name: "Pick a charm", text: "A charm appears hanging from the top of your screen. Use the Hangly icon in the menu bar to open Customize and choose from the fourteen collections, change the cord, or drop in an image of your own." },
 ];
 
 const WINDOWS_STEPS: Step[] = [

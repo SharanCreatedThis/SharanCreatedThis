@@ -48,7 +48,7 @@ function searchText(c: Charm): string {
 
 /**
  * A prebuilt search index, so a page ships one array rather than recomputing
- * `searchText` for 75 charms on every keystroke.
+ * `searchText` for 81 charms on every keystroke.
  */
 export type CharmSearchEntry = { id: string; label: string; haystack: string };
 

@@ -1,111 +1,105 @@
 # Charm count audit
 
-_2026-09-25. Resolves the flagged claim in `docs/content-verification-report.md`._
+_2026-09-26. Source of truth: the shipped `Hangly-2.0.0.dmg`._
 
-## The answer
+## The number
 
-**Hangly ships 75 charms.** Every one has complete artwork in both renderings — the plain
-drawing and the connected one with the hanging thread ending at that charm's own loop.
+**81 charms across 14 categories.**
 
-```
-75  charms with complete artwork          ← the number to quote
-55  named across the 11 collections
-20  seasonal and lucky charms, in no collection
-56  surfaced anywhere on the website
-```
+Read from `Contents/Resources/CharmLibrary.json` inside the shipped disk image
+(`CFBundleShortVersionString 2.0.0`, `CFBundleVersion 200`) — the catalogue the running
+application loads. The file is now committed at
+`src/data/hangly/charm-library.shipped.json` so the figure is verifiable rather than asserted.
 
-The previous claim of **80+ was unsupported**. Nothing in the repository produced 80. It was
-written by hand in commit `efe8c5e` and spread to 15 files, including comparison tables that
-criticise competitors for not publishing a charm count.
+| Category | Charms | | Category | Charms |
+| --- | --- | --- | --- | --- |
+| Protection | 6 | | Marvel | 6 |
+| Luck & Fortune | 4 | | DC | 5 |
+| Ritual & Home | 2 | | Tamil Spiritual | 5 |
+| Classic | 5 | | BTS | 7 |
+| Seasonal | 11 | | Football Legends | 5 |
+| | | | Music Legends | 6 |
+| | | | Friends | 6 |
+| | | | Breaking Bad | 7 |
+| | | | Stranger Things | 6 |
 
-## Every source traced
+## Why the number was wrong three times
 
-| Source | Count | What it actually measures |
+| Published | Counted | Why it was wrong |
 | --- | --- | --- |
-| `public/charms/*.svg` | 75 | Plain artwork, one file per charm |
-| `public/charms/connected/*.svg` | 75 | Connected artwork, exact parity — no charm missing either |
-| `src/components/hangly/Collections.tsx` | 55 | Charms named in the 11 collections on the product page |
-| `src/data/charms.generated.ts` | 56 | Charms the site references: the 55 plus `daruma`, used by the demo |
-| Seasonal / lucky set | 20 | Artwork ships, no collection names them |
-| Hidden or internal charms | 0 | None found. Every SVG resolves to a real, complete charm |
+| **80+** | nothing | Written by hand. Accidentally close — the real figure is 81 |
+| **75** | `website/public/charms/*.svg` | Counted website artwork, not the product. The site carries art for 75 of the 81 |
+| **49** | `apps/Hangly/Hangly/Assets/CharmLibrary.json` | That source is dated 2026-09-17, two days before the 2.0 build, and is missing 32 charms |
 
-The gap between 55 and 75 is the whole story. Counting the collections understated the library
-by a quarter, because the seasonal and lucky charms belong to no collection — the app surfaces
-them on its own as the year turns.
+Each correction was reported confidently and each counted something adjacent to the product. The
+common failure was never checking the artefact users actually install.
 
-### The 20 charms the website never lists
+A related error followed from the same source: 31 charms were reported as "marketed but not
+shipped". They all ship. The website uses generic ids (`breakingBad1`, `football25`, `singer20`)
+where the app uses real names (`walterWhite`, `ronaldoJersey`, `billieEilish`) — an id-naming
+mismatch read as missing product.
 
-Halloween — `bat`, `ghost`, `pumpkin`
-Winter — `candyCane`, `snowflake`
-Indian festival — `diya`, `ghanta`, `lotus`, `nimbuMirchi`, `panchangJie`, `firework`
-Luck, several cultures — `horseshoe`, `luckyCoin`, `manekiNeko`, `scarab`, `daruma`, `himmeli`
-Other — `bell`, `lantern`, `shazamLightning`
+## Messaging
 
-`shazamLightning` looks like it belongs in the DC collection and is probably an oversight rather
-than a seasonal charm.
+| Surface | Figure | Source |
+| --- | --- | --- |
+| Hero, promotional copy | **80+ charms** | `HANGLY_STATS.marketingCharmCount` |
+| Schema, datasets, stats, comparisons, FAQ | **81 charms across 14 categories** | `HANGLY_STATS.charmCount` |
+| Growth messaging, where it appears | "81 charms today, with 100+ planned" | `HANGLY_COPY.growth` |
 
-## A second stale claim, found while counting
+`100+` is not used as a current product claim anywhere.
 
-**"Six collections lack their connected artwork" is no longer true.** Zero charms fall back to
-the plain drawing — `charms.generated.ts` resolves all 56 references to connected art, and the
-two directories have exact parity at 75 each. That work finished; the claim outlived it.
+## Central source
 
-It appeared on `/products/hangly/roadmap`, in the Hangly FAQ, and in `ROADMAP.md`. The first two
-are corrected. `ROADMAP.md` is repository documentation and is left for you.
+`src/lib/stats/hangly.ts` exports `HANGLY_STATS`, `HANGLY_CATEGORIES`, `SHIPPED_CHARMS` and
+`HANGLY_COPY`. Nothing else may state a count.
 
-## Single source of truth
+## Validator
 
-`scripts/generate-stats.mjs` counts the artwork directories at build time and writes
-`src/data/stats.generated.ts`:
+`scripts/validate-charm-counts.mjs`, wired into `prebuild`. Three checks:
 
-```ts
-CHARM_TOTAL            = 75   // quote this
-CHARM_IN_COLLECTIONS   = 55
-SEASONAL_COUNT         = 20
-COLLECTION_COUNT       = 11
-SEASONAL               = [...]  // the 20 names
+1. **`HANGLY_STATS` must match the shipped catalogue.** Editing the constant without the product
+   changing fails the build.
+2. **`marketingCharmCount` may round down, never up.** `"100+"` against a product of 81 fails.
+3. **No stale count anywhere**, and **no numeric count in a component or page** — those must
+   import. Prose in the comparison, guide and FAQ data files may spell the figure out, because
+   check 1 already guarantees it is current and a comparison table reads better as words than as
+   interpolation.
+
+All five failure modes were verified by introducing each fault:
+
+```
+"75 charms across 11 collections"  ✗ stale count
+"100+ charms"                      ✗ numeric count in a component
+"80+ charms"                       ✗ numeric count in a component
+"Over eighty charms"               ✗ stale count
+charmCount: 120                    ✗ disagrees with the shipped catalogue (81)
+marketingCharmCount: "100+"        ✗ overstates the product, which ships 81
 ```
 
-A charm counts only when **both** renderings exist. That is deliberate: a charm with plain art
-and no connected art cannot hang properly, so it is not a charm a user can have.
+The first version of check 3 exempted any line *containing* a `HANGLY_*` reference, so a
+hardcoded `100+ charms` added beside a legitimate interpolation passed. It now strips the
+references and checks what remains. The version before that required the number to sit beside the
+word "charms", which is how `80+ across eleven collections` stayed live in production through a
+sweep reported as clean.
 
-### A guard, because counting is only half the fix
+## Remaining count references — all intentional
 
-The old figure survived months of edits because nothing checked it. `generate-stats.mjs` now
-fails the build if `80+ charms`, `over eighty charms`, `eighty-plus charms` or a hardcoded
-`value: '80+'` reappears anywhere under `src/`, excluding the verification register which
-documents the old claim on purpose.
-
-Verified by reintroducing the string: the build fails with the offending file named, and passes
-again when reverted.
-
-## Pages affected
-
-Every page below previously stated or implied 80+. All now derive from `CHARM_TOTAL` or carry
-prose matching it. Verified against the built HTML: **27 pages mention a charm count, and every
-one says 75** — except the two that publish the breakdown deliberately.
-
-| Page | Was | Now |
+| Figure | Where | Why it is correct |
 | --- | --- | --- |
-| `/products/hangly` | `80+` stat tile | Derives `CHARM_TOTAL` |
-| `/products/hangly/stats` | 55 + 75 unlabelled | 75 headline, 55 / 20 / 11 broken out |
-| `/products/hangly/roadmap` | stale unfinished-collections section | Seasonal-set section, corrected |
-| `/products` | "eighty-plus charms" | "seventy-five charms: 55 across 11 collections, plus 20 seasonal" |
-| `/contact` | "over eighty charms" | Same corrected phrasing |
-| `/faq` | "over eighty designs" | "seventy-five designs" |
-| `/compare/*` (8 pages) | 44 occurrences across the data | "seventy-five charms across eleven collections and a seasonal set" |
-| `/guides/*` (8 pages) | 19 occurrences | Same |
-| `sitemap` / meta description | "80+ charms across 11 collections" | "75 charms across 11 collections" |
-| Schema `SoftwareApplication` | "Over eighty charms" | "Seventy-five charms across eleven collections and a seasonal set" |
+| **75** | `/products/hangly/stats` | Website artwork files, explicitly labelled as such — 75 of the 81 |
+| **55** | none in output | Removed |
+| **22 charms** | 4 comparison pages | Book My Luck's catalogue, a competitor figure |
+| **11 charms** | stats page | Seasonal charms, correct |
+| **80+** | 1 page | The hero tile, from `marketingCharmCount` |
 
-**Files changed:** 15 source files, 66 individual replacements.
+## Verified in the built output
 
-## Recommendation
+```
+81 charms          36 pages
+eighty-one charms  17 pages
+eighty-one designs  3 pages
+80+ charms          1 page   (hero)
+```
 
-Give the seasonal set a home on the product page — a twelfth collection, or a labelled section
-beneath the eleven. It is the cheapest remaining content work on the site and it is the only
-change that makes the published count and the installed count the same number. Until then the
-product page lists 55 of the 75 charms a user actually gets, which undersells the product to
-exactly the visitor who is comparing charm libraries.
-
-`shazamLightning` should probably move into the DC collection at the same time.
+No stale product claim appears anywhere in `out/`.

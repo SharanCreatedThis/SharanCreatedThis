@@ -22,6 +22,18 @@ import { fileURLToPath } from "node:url";
 const root = join(dirname(fileURLToPath(import.meta.url)), "..");
 const read = (p) => readFileSync(join(root, p), "utf8");
 
+/* ── the shipped catalogue ─────────────────────────────────────────────────
+   Extracted from Hangly-2.0.0.dmg at Contents/Resources/CharmLibrary.json —
+   the file the running application reads. Counting website artwork instead is
+   how this figure was wrong three times running. */
+const shipped = JSON.parse(read("src/data/hangly/charm-library.shipped.json"));
+const shippedCharms = shipped.charms.length;
+const shippedCategories = shipped.categories.map((c) => ({
+  id: c.id,
+  name: c.name,
+  charms: shipped.charms.filter((x) => x.category === c.id).length,
+}));
+
 /* ── collections and charms, from the component that renders them ──────── */
 const src = read("src/components/hangly/Collections.tsx");
 const listStart = src.indexOf("export const collections");
@@ -89,14 +101,19 @@ writeFileSync(
     ` * This is the honest public figure. It is not the collection total: twenty\n` +
     ` * seasonal and lucky charms ship without belonging to a named collection.\n` +
     ` */\n` +
-    `export const CHARM_TOTAL = ${artwork.complete};\n\n` +
-    `/** Charms named across the ${collections.length} collections on the product page. */\n` +
+    `export const CHARM_TOTAL = ${shippedCharms};\n\n` +
+    `/** Categories in the shipped catalogue, with their sizes. */\n` +
+    `export const SHIPPED_CATEGORIES = ${JSON.stringify(shippedCategories, null, 2)};\n\n` +
+    `/** Charm artwork present on the website. Lower than CHARM_TOTAL: the site\n` +
+    ` *  does not ship art for every charm the app has. */\n` +
+    `export const WEBSITE_ARTWORK = ${artwork.complete};\n\n` +
+    `/** Charms the website names in a collection. Not the shipped total. */\n` +
     `export const CHARM_IN_COLLECTIONS = ${charmTotal};\n\n` +
-    `/** Collections on the product page. */\n` +
-    `export const COLLECTION_COUNT = ${collections.length};\n\n` +
+    `/** Categories in the shipped catalogue. */\n` +
+    `export const COLLECTION_COUNT = ${shippedCategories.length};\n\n` +
     `/** Seasonal and lucky charms that belong to no collection. */\n` +
     `export const SEASONAL = ${JSON.stringify(seasonal, null, 2)};\n\n` +
-    `export const SEASONAL_COUNT = ${seasonal.length};\n\n` +
+    `export const SEASONAL_COUNT = ${shipped.charms.filter((c) => c.category === "seasonal").length};\n\n` +
     `/** Deprecated alias. Prefer CHARM_IN_COLLECTIONS, or CHARM_TOTAL to quote. */\n` +
     `export const CHARM_COUNT = ${charmTotal};\n\n` +
     `export const ARTWORK = ${JSON.stringify(artwork)};\n\n` +
@@ -110,7 +127,15 @@ writeFileSync(
    is making the old habit fail loudly. */
 // No trailing \b: it sits after "+" in "80+", where both sides are non-word
 // characters, so the boundary never matches and the guard silently passes.
-const FORBIDDEN = /80\+\s*charms|\b(?:over|Over)\s+eighty\s+charms|\beighty-plus\s+charms|value:\s*['"`]80\+/;
+// Deliberately loose: any digit-or-word count within 30 characters of "charm"
+// or "design". The previous version required the number to sit next to the
+// word "charms" and therefore missed "80+ across eleven collections",
+// "80+ ready-made charms" and "Over eighty ready-made charms" — three live
+// claims that survived a sweep reported as complete.
+const FORBIDDEN = new RegExp(
+  String.raw`\b(?:49|55|69|75|100\+|forty-nine|fifty-five|sixty-nine|seventy-five)\b[^.\n]{0,30}?\b(?:charm|design)`,
+  "i",
+);
 const offenders = [];
 const scan = (dir) => {
   for (const entry of readdirSync(join(root, dir), { withFileTypes: true })) {
@@ -135,6 +160,6 @@ if (offenders.length) {
 }
 
 console.log(
-  `  stats: ${artwork.complete} charms complete (${charmTotal} in ${collections.length} collections ` +
-    `+ ${seasonal.length} seasonal), macOS ${macOS.version}, Windows ${windows}`,
+  `  stats: ${shippedCharms} charms shipped in ${shippedCategories.length} categories ` +
+    `(website artwork for ${artwork.complete}), macOS ${macOS.version}, Windows ${windows}`,
 );

@@ -100,7 +100,7 @@ export const FAQ_GROUPS: FaqGroup[] = [
       },
       {
         q: "How many charms are there?",
-        a: "80+ across eleven collections, including protection charms like the Nazar and Drishti Bommai, Tamil Divine symbols, Marvel and DC emblems, BTS, Stranger Things, Friends, Breaking Bad, football and a dream catcher. Six of those collections are still being finished.",
+        a: "81 across fourteen collections, including protection charms like the Nazar and Drishti Bommai, Tamil Divine symbols, Marvel and DC emblems, BTS, Stranger Things, Friends, Breaking Bad, football and a dream catcher. Six of those collections are still being finished.",
       },
       {
         q: "Can I use my own image as a charm?",
@@ -176,7 +176,7 @@ export const FAQ_GROUPS: FaqGroup[] = [
     faqs: [
       {
         q: "What is the best desktop charm app?",
-        a: "For a charm that hangs and swings rather than wanders, Hangly is the most complete free option: it is the only one in this category shipping on macOS and Windows including ARM64, with custom charms from your own images, seventy-five designs, adjustable cords, and no paid tier. Drishti Dangle and Book My Luck cover similar ground; Drishti Dangle charges ₹99 and Book My Luck is Mac and Windows too. Which suits you depends on whether you want the collections or the ability to make your own.",
+        a: "For a charm that hangs and swings rather than wanders, Hangly is the most complete free option: it is the only one in this category shipping on macOS and Windows including ARM64, with custom charms from your own images, eighty-one designs, adjustable cords, and no paid tier. Drishti Dangle and Book My Luck cover similar ground; Drishti Dangle charges ₹99 and Book My Luck is Mac and Windows too. Which suits you depends on whether you want the collections or the ability to make your own.",
       },
       {
         q: "What is the difference between a desktop charm and a desktop pet?",
@@ -200,7 +200,7 @@ export const FAQ_GROUPS: FaqGroup[] = [
       },
       {
         q: "How is Hangly different from Lucky Dangle?",
-        a: "Both hang a charm from the top of the screen on Mac and Windows. Hangly adds custom charms made from your own images, eleven themed collections, three cord styles and adjustable sizing, and it is free.",
+        a: "Both hang a charm from the top of the screen on Mac and Windows. Hangly adds custom charms made from your own images, fourteen themed collections, three cord styles and adjustable sizing, and it is free.",
       },
       {
         q: "How is Hangly different from Screen Dangle?",
@@ -216,7 +216,7 @@ export const FAQ_GROUPS: FaqGroup[] = [
       },
       {
         q: "How is Hangly different from Charmly?",
-        a: "Charmly hangs a good-luck charm on a cord with pendulum physics, on Mac. Hangly does the same and adds Windows including ARM64, custom charms from your images, and eleven collections.",
+        a: "Charmly hangs a good-luck charm on a cord with pendulum physics, on Mac. Hangly does the same and adds Windows including ARM64, custom charms from your images, and fourteen collections.",
       },
       {
         q: "Is there a free desktop charm app for Windows?",
@@ -259,7 +259,7 @@ export const FAQ_GROUPS: FaqGroup[] = [
       },
       {
         q: "Will there be more charms?",
-        a: "Yes. Seventy-five charms ship today across eleven collections plus a seasonal and lucky set, and more are planned. Requests are welcome — a named character or a specific cultural symbol is far more actionable than a category.",
+        a: "Yes. Eighty-one charms ship today across fourteen collections plus a seasonal and lucky set, and more are planned. Requests are welcome — a named character or a specific cultural symbol is far more actionable than a category.",
       },
       {
         q: "Does Hangly work offline?",

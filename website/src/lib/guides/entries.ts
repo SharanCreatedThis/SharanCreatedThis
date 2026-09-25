@@ -80,11 +80,11 @@ export const CHECKED_2 = "2026-09-25";
 export const HANGLY: GuideEntry = {
   name: "Hangly",
   url: "https://www.sharancreatedthis.in/products/hangly",
-  what: "Hangs a charm from the top of your screen on a cord with real pendulum physics. Seventy-five charms across eleven collections and a seasonal set, plus any image of your own as a charm.",
+  what: "Hangs a charm from the top of your screen on a cord with real pendulum physics. Eighty-one charms across fourteen collections, plus any image of your own as a charm.",
   bestFor: "Anyone who wants decoration that never interrupts, on Mac or Windows",
   platforms: "macOS 14+ (Apple Silicon & Intel), Windows 10+ (x64 & ARM64)",
   price: "Free",
-  note: "The Windows build is a pre-release at 0.9.x; macOS is at 2.0 and is the mature one. Six of the eleven collections are still being finished.",
+  note: "The Windows build is a pre-release at 0.9.x; macOS is at 2.0 and is the mature one. Six of the fourteen collections are still being finished.",
 };
 
 export const LUCKY_DANGLE: GuideEntry = {
@@ -154,7 +154,7 @@ export const BOOK_MY_LUCK: GuideEntry = {
   bestFor: "A paid charm app with a published catalogue and bundle licensing",
   platforms: "macOS 14+, Windows 10 and 11",
   price: "\u20b999 once; \u20b9297 for five licences",
-  note: "Paid rather than free, and the catalogue is 22 charms against Hangly's 75. They do publish a count, which most of this category does not.",
+  note: "Paid rather than free, and the catalogue is 22 charms against Hangly's 81. They do publish a count, which most of this category does not.",
 };
 
 export const DESKTOP_GOOSE: GuideEntry = {

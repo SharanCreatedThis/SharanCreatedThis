@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
-import { COLLECTIONS, CHARM_COUNT, ARTWORK, RELEASE, GENERATED_AT } from "@/data/stats.generated";
+import { ARTWORK, RELEASE, GENERATED_AT } from "@/data/stats.generated";
+import { HANGLY_STATS, HANGLY_CATEGORIES } from "@/lib/stats/hangly";
 import { BUILDS, BUILD_ORDER } from "@/lib/downloads";
 import { HANGLY_APP, ID, breadcrumb, faqNode, serialise, softwareNode } from "@/lib/schema/entities";
 import { InShort, KeyTakeaways, QuickAnswer } from "@/components/aeo/AnswerBlocks";
@@ -12,7 +13,7 @@ const PATH = "/products/hangly/stats";
 const URL_ = absoluteUrl(PATH);
 const TITLE = "Hangly Statistics & Technical Specifications";
 const DESCRIPTION =
-  "Every published figure for Hangly: charms, collections, artwork, platform support and technical specifications — counted from source, not written by hand.";
+  "Every published figure for Hangly: charms, categories, platform support and technical specifications — counted from the shipped application, not written by hand.";
 
 export const metadata: Metadata = {
   title: TITLE,
@@ -28,11 +29,11 @@ const mb = (b: number) => (b ? `${Math.round(b / 1_000_000)} MB` : "not publishe
 const FAQS = [
   {
     q: "How many charms does Hangly have?",
-    a: `${CHARM_COUNT} charms are listed across ${COLLECTIONS.length} collections on the product page, and ${ARTWORK.plain} charm artwork files ship in the application. The figures differ because artwork exists for charms not yet placed in a published collection. Every number on this page is counted from source at build time rather than written by hand.`,
+    a: `${HANGLY_STATS.charmCount}, across ${HANGLY_STATS.categoryCount} categories, read from the catalogue inside the shipped Hangly ${HANGLY_STATS.appVersion} application. The website carries artwork for ${ARTWORK.plain} of them — five Classic charms are drawn in code rather than from vectors, and a few of the newest have not been copied across.`,
   },
   {
     q: "How many collections are there?",
-    a: `${COLLECTIONS.length}: ${COLLECTIONS.map((c) => c.name).join(", ")}.`,
+    a: `${HANGLY_STATS.categoryCount}: ${HANGLY_CATEGORIES.map((c) => c.name).join(", ")}.`,
   },
   {
     q: "What physics does Hangly actually simulate?",
@@ -76,10 +77,11 @@ const schema = {
       creator: { "@id": ID.person },
       publisher: { "@id": ID.organization },
       about: { "@id": ID.hangly },
-      measurementTechnique: "Counted from the application source, artwork directory and Sparkle appcast at build time",
+      measurementTechnique: `Counted at build time from CharmLibrary.json inside the shipped Hangly ${HANGLY_STATS.appVersion} application, plus the Sparkle appcast`,
       variableMeasured: [
-        { "@type": "PropertyValue", name: "Charms listed in collections", value: CHARM_COUNT },
-        { "@type": "PropertyValue", name: "Collections", value: COLLECTIONS.length },
+        { "@type": "PropertyValue", name: "Charms in the shipped app", value: HANGLY_STATS.charmCount },
+        { "@type": "PropertyValue", name: "Categories", value: HANGLY_STATS.categoryCount },
+        { "@type": "PropertyValue", name: "Seasonal charms", value: HANGLY_STATS.seasonalCharmCount },
         { "@type": "PropertyValue", name: "Charm artwork files", value: ARTWORK.plain },
         { "@type": "PropertyValue", name: "Supported platforms", value: 3 },
         { "@type": "PropertyValue", name: "macOS version", value: RELEASE.macOS.version },
@@ -138,8 +140,8 @@ export default function StatsPage() {
         </header>
 
         <QuickAnswer>
-          Hangly lists {CHARM_COUNT} charms across {COLLECTIONS.length} collections and ships{" "}
-          {ARTWORK.plain} charm artwork files. It runs on macOS 14 or newer as a universal build,
+          Hangly ships {HANGLY_STATS.charmCount} charms across {HANGLY_STATS.categoryCount}{" "}
+          categories, {HANGLY_STATS.seasonalCharmCount} of them seasonal. It runs on macOS 14 or newer as a universal build,
           and on Windows 10 or newer with separate x64 and native ARM64 builds. The macOS release
           is {RELEASE.macOS.version} at {mb(RELEASE.macOS.bytes)}; Windows is at {RELEASE.windows}{" "}
           and is still a pre-release. It is free on every platform.
@@ -147,8 +149,8 @@ export default function StatsPage() {
 
         <KeyTakeaways
           points={[
-            `${CHARM_COUNT} charms listed across ${COLLECTIONS.length} collections`,
-            `${ARTWORK.plain} charm artwork files ship in the app`,
+            `${HANGLY_STATS.charmCount} charms across ${HANGLY_STATS.categoryCount} categories in Hangly ${HANGLY_STATS.appVersion}`,
+            `${HANGLY_STATS.seasonalCharmCount} seasonal charms, in four packs`,
             `Three builds: macOS universal, Windows x64, Windows ARM64 native`,
             `macOS ${RELEASE.macOS.version} at ${mb(RELEASE.macOS.bytes)}, down from 89 MB before 2.0`,
             "Free on every platform, with no account and no paid tier",
@@ -156,38 +158,36 @@ export default function StatsPage() {
         />
 
         <section aria-labelledby="counting">
-          <h2 id="counting">How these numbers are counted</h2>
+          <h2 id="counting">Where this number comes from</h2>
           <p>
-            Two different charm figures appear on this page and they measure different things, so
-            it is worth being precise rather than picking the flattering one.
+            <strong>{HANGLY_STATS.charmCount} charms</strong> is read from{" "}
+            <code>CharmLibrary.json</code> inside the shipped application — the catalogue the
+            running app loads. It cannot disagree with what you have installed, because it is the
+            same file.
           </p>
           <p>
-            <strong>{CHARM_COUNT} charms</strong> is the number listed across the{" "}
-            {COLLECTIONS.length} published collections on the product page. That is the figure to
-            use when comparing against another app&apos;s published catalogue, because it is the
-            like-for-like number.
+            This page previously published a different figure, twice. It said 75, which counted
+            the SVG files in the website&apos;s artwork directory rather than the product, and
+            before that 80+, which was written by hand. The website carries artwork for{" "}
+            {ARTWORK.plain} of the {HANGLY_STATS.charmCount} — five of the Classic charms are
+            drawn in code rather than from vectors, and a few of the newest have not been copied
+            across. That gap is why counting the website was the wrong method rather than a close
+            approximation.
           </p>
           <p>
-            <strong>{ARTWORK.plain} artwork files</strong> is the number of charm SVGs shipping in{" "}
-            <code>public/charms</code>, with a matching {ARTWORK.connected} in the connected
-            variant directory that adds the per-charm thread path. This is higher than the listed
-            count because artwork exists for charms that are not currently placed in a published
-            collection — seasonal charms and work in progress among them.
-          </p>
-          <p>
-            Both are produced by <code>scripts/generate-stats.mjs</code>, which reads the
-            collections component, the artwork directory and the Sparkle feed at build time. If a
-            number here is wrong, the underlying data is wrong, and that is a better failure than a
-            page that is confidently stale.
+            The catalogue is committed at{" "}
+            <code>src/data/hangly/charm-library.shipped.json</code>, extracted from Hangly{" "}
+            {HANGLY_STATS.appVersion}. A build check re-counts it and fails if any figure
+            published here drifts from it.
           </p>
         </section>
 
         <section aria-labelledby="collections">
-          <h2 id="collections">Collections</h2>
+          <h2 id="collections">Categories</h2>
           <Table
-            caption="Hangly charm collections and the number of charms in each"
-            columns={["Collection", "Charms", "What it is"]}
-            rows={COLLECTIONS.map((c) => [c.name, c.charms.length, c.description])}
+            caption="Hangly charm categories and the number of charms in each"
+            columns={["Category", "Charms"]}
+            rows={HANGLY_CATEGORIES.map((c) => [c.name, c.charms])}
           />
         </section>
 
@@ -238,9 +238,10 @@ export default function StatsPage() {
               ["Minimum macOS", RELEASE.macOS.minimumSystem ? `${RELEASE.macOS.minimumSystem}` : "14.0"],
               ["Current Windows version", `${RELEASE.windows} (pre-release)`],
               ["Minimum Windows", "10 for x64, 11 for ARM64"],
-              ["Charms listed", CHARM_COUNT],
-              ["Collections", COLLECTIONS.length],
-              ["Charm artwork files", ARTWORK.plain],
+              ["Charms", HANGLY_STATS.charmCount],
+              ["Categories", HANGLY_STATS.categoryCount],
+              ["Seasonal charms", HANGLY_STATS.seasonalCharmCount],
+              ["Website artwork files", ARTWORK.plain],
               ["Custom charms", "Any single image"],
               ["Price", "Free, no account, no paid tier"],
               ["macOS code signing", "Developer ID signed and notarised"],
@@ -260,8 +261,8 @@ export default function StatsPage() {
         </section>
 
         <InShort>
-          {CHARM_COUNT} charms across {COLLECTIONS.length} collections, {ARTWORK.plain} artwork
-          files, three builds covering macOS universal and Windows on both x64 and ARM64, and a{" "}
+          {HANGLY_STATS.charmCount} charms across {HANGLY_STATS.categoryCount} categories, three
+          builds covering macOS universal and Windows on both x64 and ARM64, and a{" "}
           {mb(RELEASE.macOS.bytes)} macOS download. Free everywhere. Every figure is counted from
           source at build time and the page carries the date it was generated, so it is safe to
           quote.

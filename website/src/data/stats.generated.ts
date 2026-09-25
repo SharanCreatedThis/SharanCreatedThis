@@ -133,13 +133,91 @@ export const COLLECTIONS: CharmCollection[] = [
  * This is the honest public figure. It is not the collection total: twenty
  * seasonal and lucky charms ship without belonging to a named collection.
  */
-export const CHARM_TOTAL = 75;
+export const CHARM_TOTAL = 81;
 
-/** Charms named across the 11 collections on the product page. */
+/** Categories in the shipped catalogue, with their sizes. */
+export const SHIPPED_CATEGORIES = [
+  {
+    "id": "protection",
+    "name": "Protection",
+    "charms": 6
+  },
+  {
+    "id": "luck",
+    "name": "Luck & Fortune",
+    "charms": 4
+  },
+  {
+    "id": "ritual",
+    "name": "Ritual & Home",
+    "charms": 2
+  },
+  {
+    "id": "classic",
+    "name": "Classic",
+    "charms": 5
+  },
+  {
+    "id": "seasonal",
+    "name": "Seasonal",
+    "charms": 11
+  },
+  {
+    "id": "marvel",
+    "name": "Marvel",
+    "charms": 6
+  },
+  {
+    "id": "dc",
+    "name": "DC",
+    "charms": 5
+  },
+  {
+    "id": "tamilSpiritual",
+    "name": "Tamil Spiritual",
+    "charms": 5
+  },
+  {
+    "id": "bts",
+    "name": "BTS",
+    "charms": 7
+  },
+  {
+    "id": "footballLegends",
+    "name": "Football Legends",
+    "charms": 5
+  },
+  {
+    "id": "musicLegends",
+    "name": "Music Legends",
+    "charms": 6
+  },
+  {
+    "id": "friends",
+    "name": "Friends",
+    "charms": 6
+  },
+  {
+    "id": "breakingBad",
+    "name": "Breaking Bad",
+    "charms": 7
+  },
+  {
+    "id": "strangerThings",
+    "name": "Stranger Things",
+    "charms": 6
+  }
+];
+
+/** Charm artwork present on the website. Lower than CHARM_TOTAL: the site
+ *  does not ship art for every charm the app has. */
+export const WEBSITE_ARTWORK = 75;
+
+/** Charms the website names in a collection. Not the shipped total. */
 export const CHARM_IN_COLLECTIONS = 55;
 
-/** Collections on the product page. */
-export const COLLECTION_COUNT = 11;
+/** Categories in the shipped catalogue. */
+export const COLLECTION_COUNT = 14;
 
 /** Seasonal and lucky charms that belong to no collection. */
 export const SEASONAL = [
@@ -165,7 +243,7 @@ export const SEASONAL = [
   "snowflake"
 ];
 
-export const SEASONAL_COUNT = 20;
+export const SEASONAL_COUNT = 11;
 
 /** Deprecated alias. Prefer CHARM_IN_COLLECTIONS, or CHARM_TOTAL to quote. */
 export const CHARM_COUNT = 55;

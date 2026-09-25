@@ -3,7 +3,7 @@
  *
  * The sitemap reads this. Two rules are enforced here rather than remembered:
  *
- * 1. **A licensed charm never gets a route.** Eight of the eleven collections
+ * 1. **A licensed charm never gets a route.** Eight of the fourteen collections
  *    are somebody else's intellectual property, and an indexed page carrying a
  *    trademark in its title and schema is a different artefact from a charm
  *    inside an app. No amount of authored copy unlocks one.
