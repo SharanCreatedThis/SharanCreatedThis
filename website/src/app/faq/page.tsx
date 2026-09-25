@@ -7,6 +7,7 @@ import { PERSON_ID, ORG_ID, SITE_ID } from "@/components/JsonLd";
 import { DownloadButton, DownloadNote, PlatformSheet } from "@/components/hangly/shared";
 import { SITE_NAME, absoluteUrl } from "@/lib/seo";
 import { ID } from "@/lib/schema/entities";
+import { InShort, QuickAnswer } from "@/components/aeo/AnswerBlocks";
 
 /**
  * The FAQ, as its own indexable page.
@@ -33,9 +34,9 @@ export const metadata: Metadata = {
     url: absoluteUrl("/faq"),
     title: TITLE,
     description: DESCRIPTION,
-    images: [{ url: "/og/hangly.png", width: 1200, height: 630, alt: TITLE }],
+    images: [{ url: "/og/faq.png", width: 1200, height: 630, alt: TITLE }],
   },
-  twitter: { card: "summary_large_image", title: TITLE, description: DESCRIPTION, images: ["/og/hangly.png"] },
+  twitter: { card: "summary_large_image", title: TITLE, description: DESCRIPTION, images: ["/og/faq.png"] },
 };
 
 const schema = {
@@ -97,6 +98,13 @@ export default function FaqPage() {
           <DownloadNote />
         </header>
 
+        <QuickAnswer>
+          Hangly is a free desktop app for macOS 14+ and Windows 10+ that hangs a decorative charm
+          from the top of your screen on a cord, swaying with real pendulum physics. It is
+          click-through, so it never intercepts a click or takes keyboard focus. There is no
+          account, no trial and no paid tier, and it updates itself once installed.
+        </QuickAnswer>
+
         <nav className="faq-toc" aria-label="Sections">
           {FAQ_GROUPS.map((g) => (
             <a key={g.id} href={`#${g.id}`}>{g.heading}</a>
@@ -116,6 +124,14 @@ export default function FaqPage() {
             </div>
           </section>
         ))}
+
+        <InShort>
+          Free on both platforms, safe during a screen share because it cannot intercept a click,
+          and self-updating after install. The macOS build is the mature one at 2.0; Windows is
+          still a pre-release at 0.9.x and shows a SmartScreen warning once because it is not
+          code-signed yet. If a question here is unanswered, the guides cover the wider category
+          and the comparisons cover specific rivals.
+        </InShort>
 
         <section aria-labelledby="faq-compare">
           <h2 id="faq-compare">Comparisons</h2>

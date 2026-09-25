@@ -2159,3 +2159,28 @@
   transition: color 0.25s, text-decoration-color 0.25s;
 }
 .hub-footer-links a:hover { color: rgba(255, 255, 255, 0.92); text-decoration-color: currentColor; }
+
+/* ── Long-form sections on /contact, /products and /portfolio ─────────────
+   These three pages were under 250 words each. The prose below is the fix,
+   and it is styled to read rather than to perform: one column, generous
+   measure, nothing that moves. */
+.hub-prose { max-width: 72ch; margin: 0 auto; padding: 3.2rem 1.5rem 0; }
+.hub-prose h2 { font-size: clamp(1.45rem, 3vw, 2rem); line-height: 1.18; margin: 0 0 1rem; letter-spacing: -0.02em; }
+.hub-prose h3 { font-size: 1.02rem; margin: 1.8rem 0 .45rem; }
+.hub-prose p { margin: 0 0 1.05rem; line-height: 1.72; opacity: .84; }
+.hub-prose ul:not(.hub-prose-links) { margin: 0 0 1.2rem; padding-left: 1.15rem; line-height: 1.72; opacity: .84; }
+.hub-prose ul:not(.hub-prose-links) li { margin-bottom: .5rem; }
+.hub-faq > div > div { padding-bottom: .4rem; }
+.hub-faq h3 { margin-top: 1.7rem; }
+
+.hub-prose-links { list-style: none; margin: 1.4rem 0 0; padding: 0; display: grid; gap: .7rem; }
+.hub-prose-links li { display: flex; gap: .7rem; flex-wrap: wrap; align-items: baseline; }
+.hub-prose-links a { font-weight: 500; text-decoration: underline; text-underline-offset: 3px; }
+.hub-prose-links span { opacity: .6; font-size: .9rem; }
+
+.hub-table-wrap { overflow-x: auto; margin: 1.6rem 0 1.2rem; }
+.hub-table { width: 100%; border-collapse: collapse; font-size: .92rem; }
+.hub-table th, .hub-table td { text-align: left; padding: .72rem .8rem; border-bottom: 1px solid color-mix(in srgb, currentColor 12%, transparent); vertical-align: top; }
+.hub-table thead th { font-size: .74rem; letter-spacing: .07em; text-transform: uppercase; opacity: .55; }
+.hub-table tbody th { font-weight: 500; white-space: nowrap; }
+.hub-table td { opacity: .82; }

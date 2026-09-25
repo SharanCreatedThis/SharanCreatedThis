@@ -24,6 +24,8 @@ const GROUPS: { heading: string; links: { label: string; href: string }[] }[] = 
       { label: "For Windows", href: "/download/windows" },
       { label: "How to install", href: "/install" },
       { label: "Changelog", href: "/changelog" },
+      { label: "Statistics", href: "/products/hangly/stats" },
+      { label: "Roadmap", href: "/products/hangly/roadmap" },
     ],
   },
   {

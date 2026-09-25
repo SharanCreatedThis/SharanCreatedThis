@@ -188,7 +188,7 @@ export const PAGES: Record<PageKey, PageSeo> = {
     title: "Hangly · Privacy",
     description:
       "What Hangly sends, what it never sends, and how to switch it off. Three things leave your desktop, and two of them are optional.",
-    image: "/og/hangly.png",
+    image: "/og/hangly-privacy.png",
     changeFrequency: "yearly",
     priority: 0.3,
   },
@@ -298,6 +298,10 @@ export function dynamicPages(): PageSeo[] {
     { path: "/download/windows", title: "Hangly for Windows", description: "x64 and ARM64.", ...shared, priority: 0.8 },
     { path: "/install", title: "Installing Hangly", description: "Step by step, both platforms.", ...shared, priority: 0.7 },
     { path: "/changelog", title: "Changelog", description: "Every release of both apps.", ...shared, priority: 0.6 },
+    // Reference pages, written to be cited rather than to convert. Both are
+    // generated from source, which is the only reason they are worth linking to.
+    { path: "/products/hangly/stats", title: "Hangly statistics", description: "Counted from source.", ...shared, priority: 0.6 },
+    { path: "/products/hangly/roadmap", title: "Hangly roadmap", description: "What ships next.", ...shared, priority: 0.6 },
     { path: "/faq", title: "Hangly FAQ", description: "Fifty answers about Hangly.", ...shared, priority: 0.8 },
     { path: "/compare", title: "Hangly compared", description: "Eight honest comparisons.", ...shared, priority: 0.7 },
     { path: "/guides", title: "Guides", description: "Desktop charms, pets and Mac customisation.", ...shared, priority: 0.7 },

@@ -46,6 +46,12 @@ export function organizationNode() {
     // Both products, so the organization is the publisher of named software
     // rather than an unattached name.
     brand: [{ "@id": ID.hangly }, { "@id": ID.vision }],
+    owns: [{ "@id": ID.hangly }, { "@id": ID.vision }],
+    // What the organisation actually does, so "Sharan Created This" is not
+    // read as a generic company name with two unrelated products attached.
+    knowsAbout: ["Desktop software", "macOS applications", "Windows applications", "Filmmaking", "Photography"],
+    mainEntityOfPage: absoluteUrl("/products"),
+    foundingLocation: { "@type": "Country", name: "India" },
     contactPoint: {
       "@type": "ContactPoint",
       contactType: "customer support",
@@ -60,9 +66,10 @@ export function personNode() {
   return {
     "@type": "Person",
     "@id": ID.person,
-    // The id this node used to carry, so earlier references still resolve.
-    sameAs: [...PERSON.sameAs],
-    "@sameAsLegacy": undefined,
+    // Profiles that corroborate the identity, plus the id this node used to
+    // carry before the rename — pages Google has already crawled reference
+    // `#person`, and listing it here is what stops those becoming dangling.
+    sameAs: [...PERSON.sameAs, LEGACY_PERSON_ID],
     name: PERSON.name,
     alternateName: PERSON.alternateName,
     jobTitle: PERSON.jobTitle,
@@ -71,6 +78,11 @@ export function personNode() {
     email: `mailto:${PERSON.email}`,
     image: absoluteUrl(profile.portrait),
     worksFor: { "@id": ID.organization },
+    // The ownership edge. `founder` on the organisation says Sharan started
+    // it; `owns` here says the apps are his. Both directions are stated
+    // because a graph traversed from either end should reach the same answer.
+    owns: [{ "@id": ID.hangly }, { "@id": ID.vision }],
+    mainEntityOfPage: absoluteUrl("/about"),
     knowsAbout: [
       "Filmmaking", "Cinematography", "Photography", "Creative Direction",
       "macOS Development", "SwiftUI", "Product Design", "Desktop Applications",
@@ -89,6 +101,8 @@ export function websiteNode() {
     inLanguage: "en-IN",
     publisher: { "@id": ID.organization },
     author: { "@id": ID.person },
+    copyrightHolder: { "@id": ID.organization },
+    about: { "@id": ID.organization },
   };
 }
 
@@ -132,6 +146,10 @@ export function softwareNode(app: AppFacts) {
     author: { "@id": ID.person },
     creator: { "@id": ID.person },
     publisher: { "@id": ID.organization },
+    provider: { "@id": ID.organization },
+    copyrightHolder: { "@id": ID.organization },
+    isPartOf: { "@id": ID.website },
+    mainEntityOfPage: absoluteUrl(app.path),
     isAccessibleForFree: true,
     ...(app.features ? { featureList: app.features } : {}),
     offers: {

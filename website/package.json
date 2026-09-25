@@ -7,7 +7,7 @@
     "build": "next build",
     "start": "next start",
     "typecheck": "tsc --noEmit",
-    "prebuild": "node scripts/generate-charm-manifest.mjs && node scripts/generate-content-date.mjs && node scripts/generate-download-redirects.mjs && node scripts/generate-changelog.mjs && node scripts/generate-indexnow-key.mjs",
+    "prebuild": "node scripts/generate-charm-manifest.mjs && node scripts/generate-content-date.mjs && node scripts/generate-download-redirects.mjs && node scripts/generate-changelog.mjs && node scripts/generate-stats.mjs && node scripts/generate-social-cards.mjs && node scripts/generate-indexnow-key.mjs",
     "postbuild": "node scripts/strip-oversized-for-pages.mjs && node scripts/check-seo.mjs && node scripts/seo-validate.mjs",
     "ping": "node scripts/ping-indexnow.mjs",
     "integrations:check": "node scripts/integrations/check.mjs",
