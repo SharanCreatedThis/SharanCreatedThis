@@ -19,8 +19,8 @@ export const metadata: Metadata = {
   description: DESCRIPTION,
   alternates: { canonical: PATH },
   openGraph: { type: "website", siteName: SITE_NAME, locale: "en_IN", url: URL_, title: TITLE,
-    description: DESCRIPTION, images: [{ url: "/og/hangly.png", width: 1200, height: 630, alt: TITLE }] },
-  twitter: { card: "summary_large_image", title: TITLE, description: DESCRIPTION, images: ["/og/hangly.png"] },
+    description: DESCRIPTION, images: [{ url: "/og/download.png", width: 1200, height: 630, alt: TITLE }] },
+  twitter: { card: "summary_large_image", title: TITLE, description: DESCRIPTION, images: ["/og/download.png"] },
 };
 
 const mac = RELEASES.find((r) => r.product === "hangly" && r.platform === "macOS");

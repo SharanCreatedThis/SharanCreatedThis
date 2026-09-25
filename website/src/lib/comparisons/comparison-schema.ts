@@ -36,7 +36,7 @@ export function comparisonSchema(c: Comparison) {
         inLanguage: "en-IN",
         isPartOf: { "@id": SITE_ID },
         about: { "@id": ID.hangly },
-        primaryImageOfPage: { "@type": "ImageObject", url: absoluteUrl("/og/hangly.png") },
+        primaryImageOfPage: { "@type": "ImageObject", url: absoluteUrl(`/og/compare/${c.slug}.png`) },
         datePublished: c.checked,
         dateModified: c.checked,
         author: { "@id": PERSON_ID },

@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { ArrowUpRight } from "lucide-react";
 import { RELEASES } from "@/data/changelog.generated";
 import { ID, HANGLY_APP, VISION_APP, breadcrumb, serialise, softwareNode } from "@/lib/schema/entities";
 import { InShort, QuickAnswer } from "@/components/aeo/AnswerBlocks";
+import { ChangelogList } from "@/components/changelog/ChangelogList";
 import { PlatformSheet } from "@/components/hangly/shared";
 import { SITE_NAME, absoluteUrl } from "@/lib/seo";
 
@@ -18,8 +18,8 @@ export const metadata: Metadata = {
   description: DESCRIPTION,
   alternates: { canonical: PATH },
   openGraph: { type: "website", siteName: SITE_NAME, locale: "en_IN", url: URL_, title: TITLE,
-    description: DESCRIPTION, images: [{ url: "/og/hangly.png", width: 1200, height: 630, alt: TITLE }] },
-  twitter: { card: "summary_large_image", title: TITLE, description: DESCRIPTION, images: ["/og/hangly.png"] },
+    description: DESCRIPTION, images: [{ url: "/og/changelog.png", width: 1200, height: 630, alt: TITLE }] },
+  twitter: { card: "summary_large_image", title: TITLE, description: DESCRIPTION, images: ["/og/changelog.png"] },
 };
 
 const dated = RELEASES.filter((r) => r.date);
@@ -85,40 +85,7 @@ export default function ChangelogPage() {
 
         <section aria-labelledby="releases">
           <h2 id="releases">Releases</h2>
-          <div className="changelog">
-            {RELEASES.map((r) => (
-              <article key={`${r.product}-${r.platform}-${r.version}`} className="changelog-entry">
-                <h3>
-                  {r.name} {r.version} <span className="changelog-platform">{r.platform}</span>
-                </h3>
-                <p className="changelog-meta">
-                  {r.date ? readable(r.date) : "Date not published in the feed"}
-                  {r.minimumSystem ? ` · needs ${r.platform} ${r.minimumSystem}` : ""}
-                  {r.bytes ? ` · ${Math.round(r.bytes / 1_000_000)} MB` : ""}
-                </p>
-                {r.notes.filter((n) => n.kind === "para").map((n) => (
-                  <p key={n.text}>{n.text}</p>
-                ))}
-                {r.notes.some((n) => n.kind === "point") && (
-                  <ul className="guide-list">
-                    {r.notes.filter((n) => n.kind === "point").map((n) => (
-                      <li key={n.text}>{n.text}</li>
-                    ))}
-                  </ul>
-                )}
-                {!r.notes.length && r.notesUrl && (
-                  <p>
-                    The notes for this release live with the release itself:{" "}
-                    <a href={r.notesUrl} rel="noopener noreferrer" target="_blank">
-                      read them <ArrowUpRight size={13} />
-                    </a>
-                    .
-                  </p>
-                )}
-                {!r.notes.length && !r.notesUrl && <p>No notes were published with this release.</p>}
-              </article>
-            ))}
-          </div>
+          <ChangelogList releases={RELEASES} />
         </section>
 
         <section aria-labelledby="how-updates">

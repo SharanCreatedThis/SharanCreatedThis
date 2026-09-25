@@ -34,9 +34,9 @@ export function guideMetadata(slug: string): Metadata {
       description: g.description,
       publishedTime: g.checked,
       modifiedTime: g.checked,
-      images: [{ url: "/og/hangly.png", width: 1200, height: 630, alt: g.title }],
+      images: [{ url: `/og/guides/${g.slug}.png`, width: 1200, height: 630, alt: g.title }],
     },
-    twitter: { card: "summary_large_image", title: g.title, description: g.description, images: ["/og/hangly.png"] },
+    twitter: { card: "summary_large_image", title: g.title, description: g.description, images: [`/og/guides/${g.slug}.png`] },
   };
 }
 
@@ -57,7 +57,7 @@ function guideSchema(g: Guide) {
         author: { "@id": PERSON_ID },
         publisher: { "@id": ORG_ID },
         isPartOf: { "@id": SITE_ID },
-        image: absoluteUrl("/og/hangly.png"),
+        image: absoluteUrl(`/og/guides/${g.slug}.png`),
         mainEntityOfPage: { "@type": "WebPage", "@id": url },
       },
       {
