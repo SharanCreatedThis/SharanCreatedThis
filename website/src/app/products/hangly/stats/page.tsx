@@ -28,7 +28,7 @@ const mb = (b: number) => (b ? `${Math.round(b / 1_000_000)} MB` : "not publishe
 
 const FAQS = [
   {
-    q: "How many charms does Hangly have?",
+    q: "Where does Hangly's charm count come from?",
     a: `${HANGLY_STATS.charmCount}, across ${HANGLY_STATS.categoryCount} categories, read from the catalogue inside the shipped Hangly ${HANGLY_STATS.appVersion} application. The website carries artwork for ${ARTWORK.plain} of them — five Classic charms are drawn in code rather than from vectors, and a few of the newest have not been copied across.`,
   },
   {
@@ -175,6 +175,7 @@ export default function StatsPage() {
             approximation.
           </p>
           <p>
+            Every charm it contains is listed on <Link href="/charms">the charms page</Link>.
             The catalogue is committed at{" "}
             <code>src/data/hangly/charm-library.shipped.json</code>, extracted from Hangly{" "}
             {HANGLY_STATS.appVersion}. A build check re-counts it and fails if any figure
@@ -271,6 +272,7 @@ export default function StatsPage() {
         <section aria-labelledby="stats-more">
           <h2 id="stats-more">More</h2>
           <ul className="comparison-others">
+            <li><Link href="/charms">Every charm, listed</Link></li>
             <li><Link href="/products/hangly/roadmap">What is planned next</Link></li>
             <li><Link href="/changelog">Every release, from the update feeds</Link></li>
             <li><Link href="/download">Download Hangly</Link></li>

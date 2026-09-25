@@ -1,128 +1,102 @@
 /**
- * Every way the site reads the charm registry.
+ * Every way the site reads the charm catalogue.
  *
- * All of it derives from `CHARMS`. Nothing here may hardcode a charm, a
- * collection or a count — that rule is what makes the registry a source of
- * truth rather than a fourth place charm facts live.
+ * The source is `charm-library.shipped.json`, extracted from the shipped
+ * application. Nothing here may hardcode a charm, a category or a count.
  *
- * Several functions deliberately return charms whose `displayName` is null.
- * Filtering them out silently would recreate the original problem, where
- * twenty charms existed and no page admitted it. A caller that cannot render
- * an unnamed charm should say so; see `needsAuthoring`.
+ * This replaced a registry generated from `public/charms/*.svg`, which
+ * described 75 charms that were not the product — it omitted 7 that ship and
+ * included 30 filed under names the app stopped using. Counting the website
+ * was the mistake; the app is the product.
  */
 
-import { CHARMS, type Charm, type CharmCategory, type CharmSeason } from "./charm-registry";
+import { SHIPPED_CHARMS, HANGLY_CATEGORIES, HANGLY_STATS } from "@/lib/stats/hangly";
+import { artworkPath, connectedArtworkPath, CHARMS_WITHOUT_ARTWORK } from "./artwork";
 
-export type CharmFilter = {
-  collection?: string | null;
-  category?: CharmCategory;
-  season?: CharmSeason;
-  /** Exclude charms that are someone else's IP. Defaults to including them. */
-  excludeLicensed?: boolean;
-  /** Only charms with a display name — what a rendered list usually wants. */
-  namedOnly?: boolean;
-  /** Free-text match over name, id, collection and meaning. */
-  search?: string;
+export type Charm = {
+  id: string;
+  name: string;
+  region: string;
+  category: string;
+  description: string;
+  tags: string[];
 };
 
-export function filterCharms(filter: CharmFilter = {}): Charm[] {
-  const needle = filter.search?.trim().toLowerCase();
-  return CHARMS.filter((c) => {
-    if (filter.collection !== undefined && c.collection !== filter.collection) return false;
-    if (filter.category && c.category !== filter.category) return false;
-    if (filter.season && c.season !== filter.season) return false;
-    if (filter.excludeLicensed && c.licensed) return false;
-    if (filter.namedOnly && !c.displayName) return false;
-    if (needle && !searchText(c).includes(needle)) return false;
-    return true;
-  });
-}
-
-/** Everything about a charm that is worth matching a query against. */
-function searchText(c: Charm): string {
-  return [c.displayName, c.id, c.collection, c.category, c.season, c.meaning, c.description]
-    .filter(Boolean)
-    .join(" ")
-    .toLowerCase();
-}
-
 /**
- * A prebuilt search index, so a page ships one array rather than recomputing
- * `searchText` for 81 charms on every keystroke.
+ * Categories that are somebody else's intellectual property.
+ *
+ * Charms in these appear in the index, because a visitor deciding whether to
+ * install wants to see them. What they never get is a dedicated page, an
+ * optimised title or a schema node of their own — displaying a charm is not
+ * the same act as targeting a trademark.
  */
-export type CharmSearchEntry = { id: string; label: string; haystack: string };
+export const LICENSED_CATEGORIES = new Set([
+  "marvel", "dc", "bts", "footballLegends", "musicLegends",
+  "friends", "breakingBad", "strangerThings",
+]);
 
-export function buildSearchIndex(): CharmSearchEntry[] {
-  return CHARMS.map((c) => ({
-    id: c.id,
-    // An unnamed charm still needs a label, and the id is the honest one.
-    label: c.displayName ?? c.id,
-    haystack: searchText(c),
-  }));
+export const CHARMS: Charm[] = SHIPPED_CHARMS as Charm[];
+
+export const getCharm = (id: string) => CHARMS.find((c) => c.id === id);
+export const isLicensed = (c: Charm) => LICENSED_CATEGORIES.has(c.category);
+export const hasArtwork = (c: Charm) => !CHARMS_WITHOUT_ARTWORK.has(c.id);
+
+export function charmsIn(...categories: string[]): Charm[] {
+  const wanted = new Set(categories);
+  return CHARMS.filter((c) => wanted.has(c.category));
 }
+
+export const categoryName = (id: string) =>
+  HANGLY_CATEGORIES.find((c) => c.id === id)?.name ?? id;
+
+/* ── the three pages' charm sets, named once ──────────────────────────────
+   A page's contents are a query, not a list. Adding a charm to a category in
+   the app puts it on the right page at the next build with nothing to edit. */
+
+/** Luck, protection and ritual — the twelve the category competes on. */
+export const LUCKY_CATEGORIES = ["protection", "luck", "ritual"] as const;
+export const luckyCharms = () => charmsIn(...LUCKY_CATEGORIES);
+
+export const seasonalCharms = () => charmsIn("seasonal");
+export const classicCharms = () => charmsIn("classic");
+
+/** The four seasonal packs, from SeasonalPack.swift in the application. */
+export const SEASONAL_PACKS: { id: string; name: string; window: string; charms: string[] }[] = [
+  { id: "halloween", name: "Halloween", window: "1–31 October", charms: ["bat", "ghost", "pumpkin"] },
+  { id: "diwali", name: "Diwali", window: "Moves with the lunar calendar — editable in the app", charms: ["lotus", "lantern", "diya"] },
+  { id: "christmas", name: "Christmas", window: "1–26 December", charms: ["snowflake", "candyCane", "bell"] },
+  { id: "newYear", name: "New Year", window: "27 December – 6 January", charms: ["firework", "luckyCoin"] },
+];
 
 export type CharmGroup = { key: string; label: string; charms: Charm[] };
 
-/** Charms grouped by collection. Charms in none are grouped under `null`. */
-export function groupByCollection(charms: Charm[] = CHARMS): CharmGroup[] {
-  const groups = new Map<string | null, Charm[]>();
-  for (const c of charms) groups.set(c.collection, [...(groups.get(c.collection) ?? []), c]);
-  return [...groups].map(([key, list]) => ({
-    key: key ?? "uncollected",
-    label: key ?? "Seasonal and lucky",
-    charms: list,
+/** Charms grouped by category, in the catalogue's own order. */
+export function groupByCategory(charms: Charm[] = CHARMS): CharmGroup[] {
+  return HANGLY_CATEGORIES
+    .map((cat) => ({ key: cat.id, label: cat.name, charms: charms.filter((c) => c.category === cat.id) }))
+    .filter((g) => g.charms.length > 0);
+}
+
+/* ── filtering ────────────────────────────────────────────────────────────
+   Applied on the client over a list already rendered into the HTML. Filters
+   narrow what is shown; they never fetch, and they never change the URL — a
+   facet combination is a view, not a page. */
+
+export type CharmSearchEntry = { id: string; haystack: string };
+
+export function buildSearchIndex(charms: Charm[] = CHARMS): CharmSearchEntry[] {
+  return charms.map((c) => ({
+    id: c.id,
+    haystack: [c.name, c.region, c.description, c.tags.join(" "), categoryName(c.category)]
+      .join(" ")
+      .toLowerCase(),
   }));
 }
 
-export function groupByCategory(charms: Charm[] = CHARMS): CharmGroup[] {
-  const groups = new Map<CharmCategory, Charm[]>();
-  for (const c of charms) groups.set(c.category, [...(groups.get(c.category) ?? []), c]);
-  return [...groups].map(([key, list]) => ({ key, label: key, charms: list }));
-}
+export const regionsIn = (charms: Charm[] = CHARMS) =>
+  [...new Set(charms.map((c) => c.region))].sort();
 
-export function groupBySeason(charms: Charm[] = CHARMS): CharmGroup[] {
-  const groups = new Map<string, Charm[]>();
-  for (const c of charms) {
-    if (!c.season) continue;
-    groups.set(c.season, [...(groups.get(c.season) ?? []), c]);
-  }
-  return [...groups].map(([key, list]) => ({ key, label: key, charms: list }));
-}
+export const categoriesIn = (charms: Charm[] = CHARMS) =>
+  HANGLY_CATEGORIES.filter((cat) => charms.some((c) => c.category === cat.id));
 
-/** Distinct collections, in the order they appear in the registry. */
-export function collections(): string[] {
-  return [...new Set(CHARMS.map((c) => c.collection).filter((x): x is string => !!x))];
-}
-
-/** Counts, derived. Nothing may state a charm total from memory. */
-export const CHARM_STATS = {
-  total: CHARMS.length,
-  inCollections: CHARMS.filter((c) => c.collection).length,
-  uncollected: CHARMS.filter((c) => !c.collection).length,
-  licensed: CHARMS.filter((c) => c.licensed).length,
-  unlicensed: CHARMS.filter((c) => !c.licensed).length,
-  named: CHARMS.filter((c) => c.displayName).length,
-  collections: new Set(CHARMS.map((c) => c.collection).filter(Boolean)).size,
-} as const;
-
-/**
- * What a charm still needs before it can carry a public page.
- *
- * A licensed charm can never qualify, whatever is written about it — that is
- * the guard against a template generating a landing page aimed at somebody
- * else's trademark.
- */
-export function needsAuthoring(c: Charm): string[] {
-  const missing: string[] = [];
-  if (!c.displayName) missing.push("displayName");
-  if (!c.description) missing.push("description");
-  if (!c.meaning) missing.push("meaning");
-  if (!c.sourceUrls.length) missing.push("sourceUrls");
-  if (c.category === "unknown") missing.push("category");
-  return missing;
-}
-
-/** Charms eligible for a standalone indexable page, today. */
-export function pageEligible(): Charm[] {
-  return CHARMS.filter((c) => !c.licensed && needsAuthoring(c).length === 0);
-}
+export { artworkPath, connectedArtworkPath, CHARMS_WITHOUT_ARTWORK, HANGLY_STATS };

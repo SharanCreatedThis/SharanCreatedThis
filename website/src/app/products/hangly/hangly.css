@@ -475,3 +475,49 @@
 .faq-teaser-groups strong { display: flex; align-items: center; gap: .4rem; font-size: .98rem; font-weight: 600; }
 .faq-teaser-groups span { font-size: .82rem; opacity: .55; }
 .faq-teaser-cta { display: flex; justify-content: center; margin-top: 2rem; }
+
+/* ── The charm catalogue pages ────────────────────────────────────────────
+   A grid of small illustrations with real text under each. The cards size to
+   the artwork rather than a fixed ratio, because the charms are drawn at
+   different proportions and cropping them to match would lose the point. */
+.charms-page .charm-grid {
+  display: grid; gap: 1.6rem; margin: 1.4rem 0 2.4rem;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+}
+.charm-card { display: flex; flex-direction: column; gap: .7rem; margin: 0; }
+.charm-card img { width: 100%; height: 130px; object-fit: contain; object-position: top center; }
+.charm-card-placeholder {
+  display: grid; place-items: center; height: 130px; border-radius: 10px;
+  border: 1px dashed color-mix(in srgb, currentColor 22%, transparent);
+  background: color-mix(in srgb, currentColor 4%, transparent);
+}
+.charm-card-placeholder span { font: 600 1.6rem/1 var(--font-display, inherit); opacity: .35; }
+.charm-card figcaption { display: flex; flex-direction: column; gap: .25rem; }
+.charm-card strong { font-size: .95rem; font-weight: 600; }
+.charm-card-region { font-size: .74rem; letter-spacing: .04em; text-transform: uppercase; opacity: .48; }
+.charm-card p { margin: .2rem 0 0; font-size: .84rem; line-height: 1.55; opacity: .74; }
+.charm-group-heading { display: flex; align-items: baseline; gap: .6rem; margin: 2.2rem 0 .2rem; font-size: 1.05rem; }
+.charm-group-heading span {
+  font: 500 .7rem/1 var(--font-body, inherit); padding: .28rem .5rem; border-radius: 999px;
+  background: color-mix(in srgb, currentColor 8%, transparent); opacity: .7;
+}
+.charm-pack-window { margin: -.4rem 0 1rem; font-size: .86rem; opacity: .6; }
+
+/* Filters. The grid is already rendered; these narrow what is shown. */
+.charm-filters { display: flex; gap: .8rem; flex-wrap: wrap; align-items: center; margin: 1.4rem 0 .6rem; }
+.charm-search { display: flex; align-items: center; gap: .55rem; flex: 1 1 240px;
+  padding: .6rem .85rem; border-radius: 10px;
+  border: 1px solid color-mix(in srgb, currentColor 16%, transparent);
+  background: color-mix(in srgb, currentColor 4%, transparent); }
+.charm-search svg { opacity: .5; flex: none; }
+.charm-search input { flex: 1; border: 0; background: none; color: inherit; font: inherit; outline: none; min-width: 0; }
+.charm-chips { display: flex; gap: .35rem; flex-wrap: wrap; }
+.charm-chips button { padding: .45rem .75rem; border-radius: 999px; cursor: pointer;
+  font: inherit; font-size: .82rem; background: none; color: inherit; opacity: .7;
+  border: 1px solid color-mix(in srgb, currentColor 16%, transparent); }
+.charm-chips button:hover { opacity: 1; }
+.charm-chips button[aria-pressed="true"] { opacity: 1; border-color: var(--accent, #f0803c); color: var(--accent, #f0803c); }
+.charm-region-select select { padding: .5rem .7rem; border-radius: 10px; font: inherit; font-size: .84rem;
+  color: inherit; background: color-mix(in srgb, currentColor 4%, transparent);
+  border: 1px solid color-mix(in srgb, currentColor 16%, transparent); }
+.charm-filter-count { margin: 0; font-size: .82rem; opacity: .55; }

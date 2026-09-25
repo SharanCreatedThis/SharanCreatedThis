@@ -20,6 +20,7 @@ const GROUPS: { heading: string; links: { label: string; href: string }[] }[] = 
     heading: "Get Hangly",
     links: [
       { label: "Download", href: "/download" },
+      { label: "Every charm", href: "/charms" },
       { label: "For Mac", href: "/download/mac" },
       { label: "For Windows", href: "/download/windows" },
       { label: "How to install", href: "/install" },
@@ -34,6 +35,8 @@ const GROUPS: { heading: string; links: { label: string; href: string }[] }[] = 
       { label: "Compare", href: "/compare" },
       { label: "Guides", href: "/guides" },
       { label: "FAQ", href: "/faq" },
+      { label: "Luck & protection charms", href: "/charms/lucky" },
+      { label: "Seasonal charms", href: "/charms/seasonal" },
       { label: "Charm apps for Mac", href: "/guides/best-desktop-charm-apps-for-mac" },
       { label: "Desktop pets for Mac", href: "/guides/best-desktop-pets-for-mac" },
     ],

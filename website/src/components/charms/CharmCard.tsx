@@ -1,30 +1,29 @@
 /**
- * One charm. Server-rendered.
+ * One charm: artwork, name, region, description.
  *
- * An unnamed charm renders with its id and a visible marker rather than being
- * hidden. Twenty charms were invisible for months precisely because absence
- * was silent; a gap that shows up on screen gets fixed.
+ * A charm with no artwork renders a labelled placeholder rather than a broken
+ * image or nothing at all. Seven ship without a website file, and hiding them
+ * would misrepresent the catalogue — the page says 81, so it shows 81.
  */
 
-import type { Charm } from "@/lib/charms";
+import { artworkPath, type Charm } from "@/lib/charms";
 
-export function CharmCard({ charm, showMeta = false }: { charm: Charm; showMeta?: boolean }) {
-  const named = Boolean(charm.displayName);
+export function CharmCard({ charm, showCategory = false }: { charm: Charm; showCategory?: boolean }) {
+  const art = artworkPath(charm.id);
   return (
-    <figure className="charm-card" data-licensed={charm.licensed || undefined} data-unnamed={!named || undefined}>
-      <img
-        src={charm.artworkPath}
-        alt={named ? `${charm.displayName} charm` : `Charm artwork: ${charm.id}`}
-        loading="lazy"
-        decoding="async"
-        width={120}
-        height={160}
-      />
+    <figure className="charm-card" id={`charm-${charm.id}`} data-region={charm.region}>
+      {art ? (
+        <img src={art} alt={`${charm.name} charm`} loading="lazy" decoding="async" width={110} height={150} />
+      ) : (
+        <div className="charm-card-placeholder" role="img" aria-label={`${charm.name} — artwork not yet published`}>
+          <span aria-hidden="true">{charm.name.slice(0, 1)}</span>
+        </div>
+      )}
       <figcaption>
-        <strong>{charm.displayName ?? charm.id}</strong>
-        {!named && <em className="charm-card-gap">needs a name</em>}
-        {showMeta && charm.collection && <span>{charm.collection}</span>}
-        {charm.meaning && <p>{charm.meaning}</p>}
+        <strong>{charm.name}</strong>
+        <span className="charm-card-region">{charm.region}</span>
+        <p>{charm.description}</p>
+        {showCategory && <span className="charm-card-cat">{charm.category}</span>}
       </figcaption>
     </figure>
   );

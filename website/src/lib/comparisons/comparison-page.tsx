@@ -176,8 +176,11 @@ export function ComparisonPage({ slug }: { slug: string }) {
             ))}
           </div>
           <p className="comparison-more">
-            More questions about Hangly are answered on the <Link href="/faq">FAQ page</Link>, and the{" "}
-            <Link href="/guides">guides</Link> cover the wider category.
+            Every Hangly charm is listed on the <Link href="/charms">charms page</Link>, including
+            the <Link href="/charms/lucky">twelve cultural luck and protection charms</Link> this
+            category competes on. More questions are answered on the{" "}
+            <Link href="/faq">FAQ page</Link>, and the <Link href="/guides">guides</Link> cover the
+            wider category.
           </p>
         </section>
 

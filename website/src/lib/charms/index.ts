@@ -1,9 +1,8 @@
-export { CHARMS, CHARM_IDS, getCharm } from "./charm-registry";
-export type { Charm, CharmCategory, CharmSeason, Provenance } from "./charm-registry";
 export {
-  filterCharms, buildSearchIndex, groupByCollection, groupByCategory, groupBySeason,
-  collections, CHARM_STATS, needsAuthoring, pageEligible,
+  CHARMS, getCharm, isLicensed, hasArtwork, charmsIn, categoryName,
+  LICENSED_CATEGORIES, LUCKY_CATEGORIES, luckyCharms, seasonalCharms, classicCharms,
+  SEASONAL_PACKS, groupByCategory, buildSearchIndex, regionsIn, categoriesIn,
+  artworkPath, connectedArtworkPath, CHARMS_WITHOUT_ARTWORK,
 } from "./queries";
-export type { CharmFilter, CharmGroup, CharmSearchEntry } from "./queries";
-export { charmImageNode, charmListNode } from "./schema";
-export { charmRoutes } from "./routes";
+export type { Charm, CharmGroup, CharmSearchEntry } from "./queries";
+export { charmImageNode, charmListNode, charmCollectionGraph } from "./schema";

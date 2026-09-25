@@ -87,6 +87,9 @@ const ALLOWED = new Set([
   "src/data/stats.generated.ts",
   "src/lib/charms/charm-registry.ts",
   "src/lib/verification/claims.ts",
+  // Competitor catalogues and prices, not Hangly counts. Named as data so the
+  // check stays strict everywhere else.
+  "src/lib/charms/competitors.ts",
 ]);
 
 /** Files whose job is prose. Check 2 applies; check 3 does not. */

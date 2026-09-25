@@ -100,7 +100,7 @@ export const FAQ_GROUPS: FaqGroup[] = [
       },
       {
         q: "How many charms are there?",
-        a: "81 across fourteen collections, including protection charms like the Nazar and Drishti Bommai, Tamil Divine symbols, Marvel and DC emblems, BTS, Stranger Things, Friends, Breaking Bad, football and a dream catcher. Six of those collections are still being finished.",
+        a: "Eighty-one, across fourteen categories — protection charms like the Nazar and Drishti Bommai, Tamil spiritual symbols, luck charms from Japan and China, eleven seasonal charms, and collections for Marvel, DC, BTS, Stranger Things, Friends, Breaking Bad, Football Legends and Music Legends. Every one is listed on the charms page.",
       },
       {
         q: "Can I use my own image as a charm?",

@@ -121,43 +121,11 @@ writeFileSync(
     `export const GENERATED_AT = ${JSON.stringify(new Date().toISOString().slice(0, 10))};\n`,
   "utf8",
 );
-/* ── guard: no hand-written charm count may come back ──────────────────────
-   "80+" spread to twenty-odd files by hand and survived months of edits
-   because nothing checked it. Counting is only half the fix; the other half
-   is making the old habit fail loudly. */
-// No trailing \b: it sits after "+" in "80+", where both sides are non-word
-// characters, so the boundary never matches and the guard silently passes.
-// Deliberately loose: any digit-or-word count within 30 characters of "charm"
-// or "design". The previous version required the number to sit next to the
-// word "charms" and therefore missed "80+ across eleven collections",
-// "80+ ready-made charms" and "Over eighty ready-made charms" — three live
-// claims that survived a sweep reported as complete.
-const FORBIDDEN = new RegExp(
-  String.raw`\b(?:49|55|69|75|100\+|forty-nine|fifty-five|sixty-nine|seventy-five)\b[^.\n]{0,30}?\b(?:charm|design)`,
-  "i",
-);
-const offenders = [];
-const scan = (dir) => {
-  for (const entry of readdirSync(join(root, dir), { withFileTypes: true })) {
-    const rel = `${dir}/${entry.name}`;
-    if (entry.isDirectory()) { scan(rel); continue; }
-    if (!/\.tsx?$/.test(entry.name)) continue;
-    // The verification register documents the old claim on purpose.
-    if (rel.includes("verification/claims.ts")) continue;
-    const text = readFileSync(join(root, rel), "utf8");
-    if (FORBIDDEN.test(text)) offenders.push(rel);
-  }
-};
-scan("src");
-if (offenders.length) {
-  console.error(
-    `\n  generate-stats: a hand-written charm count is back in:\n` +
-      offenders.map((o) => `    ${o}`).join("\n") +
-      `\n\n  Import CHARM_TOTAL from @/data/stats.generated instead, or write the\n` +
-      `  figure as prose that matches it (${artwork.complete}).\n`,
-  );
-  process.exit(1);
-}
+/* The charm-count guard that used to live here has moved to
+   scripts/validate-charm-counts.mjs, which checks against the shipped
+   catalogue rather than the website's artwork directory, skips comments, and
+   catches the phrasings this one missed. Two guards with different rules is
+   worse than one. */
 
 console.log(
   `  stats: ${shippedCharms} charms shipped in ${shippedCategories.length} categories ` +
