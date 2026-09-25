@@ -1,14 +1,11 @@
 import sharp from "sharp";
 import { mkdir, readFile } from "node:fs/promises";
-import { execFile } from "node:child_process";
 import { dirname, join } from "node:path";
-import { promisify } from "node:util";
 
 const root = join(import.meta.dirname, "..");
 const output = join(root, "public", "og");
 const width = 1200;
 const height = 630;
-const run = promisify(execFile);
 
 const esc = value => value.replace(/[&<>"']/g, char => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&apos;" })[char]);
 const wrap = (value, limit = 28) => {
@@ -23,14 +20,13 @@ const wrap = (value, limit = 28) => {
 };
 
 async function charm(name, x, y, size) {
-  const source = join(root, "public", "charms", "connected", `${name}.svg`);
-  const rendered = `/private/tmp/hangly-social-${name}.png`;
-  // The charms contain embedded WebP artwork. macOS's renderer preserves it
-  // faithfully, while librsvg drops it, so capture it before compositing.
-  await run("sips", ["-s", "format", "png", source, "--out", rendered]);
-  const image = await sharp(await readFile(rendered)).resize(size, size, { fit: "contain" }).ensureAlpha().raw().toBuffer({ resolveWithObject: true });
-  // sips preserves a few opaque, pure-black padding bands from the embedded
-  // artwork. Removing only #000 keeps the charm's intentional dark detail.
+  // These lossless PNG layers are committed in `public/og/charm-layers`.
+  // The source SVGs embed WebP artwork, which Linux's SVG renderer cannot
+  // consistently decode during Cloudflare builds.
+  const source = join(output, "charm-layers", `${name}.png`);
+  const image = await sharp(await readFile(source)).resize(size, size, { fit: "contain" }).ensureAlpha().raw().toBuffer({ resolveWithObject: true });
+  // The macOS export preserves a few opaque, pure-black padding bands from
+  // embedded source artwork. Removing only #000 keeps intentional dark detail.
   for (let i = 0; i < image.data.length; i += 4) {
     if (image.data[i] < 3 && image.data[i + 1] < 3 && image.data[i + 2] < 3) image.data[i + 3] = 0;
   }
