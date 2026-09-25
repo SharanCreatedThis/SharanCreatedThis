@@ -12,6 +12,7 @@ Sharan Created This is a unified monorepo housing personal brand web platforms a
 ### Hangly
 - Physics-powered menu bar companions and desktop charms for macOS.
 - Native Swift application built with custom Verlet physics simulation, interactive charm interactions, and screen placement integration.
+- **`apps/Hangly/` is a stale snapshot** imported 2026-09-17, two days before 2.0.0 shipped. It is missing 32 charms and 5 categories. For anything the product contains, read the catalogue extracted from the shipped build at `website/src/data/hangly/charm-library.shipped.json`, or `HANGLY_STATS` in `website/src/lib/stats/hangly.ts`. See [`apps/Hangly/STALE.md`](apps/Hangly/STALE.md) and run `cd website && npm run check:app-source`.
 
 ## Website
 
