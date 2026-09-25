@@ -15,8 +15,8 @@ export const metadata: Metadata = {
   description: DESCRIPTION,
   alternates: { canonical: "/guides" },
   openGraph: { type: "website", siteName: SITE_NAME, locale: "en_IN", url: absoluteUrl("/guides"),
-    title: TITLE, description: DESCRIPTION, images: [{ url: "/og/hangly.png", width: 1200, height: 630, alt: TITLE }] },
-  twitter: { card: "summary_large_image", title: TITLE, description: DESCRIPTION, images: ["/og/hangly.png"] },
+    title: TITLE, description: DESCRIPTION, images: [{ url: "/og/guides.png", width: 1200, height: 630, alt: TITLE }] },
+  twitter: { card: "summary_large_image", title: TITLE, description: DESCRIPTION, images: ["/og/guides.png"] },
 };
 
 const schema = {
