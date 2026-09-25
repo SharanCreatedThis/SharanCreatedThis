@@ -10,25 +10,25 @@ No content was changed to produce this report. It is a description of the curren
 
 | Measure | Count |
 | --- | --- |
-| Claims audited | 31 |
-| Verified | 26 |
+| Claims audited | 35 |
+| Verified | 30 |
 | **Unverified** | **5** |
-| High confidence | 18 |
+| High confidence | 22 |
 | Medium confidence | 7 |
 | Low confidence | 4 |
 | No confidence | 2 |
 
 ## Flagged — act on these
 
-### Hangly ships 80+ charms across 11 collections
+### Six of the eleven collections lack their connected artwork
 
-- **Appears on:** Sitewide, schema, ~20 files
-- **Source:** src/components/hangly/Collections.tsx
+- **Appears on:** ROADMAP.md, previously /products/hangly/roadmap and the FAQ
+- **Source:** src/data/charms.generated.ts
 - **Verified:** no
 - **Last checked:** 2026-09-25
 - **Confidence:** none
 
-UNSUPPORTED. The collections component lists 55 charms across 11 collections; public/charms holds 75 SVG files; the generated CHARM_ART manifest has 56 entries. No artefact in the repository produces 80. The collection count of 11 is correct. Introduced by hand in commit efe8c5e. The in-app total may genuinely exceed 80 if seasonal charms and variants are counted, but the website cannot currently show that, and the comparison tables present it as a *published* count while criticising rivals for not publishing one.
+NO LONGER TRUE. Every one of the 75 charms now resolves to connected artwork; zero fall back to the plain drawing, and the two directories have exact parity. The claim was correct when written and the work has since been finished. It has been removed from the roadmap page and the FAQ; ROADMAP.md still carries it and should be updated.
 
 ### Vision's appcast is served from the apex domain
 
@@ -44,7 +44,7 @@ INCORRECT. The SUFeedURL compiled into Vision 1.1 points at www, not the apex. T
 
 | Claim | Where | Source | Confidence | Last checked |
 | --- | --- | --- | --- | --- |
-| Hangly ships 80+ charms across 11 collections | Sitewide, schema, ~20 files | `src/components/hangly/Collections.tsx` | none | 2026-09-25 |
+| Six of the eleven collections lack their connected artwork | ROADMAP.md, previously /products/hangly/roadmap and the FAQ | `src/data/charms.generated.ts` | none | 2026-09-25 |
 | Vision's appcast is served from the apex domain | ROADMAP.md, standing constraints table | `Vision-1.1.dmg Info.plist SUFeedURL` | none | 2026-09-25 |
 | Bongo Cat is free with paid cosmetics, Windows and macOS via Steam | /guides | `https://openpets.dev/alternatives` | low | 2026-09-25 |
 | VPet Simulator is open source, Windows, Linux via Wine, no native macOS build | /guides | `https://openpets.dev/alternatives` | low | 2026-09-25 |
@@ -57,7 +57,7 @@ INCORRECT. The SUFeedURL compiled into Vision 1.1 points at www, not the apex. T
 
 | Claim | Where | Source | Verified | Last checked | Confidence |
 | --- | --- | --- | --- | --- | --- |
-| Hangly ships 80+ charms across 11 collections | Sitewide, schema, ~20 files | `src/components/hangly/Collections.tsx` | **no** | 2026-09-25 | none |
+| Six of the eleven collections lack their connected artwork | ROADMAP.md, previously /products/hangly/roadmap and the FAQ | `src/data/charms.generated.ts` | **no** | 2026-09-25 | none |
 | Vision's appcast is served from the apex domain | ROADMAP.md, standing constraints table | `Vision-1.1.dmg Info.plist SUFeedURL` | **no** | 2026-09-25 | none |
 | Bongo Cat is free with paid cosmetics, Windows and macOS via Steam | /guides | `https://openpets.dev/alternatives` | yes | 2026-09-25 | low |
 | VPet Simulator is open source, Windows, Linux via Wine, no native macOS build | /guides | `https://openpets.dev/alternatives` | yes | 2026-09-25 | low |
@@ -70,11 +70,11 @@ INCORRECT. The SUFeedURL compiled into Vision 1.1 points at www, not the apex. T
 | Mac Pet is $9.99, macOS 10.15+, menu bar or notch, under 1% CPU | /guides/best-desktop-pets-for-mac | `https://mac-pet.com/en` | yes | 2026-09-25 | medium |
 | Competitor charm apps: Lucky Dangle, Screen Dangle, DangleJoy, Charmly, Screen Charms, Drishti Dangle (₹99), Book My Luck — platforms, prices and feature claims | /compare/*, /guides/best-desktop-charm-apps-for-mac | `Each product's own site` | yes | 2026-09-24 | medium |
 | Shimeji's popular form today is a browser extension confined to web pages | /guides, /compare | `https://shimejis.xyz` | yes | 2026-09-24 | medium |
-| 55 charms listed across 11 collections; 75 charm artwork files | /products/hangly/stats | `scripts/generate-stats.mjs, counted at build time` | yes | 2026-09-25 | high |
+| Hangly ships 75 charms: 55 across 11 collections plus 20 seasonal and lucky charms | Sitewide, schema, 15 files | `public/charms/ and public/charms/connected/, counted by scripts/generate-stats.mjs` | yes | 2026-09-25 | high |
+| 75 charms complete, 55 in collections, 20 seasonal, 11 collections | /products/hangly/stats | `scripts/generate-stats.mjs, counted at build time` | yes | 2026-09-25 | high |
 | Hangly macOS is at version 2.0.0, 34 MB, requires macOS 14 | Sitewide | `public/products/hangly/appcast.xml` | yes | 2026-09-25 | high |
 | Hangly Windows is at 0.9.4 and is a pre-release | Sitewide | `public/_redirects, generated from the GitHub releases API` | yes | 2026-09-25 | high |
 | Vision is at 1.1 and requires macOS 15 | Sitewide | `public/products/vision/appcast.xml` | yes | 2026-09-25 | high |
-| Six of the eleven collections are unfinished: Football, Stranger Things, Singers, Breaking Bad, Friends, Dream Catcher | /guides, /products/hangly/roadmap | `ROADMAP.md and src/data/hangly-faq.ts` | yes | 2026-09-25 | high |
 | Desktop Goose is at 0.31 on Windows and 0.22 on macOS, with no mod support on Mac | /guides/desktop-goose-alternatives, /guides/best-desktop-pets-for-mac | `https://samperson.itch.io/desktop-goose` | yes | 2026-09-25 | high |
 | Bartender 7 requires macOS 27; earlier systems need Bartender 6 | /guides/best-mac-customization-apps | `https://www.macbartender.com/` | yes | 2026-09-25 | high |
 | Ice is GPL-3.0, free, requires macOS 14+, 29.7k GitHub stars | /guides/best-mac-customization-apps | `https://github.com/jordanbaird/Ice` | yes | 2026-09-25 | high |
@@ -88,8 +88,16 @@ INCORRECT. The SUFeedURL compiled into Vision 1.1 points at www, not the apex. T
 | Pets Therapy: 100+ pets, 37 free forever, macOS/Windows/Linux, free on the Mac App Store | /guides/best-desktop-pets-for-mac | `https://pets-therapy.com/` | yes | 2026-09-25 | high |
 | NotiSprite has 22 characters with 5 free and fully featured | /guides/best-desktop-pets-for-mac | `https://notisprite.com/` | yes | 2026-09-25 | high |
 | Cat Fidget is published at highroadsoftware.com, not tryfidget.com | /guides/best-desktop-pets-for-mac, /guides/desktop-goose-alternatives | `https://tryfidget.com/ (confirmed to be an unrelated recruitment platform)` | yes | 2026-09-25 | high |
+| Book My Luck is ₹99 once (₹297 for five), 22 charms, macOS 14+ and Windows 10/11 | /guides/best-desktop-charm-apps-for-mac, entries.ts | `https://bookmyluck.com/` | yes | 2026-09-25 | high |
+| MenuBar Pets ships 12+ hanging characters plus custom images, free with a $4.99 Pro tier, macOS 14+ | docs/authority-roadmap.md (not yet published on any page) | `https://apps.apple.com/us/app/menubar-pets/id6766222004` | yes | 2026-09-25 | high |
+| DeskCharm is free, Windows only with macOS 'coming soon', 10 charms plus emoji, no accounts or tracking | docs/authority-roadmap.md (not yet published on any page) | `https://deskcharm.vercel.app/` | yes | 2026-09-25 | high |
+| ScreenPets is MIT-licensed, free, macOS 14+, 4 GitHub stars | docs/authority-roadmap.md (not yet published on any page) | `https://github.com/sealovesky/ScreenPets` | yes | 2026-09-25 | high |
 
 ## Notes on individual claims
+
+**Hangly ships 75 charms: 55 across 11 collections plus 20 seasonal and lucky charms**
+
+RESOLVED. The previous claim of 80+ was unsupported and has been replaced everywhere. The real figure is 75 charms whose artwork ships complete in both renderings — plain and connected — with perfect parity between the two directories. 55 are named in the 11 collections on the product page; the remaining 20 are the seasonal and lucky set the app surfaces on its own, which is why counting the collections alone understated the library by a quarter. Every surface now derives from CHARM_TOTAL rather than restating a number.
 
 **Hangly macOS is at version 2.0.0, 34 MB, requires macOS 14**
 
@@ -158,6 +166,14 @@ The negative half is verified: tryfidget.com is definitively not Cat Fidget. The
 **MicroJoyz costs around $9.99 after a 3-day trial**
 
 Their own landing page does not publish a price. The guide says so explicitly and attributes the figure to third parties rather than stating it as fact. Do not promote this to a stated price without a primary source.
+
+**Book My Luck is ₹99 once (₹297 for five), 22 charms, macOS 14+ and Windows 10/11**
+
+Corrects an earlier entry that recorded the price as 'See their site'. Their catalogue of 22 is a like-for-like comparison against Hangly's 75.
+
+**MenuBar Pets ships 12+ hanging characters plus custom images, free with a $4.99 Pro tier, macOS 14+**
+
+The closest competitor to Hangly's core mechanic found so far, and currently uncovered by any page on this site.
 
 **Competitor charm apps: Lucky Dangle, Screen Dangle, DangleJoy, Charmly, Screen Charms, Drishti Dangle (₹99), Book My Luck — platforms, prices and feature claims**
 

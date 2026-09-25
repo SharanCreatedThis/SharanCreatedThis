@@ -166,7 +166,7 @@ export const HANGLY_APP: AppFacts = {
   id: ID.hangly,
   name: "Hangly",
   description:
-    "A free desktop app for macOS and Windows that hangs a decorative charm from the top of your screen on a cord with real pendulum physics. Over eighty charms across eleven collections, plus any image of your own.",
+    "A free desktop app for macOS and Windows that hangs a decorative charm from the top of your screen on a cord with real pendulum physics. Seventy-five charms across eleven collections and a seasonal set, plus any image of your own.",
   path: "/products/hangly",
   operatingSystem: ["macOS 14", "Windows 10"],
   applicationCategory: "DesktopEnhancementApplication",
@@ -176,7 +176,7 @@ export const HANGLY_APP: AppFacts = {
   screenshot: "/og/hangly.png",
   features: [
     "Real pendulum physics",
-    "Over eighty charms across eleven collections",
+    "Seventy-five charms across eleven collections and a seasonal set",
     "Custom charms from any image",
     "Three cord styles and adjustable size",
     "Click-through: never intercepts a click",

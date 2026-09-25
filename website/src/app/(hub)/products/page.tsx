@@ -41,7 +41,7 @@ const FAQS = [
   },
   {
     q: "Can I use my own image as a Hangly charm?",
-    a: "Yes. Any single image becomes a charm on a cord, alongside the eighty-plus charms across eleven collections that ship with it.",
+    a: "Yes. Any single image becomes a charm on a cord, alongside the seventy-five charms — fifty-five across eleven collections, plus twenty seasonal and lucky charms — that ship with it.",
   },
   {
     q: "Where can I see what changed in each release?",
@@ -107,7 +107,7 @@ export default function Products() {
           <strong>Hangly</strong> hangs a decorative charm from the top of your screen on a cord,
           swaying with real pendulum physics. It is click-through, so it never intercepts a click,
           and it never takes keyboard focus — the whole design constraint is that it must be
-          incapable of interrupting you. Over eighty charms across eleven collections ship with
+          incapable of interrupting you. Seventy-five charms across eleven collections and a seasonal set ship with
           it, any image of your own becomes a charm, and it runs on macOS 14 or newer and Windows
           10 or newer including a native ARM64 build.
         </p>

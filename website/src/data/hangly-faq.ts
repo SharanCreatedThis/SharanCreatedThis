@@ -152,7 +152,7 @@ export const FAQ_GROUPS: FaqGroup[] = [
     faqs: [
       {
         q: "What is the best desktop charm app?",
-        a: "For a charm that hangs and swings rather than wanders, Hangly is the most complete free option: it is the only one in this category shipping on macOS and Windows including ARM64, with custom charms from your own images, over eighty designs, adjustable cords, and no paid tier. Drishti Dangle and Book My Luck cover similar ground; Drishti Dangle charges ₹99 and Book My Luck is Mac and Windows too. Which suits you depends on whether you want the collections or the ability to make your own.",
+        a: "For a charm that hangs and swings rather than wanders, Hangly is the most complete free option: it is the only one in this category shipping on macOS and Windows including ARM64, with custom charms from your own images, seventy-five designs, adjustable cords, and no paid tier. Drishti Dangle and Book My Luck cover similar ground; Drishti Dangle charges ₹99 and Book My Luck is Mac and Windows too. Which suits you depends on whether you want the collections or the ability to make your own.",
       },
       {
         q: "What is the difference between a desktop charm and a desktop pet?",
@@ -230,7 +230,7 @@ export const FAQ_GROUPS: FaqGroup[] = [
       },
       {
         q: "Will there be more charms?",
-        a: "Yes. Six collections are partly finished — football, Stranger Things, singers, Breaking Bad, Friends and the dream catcher — and more are planned. Requests are welcome.",
+        a: "Yes. Seventy-five charms ship today across eleven collections plus a seasonal and lucky set, and more are planned. Requests are welcome — a named character or a specific cultural symbol is far more actionable than a category.",
       },
       {
         q: "Does Hangly work offline?",

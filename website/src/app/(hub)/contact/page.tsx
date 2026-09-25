@@ -169,7 +169,7 @@ export default function Contact() {
           share, unlike a desktop pet that roams.
         </p>
         <p>
-          It ships over eighty charms across eleven collections, takes any image of your own as a
+          It ships seventy-five charms across eleven collections and a seasonal set, takes any image of your own as a
           charm, offers several cord styles and adjustable sizing, and supports multiple charms
           and multi-monitor placement. It is free on macOS 14 or newer and Windows 10 or newer,
           including a native Windows ARM64 build — which almost nothing else in its category

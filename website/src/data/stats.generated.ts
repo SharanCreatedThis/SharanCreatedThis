@@ -126,12 +126,51 @@ export const COLLECTIONS: CharmCollection[] = [
   }
 ];
 
-/** Charms listed across every collection on the product page. */
+/**
+ * The number to quote. Every charm whose artwork ships complete — both the
+ * plain drawing and the connected one with the thread attached.
+ *
+ * This is the honest public figure. It is not the collection total: twenty
+ * seasonal and lucky charms ship without belonging to a named collection.
+ */
+export const CHARM_TOTAL = 75;
+
+/** Charms named across the 11 collections on the product page. */
+export const CHARM_IN_COLLECTIONS = 55;
+
+/** Collections on the product page. */
+export const COLLECTION_COUNT = 11;
+
+/** Seasonal and lucky charms that belong to no collection. */
+export const SEASONAL = [
+  "bat",
+  "bell",
+  "candyCane",
+  "daruma",
+  "diya",
+  "firework",
+  "ghanta",
+  "ghost",
+  "himmeli",
+  "horseshoe",
+  "lantern",
+  "lotus",
+  "luckyCoin",
+  "manekiNeko",
+  "nimbuMirchi",
+  "panchangJie",
+  "pumpkin",
+  "scarab",
+  "shazamLightning",
+  "snowflake"
+];
+
+export const SEASONAL_COUNT = 20;
+
+/** Deprecated alias. Prefer CHARM_IN_COLLECTIONS, or CHARM_TOTAL to quote. */
 export const CHARM_COUNT = 55;
 
-/** SVG files present in public/charms. Higher than CHARM_COUNT: it includes
- *  artwork for charms not currently listed in a collection. */
-export const ARTWORK = {"plain":75,"connected":75};
+export const ARTWORK = {"plain":75,"connected":75,"complete":75};
 
 export const RELEASE = {
   "macOS": {

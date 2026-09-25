@@ -80,11 +80,11 @@ export const COMPARISONS: Comparison[] = [
   {
     slug: "lucky-dangle",
     quickAnswer:
-      "Both hang a charm on a cord from the top of your screen, on Mac and Windows, and neither intercepts clicks. Hangly is free and ships over eighty charms across eleven collections plus charms made from your own images. Choose Lucky Dangle if its curated set is what you want and you prefer a smaller product.",
+      "Both hang a charm on a cord from the top of your screen, on Mac and Windows, and neither intercepts clicks. Hangly is free and ships seventy-five charms across eleven collections and a seasonal set plus charms made from your own images. Choose Lucky Dangle if its curated set is what you want and you prefer a smaller product.",
     takeaways: [
       "Both are click-through: neither blocks what is underneath",
       "Hangly is free; check Lucky Dangle's current pricing",
-      "Hangly ships 80+ charms across 11 collections and accepts your own images",
+      "Hangly ships 75 charms across 11 collections and a seasonal set and accepts your own images",
       "Only Hangly publishes a native Windows ARM64 build",
       "Lucky Dangle is the simpler product, which some people prefer",
     ],
@@ -106,13 +106,13 @@ export const COMPARISONS: Comparison[] = [
     whatIsIt:
       "Lucky Dangle is a desktop charm app for Mac and Windows. Its own description: choose a lucky charm and hang it from the top of your screen, where it sways while you work and stays out of every click.",
     howHanglyDiffers:
-      "Hangly occupies the same shelf and extends it. Where Lucky Dangle offers a curated charm set, Hangly ships over eighty charms across eleven named collections — protection charms, Tamil Divine symbols, Marvel, DC, BTS and more — and lets you turn any image into a charm. It also adds three cord styles, adjustable charm size, and a native Windows ARM64 build.",
+      "Hangly occupies the same shelf and extends it. Where Lucky Dangle offers a curated charm set, Hangly ships seventy-five charms across eleven named collections and a seasonal set — protection charms, Tamil Divine symbols, Marvel, DC, BTS and more — and lets you turn any image into a charm. It also adds three cord styles, adjustable charm size, and a native Windows ARM64 build.",
     rows: [
       { feature: "Price", hangly: "Free, no paid tier", rival: "See their site" },
       { feature: "macOS", hangly: "14+, Apple Silicon & Intel", rival: "Yes" },
       { feature: "Windows", hangly: "10+, x64 and native ARM64", rival: "Yes" },
       { feature: "Custom charms from your images", hangly: "Yes", rival: "Not advertised" },
-      { feature: "Charm count", hangly: "80+ across 11 collections", rival: "Not published" },
+      { feature: "Charm count", hangly: "75 across 11 collections + seasonal", rival: "Not published" },
       { feature: "Cord styles", hangly: "Golden thread, silver chain, neon", rival: "Not advertised" },
       { feature: "Adjustable size", hangly: "Yes", rival: "Not advertised" },
       { feature: "Click-through", hangly: "Never intercepts a click", rival: "Stays out of every click" },
@@ -121,7 +121,7 @@ export const COMPARISONS: Comparison[] = [
     performance:
       "Both are small ornaments rendering on an otherwise idle strip of screen, so neither is a meaningful load. Hangly stops its physics simulation when the charm comes to rest rather than running an animation loop indefinitely, which is the detail that decides battery cost in apps of this kind. Lucky Dangle does not publish its approach.",
     customisation:
-      "This is the clearest difference. Hangly ships over eighty charms across eleven collections, three cord styles, adjustable sizing, multiple charms at once and multi-monitor placement — plus the ability to turn any image into a charm. Lucky Dangle presents a curated set without publishing a count.",
+      "This is the clearest difference. Hangly ships seventy-five charms across eleven collections and a seasonal set, three cord styles, adjustable sizing, multiple charms at once and multi-monitor placement — plus the ability to turn any image into a charm. Lucky Dangle presents a curated set without publishing a count.",
     privacy:
       "Hangly collects almost nothing, describes all of it on its privacy page, and never reads what is on your screen or in your files. It requires no account and no email address. Lucky Dangle publishes no privacy page that the crawl found; check their site before installing.",
     platforms:
@@ -132,7 +132,7 @@ export const COMPARISONS: Comparison[] = [
     ],
     hanglyWins: [
       "Turn any image into a charm",
-      "Over eighty charms across eleven collections",
+      "Seventy-five charms across eleven collections and a seasonal set",
       "Three cord styles and adjustable charm size",
       "Native Windows ARM64 build",
       "Free, with no paid tier and no account",
@@ -151,9 +151,9 @@ export const COMPARISONS: Comparison[] = [
       {
         question: "Which has more customisation?",
         answer:
-          "Hangly, clearly. Over eighty charms across eleven collections, three cord styles, adjustable sizing, several charms at once, multi-monitor placement, and any image as a charm. Lucky Dangle publishes no comparable list.",
+          "Hangly, clearly. Seventy-five charms across eleven collections and a seasonal set, three cord styles, adjustable sizing, several charms at once, multi-monitor placement, and any image as a charm. Lucky Dangle publishes no comparable list.",
         points: [
-          "Hangly: 80+ charms, 11 collections, custom images, 3 cords, size control",
+          "Hangly: 75 charms, 11 collections plus seasonal, custom images, 3 cords, size control",
           "Lucky Dangle: a curated charm set, count not published",
         ],
       },
@@ -252,7 +252,7 @@ export const COMPARISONS: Comparison[] = [
       {
         question: "Which has more customisation?",
         answer:
-          "Screen Dangle, if customisation means configuring one charm in depth. Hangly, if it means variety of finished charms — eleven collections, over eighty designs, three cord styles — plus your own images.",
+          "Screen Dangle, if customisation means configuring one charm in depth. Hangly, if it means variety of finished charms — eleven collections and a seasonal set, seventy-five designs, three cord styles — plus your own images.",
       },
       {
         question: "Which is best for desktop charms specifically?",
@@ -268,7 +268,7 @@ export const COMPARISONS: Comparison[] = [
       },
       {
         q: "Which has more charms?",
-        a: "Hangly ships over eighty across eleven named collections. Screen Dangle emphasises building your own rather than publishing a count.",
+        a: "Hangly ships seventy-five across eleven named collections and a seasonal set. Screen Dangle emphasises building your own rather than publishing a count.",
       },
       {
         q: "Is there a Screen Dangle alternative with ready-made charms?",
@@ -280,7 +280,7 @@ export const COMPARISONS: Comparison[] = [
   {
     slug: "danglejoy",
     quickAnswer:
-      "Both hang animated cultural and lucky charms that sway on screen. Hangly is free, publishes exactly what it ships \u2014 over eighty charms across eleven named collections \u2014 accepts your own images, and runs on Windows including native ARM64. DangleJoy's designs may simply be the ones you prefer.",
+      "Both hang animated cultural and lucky charms that sway on screen. Hangly is free, publishes exactly what it ships \u2014 seventy-five charms across eleven named collections and a seasonal set \u2014 accepts your own images, and runs on Windows including native ARM64. DangleJoy's designs may simply be the ones you prefer.",
     takeaways: [
       "Both centre on cultural and lucky charm designs",
       "Hangly is free with no paid tier",
@@ -312,13 +312,13 @@ export const COMPARISONS: Comparison[] = [
       { feature: "Custom images", hangly: "Yes", rival: "Not advertised" },
       { feature: "Windows ARM64", hangly: "Native build", rival: "Not advertised" },
       { feature: "Cultural charms", hangly: "Nazar, Drishti Bommai, Vel, Om, temple bell", rival: "Cultural icons and lucky symbols" },
-      { feature: "Published charm count", hangly: "80+ across 11 collections", rival: "Not published" },
+      { feature: "Published charm count", hangly: "75 across 11 collections + seasonal", rival: "Not published" },
       { feature: "Cord styles", hangly: "Three", rival: "Not advertised" },
     ],
     performance:
       "Both animate a small charm. Neither publishes measurements. Hangly's simulation idles once the charm is still, so a hanging charm costs close to nothing.",
     customisation:
-      "Hangly publishes what it offers: over eighty charms, eleven collections, three cords, size control, several charms at once, and any image as a charm. DangleJoy describes cultural icons and lucky symbols without a published count.",
+      "Hangly publishes what it offers: seventy-five charms, eleven collections plus a seasonal set, three cords, size control, several charms at once, and any image as a charm. DangleJoy describes cultural icons and lucky symbols without a published count.",
     privacy:
       "Hangly documents its data collection in full and requires no account. DangleJoy's terms are on their own site.",
     platforms:
@@ -344,7 +344,7 @@ export const COMPARISONS: Comparison[] = [
       {
         question: "Which has more customisation?",
         answer:
-          "Hangly publishes more: eleven collections, over eighty charms, three cord styles, size control and custom images. DangleJoy does not publish a comparable list.",
+          "Hangly publishes more: eleven collections plus a seasonal set, seventy-five charms, three cord styles, size control and custom images. DangleJoy does not publish a comparable list.",
       },
       {
         question: "Which is best for Indian and cultural charms?",
@@ -372,7 +372,7 @@ export const COMPARISONS: Comparison[] = [
     takeaways: [
       "Same core idea, down to the pendulum physics",
       "Charmly is Mac only; Hangly also runs on Windows including ARM64",
-      "Hangly ships 80+ charms across 11 collections",
+      "Hangly ships 75 charms across 11 collections and a seasonal set",
       "Only Hangly accepts your own images",
       "Charmly is the more focused product",
     ],
@@ -407,7 +407,7 @@ export const COMPARISONS: Comparison[] = [
     performance:
       "Both simulate a pendulum, which is arithmetic rather than a load. Hangly stops the simulation once the charm settles. Neither publishes benchmarks.",
     customisation:
-      "Hangly ships more of it: eleven collections, over eighty charms, three cords, adjustable size and any image as a charm. Charmly presents a focused charm set.",
+      "Hangly ships more of it: eleven collections plus a seasonal set, seventy-five charms, three cords, adjustable size and any image as a charm. Charmly presents a focused charm set.",
     privacy:
       "Hangly documents its collection in full, requires no account and never reads your screen. Charmly's terms are published through Glaze.",
     platforms:
@@ -436,7 +436,7 @@ export const COMPARISONS: Comparison[] = [
       {
         question: "Which has more customisation?",
         answer:
-          "Hangly: eleven collections, over eighty charms, three cord styles, adjustable size and custom images from your own files.",
+          "Hangly: eleven collections plus a seasonal set, seventy-five charms, three cord styles, adjustable size and custom images from your own files.",
       },
       {
         question: "Which works on Windows?",
@@ -590,13 +590,13 @@ export const COMPARISONS: Comparison[] = [
       { feature: "Takes your cursor", hangly: "Never", rival: "Yes" },
       { feature: "Platforms", hangly: "macOS 14+, Windows 10+", rival: "Windows, macOS" },
       { feature: "Price", hangly: "Free", rival: "Pay what you want" },
-      { feature: "Customisation", hangly: "80+ charms, your own images", rival: "A goose" },
+      { feature: "Customisation", hangly: "75 charms, your own images", rival: "A goose" },
       { feature: "Signed & notarised", hangly: "Yes on macOS", rival: "Check the current build" },
     ],
     performance:
       "Desktop Goose animates a sprite that moves continuously across the screen and manipulates windows, so it is always doing something. Hangly renders one charm and stops when it settles. On a laptop on battery that difference is real.",
     customisation:
-      "Desktop Goose has mods and alternate assets from its community, but the concept is one goose. Hangly ships over eighty charms across eleven collections, three cord styles, adjustable sizing and any image as a charm.",
+      "Desktop Goose has mods and alternate assets from its community, but the concept is one goose. Hangly ships seventy-five charms across eleven collections and a seasonal set, three cord styles, adjustable sizing and any image as a charm.",
     privacy:
       "Hangly documents its data collection, requires no account and never reads your screen. Desktop Goose is distributed through itch.io; review the current build's own terms.",
     platforms:
@@ -610,7 +610,7 @@ export const COMPARISONS: Comparison[] = [
       "Never intercepts a click or takes focus",
       "Safe to leave running during work, meetings and screen shares",
       "Signed, notarised and self-updating on macOS",
-      "Over eighty charms plus your own images",
+      "Seventy-five charms plus your own images",
     ],
     answers: [
       {
@@ -626,7 +626,7 @@ export const COMPARISONS: Comparison[] = [
       {
         question: "Which has more customisation?",
         answer:
-          "Hangly, by design — over eighty charms, eleven collections, three cords, adjustable size and any image. Desktop Goose has community mods, but the concept remains one goose.",
+          "Hangly, by design — seventy-five charms, eleven collections plus a seasonal set, three cords, adjustable size and any image. Desktop Goose has community mods, but the concept remains one goose.",
       },
       {
         question: "Which is best for desktop charms specifically?",
@@ -686,13 +686,13 @@ export const COMPARISONS: Comparison[] = [
       { feature: "Reports CPU load", hangly: "No", rival: "Yes" },
       { feature: "Platforms", hangly: "macOS 14+, Windows 10+", rival: "macOS" },
       { feature: "Where it lives", hangly: "Hangs below the menu bar", rival: "Menu bar icon" },
-      { feature: "Customisation", hangly: "80+ charms, your own images", rival: "Many runner characters" },
+      { feature: "Customisation", hangly: "75 charms, your own images", rival: "Many runner characters" },
       { feature: "Price", hangly: "Free", rival: "Free" },
     ],
     performance:
       "RunCat polls system metrics continuously, which is its function, and animates at a rate tied to load. Hangly does no polling at all and stops animating when the charm settles. Both are light; neither is a reason to choose.",
     customisation:
-      "RunCat offers many runner characters within a fixed menu bar slot. Hangly offers over eighty charms, eleven collections, three cord styles, adjustable size and any image. Different axes.",
+      "RunCat offers many runner characters within a fixed menu bar slot. Hangly offers seventy-five charms, eleven collections plus a seasonal set, three cord styles, adjustable size and any image. Different axes.",
     privacy:
       "Neither requires an account. RunCat reads system performance counters, which is what it is for. Hangly reads nothing about your system and documents its collection in full.",
     platforms:
@@ -704,7 +704,7 @@ export const COMPARISONS: Comparison[] = [
     ],
     hanglyWins: [
       "Windows as well as macOS",
-      "Over eighty charms plus your own images",
+      "Seventy-five charms plus your own images",
       "A visible presence on screen rather than a small icon",
     ],
     answers: [
@@ -721,7 +721,7 @@ export const COMPARISONS: Comparison[] = [
       {
         question: "Which has more customisation?",
         answer:
-          "Different axes. RunCat offers many runner characters inside one menu bar slot. Hangly offers over eighty charms, three cords, adjustable size and any image, hanging anywhere along the screen top.",
+          "Different axes. RunCat offers many runner characters inside one menu bar slot. Hangly offers seventy-five charms, three cords, adjustable size and any image, hanging anywhere along the screen top.",
       },
       {
         question: "Which is best for desktop charms specifically?",
@@ -781,7 +781,7 @@ export const COMPARISONS: Comparison[] = [
       { feature: "Productivity features", hangly: "None, deliberately", rival: "Pomodoro, streaks, notes" },
       { feature: "From your photo", hangly: "Yes, as a charm", rival: "Yes, as a pixel pet" },
       { feature: "Where it lives", hangly: "Hangs below the menu bar", rival: "Dock, menu bar or notch" },
-      { feature: "Ready-made designs", hangly: "80+ across 11 collections", rival: "Generated from your photo" },
+      { feature: "Ready-made designs", hangly: "75 across 11 collections + seasonal", rival: "Generated from your photo" },
     ],
     performance:
       "Dockling runs timers and tracks streaks, so it has ongoing state and periodic work. Hangly has neither; it stops animating when the charm is still. Both are small.",
@@ -816,7 +816,7 @@ export const COMPARISONS: Comparison[] = [
       {
         question: "Which has more customisation?",
         answer:
-          "Hangly ships more ready-made variety — eleven collections, over eighty charms, three cords, size control — and accepts your own images too. Dockling's model is a pet generated from one photo.",
+          "Hangly ships more ready-made variety — eleven collections plus a seasonal set, seventy-five charms, three cords, size control — and accepts your own images too. Dockling's model is a pet generated from one photo.",
       },
       {
         question: "Which is best for desktop charms specifically?",

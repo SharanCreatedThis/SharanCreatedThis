@@ -141,7 +141,7 @@ export const BEST_MAC_CUSTOMIZATION_APPS: Guide = {
         "The fourth job is the one the other three guides in this category tend to skip, partly because it is hard to justify in productivity terms. It does not need justifying. A machine you look at all day is worth making pleasant, and nothing here costs performance in any way you will notice.",
         "Ice and SketchyBar both do appearance work on the bar itself — tint, shadow, border, custom shapes, spacing — so if you have installed either for organisation you already have this covered.",
         "Beyond that is decoration proper, which has no function at all. Desktop pets put an animated character on the screen. Desktop charms hang a decorative object from the top of the screen on a cord with pendulum physics, click-through so it never intercepts anything.",
-        "Hangly is the charm app this site makes: free on macOS 14+ and Windows 10+ including a native ARM64 build, with over eighty charms across eleven collections and any image of your own. It is listed here for completeness in the appearance category, not as a competitor to anything else on this page — it does not organise, tile, remap or monitor anything, and it is not trying to.",
+        "Hangly is the charm app this site makes: free on macOS 14+ and Windows 10+ including a native ARM64 build, with seventy-five charms across eleven collections and a seasonal set and any image of your own. It is listed here for completeness in the appearance category, not as a competitor to anything else on this page — it does not organise, tile, remap or monitor anything, and it is not trying to.",
       ],
     },
     {

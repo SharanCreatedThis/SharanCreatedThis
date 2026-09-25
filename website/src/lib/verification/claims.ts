@@ -35,18 +35,18 @@ const PRIOR = "2026-09-24";
 export const CLAIMS: Claim[] = [
   /* ── Our own product facts ───────────────────────────────────────────── */
   {
-    surface: "Sitewide, schema, ~20 files",
-    claim: "Hangly ships 80+ charms across 11 collections",
-    source: "src/components/hangly/Collections.tsx",
-    verified: false,
+    surface: "Sitewide, schema, 15 files",
+    claim: "Hangly ships 75 charms: 55 across 11 collections plus 20 seasonal and lucky charms",
+    source: "public/charms/ and public/charms/connected/, counted by scripts/generate-stats.mjs",
+    verified: true,
     lastChecked: OWN,
-    confidence: "none",
+    confidence: "high",
     note:
-      "UNSUPPORTED. The collections component lists 55 charms across 11 collections; public/charms holds 75 SVG files; the generated CHARM_ART manifest has 56 entries. No artefact in the repository produces 80. The collection count of 11 is correct. Introduced by hand in commit efe8c5e. The in-app total may genuinely exceed 80 if seasonal charms and variants are counted, but the website cannot currently show that, and the comparison tables present it as a *published* count while criticising rivals for not publishing one.",
+      "RESOLVED. The previous claim of 80+ was unsupported and has been replaced everywhere. The real figure is 75 charms whose artwork ships complete in both renderings — plain and connected — with perfect parity between the two directories. 55 are named in the 11 collections on the product page; the remaining 20 are the seasonal and lucky set the app surfaces on its own, which is why counting the collections alone understated the library by a quarter. Every surface now derives from CHARM_TOTAL rather than restating a number.",
   },
   {
     surface: "/products/hangly/stats",
-    claim: "55 charms listed across 11 collections; 75 charm artwork files",
+    claim: "75 charms complete, 55 in collections, 20 seasonal, 11 collections",
     source: "scripts/generate-stats.mjs, counted at build time",
     verified: true, lastChecked: OWN, confidence: "high",
   },
@@ -98,10 +98,12 @@ export const CLAIMS: Claim[] = [
     note: "Plausible and consistent with Sparkle EdDSA signatures in the appcast, but not verified against the shipping DMG in this pass.",
   },
   {
-    surface: "/guides, /products/hangly/roadmap",
-    claim: "Six of the eleven collections are unfinished: Football, Stranger Things, Singers, Breaking Bad, Friends, Dream Catcher",
-    source: "ROADMAP.md and src/data/hangly-faq.ts",
-    verified: true, lastChecked: OWN, confidence: "high",
+    surface: "ROADMAP.md, previously /products/hangly/roadmap and the FAQ",
+    claim: "Six of the eleven collections lack their connected artwork",
+    source: "src/data/charms.generated.ts",
+    verified: false, lastChecked: OWN, confidence: "none",
+    note:
+      "NO LONGER TRUE. Every one of the 75 charms now resolves to connected artwork; zero fall back to the plain drawing, and the two directories have exact parity. The claim was correct when written and the work has since been finished. It has been removed from the roadmap page and the FAQ; ROADMAP.md still carries it and should be updated.",
   },
 
   /* ── Competitors read live on 2026-09-25 ─────────────────────────────── */
@@ -218,6 +220,33 @@ export const CLAIMS: Claim[] = [
     source: "Search result summaries",
     verified: false, lastChecked: LIVE, confidence: "low",
     note: "Their own landing page does not publish a price. The guide says so explicitly and attributes the figure to third parties rather than stating it as fact. Do not promote this to a stated price without a primary source.",
+  },
+
+  {
+    surface: "/guides/best-desktop-charm-apps-for-mac, entries.ts",
+    claim: "Book My Luck is \u20b999 once (\u20b9297 for five), 22 charms, macOS 14+ and Windows 10/11",
+    source: "https://bookmyluck.com/",
+    verified: true, lastChecked: LIVE, confidence: "high",
+    note: "Corrects an earlier entry that recorded the price as 'See their site'. Their catalogue of 22 is a like-for-like comparison against Hangly's 75.",
+  },
+  {
+    surface: "docs/authority-roadmap.md (not yet published on any page)",
+    claim: "MenuBar Pets ships 12+ hanging characters plus custom images, free with a $4.99 Pro tier, macOS 14+",
+    source: "https://apps.apple.com/us/app/menubar-pets/id6766222004",
+    verified: true, lastChecked: LIVE, confidence: "high",
+    note: "The closest competitor to Hangly's core mechanic found so far, and currently uncovered by any page on this site.",
+  },
+  {
+    surface: "docs/authority-roadmap.md (not yet published on any page)",
+    claim: "DeskCharm is free, Windows only with macOS 'coming soon', 10 charms plus emoji, no accounts or tracking",
+    source: "https://deskcharm.vercel.app/",
+    verified: true, lastChecked: LIVE, confidence: "high",
+  },
+  {
+    surface: "docs/authority-roadmap.md (not yet published on any page)",
+    claim: "ScreenPets is MIT-licensed, free, macOS 14+, 4 GitHub stars",
+    source: "https://github.com/sealovesky/ScreenPets",
+    verified: true, lastChecked: LIVE, confidence: "high",
   },
 
   /* ── Carried over from the 2026-09-24 pass, not re-verified ──────────── */

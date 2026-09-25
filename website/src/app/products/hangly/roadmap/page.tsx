@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { Check, CircleDashed } from "lucide-react";
-import { COLLECTIONS, CHARM_COUNT, RELEASE, GENERATED_AT } from "@/data/stats.generated";
+import { COLLECTIONS, CHARM_TOTAL, CHARM_IN_COLLECTIONS, COLLECTION_COUNT, SEASONAL_COUNT, RELEASE, GENERATED_AT } from "@/data/stats.generated";
 import { HANGLY_APP, ID, breadcrumb, faqNode, serialise, softwareNode } from "@/lib/schema/entities";
 import { InShort, KeyTakeaways, QuickAnswer } from "@/components/aeo/AnswerBlocks";
 import { PlatformSheet } from "@/components/hangly/shared";
@@ -22,9 +22,6 @@ export const metadata: Metadata = {
   twitter: { card: "summary_large_image", title: TITLE, description: DESCRIPTION, images: ["/og/hangly-roadmap.png"] },
 };
 
-/** The six collections named as unfinished in the app's own FAQ and roadmap. */
-const UNFINISHED = ["Football", "Stranger Things", "Singers", "Breaking Bad", "Friends", "Dream Catcher"];
-
 type Item = { title: string; detail: string; done: boolean };
 
 const SHIPPED: Item[] = [
@@ -33,14 +30,15 @@ const SHIPPED: Item[] = [
   { done: true, title: "A lighter download", detail: `The app ships the vector artwork it actually draws from rather than a compiled catalogue carrying a bitmap of every unused charm. The download went from 89 MB to ${Math.round(RELEASE.macOS.bytes / 1_000_000)} MB with no change to the artwork.` },
   { done: true, title: "Five cords and up to three charms on one rope", detail: "Plus eleven seasonal charms that arrive on their own, weather, and one Customize window in place of the three it used to take." },
   { done: true, title: "Native Windows ARM64 build", detail: "A separate native build for Snapdragon machines rather than running the x64 build under emulation. Almost nothing else in this category publishes one." },
+  { done: true, title: "Connected artwork finished for every charm", detail: `All ${CHARM_TOTAL} charms now ship both renderings — the plain drawing and the connected one with the thread ending at that charm's own loop. Six collections shipped before their connected art did; none fall back any more.` },
   { done: true, title: "Charm artwork optimised", detail: "Several SVGs carried over 500 KB of embedded raster each. Re-encoding took the artwork directory from 38.4 MB to 8.3 MB with verified visual parity." },
 ];
 
 const NEXT: Item[] = [
   { done: false, title: "Windows out of pre-release", detail: `The Windows build is at ${RELEASE.windows} while macOS is at ${RELEASE.macOS.version}. Leaving 0.9.x means dropping the Beta badge and letting the download links use GitHub's latest alias instead of a pinned tag, which is currently needed because latest skips pre-releases.` },
   { done: false, title: "Windows code signing", detail: "The Windows installer is unsigned, so SmartScreen shows a warning once on first run. A certificate removes it. This is the single biggest friction point in the Windows install today." },
-  { done: false, title: "The six unfinished collections", detail: `${UNFINISHED.join(", ")}. Their plain artwork renders already; what is missing is the connected rendering with the hanging thread drawn in, which is per-charm artwork rather than something that can be derived.` },
   { done: false, title: "Per-collection pages", detail: "So each collection can rank on its own terms rather than as a section of one product page." },
+  { done: false, title: "Surface the seasonal charms on the site", detail: `${SEASONAL_COUNT} charms ship with complete artwork but belong to no collection on the product page — the seasonal and lucky set that the app surfaces on its own. They are real and installed; the website simply does not list them, which is why counting the collections understated the library by a quarter.` },
 ];
 
 const NOT_PLANNED: Item[] = [
@@ -56,8 +54,8 @@ const FAQS = [
     a: `No date is published, deliberately. The Windows build is at ${RELEASE.windows} against ${RELEASE.macOS.version} on macOS, and it leaves 0.9.x when it is ready rather than on a schedule. Code signing and feature parity with the Mac build are the two things standing between here and there.`,
   },
   {
-    q: "Which Hangly collections are unfinished?",
-    a: `Six of the ${COLLECTIONS.length}: ${UNFINISHED.join(", ")}. Their charms have plain artwork and appear in the app; what is still being drawn is the connected rendering that includes the hanging thread, which has to be made per charm.`,
+    q: "How many charms does Hangly actually have?",
+    a: `${CHARM_TOTAL}, each shipping both renderings — the plain drawing and the connected one with the hanging thread. ${CHARM_IN_COLLECTIONS} of them are named across the ${COLLECTION_COUNT} collections on the product page; the other ${SEASONAL_COUNT} are seasonal and lucky charms the app surfaces on its own. Every figure is counted from the artwork directory at build time rather than written by hand.`,
   },
   {
     q: "Can I request a charm or a collection?",
@@ -177,25 +175,26 @@ export default function RoadmapPage() {
           items={NEXT}
         />
 
-        <section aria-labelledby="unfinished">
-          <h2 id="unfinished">The six unfinished collections, specifically</h2>
+        <section aria-labelledby="seasonal">
+          <h2 id="seasonal">The charms the website does not list</h2>
           <p>
-            Of the {COLLECTIONS.length} published collections holding {CHARM_COUNT} charms, six are
-            not finished: {UNFINISHED.join(", ")}. It is worth being precise about what
-            &ldquo;unfinished&rdquo; means here, because the charms do appear in the app.
+            Hangly ships {CHARM_TOTAL} charms with complete artwork. Only{" "}
+            {CHARM_IN_COLLECTIONS} of them are named in the {COLLECTION_COUNT} collections on the
+            product page. The other {SEASONAL_COUNT} are the seasonal and lucky set — Halloween,
+            Diwali, winter, and luck charms from several cultures — which the app surfaces on its
+            own as the year turns.
           </p>
           <p>
-            Every charm ships with plain artwork, which is what renders today. What is missing is
-            the <em>connected</em> rendering — the same charm drawn with the hanging thread
-            attached at the right point for that particular shape. That cannot be derived from the
-            plain drawing, because where a thread meets a charm depends on the charm. It is
-            per-charm illustration work, and it is the reason these six are listed as in progress
-            rather than quietly shipped.
+            That gap is the reason the site understated its own library for a while. Counting the
+            collections gives {CHARM_IN_COLLECTIONS}; counting what actually installs gives{" "}
+            {CHARM_TOTAL}. Every figure published now comes from{" "}
+            <code>scripts/generate-stats.mjs</code>, which counts the artwork directory at build
+            time, so the two can no longer drift apart.
           </p>
           <p>
-            The site handles the gap rather than hiding it: a build-time manifest resolves each
-            charm to the best artwork available, so a charm without a connected drawing falls back
-            to its plain one instead of rendering as a broken image.
+            Giving the seasonal set a home on the product page is on the list above. It is the
+            cheapest remaining content work and the only one that makes the published count and
+            the installed count the same number.
           </p>
         </section>
 
