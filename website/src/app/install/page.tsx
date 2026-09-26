@@ -29,7 +29,7 @@ const MAC_STEPS: Step[] = [
   { name: "Open the disk image", text: "Double-click the downloaded .dmg. A window opens showing the Hangly app beside a shortcut to your Applications folder." },
   { name: "Drag Hangly into Applications", text: "Drag the app icon onto the Applications shortcut. Copying takes a second or two." },
   { name: "Eject the disk image", text: "Click the eject arrow beside the mounted image in the Finder sidebar, then move the downloaded .dmg to the Trash. Nothing needs it again." },
-  { name: "Launch Hangly", text: "Open Applications and double-click Hangly. It is signed and notarised, so it opens without a Gatekeeper warning." },
+  { name: "Launch Hangly", text: "Open Applications and double-click Hangly. It is not yet signed with an Apple Developer ID, so the first launch needs one extra step: on macOS 14, right-click it and choose Open; on macOS 15 and later, go to System Settings → Privacy & Security and choose Open Anyway." },
   { name: "Pick a charm", text: "A charm appears hanging from the top of your screen. Use the Hangly icon in the menu bar to open Customize and choose from the fourteen collections, change the cord, or drop in an image of your own." },
 ];
 
@@ -48,11 +48,11 @@ const FAQS = [
   },
   {
     q: "macOS says the app is damaged and cannot be opened. What now?",
-    a: "That message usually means the download was interrupted rather than that anything is wrong with the app. Delete it, empty the Trash and download again. The build is notarised, so a complete copy opens normally.",
+    a: "That message usually means the download was interrupted rather than that anything is wrong with the app. Delete it, empty the Trash and download again. A complete copy opens once you have allowed it the first time, as described above.",
   },
   {
     q: "The charm is not on my screen after installing. Where is it?",
-    a: "Check the menu bar on a Mac or the system tray on Windows — the app is running if its icon is there. If you have more than one display, the charm may be hanging on the other one; the Customize window lets you place it.",
+    a: "Check the menu bar on a Mac or the system tray on Windows — the app is running if its icon is there. If you have more than one display, look on the main one — that is where the charm hangs.",
   },
   {
     q: "Will Hangly get in the way of what I am clicking?",
@@ -146,8 +146,8 @@ export default function InstallPage() {
         </header>
 
         <QuickAnswer>
-          On a Mac, open the downloaded disk image, drag Hangly into Applications and launch it — it
-          is notarised, so nothing warns you. On Windows, check Settings → System → About for your
+          On a Mac, open the downloaded disk image, drag Hangly into Applications and launch it —
+          it is not yet notarised, so allow it once in System Settings → Privacy &amp; Security. On Windows, check Settings → System → About for your
           processor type, take the matching build, and choose More info then Run anyway when
           SmartScreen appears. Neither platform needs an account or administrator rights.
         </QuickAnswer>
@@ -177,8 +177,8 @@ export default function InstallPage() {
           </p>
           <p>
             <strong>macOS says the app is damaged.</strong> Almost always an interrupted download
-            rather than a problem with the build, which is notarised. Delete it, empty the Trash and
-            download again.
+            rather than a problem with the build. Delete it, empty the Trash and download again,
+            then allow the first launch in System Settings → Privacy &amp; Security.
           </p>
           <p>
             <strong>Windows blocked the installer entirely.</strong> Some corporate machines refuse

@@ -116,7 +116,7 @@ export const FAQ_GROUPS: FaqGroup[] = [
       },
       {
         q: "Does Hangly work with multiple monitors?",
-        a: "Yes, and you choose which display a charm hangs from.",
+        a: "It hangs on your main display — the one with the menu bar on a Mac, the primary display on Windows. Choosing another display, remembered across restarts and unplugging, arrives in the next release of both apps.",
       },
       {
         q: "Does Hangly work in full-screen apps?",
@@ -146,7 +146,7 @@ export const FAQ_GROUPS: FaqGroup[] = [
       },
       {
         q: "Is Hangly safe to install?",
-        a: "The macOS build is signed and notarised by Apple, which means Apple has scanned it for malware and Gatekeeper will open it without warnings. The Windows installers are published through GitHub Releases.",
+        a: "Neither build is code-signed yet — the Mac app has no Apple Developer ID and the Windows installer is not yet signed — so both systems ask you to allow the first launch. Every update is signed: Sparkle on Mac installs nothing whose EdDSA signature does not match the key built into your copy. The full source of both apps is public, and nothing is downloaded from anywhere but the site and GitHub Releases.",
       },
       {
         q: "Why does Windows SmartScreen warn about Hangly?",
@@ -200,7 +200,7 @@ export const FAQ_GROUPS: FaqGroup[] = [
       },
       {
         q: "How is Hangly different from Lucky Dangle?",
-        a: "Both hang a charm from the top of the screen on Mac and Windows. Hangly adds custom charms made from your own images, fourteen themed collections, three cord styles and adjustable sizing, and it is free.",
+        a: "Both hang a charm from the top of the screen on Mac and Windows. Hangly adds custom charms made from your own images, fourteen themed collections, several cord styles and adjustable sizing, and it is free.",
       },
       {
         q: "How is Hangly different from Screen Dangle?",
@@ -234,7 +234,7 @@ export const FAQ_GROUPS: FaqGroup[] = [
     faqs: [
       {
         q: "The charm is not visible. What should I check?",
-        a: "Three things: that Hangly is running, which the menu bar or tray icon tells you; that you are not inside a full-screen app, where macOS hides it; and which display it is set to hang from if you use more than one.",
+        a: "Three things: that Hangly is running, which the menu bar or tray icon tells you; that you are not inside a full-screen app, where macOS hides it; and, if you use more than one display, that you are looking at the main one — that is where it hangs.",
       },
       {
         q: "The charm is in the way of my menu bar. Can I move it?",
@@ -242,7 +242,7 @@ export const FAQ_GROUPS: FaqGroup[] = [
       },
       {
         q: "Hangly will not open on my Mac. What now?",
-        a: "The app is notarised, so this is unusual. Right-click the app and choose Open, which offers to open it anyway. If it persists, download it again from the site rather than a mirror.",
+        a: "Hangly is not yet notarised, so macOS stops the first launch. On macOS 14, right-click the app and choose Open. On macOS 15 and later, try to open it once, then go to System Settings → Privacy & Security and choose Open Anyway. If it still will not open, download it again from the site rather than a mirror.",
       },
       {
         q: "How do I uninstall Hangly?",

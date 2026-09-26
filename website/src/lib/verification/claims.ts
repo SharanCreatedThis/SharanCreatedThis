@@ -92,10 +92,10 @@ export const CLAIMS: Claim[] = [
   },
   {
     surface: "Sitewide",
-    claim: "macOS build is Developer ID signed and notarised",
-    source: "Self-reported",
-    verified: false, lastChecked: OWN, confidence: "medium",
-    note: "Plausible and consistent with Sparkle EdDSA signatures in the appcast, but not verified against the shipping DMG in this pass.",
+    claim: "macOS build is NOT signed with a Developer ID or notarised; the first launch has to be allowed once",
+    source: "codesign -dv on the installed Hangly 2.0.0: Signature=adhoc, TeamIdentifier=not set",
+    verified: true, lastChecked: "2026-09-26", confidence: "high",
+    note: "Corrected 2026-09-26. The site had said 'signed and notarised' in eleven places on the strength of a self-report; the shipping binary is ad-hoc signed. Sparkle update signatures (EdDSA) are separate and real.",
   },
   {
     surface: "ROADMAP.md, previously /products/hangly/roadmap and the FAQ",

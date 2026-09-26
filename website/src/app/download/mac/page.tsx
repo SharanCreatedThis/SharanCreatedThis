@@ -12,7 +12,7 @@ const PATH = "/download/mac";
 const URL_ = absoluteUrl(PATH);
 const TITLE = "Download Hangly for Mac — Free, macOS 14+";
 const DESCRIPTION =
-  "The macOS build of Hangly: universal for Apple Silicon and Intel, signed and notarised, and free. What it needs, how large it is, and what happens on first launch.";
+  "The macOS build of Hangly: universal for Apple Silicon and Intel, and free. What it needs, how large it is, and what happens on first launch.";
 
 export const metadata: Metadata = {
   title: TITLE,
@@ -34,7 +34,7 @@ const FAQS = [
   },
   {
     q: "Will macOS warn me about an unidentified developer?",
-    a: "No. The app is signed with a Developer ID and notarised by Apple, so Gatekeeper opens it without a warning.",
+    a: "Yes, once. Hangly is not yet signed with an Apple Developer ID, so macOS stops the first launch. On macOS 14, right-click Hangly in Applications, choose Open, and confirm. On macOS 15 and later, open it once, then go to System Settings → Privacy & Security and choose Open Anyway. Only the first launch needs this. Signing and notarisation are planned.",
   },
   {
     q: "What version of macOS does Hangly need?",
@@ -78,7 +78,7 @@ export default function DownloadMacPage() {
           <p className="eyebrow">MACOS {release?.version ?? "2.0.0"} · {size} · FREE</p>
           <h1>Hangly for Mac<span className="orange">.</span></h1>
           <p className="comparison-verdict">
-            One universal build for every Mac made in the last decade, signed, notarised, and free.
+            One universal build for every Mac made in the last decade, and free.
           </p>
           <div className="hero-actions">
             <a className="button button-primary" href={build.href}>
@@ -93,9 +93,9 @@ export default function DownloadMacPage() {
 
         <QuickAnswer>
           Hangly for Mac is a free {size} download that needs macOS 14 or newer. It is a universal
-          build, so one file runs natively on Apple Silicon and on Intel Macs. It is signed with a
-          Developer ID and notarised by Apple, which means it opens on first launch without a
-          Gatekeeper warning, and it keeps itself up to date through Sparkle.
+          build, so one file runs natively on Apple Silicon and on Intel Macs. It is not yet signed
+          with an Apple Developer ID, so macOS asks you to allow it once on first launch, and it
+          keeps itself up to date through Sparkle.
         </QuickAnswer>
 
         <KeyTakeaways
@@ -103,7 +103,7 @@ export default function DownloadMacPage() {
             `Version ${release?.version ?? "2.0.0"}, ${size}, free`,
             "Needs macOS 14 Sonoma or newer",
             "Universal: Apple Silicon and Intel, no Rosetta",
-            "Signed and notarised — no unidentified-developer warning",
+            "Not yet notarised: allow it once in Privacy & Security",
             "Updates weekly through Sparkle, in the background",
           ]}
         />
@@ -152,8 +152,8 @@ export default function DownloadMacPage() {
         </section>
 
         <InShort>
-          One file, free, macOS 14 or newer, universal across Apple Silicon and Intel, and notarised
-          so it opens without an argument. Install it by dragging it to Applications; it updates
+          One file, free, macOS 14 or newer, universal across Apple Silicon and Intel. Allow it
+          once on first launch, because it is not yet notarised. Install it by dragging it to Applications; it updates
           itself from then on.
         </InShort>
 
