@@ -177,8 +177,8 @@ export default function Products() {
       <Prose id="get-them" heading="Downloading and installing">
         <p>
           Everything is free and nothing asks for an account. On a Mac, Hangly is a disk image you
-          drag into Applications and it is signed and notarised, so it opens without a Gatekeeper
-          warning. On Windows, check Settings then System then About for your processor type
+          drag into Applications; it is not yet notarised, so macOS asks you to allow it once in
+          Privacy &amp; Security. On Windows, check Settings then System then About for your processor type
           first, because a Windows-on-ARM machine reports itself as x64 and taking the wrong build
           costs you the native performance — and expect one SmartScreen warning, because the
           Windows build is not code-signed yet.

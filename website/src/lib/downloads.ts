@@ -44,7 +44,7 @@ export const BUILDS: Record<BuildId, Build> = {
     detail: "Apple Silicon & Intel",
     architecture: "A universal build: one download runs natively on Apple Silicon and on Intel Macs.",
     updater: "Checks weekly through Sparkle and installs in the background. There is a Check for Updates button on the About page for anyone who would rather ask.",
-    firstRun: "It opens. The app is signed and notarised, so Gatekeeper has nothing to warn about.",
+    firstRun: "Hangly is not yet signed with an Apple Developer ID, so macOS stops the first launch. On macOS 14, right-click Hangly in Applications, choose Open, and confirm. On macOS 15 and later, open it once, then go to System Settings → Privacy & Security and choose Open Anyway. Only the first launch needs this.",
   },
   "windows-x64": {
     id: "windows-x64",

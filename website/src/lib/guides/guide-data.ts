@@ -236,7 +236,7 @@ export const GUIDES: Guide[] = [
       {
         heading: "The short answer",
         body: [
-          "Hangly is the closest alternative with more in it: free, eighty-one charms across fourteen collections, your own images as charms, three cord styles, and Windows including native ARM64. Screen Dangle if you would rather build a charm than choose one; also free.",
+          "Hangly is the closest alternative with more in it: free, eighty-one charms across fourteen collections, your own images as charms, several cord styles, and Windows including native ARM64. Screen Dangle if you would rather build a charm than choose one; also free.",
           "If you liked Lucky Dangle's simplicity and just want fewer decisions, Screen Charms on Mac is about as minimal as this gets.",
         ],
       },
@@ -244,7 +244,7 @@ export const GUIDES: Guide[] = [
     faqs: [
       {
         q: "What is the best Lucky Dangle alternative?",
-        a: "Hangly, for most people: free, eighty-one charms across fourteen collections, custom charms from your own images, three cord styles, and Windows support including native ARM64. Screen Dangle is the better fit if you prefer configuring a charm yourself.",
+        a: "Hangly, for most people: free, eighty-one charms across fourteen collections, custom charms from your own images, several cord styles, and Windows support including native ARM64. Screen Dangle is the better fit if you prefer configuring a charm yourself.",
       },
       {
         q: "Is there a free Lucky Dangle alternative?",
@@ -364,7 +364,7 @@ export const GUIDES: Guide[] = [
       {
         heading: "The short answer",
         body: [
-          "Hangly if you want the same idea with more in it and on both platforms: free, eighty-one charms across fourteen collections, Windows including native ARM64, custom images, three cord styles.",
+          "Hangly if you want the same idea with more in it and on both platforms: free, eighty-one charms across fourteen collections, Windows including native ARM64, custom images, several cord styles.",
           "Screen Charms if you want to stay on Mac with something free and minimal. Drishti Dangle at ₹99 if Indian designs and wind chimes are what you are after.",
         ],
       },

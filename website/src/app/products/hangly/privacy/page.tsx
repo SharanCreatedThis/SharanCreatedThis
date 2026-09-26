@@ -110,7 +110,10 @@ export default function Privacy() {
 
         <h3>What is never sent</h3>
         <ul>
-          <li>Your name, email address, or any account. Hangly has no accounts.</li>
+          <li>
+            Your name, email address, or any account. Hangly has no accounts. (The Windows app
+            differs here — see below.)
+          </li>
           <li>Images you import, or anything about them — not the file, its name, or its size.</li>
           <li>
             Charms you make. They are reported as the word <code>custom</code>.
@@ -126,6 +129,31 @@ export default function Privacy() {
           stops capture at the source rather than filtering it later, and throws away the
           installation identifier. If you switch it back on, a new identifier is made, so the two
           cannot be joined.
+        </p>
+      </section>
+
+      <section>
+        <h2>Hangly for Windows</h2>
+        <p>
+          Everything above describes the Mac app. The Windows app (0.9.x, a pre-release) sends
+          analytics to the same PostHog project, on by default and switchable off in{' '}
+          <strong>Customize → About → Anonymous analytics</strong>, with one difference that
+          matters: <strong>it asks for a name the first time it runs, and sends that name with
+          every event while analytics is on.</strong> You type the name; Hangly does not read your
+          Windows account, email address or computer name. Switch analytics off and the name
+          stays on your PC.
+        </p>
+        <p>
+          The Windows app has no weather feature and makes no weather request. Its full,
+          event-by-event account is{' '}
+          <a
+            href="https://github.com/SharanCreatedThis/Hangly-Windows/blob/v0.9.4/PRIVACY.md"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            PRIVACY.md in its repository
+          </a>
+          .
         </p>
       </section>
 

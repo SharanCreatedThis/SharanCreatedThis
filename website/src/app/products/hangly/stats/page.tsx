@@ -245,7 +245,7 @@ export default function StatsPage() {
               ["Website artwork files", ARTWORK.plain],
               ["Custom charms", "Any single image"],
               ["Price", "Free, no account, no paid tier"],
-              ["macOS code signing", "Developer ID signed and notarised"],
+              ["macOS code signing", "Not signed with a Developer ID yet — allow once on first launch"],
               ["Windows code signing", "Not signed yet — SmartScreen warns once"],
               ["macOS updater", "Sparkle"],
               ["Windows updater", "Velopack"],

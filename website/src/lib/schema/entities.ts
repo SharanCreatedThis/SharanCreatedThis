@@ -179,9 +179,9 @@ export const HANGLY_APP: AppFacts = {
     "Real pendulum physics",
     HANGLY_COPY.exactWithCategories,
     "Custom charms from any image",
-    "Three cord styles and adjustable size",
+    "Several cord styles and adjustable size",
     "Click-through: never intercepts a click",
-    "Multiple charms and multi-monitor placement",
+    "Up to three charms at once",
     "Native Windows ARM64 build",
   ],
 };
