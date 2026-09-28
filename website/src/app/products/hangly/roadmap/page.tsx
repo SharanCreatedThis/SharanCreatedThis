@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { Check, CircleDashed } from "lucide-react";
-import { COLLECTIONS, CHARM_TOTAL, CHARM_IN_COLLECTIONS, COLLECTION_COUNT, SEASONAL_COUNT, RELEASE, GENERATED_AT } from "@/data/stats.generated";
+import { COLLECTIONS, CHARM_TOTAL, CHARM_IN_COLLECTIONS, COLLECTION_COUNT, SEASONAL_COUNT as ADDITIONAL_COUNT, RELEASE, GENERATED_AT } from "@/data/stats.generated";
 import { HANGLY_STATS } from "@/lib/stats/hangly";
 import { HANGLY_APP, ID, breadcrumb, faqNode, serialise, softwareNode } from "@/lib/schema/entities";
 import { InShort, KeyTakeaways, QuickAnswer } from "@/components/aeo/AnswerBlocks";
@@ -29,7 +29,7 @@ const SHIPPED: Item[] = [
   { done: true, title: "Automatic updates", detail: "Hangly checks weekly through Sparkle and installs in the background. Before 2.0, a new version meant downloading it by hand." },
   { done: true, title: "Release notes on first launch", detail: "Shown once after an update, with a Check for Updates button on the About page for anyone who would rather ask." },
   { done: true, title: "A lighter download", detail: `The app ships the vector artwork it actually draws from rather than a compiled catalogue carrying a bitmap of every unused charm. The download went from 89 MB to ${Math.round(RELEASE.macOS.bytes / 1_000_000)} MB with no change to the artwork.` },
-  { done: true, title: "Five cords and up to three charms on one rope", detail: "Plus eleven seasonal charms that arrive on their own, weather, and one Customize window in place of the three it used to take." },
+  { done: true, title: "Five cords and up to three charms on one rope", detail: "Plus eleven additional catalogue charms that arrive on their own, and one Customize window in place of the three it used to take." },
   { done: true, title: "Native Windows ARM64 build", detail: "A separate native build for Snapdragon machines rather than running the x64 build under emulation. Almost nothing else in this category publishes one." },
   { done: true, title: "Connected artwork finished for every charm", detail: `All ${CHARM_TOTAL} charms now ship both renderings — the plain drawing and the connected one with the thread ending at that charm's own loop. Six collections shipped before their connected art did; none fall back any more.` },
   { done: true, title: "Charm artwork optimised", detail: "Several SVGs carried over 500 KB of embedded raster each. Re-encoding took the artwork directory from 38.4 MB to 8.3 MB with verified visual parity." },
@@ -39,7 +39,7 @@ const NEXT: Item[] = [
   { done: false, title: "Windows out of pre-release", detail: `The Windows build is at ${RELEASE.windows} while macOS is at ${RELEASE.macOS.version}. Leaving 0.9.x means dropping the Beta badge and letting the download links use GitHub's latest alias instead of a pinned tag, which is currently needed because latest skips pre-releases.` },
   { done: false, title: "Windows code signing", detail: "The Windows installer is unsigned, so SmartScreen shows a warning once on first run. A certificate removes it. This is the single biggest friction point in the Windows install today." },
   { done: false, title: "Per-collection pages", detail: "So each collection can rank on its own terms rather than as a section of one product page." },
-  { done: false, title: "Surface the seasonal charms on the site", detail: `${SEASONAL_COUNT} charms ship with complete artwork but belong to no collection on the product page — the seasonal and lucky set that the app surfaces on its own. They are real and installed; the website simply does not list them, which is why counting the collections understated the library by a quarter.` },
+  { done: false, title: "Surface the additional catalogue charms on the site", detail: `${ADDITIONAL_COUNT} charms ship with complete artwork but belong to no collection on the product page — the additional and lucky set that the app surfaces on its own. They are real and installed; the website simply does not list them, which is why counting the collections understated the library by a quarter.` },
 ];
 
 const NOT_PLANNED: Item[] = [
@@ -56,7 +56,7 @@ const FAQS = [
   },
   {
     q: "How many charms does Hangly actually have?",
-    a: `${CHARM_TOTAL}, each shipping both renderings — the plain drawing and the connected one with the hanging thread. ${CHARM_IN_COLLECTIONS} of them are named across the ${COLLECTION_COUNT} collections on the product page; the other ${SEASONAL_COUNT} are seasonal and lucky charms the app surfaces on its own. Every figure is counted from the artwork directory at build time rather than written by hand.`,
+    a: `${CHARM_TOTAL}, each shipping both renderings — the plain drawing and the connected one with the hanging thread. ${CHARM_IN_COLLECTIONS} of them are named across the ${COLLECTION_COUNT} collections on the product page; the other ${ADDITIONAL_COUNT} are additional and lucky charms the app surfaces on its own. Every figure is counted from the artwork directory at build time rather than written by hand.`,
   },
   {
     q: "Can I request a charm or a collection?",
@@ -176,12 +176,12 @@ export default function RoadmapPage() {
           items={NEXT}
         />
 
-        <section aria-labelledby="seasonal">
-          <h2 id="seasonal">The charms the website does not list</h2>
+        <section aria-labelledby="additional">
+          <h2 id="additional">The charms the website does not list</h2>
           <p>
             Hangly ships {CHARM_TOTAL} charms with complete artwork. Only{" "}
             {CHARM_IN_COLLECTIONS} of them are named in the {COLLECTION_COUNT} collections on the
-            product page. The other {SEASONAL_COUNT} are the seasonal and lucky set — Halloween,
+            product page. The other {ADDITIONAL_COUNT} are the additional and lucky set — the special catalogue,
             Diwali, winter, and luck charms from several cultures — which the app surfaces on its
             own as the year turns.
           </p>
@@ -193,7 +193,7 @@ export default function RoadmapPage() {
             time, so the two can no longer drift apart.
           </p>
           <p>
-            Giving the seasonal set a home on the product page is on the list above. It is the
+            Giving the additional set a home on the product page is on the list above. It is the
             cheapest remaining content work and the only one that makes the published count and
             the installed count the same number.
           </p>

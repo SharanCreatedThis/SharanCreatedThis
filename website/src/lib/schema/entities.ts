@@ -13,7 +13,7 @@
  */
 
 import { DEFAULT_DESCRIPTION, PERSON, SITE_NAME, SITE_URL, absoluteUrl } from "@/lib/seo";
-import { HANGLY_COPY } from "@/lib/stats/hangly";
+import { HANGLY_COPY, HANGLY_STATS } from "@/lib/stats/hangly";
 import { profile } from "@/data/portfolio";
 
 export const ID = {
@@ -167,19 +167,19 @@ export const HANGLY_APP: AppFacts = {
   id: ID.hangly,
   name: "Hangly",
   description:
-    `A free desktop app for macOS and Windows that hangs a decorative charm from the top of your screen on a cord with real pendulum physics. ${HANGLY_COPY.exactWithCategories}, plus any image of your own.`,
+    `A free desktop app for macOS and Windows that hangs a decorative charm from the top of your screen on a rope with real pendulum physics. ${HANGLY_COPY.growth}, plus custom charms from your own image.`,
   path: "/products/hangly",
   operatingSystem: ["macOS 14", "Windows 10"],
   applicationCategory: "DesktopEnhancementApplication",
   applicationSubCategory: "Desktop customisation",
-  softwareVersion: "2.0.0",
+  softwareVersion: `macOS ${HANGLY_STATS.macVersion}; Windows ${HANGLY_STATS.windowsVersion}`,
   downloadPath: "/download",
   screenshot: "/og/hangly.png",
   features: [
     "Real pendulum physics",
     HANGLY_COPY.exactWithCategories,
     "Custom charms from any image",
-    "Three cord styles and adjustable size",
+    `${HANGLY_STATS.ropeStyleCount} rope styles and adjustable size`,
     "Click-through: never intercepts a click",
     "Multiple charms and multi-monitor placement",
     "Native Windows ARM64 build",

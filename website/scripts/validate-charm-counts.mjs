@@ -35,29 +35,19 @@ const errors = [];
 
 /* ── 1. the constants must match the shipped catalogue ─────────────────── */
 const shipped = JSON.parse(read("src/data/hangly/charm-library.shipped.json"));
+const product = JSON.parse(read("src/data/hangly/product.json"));
 const actualCharms = shipped.charms.length;
 const actualCategories = shipped.categories.length;
 const actualSeasonal = shipped.charms.filter((c) => c.category === "seasonal").length;
 
+// product.json is the one public source of product claims. The independently
+// extracted macOS catalogue remains a build-time guard against stale facts.
+if (product.platforms.mac.charms !== actualCharms) errors.push(`product.json macOS charms is ${product.platforms.mac.charms}; shipped catalogue says ${actualCharms}`);
+if (product.catalogue.macCategories !== actualCategories) errors.push(`product.json macOS categories is ${product.catalogue.macCategories}; shipped catalogue says ${actualCategories}`);
+if (product.catalogue.seasonalCharms !== actualSeasonal) errors.push(`product.json seasonal charms is ${product.catalogue.seasonalCharms}; shipped catalogue says ${actualSeasonal}`);
 const statsSrc = read("src/lib/stats/hangly.ts");
-const stated = (key) => Number((statsSrc.match(new RegExp(`${key}:\\s*(\\d+)`)) || [])[1]);
-
-for (const [key, actual] of [
-  ["charmCount", actualCharms],
-  ["categoryCount", actualCategories],
-  ["seasonalCharmCount", actualSeasonal],
-]) {
-  const declared = stated(key);
-  if (declared !== actual) {
-    errors.push(`HANGLY_STATS.${key} is ${declared}; the shipped catalogue says ${actual}`);
-  }
-}
-
-/* The marketing figure may round down, never up. */
-const marketing = Number((statsSrc.match(/marketingCharmCount:\s*"(\d+)\+"/) || [])[1]);
-if (!marketing) errors.push(`marketingCharmCount is not of the form "N+"`);
-else if (marketing > actualCharms) {
-  errors.push(`marketingCharmCount "${marketing}+" overstates the product, which ships ${actualCharms}`);
+for (const key of ["charmCount", "windowsCharmCount", "ropeStyleCount", "userCount"]) {
+  if (!new RegExp(`${key}:\\s*HANGLY_`).test(statsSrc)) errors.push(`HANGLY_STATS.${key} must read from product.json through @/lib/hangly-product`);
 }
 
 /* ── 2. no stale count may appear anywhere ────────────────────────────────

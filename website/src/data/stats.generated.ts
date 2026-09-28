@@ -260,4 +260,4 @@ export const RELEASE = {
   "windows": "0.9.4"
 };
 
-export const GENERATED_AT = "2026-09-25";
+export const GENERATED_AT = "2026-09-28";

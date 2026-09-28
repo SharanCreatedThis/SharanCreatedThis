@@ -81,7 +81,7 @@ const schema = {
       variableMeasured: [
         { "@type": "PropertyValue", name: "Charms in the shipped app", value: HANGLY_STATS.charmCount },
         { "@type": "PropertyValue", name: "Categories", value: HANGLY_STATS.categoryCount },
-        { "@type": "PropertyValue", name: "Seasonal charms", value: HANGLY_STATS.seasonalCharmCount },
+        { "@type": "PropertyValue", name: "Additional catalogue charms", value: HANGLY_STATS.additionalCharmCount },
         { "@type": "PropertyValue", name: "Charm artwork files", value: ARTWORK.plain },
         { "@type": "PropertyValue", name: "Supported platforms", value: 3 },
         { "@type": "PropertyValue", name: "macOS version", value: RELEASE.macOS.version },
@@ -141,7 +141,7 @@ export default function StatsPage() {
 
         <QuickAnswer>
           Hangly ships {HANGLY_STATS.charmCount} charms across {HANGLY_STATS.categoryCount}{" "}
-          categories, {HANGLY_STATS.seasonalCharmCount} of them seasonal. It runs on macOS 14 or newer as a universal build,
+          categories, {HANGLY_STATS.additionalCharmCount} of them additional. It runs on macOS 14 or newer as a universal build,
           and on Windows 10 or newer with separate x64 and native ARM64 builds. The macOS release
           is {RELEASE.macOS.version} at {mb(RELEASE.macOS.bytes)}; Windows is at {RELEASE.windows}{" "}
           and is still a pre-release. It is free on every platform.
@@ -150,7 +150,7 @@ export default function StatsPage() {
         <KeyTakeaways
           points={[
             `${HANGLY_STATS.charmCount} charms across ${HANGLY_STATS.categoryCount} categories in Hangly ${HANGLY_STATS.appVersion}`,
-            `${HANGLY_STATS.seasonalCharmCount} seasonal charms, in four packs`,
+            `${HANGLY_STATS.additionalCharmCount} additional catalogue charms, in four packs`,
             `Three builds: macOS universal, Windows x64, Windows ARM64 native`,
             `macOS ${RELEASE.macOS.version} at ${mb(RELEASE.macOS.bytes)}, down from 89 MB before 2.0`,
             "Free on every platform, with no account and no paid tier",
@@ -241,7 +241,7 @@ export default function StatsPage() {
               ["Minimum Windows", "10 for x64, 11 for ARM64"],
               ["Charms", HANGLY_STATS.charmCount],
               ["Categories", HANGLY_STATS.categoryCount],
-              ["Seasonal charms", HANGLY_STATS.seasonalCharmCount],
+              ["Additional catalogue charms", HANGLY_STATS.additionalCharmCount],
               ["Website artwork files", ARTWORK.plain],
               ["Custom charms", "Any single image"],
               ["Price", "Free, no account, no paid tier"],

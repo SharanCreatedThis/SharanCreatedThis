@@ -146,15 +146,21 @@ export const collections = [
     charms: [["dreamCatcher", "Dream Catcher"]],
   },
 ];
+
+const FILTERS = ['All', 'Protection', 'Pop Culture', 'Music', 'Sports', 'Tamil Divine', 'Custom'] as const;
+const collectionFilters: Record<string, string> = { Protection: "Protection", Marvel: "Pop Culture", DC: "Pop Culture", BTS: "Music", Singers: "Music", Football: "Sports", "Tamil Divine": "Tamil Divine", "Stranger Things": "Pop Culture", "Breaking Bad": "Pop Culture", Friends: "Pop Culture", "Dream Catcher": "Protection" };
+const curatedCollections = collections.map(collection => ({ ...collection, filter: collectionFilters[collection.name], availability: "Both" as const }));
 export default function Collections() {
   const rail = useRef<HTMLDivElement>(null);
   const [active, setActive] = useState(0);
+  const [filter, setFilter] = useState<(typeof FILTERS)[number]>("All");
+  const visibleCollections = filter === "All" ? curatedCollections : curatedCollections.filter(collection => collection.filter === filter);
   const [previews, setPreviews] = useState<Record<string, string>>({});
   const reduced = useReducedMotion();
   function move(direction: number) {
     const next = Math.max(
       0,
-      Math.min(collections.length - 1, active + direction),
+      Math.min(visibleCollections.length - 1, active + direction),
     );
     setActive(next);
     const el = rail.current?.children[next] as HTMLElement | undefined;
@@ -194,38 +200,39 @@ export default function Collections() {
             <button
               aria-label="Next collection"
               onClick={() => move(1)}
-              disabled={active === collections.length - 1}
+              disabled={active === visibleCollections.length - 1}
             >
               <ArrowRight size={18} />
             </button>
             <span>
-              {String(active + 1).padStart(2, "0")} <i>/ {String(collections.length).padStart(2, "0")}</i>
+              {String(active + 1).padStart(2, "0")} <i>/ {String(visibleCollections.length).padStart(2, "0")}</i>
             </span>
           </div>
         </div>
       </Reveal>
-      <div
+      <div className="collection-filters wrap" role="group" aria-label="Filter charm collections">{FILTERS.map(item => <button key={item} type="button" aria-pressed={filter === item} onClick={() => { setFilter(item); setActive(0); requestAnimationFrame(() => rail.current?.scrollTo({ left: 0, behavior: 'smooth' })); }}>{item}</button>)}</div>
+      {filter === "Custom" ? <div className="custom-collection-note wrap"><strong>Make your own.</strong><span>Creator Studio turns an image, artwork, logo, or memory into a charm for your desktop.</span><a href="#create">Open Creator Studio <ArrowUpRight size={15}/></a></div> : <div
         className="collection-rail"
         ref={rail}
         onScroll={() => {
           if (!rail.current) return;
           const first = rail.current.children[0] as HTMLElement;
-          const second = rail.current.children[1] as HTMLElement;
-          const width = second.offsetLeft - first.offsetLeft;
+          const second = rail.current.children[1] as HTMLElement | undefined;
+          const width = second ? second.offsetLeft - first.offsetLeft : first.offsetWidth;
           const atEnd =
             rail.current.scrollLeft + rail.current.clientWidth >=
             rail.current.scrollWidth - 3;
           setActive(
             atEnd
-              ? collections.length - 1
+              ? visibleCollections.length - 1
               : Math.min(
-                  collections.length - 1,
+                  visibleCollections.length - 1,
                   Math.round(rail.current.scrollLeft / width),
                 ),
           );
         }}
       >
-        {collections.map((collection, i) => (
+        {visibleCollections.map((collection, i) => (
           <motion.article
             className={`collection-card ${collection.className}`}
             key={collection.name}
@@ -238,7 +245,7 @@ export default function Collections() {
           >
             <div className="collection-top">
               <span>COLLECTION 0{i + 1}</span>
-              <span>{collection.charms.length} CHARMS</span>
+              <span>AVAILABLE ON {collection.availability.toUpperCase()}</span>
             </div>
             <div className="collection-preview">
               {(previews[collection.name]
@@ -290,7 +297,7 @@ export default function Collections() {
             </div>
           </motion.article>
         ))}
-      </div>
+      </div>}
       <p className="collection-footnote wrap">
         Small keepsakes. Big feelings. <span>← Swipe to explore →</span>
       </p>

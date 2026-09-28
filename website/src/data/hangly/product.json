@@ -1,0 +1,92 @@
+{
+  "name": "Hangly",
+  "users": "50K+",
+  "platforms": {
+    "mac": {
+      "label": "macOS",
+      "minimumVersion": "macOS 14+",
+      "charms": 81,
+      "ropeStyles": 9,
+      "features": [
+        "Creator Studio",
+        "Subject cut-out",
+        "Sound",
+        "Multi-monitor support",
+        "Silent updates"
+      ]
+    },
+    "windows": {
+      "label": "Windows",
+      "minimumVersion": "Windows 10+",
+      "charms": 70,
+      "ropeStyles": 9,
+      "architectures": [
+        "Windows x64",
+        "Windows ARM64"
+      ],
+      "features": [
+        "Silent updates",
+        "Multi-monitor support"
+      ]
+    }
+  },
+  "ropeStyles": [
+    {
+      "name": "Golden Thread",
+      "material": "Fine metallic thread",
+      "personality": "Warm & classic"
+    },
+    {
+      "name": "Silver Chain",
+      "material": "Polished links",
+      "personality": "Crisp & modern"
+    },
+    {
+      "name": "Leather",
+      "material": "Soft leather cord",
+      "personality": "Grounded & tactile"
+    },
+    {
+      "name": "Gold Chain",
+      "material": "Warm metal links",
+      "personality": "Bold & collectible"
+    },
+    {
+      "name": "Neon",
+      "material": "Luminous cord",
+      "personality": "Playful after dark"
+    },
+    {
+      "name": "Velvet",
+      "material": "Soft braided cord",
+      "personality": "Quiet & rich"
+    },
+    {
+      "name": "Spider Thread",
+      "material": "Fine web line",
+      "personality": "Heroic & light"
+    },
+    {
+      "name": "Temple Thread",
+      "material": "Sacred braided cord",
+      "personality": "Familiar & rooted"
+    },
+    {
+      "name": "Simple String",
+      "material": "Natural cotton",
+      "personality": "Easy & everyday"
+    }
+  ],
+  "releases": {
+    "macOS": "2.1",
+    "windows": "1.0"
+  },
+  "catalogue": {
+    "macCategories": 14,
+    "seasonalCharms": 11
+  },
+  "marketing": {
+    "charms": "100+",
+    "users": "50K+"
+  }
+}

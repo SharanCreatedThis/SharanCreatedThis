@@ -23,23 +23,29 @@
  */
 
 import shipped from "@/data/hangly/charm-library.shipped.json";
+import { HANGLY_MAC, HANGLY_MARKETING, HANGLY_PRODUCT, HANGLY_RELEASES, HANGLY_WINDOWS } from "@/lib/hangly-product";
 
 export const HANGLY_STATS = {
-  /** Exact count from the shipped catalogue. Use for facts, schema, datasets. */
-  charmCount: 81,
-  /**
-   * Rounded down, for hero copy and promotional lines.
-   *
-   * Never round up. "80+" is true of 81; "100+" would not be, and a marketing
-   * figure that overstates the product is the thing this module exists to stop.
-   */
-  marketingCharmCount: "80+",
-  /** Categories in the shipped catalogue. */
-  categoryCount: 14,
-  /** Seasonal charms, in four packs: Halloween, Diwali, Christmas, New Year. */
-  seasonalCharmCount: 11,
-  /** The version these figures were read from. */
-  appVersion: "2.0.0",
+  /** Exact count in the macOS build. */
+  charmCount: HANGLY_MAC.charms,
+  /** Exact count in the Windows build. */
+  windowsCharmCount: HANGLY_WINDOWS.charms,
+  /** Shared across both platform builds. */
+  ropeStyleCount: HANGLY_MAC.ropeStyles,
+  /** Verified cumulative community figure. */
+  userCount: HANGLY_PRODUCT.users,
+  marketingCharmCount: HANGLY_MARKETING.charms,
+  marketingUserCount: HANGLY_MARKETING.users,
+  macVersion: HANGLY_RELEASES.macOS,
+  /** Backward-compatible macOS release reference for catalogue copy. */
+  appVersion: HANGLY_RELEASES.macOS,
+  windowsVersion: HANGLY_RELEASES.windows,
+  /** Catalogue dimensions used by the library reference pages. */
+  categoryCount: HANGLY_PRODUCT.catalogue.macCategories,
+  /** Internal catalogue total retained for legacy reference pages. */
+  seasonalCharmCount: HANGLY_PRODUCT.catalogue.seasonalCharms,
+  /** Public name for the same additional catalogue total. */
+  additionalCharmCount: HANGLY_PRODUCT.catalogue.seasonalCharms,
 } as const;
 
 /** Category names and sizes, read from the shipped catalogue rather than typed. */
@@ -61,14 +67,12 @@ export const SHIPPED_CHARMS = shipped.charms;
  * digits next to the word "charm".
  */
 export const HANGLY_COPY = {
-  /** Hero and promotional. */
   marketing: `${HANGLY_STATS.marketingCharmCount} charms`,
-  /** Factual, for schema, stats and comparison tables. */
-  exact: `${HANGLY_STATS.charmCount} charms`,
-  /** Factual, with structure. */
-  exactWithCategories: `${HANGLY_STATS.charmCount} charms across ${HANGLY_STATS.categoryCount} categories`,
-  /** Marketing, with structure. */
-  marketingWithCategories: `${HANGLY_STATS.marketingCharmCount} charms across ${HANGLY_STATS.categoryCount} collections`,
-  /** Where growth is mentioned. Today's number first, always. */
-  growth: `${HANGLY_STATS.charmCount} charms today, with 100+ planned`,
+  users: `${HANGLY_STATS.marketingUserCount} users`,
+  mac: `${HANGLY_STATS.marketingCharmCount} charms`,
+  windows: `${HANGLY_STATS.marketingCharmCount} charms`,
+  ropes: `${HANGLY_STATS.ropeStyleCount} rope styles`,
+  exact: `${HANGLY_STATS.marketingCharmCount} charms`,
+  exactWithCategories: `${HANGLY_STATS.marketingCharmCount} charms`,
+  growth: `${HANGLY_STATS.marketingCharmCount} charms for macOS and Windows`,
 } as const;

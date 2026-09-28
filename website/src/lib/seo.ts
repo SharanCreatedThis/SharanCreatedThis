@@ -179,7 +179,7 @@ export const PAGES: Record<PageKey, PageSeo> = {
     path: "/products/hangly",
     title: "Hangly · Digital Charms That Swing On Your Desktop",
     description:
-      `Hang beautiful digital charms with real swinging physics on your Mac or Windows desktop. ${HANGLY_COPY.exactWithCategories}. Free for macOS 14+ and Windows 10+.`,
+      `Hang beautiful digital charms with real swinging physics on macOS or Windows. ${HANGLY_COPY.growth}. Free for macOS 14+ and Windows 10+.`,
     image: "/og/hangly.png",
     changeFrequency: "weekly",
     priority: 0.9,
@@ -303,6 +303,14 @@ export function dynamicPages(): PageSeo[] {
     // generated from source, which is the only reason they are worth linking to.
     { path: "/products/hangly/stats", title: "Hangly statistics", description: "Counted from source.", ...shared, priority: 0.6 },
     { path: "/products/hangly/roadmap", title: "Hangly roadmap", description: "What ships next.", ...shared, priority: 0.6 },
+    { path: "/products/hangly/mac", title: "Hangly for macOS", description: "Hangly for macOS.", ...shared, priority: 0.8 },
+    { path: "/products/hangly/windows", title: "Hangly for Windows", description: "Hangly for Windows x64 and ARM64.", ...shared, priority: 0.8 },
+    { path: "/products/hangly/windows-arm64", title: "Hangly for Windows ARM64", description: "Native Windows ARM64 support.", ...shared, priority: 0.7 },
+    { path: "/products/hangly/create", title: "Create a custom Hangly charm", description: "Creator Studio for desktop charms.", ...shared, priority: 0.8 },
+    { path: "/products/hangly/collections", title: "Hangly charm collections", description: "Collectible desktop charms.", ...shared, priority: 0.8 },
+    { path: "/products/hangly/rope-styles", title: "Hangly rope styles", description: "Nine rope styles.", ...shared, priority: 0.7 },
+    { path: "/products/hangly/accessibility", title: "Hangly accessibility", description: "Accessibility support.", ...shared, priority: 0.6 },
+    { path: "/products/hangly/multi-monitor", title: "Hangly multi-monitor support", description: "Multi-monitor desktop support.", ...shared, priority: 0.6 },
     // The charm catalogue. /charms is the page every count on the site links
     // to, which is what turns an assertion into something a reader can check.
     { path: "/charms", title: "Every Hangly charm", description: "The complete catalogue.", ...shared, priority: 0.9 },
