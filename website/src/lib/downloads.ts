@@ -30,7 +30,7 @@ export type Build = {
   updater: string;
   /** What the operating system will say the first time it opens. */
   firstRun: string;
-  /** Windows is still at 0.9.x and published as a pre-release. Say so. */
+  /** A build published as a pre-release. None is, since Windows 2.1.0 (29 Sep 2026). */
   beta?: boolean;
 };
 
@@ -54,9 +54,8 @@ export const BUILDS: Record<BuildId, Build> = {
     requirement: "Windows 10+",
     detail: "Intel & AMD 64-bit",
     architecture: "For any Intel or AMD 64-bit machine, which is nearly every Windows PC.",
-    updater: "Updates through Velopack, which checks on launch and applies the update the next time you start the app.",
+    updater: "Updates itself through Velopack: it checks once a day and installs quietly while you are away from the PC, then shows what is new.",
     firstRun: "SmartScreen may show a blue \"Windows protected your PC\" panel, because the build is not yet code-signed. Choose More info, then Run anyway.",
-    beta: true,
   },
   "windows-arm64": {
     id: "windows-arm64",
@@ -66,9 +65,8 @@ export const BUILDS: Record<BuildId, Build> = {
     requirement: "Windows 11+",
     detail: "Snapdragon & ARM64",
     architecture: "A native ARM64 build for Snapdragon and other ARM machines. The x64 build also runs there under emulation; this one does not need it.",
-    updater: "Updates through Velopack, which checks on launch and applies the update the next time you start the app.",
+    updater: "Updates itself through Velopack: it checks once a day and installs quietly while you are away from the PC, then shows what is new.",
     firstRun: "SmartScreen may show a blue \"Windows protected your PC\" panel, because the build is not yet code-signed. Choose More info, then Run anyway.",
-    beta: true,
   },
 };
 

@@ -252,12 +252,12 @@ export const ARTWORK = {"plain":75,"connected":75,"complete":75};
 
 export const RELEASE = {
   "macOS": {
-    "version": "2.0.0",
+    "version": "2.1.0",
     "minimumSystem": "14.0",
-    "bytes": 34238650,
-    "date": "2026-09-18"
+    "bytes": 34926119,
+    "date": "2026-09-29"
   },
-  "windows": "0.9.4"
+  "windows": "2.1.0"
 };
 
-export const GENERATED_AT = "2026-09-28";
+export const GENERATED_AT = "2026-09-29";

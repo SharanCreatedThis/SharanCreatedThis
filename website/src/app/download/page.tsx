@@ -81,7 +81,7 @@ export default function DownloadPage() {
         <KeyTakeaways
           points={[
             `The current Mac build is ${mac?.version ?? "2.0.0"}${mac?.bytes ? `, a ${megabytes(mac.bytes)} download` : ""}`,
-            `The current Windows build is ${windows?.version ?? "0.9.4"}, still a pre-release`,
+            `The current Windows build is ${windows?.version ?? "2.1.0"}`,
             "The Mac build is signed and notarised, so it opens without a Gatekeeper warning",
             "Windows is not code-signed yet, so SmartScreen will ask once",
             "Both update themselves after installation — Sparkle on Mac, Velopack on Windows",

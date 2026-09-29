@@ -143,8 +143,8 @@ export default function StatsPage() {
           Hangly ships {HANGLY_STATS.charmCount} charms across {HANGLY_STATS.categoryCount}{" "}
           categories, {HANGLY_STATS.additionalCharmCount} of them additional. It runs on macOS 14 or newer as a universal build,
           and on Windows 10 or newer with separate x64 and native ARM64 builds. The macOS release
-          is {RELEASE.macOS.version} at {mb(RELEASE.macOS.bytes)}; Windows is at {RELEASE.windows}{" "}
-          and is still a pre-release. It is free on every platform.
+          is {RELEASE.macOS.version} at {mb(RELEASE.macOS.bytes)}; Windows is at {RELEASE.windows}.
+          It is free on every platform.
         </QuickAnswer>
 
         <KeyTakeaways
@@ -237,7 +237,7 @@ export default function StatsPage() {
               ["macOS released", RELEASE.macOS.date || "not published"],
               ["macOS download size", mb(RELEASE.macOS.bytes)],
               ["Minimum macOS", RELEASE.macOS.minimumSystem ? `${RELEASE.macOS.minimumSystem}` : "14.0"],
-              ["Current Windows version", `${RELEASE.windows} (pre-release)`],
+              ["Current Windows version", RELEASE.windows],
               ["Minimum Windows", "10 for x64, 11 for ARM64"],
               ["Charms", HANGLY_STATS.charmCount],
               ["Categories", HANGLY_STATS.categoryCount],

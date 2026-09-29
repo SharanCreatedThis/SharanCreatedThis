@@ -17,6 +17,50 @@ export const RELEASES: Release[] = [
     "product": "hangly",
     "name": "Hangly",
     "platform": "macOS",
+    "version": "2.1.0",
+    "date": "2026-09-29",
+    "minimumSystem": "14.0",
+    "bytes": 34926119,
+    "notes": [
+      {
+        "kind": "para",
+        "text": "Spider-Man drops in, the rope stretches, and updates arrive while you're away."
+      },
+      {
+        "kind": "point",
+        "text": "The Spider-Man entrance. With Spider-Man on the rope, Hangly starts with a web across the top of your screen and him dropping in on his strand. For the first two launches after this update, Hangly shows it off on its own look and sound; on the third your settings come back, and Spider-Man stays until you choose another charm."
+      },
+      {
+        "kind": "point",
+        "text": "An elastic rope, and charms that react. Pull the charm and the cord stretches and settles; move quickly towards it and it swings away."
+      },
+      {
+        "kind": "point",
+        "text": "On top, or on your desktop, with a soft or strong glow."
+      },
+      {
+        "kind": "point",
+        "text": "More ways to make your own. Drop an SVG, or paste a picture with ⌘V, and it opens in Creator Studio. The Library remembers what you've hung lately."
+      },
+      {
+        "kind": "point",
+        "text": "Quiet updates. Hangly now installs updates while your screen is locked or asleep, and shows you what's new when you're back."
+      },
+      {
+        "kind": "point",
+        "text": "A simpler welcome and Appearance page, sound at half volume on a new install, and every window opening in the middle of your display."
+      },
+      {
+        "kind": "point",
+        "text": "Your installation record. Hangly now keeps one record for this Mac: the name you gave, your city and your versions, with crash reports through Firebase. Appearance → Privacy says exactly what is sent."
+      }
+    ],
+    "notesUrl": ""
+  },
+  {
+    "product": "hangly",
+    "name": "Hangly",
+    "platform": "macOS",
     "version": "2.0.0",
     "date": "2026-09-18",
     "minimumSystem": "14.0",
@@ -64,11 +108,11 @@ export const RELEASES: Release[] = [
     "product": "hangly",
     "name": "Hangly",
     "platform": "Windows",
-    "version": "0.9.4",
+    "version": "2.1.0",
     "date": "",
     "minimumSystem": "10.0",
     "bytes": 0,
     "notes": [],
-    "notesUrl": "https://github.com/SharanCreatedThis/Hangly-Windows/releases/tag/v0.9.4"
+    "notesUrl": "https://github.com/SharanCreatedThis/Hangly-Windows/releases/tag/v2.1.0"
   }
 ];
