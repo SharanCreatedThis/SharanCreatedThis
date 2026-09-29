@@ -77,8 +77,8 @@ export default function ChangelogPage() {
 
         <QuickAnswer>
           Hangly is at {RELEASES.find((r) => r.product === "hangly" && r.platform === "macOS")?.version ?? "2.0.0"} on
-          macOS and {RELEASES.find((r) => r.platform === "Windows")?.version ?? "0.9.4"} on Windows,
-          where it is still a pre-release. Vision is at{" "}
+          macOS and {RELEASES.find((r) => r.platform === "Windows")?.version ?? "2.1.0"} on Windows.
+          Vision is at{" "}
           {RELEASES.find((r) => r.product === "vision")?.version ?? "1.1"} on macOS. Every entry
           below is generated from the app&apos;s own update feed at build time.
         </QuickAnswer>

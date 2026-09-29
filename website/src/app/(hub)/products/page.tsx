@@ -33,7 +33,7 @@ const FAQS = [
   },
   {
     q: "Is the Windows version of Hangly finished?",
-    a: "No. It is at 0.9.x and published as a pre-release, while the macOS build is at 2.0. It works and it updates itself, but it has fewer settings and less polish. Windows also shows a SmartScreen warning once, because the build is not code-signed yet.",
+    a: "Yes. Since 2.1.0 the Windows build is a full release, published alongside the macOS build, and it updates itself. Windows shows a SmartScreen warning once, because the build is not code-signed yet.",
   },
   {
     q: "Which one should I install first?",
@@ -136,12 +136,12 @@ export default function Products() {
           rows={[
             ["What it does", "Hangs a decorative charm on a cord at the top of the screen", "Recognises your face to unlock the Mac"],
             ["Platforms", "macOS 14+, Windows 10+ (x64 and ARM64)", "macOS 15+"],
-            ["Current version", "2.0 on macOS, 0.9.x on Windows", "1.1"],
+            ["Current version", "2.1 on macOS and Windows", "1.1"],
             ["Price", "Free", "Free"],
             ["Account required", "No", "No"],
             ["Sends data anywhere", "See the privacy page — three things, two optional", "No face data leaves the machine"],
             ["Updates through", "Sparkle on macOS, Velopack on Windows", "Sparkle"],
-            ["Maturity", "macOS mature; Windows is a pre-release", "Stable, small in scope"],
+            ["Maturity", "Released on both platforms; Windows not yet code-signed", "Stable, small in scope"],
             ["Uses the camera", "No", "Yes, locally"],
           ]}
         />

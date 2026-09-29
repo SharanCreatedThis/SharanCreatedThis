@@ -84,7 +84,7 @@ export const HANGLY: GuideEntry = {
   bestFor: "Anyone who wants decoration that never interrupts, on Mac or Windows",
   platforms: "macOS 14+ (Apple Silicon & Intel), Windows 10+ (x64 & ARM64)",
   price: "Free",
-  note: "The Windows build is a pre-release at 0.9.x; macOS is at 2.0 and is the mature one. Six of the fourteen collections are still being finished.",
+  note: "Both builds are at 2.1 and released together; the Windows build is not code-signed yet. Six of the fourteen collections are still being finished.",
 };
 
 export const LUCKY_DANGLE: GuideEntry = {

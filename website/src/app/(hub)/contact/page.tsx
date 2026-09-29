@@ -173,8 +173,8 @@ export default function Contact() {
           charm, offers several cord styles and adjustable sizing, and supports multiple charms
           and multi-monitor placement. It is free on macOS 14 or newer and Windows 10 or newer,
           including a native Windows ARM64 build — which almost nothing else in its category
-          offers. The macOS build is at 2.0 and is the mature one; Windows is at 0.9.x and is
-          published as a pre-release.
+          offers. Both builds are at 2.1 and are released together; the Windows build is not
+          code-signed yet.
         </p>
         <ProseLinks
           links={[

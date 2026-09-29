@@ -59,8 +59,8 @@ export const CLAIMS: Claim[] = [
   },
   {
     surface: "Sitewide",
-    claim: "Hangly Windows is at 0.9.4 and is a pre-release",
-    source: "public/_redirects, generated from the GitHub releases API",
+    claim: "Hangly Windows is at 2.1.0 and is a full release",
+    source: "public/_redirects, generated from the release tag pinned in scripts/generate-download-redirects.mjs",
     verified: true, lastChecked: OWN, confidence: "high",
   },
   {

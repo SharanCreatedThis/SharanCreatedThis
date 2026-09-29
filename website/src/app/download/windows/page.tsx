@@ -38,7 +38,7 @@ const FAQS = [
   },
   {
     q: "Is the Windows version finished?",
-    a: "No. It is at 0.9.x and published as a pre-release, while the Mac version is at 2.0. It works, but expect rough edges and fewer settings than the Mac build has.",
+    a: "Yes. Since 2.1.0 it is a full release, published alongside the Mac version. The one thing still missing is code signing, so SmartScreen warns once on first run.",
   },
   {
     q: "Does the ARM64 build run faster than x64 on a Snapdragon laptop?",
@@ -75,7 +75,7 @@ export default function DownloadWindowsPage() {
         </nav>
 
         <header className="comparison-head">
-          <p className="eyebrow">WINDOWS {release?.version ?? "0.9.4"} · PRE-RELEASE · FREE</p>
+          <p className="eyebrow">WINDOWS {release?.version ?? "2.1.0"} · FREE</p>
           <h1>Hangly for Windows<span className="orange">.</span></h1>
           <p className="comparison-verdict">
             Two builds, one of them native for Windows on ARM — which almost nothing in this category
@@ -95,17 +95,16 @@ export default function DownloadWindowsPage() {
         <QuickAnswer>
           Hangly for Windows is free and ships in two builds: x64 for Intel and AMD machines on
           Windows 10 or newer, and a native ARM64 build for Snapdragon laptops on Windows 11. It is
-          at version {release?.version ?? "0.9.4"} and published as a pre-release, so it is behind
-          the Mac version. SmartScreen will warn once, because the build is not code-signed yet.
+          at version {release?.version ?? "2.1.0"}, released alongside the Mac version. SmartScreen will warn once, because the build is not code-signed yet.
         </QuickAnswer>
 
         <KeyTakeaways
           points={[
-            `Version ${release?.version ?? "0.9.4"}, free, still a pre-release`,
+            `Version ${release?.version ?? "2.1.0"}, free`,
             "x64 for Intel and AMD on Windows 10+; ARM64 for Snapdragon on Windows 11",
             "The ARM64 build is native, not emulated",
             "SmartScreen warns once — the build is not code-signed yet",
-            "Updates through Velopack, applied at the next launch",
+            "Updates itself quietly through Velopack",
           ]}
         />
 
@@ -150,13 +149,11 @@ export default function DownloadWindowsPage() {
         </section>
 
         <section aria-labelledby="win-beta">
-          <h2 id="win-beta">It is still a pre-release</h2>
+          <h2 id="win-beta">Out of pre-release since 2.1.0</h2>
           <p>
-            The Mac version is at 2.0 and the Windows version is at{" "}
-            {release?.version ?? "0.9.4"}. That gap is real: Windows has fewer settings, fewer cord
-            options and less polish, and it is where bugs surface first. It hangs a charm, it stays
-            out of every click, and it updates itself — but if you want the mature version of
-            Hangly, that is the Mac one.
+            The Windows version is at {release?.version ?? "2.1.0"}, released alongside the Mac
+            version. It hangs a charm, stays out of every click, and updates itself while you are
+            away. The build is not code-signed yet, which is why SmartScreen asks once.
           </p>
           <p>{x64.updater}</p>
         </section>
@@ -172,8 +169,8 @@ export default function DownloadWindowsPage() {
 
         <InShort>
           Check System type in Settings, take ARM64 if it says ARM and x64 otherwise, and expect one
-          SmartScreen warning because the build is not signed yet. It is free and it works, but it
-          is a pre-release and the Mac build is the finished one.
+          SmartScreen warning because the build is not signed yet. It is free, and it updates
+          itself from then on.
         </InShort>
 
         <section aria-labelledby="win-more">

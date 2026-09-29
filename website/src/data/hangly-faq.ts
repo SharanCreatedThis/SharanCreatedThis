@@ -13,8 +13,8 @@
  * 1. **Every answer is visible on the page.** Google will not show an FAQ rich
  *    result for schema that has no on-page counterpart, and marking up answers
  *    a visitor cannot read is a guidelines violation, not a shortcut.
- * 2. **Nothing is claimed that is not true.** Hangly's Windows build is a
- *    pre-release at 0.9.x and several collections are unfinished. Saying
+ * 2. **Nothing is claimed that is not true.** Hangly's Windows build is not
+ *    code-signed yet and several collections are unfinished. Saying
  *    otherwise would win a query and lose the person who acted on it.
  *
  * Grouped so the page can render sections; `ALL_FAQS` flattens them for schema.
@@ -69,7 +69,7 @@ export const FAQ_GROUPS: FaqGroup[] = [
       },
       {
         q: "Does Hangly work on Windows?",
-        a: "Yes, with an honest caveat: the Windows build is at 0.9.x and published as a pre-release while it settles. It installs and runs, and it updates itself. The macOS build is at 2.0 and is the mature one.",
+        a: "Yes. The Windows build is at 2.1, released alongside the macOS build, and it updates itself. One caveat: it is not code-signed yet, so SmartScreen warns once on first run.",
       },
       {
         q: "Does Hangly work on Windows ARM?",
@@ -251,7 +251,7 @@ export const FAQ_GROUPS: FaqGroup[] = [
       },
       {
         q: "Which Hangly version am I running?",
-        a: "The About screen inside the app shows the version. macOS is currently at 2.0 and Windows at 0.9.x.",
+        a: "The About screen inside the app shows the version. Both macOS and Windows are currently at 2.1.",
       },
       {
         q: "How do I report a bug or ask for a charm?",

@@ -12,7 +12,7 @@ const PATH = "/products/hangly/roadmap";
 const URL_ = absoluteUrl(PATH);
 const TITLE = "Hangly Roadmap — What Ships Next";
 const DESCRIPTION =
-  "The public roadmap for Hangly: what shipped in 2.0, the six collections still unfinished, getting Windows out of pre-release, and what is never planned.";
+  "The public roadmap for Hangly: what shipped in 2.0 and 2.1, the six collections still unfinished, signing the Windows build, and what is never planned.";
 
 export const metadata: Metadata = {
   title: TITLE,
@@ -26,6 +26,7 @@ export const metadata: Metadata = {
 type Item = { title: string; detail: string; done: boolean };
 
 const SHIPPED: Item[] = [
+  { done: true, title: "Windows out of pre-release", detail: `Windows left 0.9.x with 2.1.0, released the same day as the Mac build. It is at ${RELEASE.windows}; macOS is at ${RELEASE.macOS.version}.` },
   { done: true, title: "Automatic updates", detail: "Hangly checks weekly through Sparkle and installs in the background. Before 2.0, a new version meant downloading it by hand." },
   { done: true, title: "Release notes on first launch", detail: "Shown once after an update, with a Check for Updates button on the About page for anyone who would rather ask." },
   { done: true, title: "A lighter download", detail: `The app ships the vector artwork it actually draws from rather than a compiled catalogue carrying a bitmap of every unused charm. The download went from 89 MB to ${Math.round(RELEASE.macOS.bytes / 1_000_000)} MB with no change to the artwork.` },
@@ -36,7 +37,6 @@ const SHIPPED: Item[] = [
 ];
 
 const NEXT: Item[] = [
-  { done: false, title: "Windows out of pre-release", detail: `The Windows build is at ${RELEASE.windows} while macOS is at ${RELEASE.macOS.version}. Leaving 0.9.x means dropping the Beta badge and letting the download links use GitHub's latest alias instead of a pinned tag, which is currently needed because latest skips pre-releases.` },
   { done: false, title: "Windows code signing", detail: "The Windows installer is unsigned, so SmartScreen shows a warning once on first run. A certificate removes it. This is the single biggest friction point in the Windows install today." },
   { done: false, title: "Per-collection pages", detail: "So each collection can rank on its own terms rather than as a section of one product page." },
   { done: false, title: "Surface the additional catalogue charms on the site", detail: `${ADDITIONAL_COUNT} charms ship with complete artwork but belong to no collection on the product page — the additional and lucky set that the app surfaces on its own. They are real and installed; the website simply does not list them, which is why counting the collections understated the library by a quarter.` },
@@ -51,8 +51,8 @@ const NOT_PLANNED: Item[] = [
 
 const FAQS = [
   {
-    q: "When will the Windows version leave pre-release?",
-    a: `No date is published, deliberately. The Windows build is at ${RELEASE.windows} against ${RELEASE.macOS.version} on macOS, and it leaves 0.9.x when it is ready rather than on a schedule. Code signing and feature parity with the Mac build are the two things standing between here and there.`,
+    q: "Is the Windows version still a pre-release?",
+    a: `No. Windows left 0.9.x with 2.1.0, released alongside the Mac build, and is at ${RELEASE.windows} against ${RELEASE.macOS.version} on macOS. What remains is code signing, so SmartScreen stops warning on first run.`,
   },
   {
     q: "How many charms does Hangly actually have?",
@@ -147,17 +147,17 @@ export default function RoadmapPage() {
         </header>
 
         <QuickAnswer>
-          Hangly is at {RELEASE.macOS.version} on macOS and {RELEASE.windows} on Windows, where it
-          is still a pre-release. The next work is getting Windows out of 0.9.x, code-signing the
-          Windows installer so SmartScreen stops warning, finishing the connected artwork for six
+          Hangly is at {RELEASE.macOS.version} on macOS and {RELEASE.windows} on Windows, both
+          released together since 2.1.0. The next work is code-signing the Windows installer so
+          SmartScreen stops warning, finishing the connected artwork for six
           of the {COLLECTIONS.length} collections, and giving each collection its own page. There
           is no paid tier planned, now or later.
         </QuickAnswer>
 
         <KeyTakeaways
           points={[
-            `macOS is at ${RELEASE.macOS.version}; Windows is at ${RELEASE.windows} and still a pre-release`,
-            "Next up: Windows out of beta, and a code-signing certificate to silence SmartScreen",
+            `macOS is at ${RELEASE.macOS.version}; Windows is at ${RELEASE.windows}, released alongside it`,
+            "Next up: a code-signing certificate to silence SmartScreen on Windows",
             `Six of the ${COLLECTIONS.length} collections still need their connected artwork drawn`,
             "No dates are published — items ship when ready and the changelog records when",
             "No paid tier, no accounts and no roaming characters, ever",
@@ -230,8 +230,8 @@ export default function RoadmapPage() {
 
         <InShort>
           2.0 brought self-updating, a much smaller download, five cords and a native Windows
-          ARM64 build. Next is closing the gap between the platforms — Windows out of pre-release
-          and signed — and finishing the connected artwork for six collections. No dates, no paid
+          ARM64 build. 2.1 brought Windows out of pre-release, released with the Mac build. Next is signing
+          the Windows installer and finishing the connected artwork for six collections. No dates, no paid
           tier, and no plans to make the charm wander.
         </InShort>
 

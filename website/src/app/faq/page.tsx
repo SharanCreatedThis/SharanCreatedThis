@@ -136,9 +136,8 @@ export default function FaqPage() {
 
         <InShort>
           Free on both platforms, safe during a screen share because it cannot intercept a click,
-          and self-updating after install. The macOS build is the mature one at 2.0; Windows is
-          still a pre-release at 0.9.x and shows a SmartScreen warning once because it is not
-          code-signed yet. If a question here is unanswered, the guides cover the wider category
+          and self-updating after install. Both are at 2.1 and released together; Windows shows a
+          SmartScreen warning once because it is not code-signed yet. If a question here is unanswered, the guides cover the wider category
           and the comparisons cover specific rivals.
         </InShort>
 
