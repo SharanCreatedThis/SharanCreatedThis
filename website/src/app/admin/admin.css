@@ -33,6 +33,7 @@
 .adm-delta span { color: var(--muted); margin-left: 4px; }
 
 .adm-grid { display: grid; gap: 12px; }
+.adm-cards + .adm-grid { margin-top: 12px; }
 .adm-grid.two { grid-template-columns: repeat(auto-fit, minmax(380px, 1fr)); }
 .adm-grid.three { grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); }
 .adm-panel { padding: 18px 20px; border: 1px solid var(--border); border-radius: 16px; background: var(--card); overflow-x: auto; }
