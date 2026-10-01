@@ -11,7 +11,7 @@
 import { useEffect, useMemo, useState } from "react";
 import { type User, onAuthStateChanged } from "firebase/auth";
 import { type Timestamp, doc, getDoc, onSnapshot } from "firebase/firestore";
-import { auth, completeLinkSignIn, db, sendLink, signOut } from "@/lib/admin/firebase";
+import { auth, db, signInWithGoogle, signOut } from "@/lib/admin/firebase";
 
 type Split = { value: string; count: number };
 type Rate = { crashed: number; active: number; rate: number };
@@ -73,18 +73,13 @@ const when = (t: Timestamp | null | undefined) =>
 
 export default function Dashboard() {
   const [user, setUser] = useState<User | null | undefined>(undefined);
-  const [email, setEmail] = useState("");
   const [status, setStatus] = useState<string | null>(null);
   const [latest, setLatest] = useState<Latest | null>(null);
   const [snapshot, setSnapshot] = useState<Snapshot | null>(null);
   const [denied, setDenied] = useState(false);
   const [now, setNow] = useState(() => Date.now());
 
-  useEffect(() => {
-    completeLinkSignIn(() => window.prompt("Confirm the email address the sign-in link was sent to"))
-      .catch((e) => setStatus(`That sign-in link did not work: ${e.code ?? e.message}. Ask for a new one.`));
-    return onAuthStateChanged(auth(), setUser);
-  }, []);
+  useEffect(() => onAuthStateChanged(auth(), setUser), []);
 
   useEffect(() => {
     if (!user) return;
@@ -109,19 +104,19 @@ export default function Dashboard() {
   if (!user) {
     return (
       <Shell>
-        <form className="adm-signin" onSubmit={async (e) => {
-          e.preventDefault();
-          setStatus("Sending…");
-          try { await sendLink(email.trim()); setStatus("Check your inbox: the sign-in link opens this page."); }
-          catch (err) { setStatus(`Could not send the link: ${(err as { code?: string }).code ?? "error"}`); }
-        }}>
+        <div className="adm-signin">
           <h2>Sign in</h2>
-          <p className="adm-muted">Private. A sign-in link is emailed to you; only the owner&apos;s address can read anything here.</p>
-          <input type="email" required autoComplete="email" placeholder="you@example.com" value={email}
-            onChange={(e) => setEmail(e.target.value)} />
-          <button type="submit" className="adm-button">Email me a sign-in link</button>
+          <p className="adm-muted">Private. Only the owner&apos;s Google account can read anything here.</p>
+          <button type="button" className="adm-button" onClick={async () => {
+            setStatus(null);
+            try { await signInWithGoogle(); }
+            catch (err) {
+              const code = (err as { code?: string }).code ?? "error";
+              if (code !== "auth/popup-closed-by-user" && code !== "auth/cancelled-popup-request") setStatus(`Sign-in did not complete: ${code}`);
+            }
+          }}>Sign in with Google</button>
           {status && <p className="adm-status">{status}</p>}
-        </form>
+        </div>
       </Shell>
     );
   }

@@ -3,12 +3,12 @@
  *
  * The web config below is public by design (every Firebase web page ships one): it names the project, it grants
  * nothing. Access is decided by Firestore's rules in the Hangly repository (firebase/firestore.rules), which let
- * exactly one verified email address read /stats and nobody read anything else. Sign-in is Firebase Auth's email
- * link, so there is no password to store or leak.
+ * exactly one verified email address read /stats and nobody read anything else. Sign-in is with Google, so there is
+ * no password here to store or leak and no email to send.
  */
 import { type FirebaseApp, getApps, initializeApp } from "firebase/app";
 import {
-  type Auth, getAuth, isSignInWithEmailLink, sendSignInLinkToEmail, signInWithEmailLink, signOut as firebaseSignOut,
+  type Auth, GoogleAuthProvider, getAuth, signInWithPopup, signInWithRedirect, signOut as firebaseSignOut,
 } from "firebase/auth";
 import { type Firestore, getFirestore } from "firebase/firestore";
 
@@ -29,25 +29,24 @@ function firebase(): FirebaseApp {
 export const auth = (): Auth => getAuth(firebase());
 export const db = (): Firestore => getFirestore(firebase());
 
-const EMAIL_KEY = "hangly-admin-email";
-
-/** Emails a sign-in link that returns to this page. */
-export async function sendLink(email: string): Promise<void> {
-  await sendSignInLinkToEmail(auth(), email, { url: `${window.location.origin}/admin/`, handleCodeInApp: true });
-  window.localStorage.setItem(EMAIL_KEY, email);
-}
-
-/** Completes a sign-in when this page was opened from the emailed link. Returns whether it did. */
-export async function completeLinkSignIn(askEmail: () => string | null): Promise<boolean> {
-  const href = window.location.href;
-  if (!isSignInWithEmailLink(auth(), href)) return false;
-  // Opened on another device or browser than the one that asked: the address has to be typed again.
-  const email = window.localStorage.getItem(EMAIL_KEY) ?? askEmail();
-  if (!email) return false;
-  await signInWithEmailLink(auth(), email, href);
-  window.localStorage.removeItem(EMAIL_KEY);
-  window.history.replaceState(null, "", "/admin/");
-  return true;
+/**
+ * Signs in with Google. No email is sent — the email-link sign-in this replaced landed in spam, and Firebase's hosted
+ * link handler refused the link ("The selected page mode is invalid"). A Google account's address is verified, which
+ * is what the Firestore rules require. Falls back to a full-page redirect when the browser blocks the popup.
+ */
+export async function signInWithGoogle(): Promise<void> {
+  const provider = new GoogleAuthProvider();
+  provider.setCustomParameters({ prompt: "select_account" });
+  try {
+    await signInWithPopup(auth(), provider);
+  } catch (error) {
+    const code = (error as { code?: string }).code;
+    if (code === "auth/popup-blocked" || code === "auth/operation-not-supported-in-environment") {
+      await signInWithRedirect(auth(), provider);
+      return;
+    }
+    throw error;
+  }
 }
 
 export const signOut = () => firebaseSignOut(auth());
