@@ -22,7 +22,7 @@ import { SITE_URL, absoluteUrl } from "@/lib/seo";
  */
 export const dynamic = "force-static";
 
-const DISALLOW = ["/private/", "/api/"];
+const DISALLOW = ["/private/", "/api/", "/admin/"];
 
 export default function robots(): MetadataRoute.Robots {
   const rule = { allow: "/", disallow: DISALLOW };
