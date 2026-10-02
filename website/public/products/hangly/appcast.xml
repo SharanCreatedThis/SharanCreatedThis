@@ -6,6 +6,15 @@
         <description>Most recent updates to Hangly</description>
         <language>en</language>
         <item>
+            <title>2.2.0</title>
+            <pubDate>Fri, 02 Oct 2026 19:38:52 +0530</pubDate>
+            <link>https://www.sharancreatedthis.in/products/hangly</link>
+            <sparkle:version>220</sparkle:version>
+            <sparkle:shortVersionString>2.2.0</sparkle:shortVersionString>
+            <sparkle:minimumSystemVersion>14.0</sparkle:minimumSystemVersion>
+            <enclosure url="https://downloads.sharancreatedthis.in/Hangly-2.2.0.dmg" length="81148821" type="application/octet-stream" sparkle:edSignature="iuAWDwt78VDD8+Mh9VFwOiwMSD+eFOsyQYCTeL4T6aOcymlnWQA05GHbC6GU6yWIkElVZ/rODs5/erHhtHbqDQ=="/>
+        </item>
+        <item>
             <title>2.1.2</title>
             <pubDate>Wed, 30 Sep 2026 20:13:36 +0530</pubDate>
             <link>https://www.sharancreatedthis.in/products/hangly</link>
@@ -40,39 +49,6 @@
 </ul>
 ]]></description>
             <enclosure url="https://downloads.sharancreatedthis.in/Hangly-2.1.1.dmg" length="34971874" type="application/octet-stream" sparkle:edSignature="PmqYlP5x1yABM7d7nsL/fqh+9Ks6xMVd0i7PX1nYYzJXUCMsQtxrfBUQ7FhbTcsMrpX9m7pPFMTkkrzGsd+JAQ=="/>
-        </item>
-        <item>
-            <title>2.1.0</title>
-            <pubDate>Tue, 29 Sep 2026 12:19:42 +0530</pubDate>
-            <link>https://www.sharancreatedthis.in/products/hangly</link>
-            <sparkle:version>210</sparkle:version>
-            <sparkle:shortVersionString>2.1.0</sparkle:shortVersionString>
-            <sparkle:minimumSystemVersion>14.0</sparkle:minimumSystemVersion>
-            <description><![CDATA[<h2>Hangly 2.1.0</h2>
-
-<p>Spider-Man drops in, the rope stretches, and updates arrive while you're away.</p>
-
-<ul>
-  <li><strong>The Spider-Man entrance.</strong> With Spider-Man on the rope, Hangly starts
-      with a web across the top of your screen and him dropping in on his strand. For the
-      first two launches after this update, Hangly shows it off on its own look and sound;
-      on the third your settings come back, and Spider-Man stays until you choose another
-      charm.</li>
-  <li><strong>An elastic rope, and charms that react.</strong> Pull the charm and the cord
-      stretches and settles; move quickly towards it and it swings away.</li>
-  <li><strong>On top, or on your desktop</strong>, with a soft or strong glow.</li>
-  <li><strong>More ways to make your own.</strong> Drop an SVG, or paste a picture with
-      ⌘V, and it opens in Creator Studio. The Library remembers what you've hung lately.</li>
-  <li><strong>Quiet updates.</strong> Hangly now installs updates while your screen is
-      locked or asleep, and shows you what's new when you're back.</li>
-  <li><strong>A simpler welcome and Appearance page</strong>, sound at half volume on a new
-      install, and every window opening in the middle of your display.</li>
-  <li><strong>Your installation record.</strong> Hangly now keeps one record for this Mac:
-      the name you gave, your city and your versions, with crash reports through Firebase.
-      Appearance → Privacy says exactly what is sent.</li>
-</ul>
-]]></description>
-            <enclosure url="https://downloads.sharancreatedthis.in/Hangly-2.1.0.dmg" length="34926119" type="application/octet-stream" sparkle:edSignature="4OEkgcrc4p6KxsG/YCprb0/zpSqgt7KnFVb5EH1ot7KraDXFFIQz5Cmznwvr2C5b7RgBLImm5lfPgB7otT2aCA=="/>
         </item>
     </channel>
 </rss>
