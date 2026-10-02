@@ -5,8 +5,8 @@
  *
  * Writes announcements/{id} straight to Firestore, as the signed-in owner. The rules (Hangly repository,
  * firebase/firestore.rules) admit nobody else and check every field; this form checks the same things first so it
- * can say what is wrong. Installed apps fetch live announcements through the `announcements` function — within five
- * minutes for a new install's first fetch, and within six hours for one already running.
+ * can say what is wrong. Installed apps fetch live announcements through the `announcements` endpoint (Firebase Hosting
+ * in front of the function): at launch, on wake or reconnect, and every fifteen minutes.
  *
  * Reads: one listener on the newest fifty announcements while this page is open.
  */
@@ -24,9 +24,14 @@ import AdminShell from "../AdminShell";
 
 type Row = { id: string; data: Announcement };
 
+/** stats/notifications, written hourly by the notificationStats function from Google Analytics. */
+type Performance = { id: string; shownUsers: number; clickedUsers: number; dismissedUsers: number; ctr: number };
+type StatsDoc = { status?: string; notifications?: Performance[]; computedAt?: Timestamp | null };
+
 export default function Notifications() {
   const [user, setUser] = useState<User | null | undefined>(undefined);
   const [rows, setRows] = useState<Row[] | null>(null);
+  const [stats, setStats] = useState<StatsDoc | null>(null);
   const [denied, setDenied] = useState(false);
   const [draft, setDraft] = useState<Draft>(() => emptyDraft());
   const [touched, setTouched] = useState(false);
@@ -55,6 +60,11 @@ export default function Notifications() {
       () => setDenied(true),
     );
   }, [user]);
+  useEffect(() => {
+    if (!user) return;
+    return onSnapshot(doc(db(), "stats", "notifications"), (snap) => setStats((snap.data() as StatsDoc | undefined) ?? null), () => {});
+  }, [user]);
+  const performance = useMemo(() => new Map((stats?.notifications ?? []).map((p) => [p.id, p])), [stats]);
 
   const errors = useMemo(() => validate(draft), [draft]);
   const valid = Object.keys(errors).length === 0;
@@ -240,7 +250,8 @@ export default function Notifications() {
           {status && <p className={status.kind === "ok" ? "ntf-ok" : "adm-status"} role="status">{status.text}</p>}
           <p className="adm-muted ntf-note">
             Each install shows it once, under the charm, for its time on screen, then keeps it in its Notification Center.
-            Running apps check every six hours; changes reach the endpoint within five minutes.
+            Running apps check every fifteen minutes, and at once on launch, wake or reconnect; a new broadcast reaches
+            them within about 18 minutes at most, and Expire now takes effect within the same.
           </p>
         </section>
 
@@ -252,10 +263,11 @@ export default function Notifications() {
       </div>
 
       <h2 className="adm-h2">Sent</h2>
+      <StatsNote stats={stats} />
       {!rows ? <p className="adm-muted">Loading…</p> : rows.length === 0 ? <p className="adm-muted">Nothing yet.</p> : (
         <div className="adm-panel">
           <table className="adm-table ntf-table">
-            <thead><tr><th>Notification</th><th>Status</th><th>Shows</th><th>Window</th><th /></tr></thead>
+            <thead><tr><th>Notification</th><th>Status</th><th className="num">Seen</th><th className="num">Clicked</th><th className="num">CTR</th><th>Shows</th><th>Window</th><th /></tr></thead>
             <tbody>
               {rows.map((row) => {
                 // Read against this moment, not the 30-second tick: "Expire now" sets the expiry to the present.
@@ -271,6 +283,7 @@ export default function Notifications() {
                       <span className={`ntf-chip ${s}`}>{s}</span>
                       {row.data.audience === "test" && <span className="ntf-chip test">testers</span>}
                     </td>
+                    <PerformanceCells perf={performance.get(row.id)} low={row.data.priority === "low"} />
                     <td className="adm-muted">
                       {row.data.priority} · {row.data.platforms.map((p) => (p === "mac" ? "macOS" : "Windows")).join(", ")}
                       <br />{row.data.durationSeconds}s · {buttonTitle(row.data.actionType, row.data.actionLabel ?? "") ?? "no button"}
@@ -298,6 +311,45 @@ export default function Notifications() {
         </div>
       )}
     </AdminShell>
+  );
+}
+
+const count = new Intl.NumberFormat("en-IN");
+
+/** Seen, clicked and CTR for one broadcast; dashes until Google Analytics has reported it. */
+function PerformanceCells({ perf, low }: { perf?: Performance; low: boolean }) {
+  if (!perf) return <><td className="num adm-muted">—</td><td className="num adm-muted">—</td><td className="num adm-muted">—</td></>;
+  return (
+    <>
+      <td className="num">{low ? <span className="adm-muted" title="Low priority has no card to see">—</span> : count.format(perf.shownUsers)}</td>
+      <td className="num">{count.format(perf.clickedUsers)}</td>
+      <td className="num"><strong>{perf.shownUsers > 0 ? `${(perf.ctr * 100).toFixed(perf.ctr < 0.1 ? 1 : 0)}%` : "—"}</strong></td>
+    </>
+  );
+}
+
+/** Where the numbers come from, and — until Google Analytics is connected — what is left to do. */
+function StatsNote({ stats }: { stats: StatsDoc | null }) {
+  const status = stats?.status;
+  if (status === "ok") {
+    return (
+      <p className="adm-muted adm-note">
+        Seen and Clicked are installations, from Google Analytics, updated hourly (
+        {stats?.computedAt ? when(stats.computedAt) : "—"}). Analytics can take up to a day to report an event.
+      </p>
+    );
+  }
+  const reasons: Record<string, string> = {
+    not_configured: "Set the Hangly app's GA4 property ID: put HANGLY_GA4_PROPERTY=<digits> in firebase/functions/.env and redeploy the functions.",
+    no_access: "Give the functions' service account (491003710181-compute@developer.gserviceaccount.com) the Viewer role in GA4 → Admin → Property access management, and enable the Google Analytics Data API for hangly-sm.",
+    dimension_missing: "Register notification_id as a custom dimension: GA4 → Admin → Custom definitions → Create, event scope, parameter notification_id.",
+    unavailable: "Google Analytics did not answer the last hourly check; it will try again.",
+  };
+  return (
+    <div className="ntf-setup">
+      <strong>Seen, Clicked and CTR are not connected yet.</strong>{" "}
+      {reasons[status ?? ""] ?? "The hourly notificationStats function has not run yet. It needs the GA4 property ID (HANGLY_GA4_PROPERTY), the service account as a Viewer on the property, and notification_id registered as a custom dimension."}
+    </div>
   );
 }
 
