@@ -26,7 +26,7 @@ export const ACTIONS: { value: ActionType; label: string; button: string | null;
   { value: "openLibrary", label: "Open Library", button: "Open Library", hint: "Opens the Library, on a collection if you pick one." },
   { value: "openCharm", label: "Show a charm", button: "Show Charm", hint: "Opens the Library describing one charm. Nothing is hung." },
   { value: "openCreate", label: "Open Create", button: "Open Create", hint: "Opens Creator Studio." },
-  { value: "openUrl", label: "Open a link", button: "Open", hint: "Opens an https:// page in the browser." },
+  { value: "openUrl", label: "Open a link", button: "Open", hint: "Opens a page on sharancreatedthis.in, Instagram or YouTube." },
   { value: "none", label: "No button", button: null, hint: "Something to read; no button." },
 ];
 
@@ -149,13 +149,9 @@ export function validate(d: Draft): Partial<Record<keyof Draft, string>> {
       if (!CHARM_ID.test(target)) errors.actionTarget = "A charm ID, such as spiderMan.";
       break;
     case "openUrl":
-      try {
-        const url = new URL(target);
-        if (url.protocol !== "https:") errors.actionTarget = "Only https:// links.";
-      } catch {
-        errors.actionTarget = "A full link, starting https://.";
+      if (!linkAllowed(target)) {
+        errors.actionTarget = "An https:// link on sharancreatedthis.in, instagram.com, youtube.com or youtu.be.";
       }
-      if (target.length > LIMITS.actionTarget) errors.actionTarget = `At most ${LIMITS.actionTarget} characters.`;
       break;
     default:
       break;
@@ -193,11 +189,29 @@ export function toDocument(d: Draft) {
   };
 }
 
-/** A readable, valid document ID: `football-pack-k3x9`. */
-export function newId(title: string): string {
-  const slug = title.normalize("NFKD").toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-+|-+$/g, "").slice(0, 40) || "announcement";
-  const suffix = Math.random().toString(36).slice(2, 6);
-  return `${slug}-${suffix}`;
+/**
+ * A random document ID: `a_k3x9q2m7d1zp`. Random, not made from the title, because the apps report it in analytics
+ * (`notification_id`), and no event may carry a notification's words.
+ */
+export function newId(): string {
+  const bytes = new Uint8Array(9);
+  crypto.getRandomValues(bytes);
+  const alphabet = "abcdefghijklmnopqrstuvwxyz0123456789";
+  return "a_" + Array.from(bytes, (b) => alphabet[b % alphabet.length]).join("");
+}
+
+/** Where "Open a link" may go: the same list as firestore.rules, the endpoint and both apps. */
+export const LINK_HOSTS = ["sharancreatedthis.in", "instagram.com", "youtube.com", "youtu.be"];
+
+export function linkAllowed(target: string): boolean {
+  if (target.length > LIMITS.actionTarget || !/^https:\/\/[a-z0-9.-]+(\/[^\s]*)?$/.test(target)) return false;
+  try {
+    const url = new URL(target);
+    if (url.protocol !== "https:" || url.username || url.password || url.port) return false;
+    return LINK_HOSTS.some((host) => url.hostname === host || url.hostname.endsWith(`.${host}`));
+  } catch {
+    return false;
+  }
 }
 
 export type Status = "scheduled" | "live" | "expired";

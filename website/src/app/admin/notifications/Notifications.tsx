@@ -33,6 +33,13 @@ export default function Notifications() {
   const [busy, setBusy] = useState(false);
   const [status, setStatus] = useState<{ kind: "ok" | "error"; text: string } | null>(null);
   const [now, setNow] = useState(() => Date.now());
+  /** The row and act waiting for a second click: the first click arms it for five seconds. */
+  const [arming, setArming] = useState<{ id: string; act: "expire" | "delete" } | null>(null);
+  useEffect(() => {
+    if (!arming) return;
+    const t = window.setTimeout(() => setArming(null), 5000);
+    return () => window.clearTimeout(t);
+  }, [arming]);
 
   useEffect(() => onAuthStateChanged(auth(), setUser), []);
   useEffect(() => {
@@ -79,7 +86,7 @@ export default function Notifications() {
     setTouched(true);
     setStatus(null);
     if (!valid || !user?.email) return;
-    const id = newId(draft.title);
+    const id = newId();
     setBusy(true);
     try {
       await setDoc(doc(db(), "announcements", id), { ...toDocument(draft), createdAt: serverTimestamp(), createdBy: user.email });
@@ -95,7 +102,8 @@ export default function Notifications() {
   }
 
   async function expire(row: Row) {
-    if (!window.confirm(`Stop “${row.data.title}”? Apps drop it at their next check; anyone who already saw it keeps it in their history.`)) return;
+    if (arming?.id !== row.id || arming.act !== "expire") return setArming({ id: row.id, act: "expire" });
+    setArming(null);
     const nowStamp = Timestamp.now();
     // The rules need expireAt after startAt, so a scheduled one that never started starts a moment before it ends.
     const startAt = row.data.startAt.toMillis() < nowStamp.toMillis() ? row.data.startAt : Timestamp.fromMillis(nowStamp.toMillis() - 1000);
@@ -104,7 +112,8 @@ export default function Notifications() {
   }
 
   async function remove(row: Row) {
-    if (!window.confirm(`Delete “${row.data.title}” for good? Use Expire to stop it and keep the record.`)) return;
+    if (arming?.id !== row.id || arming.act !== "delete") return setArming({ id: row.id, act: "delete" });
+    setArming(null);
     await deleteDoc(doc(db(), "announcements", row.id)).catch((err) =>
       setStatus({ kind: "error", text: `Could not delete: ${(err as { code?: string }).code ?? "error"}` }));
   }
@@ -270,8 +279,16 @@ export default function Notifications() {
                     <td className="adm-muted">{when(row.data.startAt)}<br />→ {when(row.data.expireAt)}</td>
                     <td className="ntf-row-actions">
                       <button className="adm-link" onClick={() => { setDraft(draftFrom(row.data)); setTouched(false); window.scrollTo({ top: 0, behavior: "smooth" }); }}>Duplicate</button>
-                      {s !== "expired" && <button className="adm-link" onClick={() => expire(row)}>Expire now</button>}
-                      <button className="adm-link danger" onClick={() => remove(row)}>Delete</button>
+                      {s !== "expired" && (
+                        <button className={`adm-link${arming?.id === row.id && arming.act === "expire" ? " armed" : ""}`} onClick={() => expire(row)}
+                          title="Stops it at each app's next check. Anyone who already saw it keeps it in their Notification Center.">
+                          {arming?.id === row.id && arming.act === "expire" ? "Click to expire" : "Expire now"}
+                        </button>
+                      )}
+                      <button className={`adm-link danger${arming?.id === row.id && arming.act === "delete" ? " armed" : ""}`} onClick={() => remove(row)}
+                        title="Deletes the record for good. Expire keeps it.">
+                        {arming?.id === row.id && arming.act === "delete" ? "Click to delete" : "Delete"}
+                      </button>
                     </td>
                   </tr>
                 );

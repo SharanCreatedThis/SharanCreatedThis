@@ -132,3 +132,4 @@
 @keyframes ntf-float { 0%, 100% { transform: translateY(-1.5px); } 50% { transform: translateY(1.5px); } }
 @media (prefers-reduced-motion: reduce) { .ntf-card { animation: none; } }
 @media (max-width: 900px) { .ntf-grid { grid-template-columns: 1fr; } .ntf-preview { position: static; } .ntf-row-actions { white-space: normal; } }
+.ntf-row-actions .armed { border-color: #ff7a7a; color: #ffb0b0; background: rgba(255,90,90,.08); }
