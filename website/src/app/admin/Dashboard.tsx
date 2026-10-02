@@ -11,7 +11,8 @@
 import { useEffect, useMemo, useState } from "react";
 import { type User, onAuthStateChanged } from "firebase/auth";
 import { type Timestamp, doc, getDoc, onSnapshot } from "firebase/firestore";
-import { auth, db, signInWithGoogle, signOut } from "@/lib/admin/firebase";
+import { auth, db, signInWithGoogle } from "@/lib/admin/firebase";
+import AdminShell from "./AdminShell";
 
 type Split = { value: string; count: number };
 type Rate = { crashed: number; active: number; rate: number };
@@ -135,23 +136,7 @@ export default function Dashboard() {
 }
 
 function Shell({ user, children }: { user?: User; children: React.ReactNode }) {
-  return (
-    <main className="adm wrap">
-      <header className="adm-head">
-        <div>
-          <p className="adm-eyebrow">HANGLY · INTERNAL</p>
-          <h1>Analytics</h1>
-        </div>
-        {user && (
-          <div className="adm-user">
-            <span>{user.email}</span>
-            <button className="adm-link" onClick={() => signOut()}>Sign out</button>
-          </div>
-        )}
-      </header>
-      {children}
-    </main>
-  );
+  return <AdminShell user={user} section="analytics" title="Analytics">{children}</AdminShell>;
 }
 
 function Body({ s, snap, now }: { s: Latest; snap: Snapshot | null; now: number }) {

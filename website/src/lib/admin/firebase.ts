@@ -8,9 +8,10 @@
  */
 import { type FirebaseApp, getApps, initializeApp } from "firebase/app";
 import {
-  type Auth, GoogleAuthProvider, getAuth, signInWithPopup, signInWithRedirect, signOut as firebaseSignOut,
+  type Auth, GoogleAuthProvider, connectAuthEmulator, getAuth, signInWithPopup, signInWithRedirect,
+  signOut as firebaseSignOut,
 } from "firebase/auth";
-import { type Firestore, getFirestore } from "firebase/firestore";
+import { type Firestore, connectFirestoreEmulator, getFirestore } from "firebase/firestore";
 
 const config = {
   apiKey: "AIzaSyBYOCLnF-Wlgyh-gYn5wPefgKISx0O4wLA",
@@ -21,8 +22,21 @@ const config = {
 
 let app: FirebaseApp | undefined;
 
+/**
+ * Local testing only: `NEXT_PUBLIC_FIREBASE_EMULATORS=1 npm run dev`, with `firebase emulators:start` running in the
+ * Hangly repository's firebase folder. Inlined at build time, so a production build — which never sets it — cannot
+ * point anywhere but the real project.
+ */
+const EMULATED = process.env.NEXT_PUBLIC_FIREBASE_EMULATORS === "1";
+let connected = false;
+
 function firebase(): FirebaseApp {
   app ??= getApps()[0] ?? initializeApp(config);
+  if (EMULATED && !connected) {
+    connected = true;
+    connectAuthEmulator(getAuth(app), "http://127.0.0.1:9099", { disableWarnings: true });
+    connectFirestoreEmulator(getFirestore(app), "127.0.0.1", 8080);
+  }
   return app;
 }
 
