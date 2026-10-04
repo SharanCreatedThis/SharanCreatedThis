@@ -26,15 +26,14 @@ export const ACTIONS: { value: ActionType; label: string; button: string | null;
   { value: "openLibrary", label: "Open Library", button: "Open Library", hint: "Opens the Library, on a collection if you pick one." },
   { value: "openCharm", label: "Show a charm", button: "Show Charm", hint: "Opens the Library describing one charm. Nothing is hung." },
   { value: "openCreate", label: "Open Create", button: "Open Create", hint: "Opens Creator Studio." },
-  { value: "openNotifications", label: "Open Notification Center", button: "Open Notifications", hint: "Opens the Notification Center." },
   { value: "openUrl", label: "Open a link", button: "Open", hint: "Opens a page on sharancreatedthis.in, Instagram or YouTube." },
   { value: "none", label: "No button", button: null, hint: "Something to read; no button." },
 ];
 
 export const PRIORITIES: { value: Priority; label: string; hint: string }[] = [
-  { value: "normal", label: "Normal", hint: "A card under the charm, after anything already waiting." },
-  { value: "high", label: "High", hint: "A card before anything else, the update reminder included." },
-  { value: "low", label: "Low", hint: "No card: straight to the Notification Center and the bell." },
+  { value: "normal", label: "Normal", hint: "A pop-up under the charm, after anything already waiting." },
+  { value: "high", label: "High", hint: "A pop-up before anything else, the update reminder included." },
+  { value: "low", label: "Low", hint: "A pop-up after every normal one. Nothing is kept once it has gone." },
 ];
 
 /** The collections' IDs, as both apps name them (CharmCollection on macOS, the catalogue on Windows). */

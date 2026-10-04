@@ -116,20 +116,26 @@
 .ntf-preview { position: sticky; top: 24px; display: grid; gap: 12px; }
 .ntf-stage { position: relative; border-radius: 18px; padding: 26px 16px 18px; display: grid; justify-items: center; gap: 10px; overflow: hidden; border: 1px solid var(--border);
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI Variable Text", "Segoe UI", Inter, sans-serif; }
-.ntf-stage.dark { background: radial-gradient(120% 80% at 70% 0%, #2a2440 0%, #101014 60%); --c-fill: rgba(30,31,36,.82); --c-stroke: rgba(255,255,255,.16); --c-text: #f5f5f7; --c-sub: rgba(255,255,255,.62); --c-accent: #8f7eff; }
-.ntf-stage.light { background: radial-gradient(120% 80% at 30% 0%, #e9e4ff 0%, #c9d6ea 70%); --c-fill: rgba(250,250,252,.78); --c-stroke: rgba(0,0,0,.08); --c-text: #1c1c1e; --c-sub: rgba(0,0,0,.55); --c-accent: #6d5ae5; }
+.ntf-stage.dark { background: radial-gradient(120% 80% at 70% 0%, #2a2440 0%, #101014 60%); --c-fill: rgba(36,37,44,.80); --c-stroke: rgba(255,255,255,.16); --c-rim: rgba(255,255,255,.38); --c-text: #f5f5f7; --c-sub: rgba(255,255,255,.62); --c-accent: #8f7eff; }
+.ntf-stage.light { background: radial-gradient(120% 80% at 30% 0%, #e9e4ff 0%, #c9d6ea 70%); --c-fill: rgba(252,252,254,.80); --c-stroke: rgba(0,0,0,.08); --c-rim: rgba(255,255,255,.9); --c-text: #1c1c1e; --c-sub: rgba(0,0,0,.55); --c-accent: #6d5ae5; }
 .ntf-charm { width: 54px; height: 54px; border-radius: 50%; background: radial-gradient(circle at 50% 50%, #fff 0 18%, #6ec6ff 19% 30%, #1d3fd8 31% 100%); box-shadow: 0 6px 16px rgba(0,0,0,.35); position: relative; }
 .ntf-charm::before { content: ""; position: absolute; left: 50%; bottom: 100%; width: 1px; height: 26px; background: rgba(255,255,255,.5); }
-.ntf-card { width: min(296px, 100%); box-sizing: border-box; padding: 16px; border-radius: 20px; background: var(--c-fill); border: .5px solid var(--c-stroke);
-  backdrop-filter: blur(24px) saturate(1.4); -webkit-backdrop-filter: blur(24px) saturate(1.4); box-shadow: 0 1px 3px rgba(0,0,0,.12), 0 14px 36px rgba(0,0,0,.28);
-  animation: ntf-rise .42s cubic-bezier(.2,1.25,.4,1) both, ntf-float 4.2s ease-in-out .5s infinite; }
-.ntf-card-title { margin: 0 0 3px !important; font-weight: 600; font-size: 14px; color: var(--c-text); overflow-wrap: anywhere; }
+.ntf-card { position: relative; display: grid; grid-template-columns: 30px 1fr; column-gap: 11px; align-items: start;
+  width: min(296px, 100%); box-sizing: border-box; padding: 15px 16px; border-radius: 22px; background: var(--c-fill);
+  border: .75px solid transparent; background-clip: padding-box;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI Variable Text", "Segoe UI", Inter, sans-serif;
+  backdrop-filter: blur(24px) saturate(1.4); -webkit-backdrop-filter: blur(24px) saturate(1.4);
+  box-shadow: inset 0 .75px 0 var(--c-rim), 0 .5px 1px rgba(0,0,0,.08), 0 7px 28px rgba(0,0,0,.14);
+  animation: ntf-rise .42s cubic-bezier(.2,1.25,.4,1) both, ntf-sway 3.2s ease-in-out .5s infinite; }
+.ntf-card-icon { width: 30px; height: 30px; border-radius: 50%; background: radial-gradient(circle at 50% 50%, #fff 0 18%, #6ec6ff 19% 30%, #1d3fd8 31% 100%); }
+.ntf-card-close { position: absolute; top: 9px; right: 9px; width: 20px; height: 20px; border-radius: 50%; display: grid; place-items: center;
+  font-size: 13px; line-height: 1; color: var(--c-sub); background: color-mix(in srgb, var(--c-text) 7%, transparent); }
+.ntf-card-title { margin: 0 0 2px !important; padding-right: 20px; font-weight: 600; font-size: 13.5px; color: var(--c-text); overflow-wrap: anywhere; }
 .ntf-card-message { margin: 0 !important; font-size: 12.5px; color: var(--c-sub); white-space: pre-wrap; overflow-wrap: anywhere; }
 .ntf-card-button { display: inline-block; margin-top: 10px; padding: 6px 14px; border-radius: 999px; background: var(--c-accent); color: #fff; font-weight: 600; font-size: 12.5px; }
-.ntf-bell { padding: 4px 10px; border-radius: 999px; background: var(--c-fill); border: .5px solid var(--c-stroke); color: var(--c-text); font-size: 12px; font-weight: 600; backdrop-filter: blur(20px); }
 .ntf-stage-caption { margin: 2px 0 0 !important; font-size: 11.5px; color: var(--c-sub); }
 @keyframes ntf-rise { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: none; } }
-@keyframes ntf-float { 0%, 100% { transform: translateY(-1.5px); } 50% { transform: translateY(1.5px); } }
+@keyframes ntf-sway { 0%, 100% { transform: translate(-9px, -1px); } 50% { transform: translate(9px, -1px); } 25%, 75% { transform: translate(0, 0); } }
 @media (prefers-reduced-motion: reduce) { .ntf-card { animation: none; } }
 @media (max-width: 900px) { .ntf-grid { grid-template-columns: 1fr; } .ntf-preview { position: static; } .ntf-row-actions { white-space: normal; } }
 .ntf-row-actions .armed { border-color: #ff7a7a; color: #ffb0b0; background: rgba(255,90,90,.08); }

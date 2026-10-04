@@ -128,7 +128,8 @@ export default function Notifications() {
       setStatus({ kind: "error", text: `Could not delete: ${(err as { code?: string }).code ?? "error"}` }));
   }
 
-  const action = ACTIONS.find((a) => a.value === draft.actionType)!;
+  // A broadcast made with "Open Notification Center", which the apps no longer have, is edited as having no button.
+  const action = ACTIONS.find((a) => a.value === draft.actionType) ?? ACTIONS.find((a) => a.value === "none")!;
   const priority = PRIORITIES.find((p) => p.value === draft.priority)!;
 
   return (
@@ -249,7 +250,7 @@ export default function Notifications() {
           </div>
           {status && <p className={status.kind === "ok" ? "ntf-ok" : "adm-status"} role="status">{status.text}</p>}
           <p className="adm-muted ntf-note">
-            Each install shows it once, under the charm, for its time on screen, then keeps it in its Notification Center.
+            Each install shows it once, under the charm, for its time on screen; nothing is kept once it has gone.
             Running apps check every fifteen minutes, and at once on launch, wake or reconnect; a new broadcast reaches
             them within about 18 minutes at most, and Expire now takes effect within the same.
           </p>
@@ -283,7 +284,7 @@ export default function Notifications() {
                       <span className={`ntf-chip ${s}`}>{s}</span>
                       {row.data.audience === "test" && <span className="ntf-chip test">testers</span>}
                     </td>
-                    <PerformanceCells perf={performance.get(row.id)} low={row.data.priority === "low"} />
+                    <PerformanceCells perf={performance.get(row.id)} />
                     <td className="adm-muted">
                       {row.data.priority} · {row.data.platforms.map((p) => (p === "mac" ? "macOS" : "Windows")).join(", ")}
                       <br />{row.data.durationSeconds}s · {buttonTitle(row.data.actionType, row.data.actionLabel ?? "") ?? "no button"}
@@ -294,7 +295,7 @@ export default function Notifications() {
                       <button className="adm-link" onClick={() => { setDraft(draftFrom(row.data)); setTouched(false); window.scrollTo({ top: 0, behavior: "smooth" }); }}>Duplicate</button>
                       {s !== "expired" && (
                         <button className={`adm-link${arming?.id === row.id && arming.act === "expire" ? " armed" : ""}`} onClick={() => expire(row)}
-                          title="Stops it at each app's next check. Anyone who already saw it keeps it in their Notification Center.">
+                          title="Stops it at each app's next check. Anyone who has not seen it yet never will.">
                           {arming?.id === row.id && arming.act === "expire" ? "Click to expire" : "Expire now"}
                         </button>
                       )}
@@ -317,11 +318,11 @@ export default function Notifications() {
 const count = new Intl.NumberFormat("en-IN");
 
 /** Seen, clicked and CTR for one broadcast; dashes until Google Analytics has reported it. */
-function PerformanceCells({ perf, low }: { perf?: Performance; low: boolean }) {
+function PerformanceCells({ perf }: { perf?: Performance }) {
   if (!perf) return <><td className="num adm-muted">—</td><td className="num adm-muted">—</td><td className="num adm-muted">—</td></>;
   return (
     <>
-      <td className="num">{low ? <span className="adm-muted" title="Low priority has no card to see">—</span> : count.format(perf.shownUsers)}</td>
+      <td className="num">{count.format(perf.shownUsers)}</td>
       <td className="num">{count.format(perf.clickedUsers)}</td>
       <td className="num"><strong>{perf.shownUsers > 0 ? `${(perf.ctr * 100).toFixed(perf.ctr < 0.1 ? 1 : 0)}%` : "—"}</strong></td>
     </>
@@ -355,23 +356,22 @@ function StatsNote({ stats }: { stats: StatsDoc | null }) {
 
 const when = (t: Timestamp) => t.toDate().toLocaleString("en-IN", { dateStyle: "medium", timeStyle: "short" });
 
-/** The card as the apps draw it: 296 points wide, 20-point corners, Hangly's indigo button. */
+/** The pop-up as the apps draw it: 296 points wide, 22-point corners, Hangly's icon, its indigo button and the ×. */
 function CardPreview({ draft, theme }: { draft: Draft; theme: "dark" | "light" }) {
   const label = buttonTitle(draft.actionType, draft.actionLabel);
-  const low = draft.priority === "low";
   return (
     <div className={`ntf-stage ${theme}`}>
       <div className="ntf-charm" aria-hidden />
-      {low ? (
-        <div className="ntf-bell"><span aria-hidden>🔔</span> 1</div>
-      ) : (
-        <div className="ntf-card">
+      <div className="ntf-card">
+        <span className="ntf-card-close" aria-hidden>×</span>
+        <span className="ntf-card-icon" aria-hidden />
+        <div>
           <p className="ntf-card-title">{draft.title.trim() || "Title"}</p>
           <p className="ntf-card-message">{draft.message.trim() || "Message"}</p>
           {label && <span className="ntf-card-button">{label}</span>}
         </div>
-      )}
-      <p className="ntf-stage-caption">{theme === "dark" ? "Dark" : "Light"}{low ? " · low priority: the bell only" : ` · ${draft.durationSeconds}s`}</p>
+      </div>
+      <p className="ntf-stage-caption">{theme === "dark" ? "Dark" : "Light"} · pops up for {draft.durationSeconds}s, swinging with the charm</p>
     </div>
   );
 }
