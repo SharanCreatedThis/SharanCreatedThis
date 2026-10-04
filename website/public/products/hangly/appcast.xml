@@ -6,6 +6,29 @@
         <description>Most recent updates to Hangly</description>
         <language>en</language>
         <item>
+            <title>2.3.0</title>
+            <pubDate>Sun, 04 Oct 2026 22:58:04 +0530</pubDate>
+            <link>https://www.sharancreatedthis.in/products/hangly</link>
+            <sparkle:version>230</sparkle:version>
+            <sparkle:shortVersionString>2.3.0</sparkle:shortVersionString>
+            <sparkle:minimumSystemVersion>14.0</sparkle:minimumSystemVersion>
+            <description><![CDATA[<h2>Hangly 2.3</h2>
+
+<ul>
+  <li><strong>Realistic ropes and chains.</strong> Every rope is drawn from real thread, leather,
+      silk and metal, and chains hang a charm by their own last link.</li>
+  <li><strong>Charms hang from their own rings.</strong> No gaps: the rope meets every charm, and
+      ringed charms hang from a tiny jump ring.</li>
+  <li><strong>Update in Background.</strong> When a new version is out, a card under the charm says
+      what is new; one press and Hangly updates and restarts by itself.</li>
+  <li><strong>News from the charm.</strong> New charms and collections pop up in glass under your
+      charm, swing with it, and leave on their own.</li>
+  <li><strong>A smoother Library</strong>, and a glow that takes each charm's own shape.</li>
+</ul>
+]]></description>
+            <enclosure url="https://downloads.sharancreatedthis.in/Hangly-2.3.0.dmg" length="81624822" type="application/octet-stream" sparkle:edSignature="6alsuuZ5JWTq3ALRGkDv2Vw01DSBJy+2uZ+X+w5glxgh0Q8949FchtaEVFz8e+SZNhv2SieUcwfpp6lqO53DCQ=="/>
+        </item>
+        <item>
             <title>2.2.0</title>
             <pubDate>Fri, 02 Oct 2026 19:38:52 +0530</pubDate>
             <link>https://www.sharancreatedthis.in/products/hangly</link>
@@ -30,25 +53,6 @@
 </ul>
 ]]></description>
             <enclosure url="https://downloads.sharancreatedthis.in/Hangly-2.1.2.dmg" length="34973002" type="application/octet-stream" sparkle:edSignature="MLUR1bHu/1AB6h4h6LvnnvXvTheboGfRL+CdUtEK07QDE/jpsp+b56Ql2BVijVYeFFruFwiUa38RF9UbuiQLBQ=="/>
-        </item>
-        <item>
-            <title>2.1.1</title>
-            <pubDate>Tue, 29 Sep 2026 16:03:15 +0530</pubDate>
-            <link>https://www.sharancreatedthis.in/products/hangly</link>
-            <sparkle:version>211</sparkle:version>
-            <sparkle:shortVersionString>2.1.1</sparkle:shortVersionString>
-            <sparkle:minimumSystemVersion>14.0</sparkle:minimumSystemVersion>
-            <description><![CDATA[<h2>Hangly 2.1.1</h2>
-
-<ul>
-  <li><strong>Your setup comes back.</strong> After the Spider-Man entrance has shown itself
-      off for two launches, every charm you had on the rope returns, in order and at its own
-      size, with your rope style. Anything you chose meanwhile stays.</li>
-  <li><strong>Quieter under the hood.</strong> Hangly now reports when an update arrives and
-      installs, so problems with updates are noticed. Nothing personal is sent.</li>
-</ul>
-]]></description>
-            <enclosure url="https://downloads.sharancreatedthis.in/Hangly-2.1.1.dmg" length="34971874" type="application/octet-stream" sparkle:edSignature="PmqYlP5x1yABM7d7nsL/fqh+9Ks6xMVd0i7PX1nYYzJXUCMsQtxrfBUQ7FhbTcsMrpX9m7pPFMTkkrzGsd+JAQ=="/>
         </item>
     </channel>
 </rss>

@@ -61,7 +61,7 @@ const windows = {
   repository: "SharanCreatedThis/Hangly-Windows",
   // The published release both buttons download. Move it forward only once the
   // release is published (not a draft) and carries both installers.
-  tag: "v2.2.0",
+  tag: "v2.3.0",
   // The installers, not the .nupkg packages: those are what Velopack feeds the
   // updater, and a person who downloads one has nothing that will open it.
   builds: [

@@ -40,7 +40,7 @@ function walk(dir, found = []) {
   return found;
 }
 
-const EXCLUDED = new Set(["/404", "/_not-found", "/products/vision/release-notes", "/products/vision/dev/release-notes", "/admin"]);
+const EXCLUDED = new Set(["/404", "/_not-found", "/products/vision/release-notes", "/products/vision/dev/release-notes", "/admin", "/admin/notifications"]);
 const pages = new Map();
 for (const file of walk(out)) {
   const path = `/${relative(out, file).replace(/\.html$/, "")}`;

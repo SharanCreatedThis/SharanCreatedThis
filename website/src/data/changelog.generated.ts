@@ -17,42 +17,30 @@ export const RELEASES: Release[] = [
     "product": "hangly",
     "name": "Hangly",
     "platform": "macOS",
-    "version": "2.1.0",
-    "date": "2026-09-29",
+    "version": "2.3.0",
+    "date": "2026-10-04",
     "minimumSystem": "14.0",
-    "bytes": 34926119,
+    "bytes": 81624822,
     "notes": [
       {
-        "kind": "para",
-        "text": "Spider-Man drops in, the rope stretches, and updates arrive while you're away."
+        "kind": "point",
+        "text": "Realistic ropes and chains. Every rope is drawn from real thread, leather, silk and metal, and chains hang a charm by their own last link."
       },
       {
         "kind": "point",
-        "text": "The Spider-Man entrance. With Spider-Man on the rope, Hangly starts with a web across the top of your screen and him dropping in on his strand. For the first two launches after this update, Hangly shows it off on its own look and sound; on the third your settings come back, and Spider-Man stays until you choose another charm."
+        "text": "Charms hang from their own rings. No gaps: the rope meets every charm, and ringed charms hang from a tiny jump ring."
       },
       {
         "kind": "point",
-        "text": "An elastic rope, and charms that react. Pull the charm and the cord stretches and settles; move quickly towards it and it swings away."
+        "text": "Update in Background. When a new version is out, a card under the charm says what is new; one press and Hangly updates and restarts by itself."
       },
       {
         "kind": "point",
-        "text": "On top, or on your desktop, with a soft or strong glow."
+        "text": "News from the charm. New charms and collections pop up in glass under your charm, swing with it, and leave on their own."
       },
       {
         "kind": "point",
-        "text": "More ways to make your own. Drop an SVG, or paste a picture with ⌘V, and it opens in Creator Studio. The Library remembers what you've hung lately."
-      },
-      {
-        "kind": "point",
-        "text": "Quiet updates. Hangly now installs updates while your screen is locked or asleep, and shows you what's new when you're back."
-      },
-      {
-        "kind": "point",
-        "text": "A simpler welcome and Appearance page, sound at half volume on a new install, and every window opening in the middle of your display."
-      },
-      {
-        "kind": "point",
-        "text": "Your installation record. Hangly now keeps one record for this Mac: the name you gave, your city and your versions, with crash reports through Firebase. Appearance → Privacy says exactly what is sent."
+        "text": "A smoother Library, and a glow that takes each charm's own shape."
       }
     ],
     "notesUrl": ""
@@ -61,34 +49,25 @@ export const RELEASES: Release[] = [
     "product": "hangly",
     "name": "Hangly",
     "platform": "macOS",
-    "version": "2.0.0",
-    "date": "2026-09-18",
+    "version": "2.2.0",
+    "date": "2026-10-02",
     "minimumSystem": "14.0",
-    "bytes": 34238650,
+    "bytes": 81148821,
+    "notes": [],
+    "notesUrl": ""
+  },
+  {
+    "product": "hangly",
+    "name": "Hangly",
+    "platform": "macOS",
+    "version": "2.1.2",
+    "date": "2026-09-30",
+    "minimumSystem": "14.0",
+    "bytes": 34973002,
     "notes": [
       {
-        "kind": "para",
-        "text": "The rope release, and the first one that can update itself."
-      },
-      {
         "kind": "point",
-        "text": "Automatic updates. Hangly now checks for a new version once a week and installs it quietly in the background. Nothing to click, and nothing to download by hand again."
-      },
-      {
-        "kind": "point",
-        "text": "Release notes when a version arrives, shown once on the first launch after an update, plus a Check for Updates button on the About page for anyone who would rather ask."
-      },
-      {
-        "kind": "point",
-        "text": "Four more charms. A dream catcher joins the world collection; the RV joins Breaking Bad; The Weeknd joins Music Legends; and Spider-Man gets a second pose, hanging from the web line in his own hand."
-      },
-      {
-        "kind": "point",
-        "text": "A lighter download. The app ships its artwork as the vector files it actually draws from rather than as a compiled catalogue that also carried a bitmap of every charm it never used. The download went from 89 MB to 33 MB, and nothing about the artwork changed."
-      },
-      {
-        "kind": "point",
-        "text": "Five cords, up to three charms on one rope, eleven seasonal charms that arrive on their own, weather, and one Customize window in place of the three it used to take."
+        "text": "Hangly opens at login again. Launch at login is now on by default for everyone. If you would rather start Hangly yourself, turn it off in Appearance, and it stays off."
       }
     ],
     "notesUrl": ""
@@ -108,11 +87,11 @@ export const RELEASES: Release[] = [
     "product": "hangly",
     "name": "Hangly",
     "platform": "Windows",
-    "version": "2.1.0",
+    "version": "2.3.0",
     "date": "",
     "minimumSystem": "10.0",
     "bytes": 0,
     "notes": [],
-    "notesUrl": "https://github.com/SharanCreatedThis/Hangly-Windows/releases/tag/v2.1.0"
+    "notesUrl": "https://github.com/SharanCreatedThis/Hangly-Windows/releases/tag/v2.3.0"
   }
 ];

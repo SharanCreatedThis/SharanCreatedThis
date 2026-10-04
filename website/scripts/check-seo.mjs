@@ -56,6 +56,7 @@ const NOT_IN_SITEMAP = new Set([
   "/products/vision/dev/release-notes",
   // The private dashboard: noindex in its metadata and in public/_headers.
   "/admin",
+  "/admin/notifications",
 ]);
 
 const pages = exportedPages().filter((path) => !NOT_IN_SITEMAP.has(path));
