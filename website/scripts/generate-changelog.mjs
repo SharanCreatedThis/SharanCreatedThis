@@ -66,7 +66,9 @@ const releases = [
 
 /* The Windows build, from the redirects the previous script just wrote. */
 const redirects = read("public/_redirects");
-const win = redirects.match(/Hangly-Windows\/releases\/download\/v([\d.]+)\//);
+// Served from R2 under a versioned name since 6 Oct 2026; a GitHub release asset under the tag before.
+const winLink = redirects.match(/\/Hangly-([\d.]+)-win-x64-Setup\.exe|Hangly-Windows\/releases\/download\/v([\d.]+)\//);
+const win = winLink ? [winLink[0], winLink[1] ?? winLink[2]] : null;
 if (win) {
   releases.push({
     product: "hangly",

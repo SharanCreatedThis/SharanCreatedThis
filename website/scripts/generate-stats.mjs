@@ -74,7 +74,10 @@ const feed = (p) => {
   return { version: short ?? "", minimumSystem: min ?? "", bytes, date: date ? new Date(date).toISOString().slice(0, 10) : "" };
 };
 const macOS = feed("public/products/hangly/appcast.xml");
-const windows = (read("public/_redirects").match(/Hangly-Windows\/releases\/download\/v([\d.]+)\//) || [, ""])[1];
+// The installers are served from R2 under versioned names (Hangly-<version>-win-x64-Setup.exe); before 6 Oct 2026
+// they were GitHub release assets under the tag. Either names the version.
+const windowsLink = read("public/_redirects").match(/\/Hangly-([\d.]+)-win-x64-Setup\.exe|Hangly-Windows\/releases\/download\/v([\d.]+)\//);
+const windows = windowsLink ? windowsLink[1] ?? windowsLink[2] : "";
 
 const charmTotal = collections.reduce((n, c) => n + c.charms.length, 0);
 

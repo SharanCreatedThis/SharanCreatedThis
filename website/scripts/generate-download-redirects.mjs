@@ -56,26 +56,37 @@ const products = [
  * v0.9.4: on 29 Sep 2026, hours after 2.1.0 shipped, a build that lost the race
  * pointed both Windows buttons back at 0.9.4. A build that needs no network
  * cannot do that, and a link that names its version says what it downloads.
+ *
+ * **Served from R2, not from GitHub.** Until 2.3.0 the buttons went to the
+ * GitHub release asset, which hands out a signed link that expires after an hour.
+ * The installers are ~325 MB: on a slow connection, or through a download
+ * manager, the rest of the file was fetched after the link expired, and users
+ * were left with a Setup.exe with gaps in it that failed with "IO error: corrupt
+ * deflate stream" (W-SETUPCORRUPT, 6 Oct 2026). R2 serves a permanent link that
+ * resumes. Each release's installers are uploaded there under versioned names,
+ * the same bytes as the GitHub assets, before the tag here is moved forward.
  */
 const windows = {
   repository: "SharanCreatedThis/Hangly-Windows",
   // The published release both buttons download. Move it forward only once the
-  // release is published (not a draft) and carries both installers.
+  // release is published (not a draft), and both installers are on R2 under
+  // Hangly-<version>-<build>-Setup.exe with the same SHA-256 as the release's.
   tag: "v2.3.0",
+  host: "https://downloads.sharancreatedthis.in",
   // The installers, not the .nupkg packages: those are what Velopack feeds the
   // updater, and a person who downloads one has nothing that will open it.
   builds: [
-    { slug: "windows-x64", asset: "Hangly-win-x64-Setup.exe" },
-    { slug: "windows-arm64", asset: "Hangly-win-arm64-Setup.exe" },
+    { slug: "windows-x64", build: "win-x64" },
+    { slug: "windows-arm64", build: "win-arm64" },
   ],
 };
 
-const windowsTag = windows.tag;
+const windowsVersion = windows.tag.replace(/^v/, "");
 
-const windowsRoutes = windows.builds.map(({ slug, asset }) => ({
+const windowsRoutes = windows.builds.map(({ slug, build }) => ({
   name: `hangly (${slug})`,
   from: `/products/hangly/download/${slug}`,
-  to: `https://github.com/${windows.repository}/releases/download/${windowsTag}/${asset}`,
+  to: `${windows.host}/Hangly-${windowsVersion}-${build}-Setup.exe`,
   offSite: true,
 }));
 
