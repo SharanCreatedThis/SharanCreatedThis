@@ -17,6 +17,34 @@ export const RELEASES: Release[] = [
     "product": "hangly",
     "name": "Hangly",
     "platform": "macOS",
+    "version": "2.3.1",
+    "date": "2026-10-06",
+    "minimumSystem": "14.0",
+    "bytes": 84088723,
+    "notes": [
+      {
+        "kind": "point",
+        "text": "Messi joins Football Legends. Holding the number ten up to the crowd."
+      },
+      {
+        "kind": "point",
+        "text": "One rope through every charm. With two or three charms, the rope runs unbroken from charm to charm however hard they swing, and only the top charm wears beads."
+      },
+      {
+        "kind": "point",
+        "text": "Charms hang like real pendants. The rope meets each charm at its top or its ring, straight above it, and beads stay on the rope and clear of the charm."
+      },
+      {
+        "kind": "point",
+        "text": "Lift a charm and the rope reels in. No more folded or vanishing rope when you hold a charm up near the top of the screen."
+      }
+    ],
+    "notesUrl": ""
+  },
+  {
+    "product": "hangly",
+    "name": "Hangly",
+    "platform": "macOS",
     "version": "2.3.0",
     "date": "2026-10-04",
     "minimumSystem": "14.0",
@@ -57,22 +85,6 @@ export const RELEASES: Release[] = [
     "notesUrl": ""
   },
   {
-    "product": "hangly",
-    "name": "Hangly",
-    "platform": "macOS",
-    "version": "2.1.2",
-    "date": "2026-09-30",
-    "minimumSystem": "14.0",
-    "bytes": 34973002,
-    "notes": [
-      {
-        "kind": "point",
-        "text": "Hangly opens at login again. Launch at login is now on by default for everyone. If you would rather start Hangly yourself, turn it off in Appearance, and it stays off."
-      }
-    ],
-    "notesUrl": ""
-  },
-  {
     "product": "vision",
     "name": "Vision",
     "platform": "macOS",
@@ -87,11 +99,11 @@ export const RELEASES: Release[] = [
     "product": "hangly",
     "name": "Hangly",
     "platform": "Windows",
-    "version": "2.3.0",
+    "version": "2.3.1",
     "date": "",
     "minimumSystem": "10.0",
     "bytes": 0,
     "notes": [],
-    "notesUrl": "https://github.com/SharanCreatedThis/Hangly-Windows/releases/tag/v2.3.0"
+    "notesUrl": "https://github.com/SharanCreatedThis/Hangly-Windows/releases/tag/v2.3.1"
   }
 ];

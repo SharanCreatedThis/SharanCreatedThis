@@ -3,17 +3,17 @@
   "redirects": [
     {
       "source": "/products/hangly/download/windows-x64",
-      "destination": "https://downloads.sharancreatedthis.in/Hangly-2.3.0-win-x64-Setup.exe",
+      "destination": "https://downloads.sharancreatedthis.in/Hangly-2.3.1-win-x64-Setup.exe",
       "permanent": false
     },
     {
       "source": "/products/hangly/download/windows-arm64",
-      "destination": "https://downloads.sharancreatedthis.in/Hangly-2.3.0-win-arm64-Setup.exe",
+      "destination": "https://downloads.sharancreatedthis.in/Hangly-2.3.1-win-arm64-Setup.exe",
       "permanent": false
     },
     {
       "source": "/products/hangly/download",
-      "destination": "https://downloads.sharancreatedthis.in/Hangly-2.3.0.dmg",
+      "destination": "https://downloads.sharancreatedthis.in/Hangly-2.3.1.dmg",
       "permanent": false
     },
     {

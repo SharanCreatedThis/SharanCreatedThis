@@ -71,7 +71,7 @@ const windows = {
   // The published release both buttons download. Move it forward only once the
   // release is published (not a draft), and both installers are on R2 under
   // Hangly-<version>-<build>-Setup.exe with the same SHA-256 as the release's.
-  tag: "v2.3.0",
+  tag: "v2.3.1",
   host: "https://downloads.sharancreatedthis.in",
   // The installers, not the .nupkg packages: those are what Velopack feeds the
   // updater, and a person who downloads one has nothing that will open it.

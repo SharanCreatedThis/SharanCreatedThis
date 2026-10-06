@@ -6,6 +6,27 @@
         <description>Most recent updates to Hangly</description>
         <language>en</language>
         <item>
+            <title>2.3.1</title>
+            <pubDate>Tue, 06 Oct 2026 16:39:43 +0530</pubDate>
+            <link>https://www.sharancreatedthis.in/products/hangly</link>
+            <sparkle:version>231</sparkle:version>
+            <sparkle:shortVersionString>2.3.1</sparkle:shortVersionString>
+            <sparkle:minimumSystemVersion>14.0</sparkle:minimumSystemVersion>
+            <description><![CDATA[<h2>Hangly 2.3.1</h2>
+
+<ul>
+  <li><strong>Messi joins Football Legends.</strong> Holding the number ten up to the crowd.</li>
+  <li><strong>One rope through every charm.</strong> With two or three charms, the rope runs
+      unbroken from charm to charm however hard they swing, and only the top charm wears beads.</li>
+  <li><strong>Charms hang like real pendants.</strong> The rope meets each charm at its top or its
+      ring, straight above it, and beads stay on the rope and clear of the charm.</li>
+  <li><strong>Lift a charm and the rope reels in.</strong> No more folded or vanishing rope when you
+      hold a charm up near the top of the screen.</li>
+</ul>
+]]></description>
+            <enclosure url="https://downloads.sharancreatedthis.in/Hangly-2.3.1.dmg" length="84088723" type="application/octet-stream" sparkle:edSignature="HPyaKd117Jp+zHAssY2hDtTNrDYniHxyVVgimKmv0pwGYK5287ijffuGmTUbAhEptq1X3AZmqwWpsWgwCe0pBg=="/>
+        </item>
+        <item>
             <title>2.3.0</title>
             <pubDate>Sun, 04 Oct 2026 22:58:04 +0530</pubDate>
             <link>https://www.sharancreatedthis.in/products/hangly</link>
@@ -36,23 +57,6 @@
             <sparkle:shortVersionString>2.2.0</sparkle:shortVersionString>
             <sparkle:minimumSystemVersion>14.0</sparkle:minimumSystemVersion>
             <enclosure url="https://downloads.sharancreatedthis.in/Hangly-2.2.0.dmg" length="81148821" type="application/octet-stream" sparkle:edSignature="iuAWDwt78VDD8+Mh9VFwOiwMSD+eFOsyQYCTeL4T6aOcymlnWQA05GHbC6GU6yWIkElVZ/rODs5/erHhtHbqDQ=="/>
-        </item>
-        <item>
-            <title>2.1.2</title>
-            <pubDate>Wed, 30 Sep 2026 20:13:36 +0530</pubDate>
-            <link>https://www.sharancreatedthis.in/products/hangly</link>
-            <sparkle:version>212</sparkle:version>
-            <sparkle:shortVersionString>2.1.2</sparkle:shortVersionString>
-            <sparkle:minimumSystemVersion>14.0</sparkle:minimumSystemVersion>
-            <description><![CDATA[<h2>Hangly 2.1.2</h2>
-
-<ul>
-  <li><strong>Hangly opens at login again.</strong> Launch at login is now on by default for
-      everyone. If you would rather start Hangly yourself, turn it off in Appearance, and it
-      stays off.</li>
-</ul>
-]]></description>
-            <enclosure url="https://downloads.sharancreatedthis.in/Hangly-2.1.2.dmg" length="34973002" type="application/octet-stream" sparkle:edSignature="MLUR1bHu/1AB6h4h6LvnnvXvTheboGfRL+CdUtEK07QDE/jpsp+b56Ql2BVijVYeFFruFwiUa38RF9UbuiQLBQ=="/>
         </item>
     </channel>
 </rss>
