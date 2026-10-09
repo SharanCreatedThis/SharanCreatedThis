@@ -27,7 +27,7 @@ let app: FirebaseApp | undefined;
  * Hangly repository's firebase folder. Inlined at build time, so a production build — which never sets it — cannot
  * point anywhere but the real project.
  */
-const EMULATED = process.env.NEXT_PUBLIC_FIREBASE_EMULATORS === "1";
+export const EMULATED = process.env.NEXT_PUBLIC_FIREBASE_EMULATORS === "1";
 let connected = false;
 
 function firebase(): FirebaseApp {
