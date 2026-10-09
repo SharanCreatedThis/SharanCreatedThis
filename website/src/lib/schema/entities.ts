@@ -119,6 +119,12 @@ type AppFacts = {
   downloadPath: string;
   screenshot: string;
   features?: string[];
+  /** Other names people search it by. */
+  alternateName?: string[];
+  /** Separates it from unrelated products with the same name. */
+  disambiguatingDescription?: string;
+  /** Profiles of the same product elsewhere: repositories, store listings. */
+  sameAs?: string[];
 };
 
 /**
@@ -153,6 +159,9 @@ export function softwareNode(app: AppFacts) {
     mainEntityOfPage: absoluteUrl(app.path),
     isAccessibleForFree: true,
     ...(app.features ? { featureList: app.features } : {}),
+    ...(app.alternateName ? { alternateName: app.alternateName } : {}),
+    ...(app.disambiguatingDescription ? { disambiguatingDescription: app.disambiguatingDescription } : {}),
+    ...(app.sameAs ? { sameAs: app.sameAs } : {}),
     offers: {
       "@type": "Offer",
       price: "0",
@@ -186,6 +195,11 @@ export const HANGLY_APP: AppFacts = {
     "One-press updates",
     "Native Windows ARM64 build",
   ],
+  // "Hangly" alone also names an unrelated iPhone social app, which outranked this one for "Hangly app" on 9 Oct 2026.
+  alternateName: ["Hangly desktop charms", "Hangly for Mac", "Hangly for Windows"],
+  disambiguatingDescription:
+    "A desktop app for macOS and Windows that hangs swinging charms from the top of the screen, made by Sharan Created This in India. Not a social or messaging app.",
+  sameAs: ["https://github.com/SharanCreatedThis/Hangly-Windows"],
 };
 
 export const VISION_APP: AppFacts = {

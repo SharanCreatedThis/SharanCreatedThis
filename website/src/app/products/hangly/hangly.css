@@ -639,3 +639,10 @@
 }
 /* Standalone text links get a 24 px target (WCAG 2.5.8); links inside a sentence are exempt and stay as text. */
 :where(.hangly-container) :is(.footer-top nav a,.footer-bottom a,.hero-bottom a,.highlight-copy a,.updates-links a){display:inline-flex;align-items:center;min-height:24px}
+
+/* Hangly in other languages (/<code>/hangly). */
+:where(.hangly-container) .locale-downloads{display:flex;flex-wrap:wrap;gap:12px;margin-top:8px}
+:where(.hangly-container) .locale-list{margin-top:48px;padding-top:24px;border-top:1px solid var(--border);font-size:13px;line-height:2;color:#a09b94}
+:where(.hangly-container) .locale-list a{color:#d9a56f}
+:where(.hangly-container) .footer-languages{display:flex;flex-wrap:wrap;gap:6px 18px;font-size:12px;color:#8a8073;padding-bottom:24px}
+:where(.hangly-container) .footer-languages a{display:inline-flex;align-items:center;min-height:24px}
