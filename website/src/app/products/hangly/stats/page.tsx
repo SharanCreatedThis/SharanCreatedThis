@@ -1,13 +1,14 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
-import { ARTWORK, RELEASE, GENERATED_AT } from "@/data/stats.generated";
+import { RELEASE, GENERATED_AT } from "@/data/stats.generated";
 import { HANGLY_STATS, HANGLY_CATEGORIES } from "@/lib/stats/hangly";
 import { BUILDS, BUILD_ORDER } from "@/lib/downloads";
 import { HANGLY_APP, ID, breadcrumb, faqNode, serialise, softwareNode } from "@/lib/schema/entities";
 import { InShort, KeyTakeaways, QuickAnswer } from "@/components/aeo/AnswerBlocks";
 import { PlatformSheet } from "@/components/hangly/shared";
 import { SITE_NAME, absoluteUrl } from "@/lib/seo";
+import { ARTWORK_COVERAGE } from "@/lib/charms/artwork";
 
 const PATH = "/products/hangly/stats";
 const URL_ = absoluteUrl(PATH);
@@ -29,7 +30,7 @@ const mb = (b: number) => (b ? `${Math.round(b / 1_000_000)} MB` : "not publishe
 const FAQS = [
   {
     q: "Where does Hangly's charm count come from?",
-    a: `${HANGLY_STATS.charmCount}, across ${HANGLY_STATS.categoryCount} categories, read from the catalogue inside the shipped Hangly ${HANGLY_STATS.appVersion} application. The website carries artwork for ${ARTWORK.plain} of them — five Classic charms are drawn in code rather than from vectors, and a few of the newest have not been copied across.`,
+    a: `${HANGLY_STATS.charmCount}, across ${HANGLY_STATS.categoryCount} categories, read from the catalogue inside the shipped Hangly ${HANGLY_STATS.appVersion} application. The website shows every one: as a drawing where one exists, and otherwise as the app's own Library preview.`,
   },
   {
     q: "How many collections are there?",
@@ -81,8 +82,7 @@ const schema = {
       variableMeasured: [
         { "@type": "PropertyValue", name: "Charms in the shipped app", value: HANGLY_STATS.charmCount },
         { "@type": "PropertyValue", name: "Categories", value: HANGLY_STATS.categoryCount },
-        { "@type": "PropertyValue", name: "Additional catalogue charms", value: HANGLY_STATS.additionalCharmCount },
-        { "@type": "PropertyValue", name: "Charm artwork files", value: ARTWORK.plain },
+        { "@type": "PropertyValue", name: "Charms shown with artwork on this site", value: ARTWORK_COVERAGE.withArtwork },
         { "@type": "PropertyValue", name: "Supported platforms", value: 3 },
         { "@type": "PropertyValue", name: "macOS version", value: RELEASE.macOS.version },
         { "@type": "PropertyValue", name: "Windows version", value: RELEASE.windows },
@@ -141,8 +141,8 @@ export default function StatsPage() {
 
         <QuickAnswer>
           Hangly ships {HANGLY_STATS.charmCount} charms across {HANGLY_STATS.categoryCount}{" "}
-          categories, {HANGLY_STATS.additionalCharmCount} of them additional. It runs on macOS 14 or newer as a universal build,
-          and on Windows 10 or newer with separate x64 and native ARM64 builds. The macOS release
+          categories, the same on macOS and Windows. It runs on macOS 14 or newer as a universal build,
+          and on Windows 10 (version 1809) or newer with separate x64 and native ARM64 builds. The macOS release
           is {RELEASE.macOS.version} at {mb(RELEASE.macOS.bytes)}; Windows is at {RELEASE.windows}.
           It is free on every platform.
         </QuickAnswer>
@@ -150,7 +150,7 @@ export default function StatsPage() {
         <KeyTakeaways
           points={[
             `${HANGLY_STATS.charmCount} charms across ${HANGLY_STATS.categoryCount} categories in Hangly ${HANGLY_STATS.appVersion}`,
-            `${HANGLY_STATS.additionalCharmCount} additional catalogue charms, in four packs`,
+            "The same catalogue on macOS and Windows",
             `Three builds: macOS universal, Windows x64, Windows ARM64 native`,
             `macOS ${RELEASE.macOS.version} at ${mb(RELEASE.macOS.bytes)}, down from 89 MB before 2.0`,
             "Free on every platform, with no account and no paid tier",
@@ -168,11 +168,10 @@ export default function StatsPage() {
           <p>
             This page previously published a different figure, twice. It said 75, which counted
             the SVG files in the website&apos;s artwork directory rather than the product, and
-            before that 80+, which was written by hand. The website carries artwork for{" "}
-            {ARTWORK.plain} of the {HANGLY_STATS.charmCount} — five of the Classic charms are
-            drawn in code rather than from vectors, and a few of the newest have not been copied
-            across. That gap is why counting the website was the wrong method rather than a close
-            approximation.
+            before that 80+, which was written by hand. Today the website shows all {ARTWORK_COVERAGE.withArtwork} of the{" "}
+            {HANGLY_STATS.charmCount}, some as drawings and the newest as the app&apos;s own Library
+            preview, but its drawings alone number fewer. That gap is why counting the website was
+            the wrong method rather than a close approximation.
           </p>
           <p>
             Every charm it contains is listed on <Link href="/charms">the charms page</Link>.
@@ -238,11 +237,10 @@ export default function StatsPage() {
               ["macOS download size", mb(RELEASE.macOS.bytes)],
               ["Minimum macOS", RELEASE.macOS.minimumSystem ? `${RELEASE.macOS.minimumSystem}` : "14.0"],
               ["Current Windows version", RELEASE.windows],
-              ["Minimum Windows", "10 for x64, 11 for ARM64"],
+              ["Minimum Windows", "10 (version 1809) for x64, 11 for ARM64"],
               ["Charms", HANGLY_STATS.charmCount],
               ["Categories", HANGLY_STATS.categoryCount],
-              ["Additional catalogue charms", HANGLY_STATS.additionalCharmCount],
-              ["Website artwork files", ARTWORK.plain],
+              ["Charms shown with artwork on this site", ARTWORK_COVERAGE.withArtwork],
               ["Custom charms", "Any single image"],
               ["Price", "Free, no account, no paid tier"],
               ["macOS code signing", "Developer ID signed and notarised"],

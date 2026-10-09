@@ -69,13 +69,16 @@ const redirects = read("public/_redirects");
 // Served from R2 under a versioned name since 6 Oct 2026; a GitHub release asset under the tag before.
 const winLink = redirects.match(/\/Hangly-([\d.]+)-win-x64-Setup\.exe|Hangly-Windows\/releases\/download\/v([\d.]+)\//);
 const win = winLink ? [winLink[0], winLink[1] ?? winLink[2]] : null;
+// Windows and macOS have shipped together since 2.1.0 (2.3.1 on 6 Oct 2026, both). When the versions match, the
+// Mac feed's date is Windows' release date too; when they do not, no date is claimed.
+const macSame = releases.find((r) => r.product === "hangly" && r.platform !== "Windows" && win && r.version === win[1]);
 if (win) {
   releases.push({
     product: "hangly",
     name: "Hangly",
     platform: "Windows",
     version: win[1],
-    date: "",
+    date: macSame?.date ?? "",
     minimumSystem: "10.0",
     bytes: 0,
     notes: [],

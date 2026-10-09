@@ -1,92 +1,93 @@
 {
   "name": "Hangly",
-  "users": "50K+",
+  "installs": "40,000+",
+  "installsEvidence": "Hangly's installation registry: 43,312 installations on 9 Oct 2026 (macOS and Windows, including 4,648 since uninstalled). Installations, not people. Restate only from a newer count.",
   "platforms": {
     "mac": {
       "label": "macOS",
       "minimumVersion": "macOS 14+",
-      "charms": 81,
+      "charms": 161,
       "ropeStyles": 9,
       "features": [
         "Creator Studio",
         "Subject cut-out",
         "Sound",
         "Multi-monitor support",
-        "Silent updates"
+        "Reduce motion",
+        "Update in Background"
       ]
     },
     "windows": {
       "label": "Windows",
-      "minimumVersion": "Windows 10+",
-      "charms": 70,
+      "minimumVersion": "Windows 10 (version 1809) or later",
+      "charms": 161,
       "ropeStyles": 9,
       "architectures": [
         "Windows x64",
         "Windows ARM64"
       ],
       "features": [
-        "Silent updates",
-        "Multi-monitor support"
+        "Creator Studio",
+        "Subject cut-out",
+        "Sound",
+        "Multi-monitor support",
+        "Reduce motion",
+        "Update in Background"
       ]
     }
   },
   "ropeStyles": [
     {
-      "name": "Golden Thread",
-      "material": "Fine metallic thread",
-      "personality": "Warm & classic"
-    },
-    {
-      "name": "Silver Chain",
-      "material": "Polished links",
-      "personality": "Crisp & modern"
+      "name": "Thread",
+      "material": "Twisted gold",
+      "personality": "Light, quick and quiet"
     },
     {
       "name": "Leather",
-      "material": "Soft leather cord",
-      "personality": "Grounded & tactile"
+      "material": "A flat braid",
+      "personality": "Stiffer, settles sooner"
     },
     {
       "name": "Gold Chain",
-      "material": "Warm metal links",
-      "personality": "Bold & collectible"
+      "material": "Linked gold",
+      "personality": "Heaviest, slowest to swing"
+    },
+    {
+      "name": "Silver Chain",
+      "material": "Linked silver",
+      "personality": "A chain's weight, more life"
     },
     {
       "name": "Neon",
-      "material": "Luminous cord",
-      "personality": "Playful after dark"
-    },
-    {
-      "name": "Velvet",
-      "material": "Soft braided cord",
-      "personality": "Quiet & rich"
+      "material": "A lit filament",
+      "personality": "Lightest, most responsive"
     },
     {
       "name": "Spider Thread",
-      "material": "Fine web line",
-      "personality": "Heroic & light"
+      "material": "Spun silk",
+      "personality": "The thinnest cord of all"
+    },
+    {
+      "name": "Midnight Cord",
+      "material": "A dark braid",
+      "personality": "Heavy, quiet, slow to give up"
     },
     {
       "name": "Temple Thread",
-      "material": "Sacred braided cord",
-      "personality": "Familiar & rooted"
+      "material": "Saffron and vermilion cotton",
+      "personality": "Soft, with some give"
     },
     {
-      "name": "Simple String",
-      "material": "Natural cotton",
-      "personality": "Easy & everyday"
+      "name": "Silver Cord",
+      "material": "Woven silver",
+      "personality": "A chain's shine, a cord's quickness"
     }
   ],
-  "releases": {
-    "macOS": "2.1",
-    "windows": "2.1"
-  },
   "catalogue": {
-    "macCategories": 14,
-    "seasonalCharms": 11
+    "macCategories": 21,
+    "seasonalCharms": 0
   },
   "marketing": {
-    "charms": "100+",
-    "users": "50K+"
+    "installs": "40,000+"
   }
 }

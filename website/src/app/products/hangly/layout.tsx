@@ -8,7 +8,12 @@ import "@fontsource/inter-tight/700.css";
 import "./hangly.css";
 import { pageMetadata } from "@/lib/metadata";
 
-export const metadata = pageMetadata("hangly");
+// The site-wide keywords describe the portfolio (filmmaking, cameras); these pages are about the app.
+export const metadata = {
+  ...pageMetadata("hangly"),
+  keywords: ["Hangly", "desktop charms", "desktop charm app", "hanging charm", "swinging charm", "nazar on desktop",
+    "Mac desktop customisation", "Windows desktop customisation", "Sharan Created This"],
+};
 
 export default function HanglyLayout({
   children,

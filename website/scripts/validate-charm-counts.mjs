@@ -9,8 +9,10 @@
  *   "49"   counted apps/Hangly/ — a copy of the app source two days older
  *          than the shipped build, missing 32 charms
  *
- * The shipped figure is 81, read from Hangly-2.0.0.dmg. Two checks keep it that
- * way:
+ * The shipped figure is 161 in 21 categories, read from Hangly-2.3.1.dmg (it was
+ * 81 in 14 from 2.0.0 — and "eighty-one … fourteen … three cord styles" stayed in
+ * the prose for three releases after the app moved on, spelled out in words this
+ * check did not know). Checks that keep it that way:
  *
  *   1. HANGLY_STATS must agree with the shipped catalogue. If someone edits the
  *      constant without the product changing, the build stops.
@@ -46,7 +48,7 @@ if (product.platforms.mac.charms !== actualCharms) errors.push(`product.json mac
 if (product.catalogue.macCategories !== actualCategories) errors.push(`product.json macOS categories is ${product.catalogue.macCategories}; shipped catalogue says ${actualCategories}`);
 if (product.catalogue.seasonalCharms !== actualSeasonal) errors.push(`product.json seasonal charms is ${product.catalogue.seasonalCharms}; shipped catalogue says ${actualSeasonal}`);
 const statsSrc = read("src/lib/stats/hangly.ts");
-for (const key of ["charmCount", "windowsCharmCount", "ropeStyleCount", "userCount"]) {
+for (const key of ["charmCount", "windowsCharmCount", "ropeStyleCount", "installCount"]) {
   if (!new RegExp(`${key}:\\s*HANGLY_`).test(statsSrc)) errors.push(`HANGLY_STATS.${key} must read from product.json through @/lib/hangly-product`);
 }
 
@@ -55,9 +57,11 @@ for (const key of ["charmCount", "windowsCharmCount", "ropeStyleCount", "userCou
    them beside the word charm, design, collection or category is a bug wherever
    it appears, including in prose. */
 const STALE = new RegExp(
-  String.raw`\b(?:49|55|69|75|100\+|80\+|forty-nine|fifty-five|sixty-nine|seventy-five|over eighty|eighty-plus)\b` +
+  String.raw`\b(?:49|55|69|75|81|100\+|80\+|forty-nine|fifty-five|sixty-nine|seventy-five|over eighty|eighty-plus|eighty-one|eleven|fourteen)\b` +
     String.raw`[^.\n]{0,40}?\b(?:charm|design|collection|categor)|` +
-    String.raw`\b(?:charm|design|collection|categor)[a-z]*[^.\n]{0,30}?\b(?:49|55|69|75|100\+|80\+|seventy-five|over eighty)\b`,
+    String.raw`\b(?:charm|design|collection|categor)[a-z]*[^.\n]{0,30}?\b(?:49|55|69|75|81|100\+|80\+|seventy-five|over eighty|eighty-one)\b` +
+    // Rope styles: three in 2.0, five later, nine since 2.2. A count beside "cord" or "rope" is written as "nine".
+    String.raw`|\b(?:three|3|five|5)\s+(?:cord|rope)s?\b`,
   "i",
 );
 
@@ -75,6 +79,8 @@ const ALLOWED = new Set([
   "src/lib/stats/hangly.ts",
   "src/data/hangly/charm-library.shipped.json",
   "src/data/stats.generated.ts",
+  // Generated from the shipped catalogue: its ids and names (Stranger Things' "Eleven") are data, not claims.
+  "src/data/charms.generated.ts",
   "src/lib/charms/charm-registry.ts",
   "src/lib/verification/claims.ts",
   // Competitor catalogues and prices, not Hangly counts. Named as data so the
@@ -105,6 +111,11 @@ function walk(dir, found = []) {
   return found;
 }
 
+/* ── 4. a count stated in prose must be the current one ───────────────────
+   "<n> charms across <m> collections" is how every page phrases it. Whatever
+   the figure, it has to be today's. */
+const PHRASED = /\b(\d{2,3})\s+(?:ready-made\s+)?(?:charms|designs)\s+across\s+(\d{1,2})\s+(?:named\s+|themed\s+)?(?:collections|categories)/gi;
+
 for (const file of walk("src")) {
   if (ALLOWED.has(file)) continue;
   read(file).split("\n").forEach((line, i) => {
@@ -116,6 +127,12 @@ for (const file of walk("src")) {
 
     const stale = bare.match(STALE);
     if (stale) errors.push(`${file}:${i + 1} stale count — "${stale[0].trim().slice(0, 60)}"`);
+
+    for (const m of bare.matchAll(PHRASED)) {
+      if (Number(m[1]) !== actualCharms || Number(m[2]) !== actualCategories) {
+        errors.push(`${file}:${i + 1} "${m[0]}" — the shipped catalogue has ${actualCharms} charms across ${actualCategories} categories`);
+      }
+    }
 
     if (!PROSE.test(file)) {
       const numeric = bare.match(NUMERIC_COUNT);

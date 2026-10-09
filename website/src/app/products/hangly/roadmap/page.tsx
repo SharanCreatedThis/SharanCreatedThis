@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { Check, CircleDashed } from "lucide-react";
-import { COLLECTIONS, CHARM_TOTAL, CHARM_IN_COLLECTIONS, COLLECTION_COUNT, SEASONAL_COUNT as ADDITIONAL_COUNT, RELEASE, GENERATED_AT } from "@/data/stats.generated";
+import { CHARM_TOTAL, COLLECTION_COUNT, RELEASE, GENERATED_AT } from "@/data/stats.generated";
 import { HANGLY_STATS } from "@/lib/stats/hangly";
 import { HANGLY_APP, ID, breadcrumb, faqNode, serialise, softwareNode } from "@/lib/schema/entities";
 import { InShort, KeyTakeaways, QuickAnswer } from "@/components/aeo/AnswerBlocks";
@@ -27,26 +27,28 @@ type Item = { title: string; detail: string; done: boolean };
 
 const SHIPPED: Item[] = [
   { done: true, title: "Windows out of pre-release", detail: `Windows left 0.9.x with 2.1.0, released the same day as the Mac build. It is at ${RELEASE.windows}; macOS is at ${RELEASE.macOS.version}.` },
-  { done: true, title: "Automatic updates", detail: "Hangly checks weekly through Sparkle and installs in the background. Before 2.0, a new version meant downloading it by hand." },
+  { done: true, title: "One-press updates", detail: "Hangly checks every hour, on macOS and Windows. When a new version is out, a card under the charm offers Update in Background: one press, and Hangly restarts into it by itself. Before 2.0, a new version meant downloading it by hand." },
   { done: true, title: "Release notes on first launch", detail: "Shown once after an update, with a Check for Updates button on the About page for anyone who would rather ask." },
   { done: true, title: "A lighter download", detail: `The app ships the vector artwork it actually draws from rather than a compiled catalogue carrying a bitmap of every unused charm. The download went from 89 MB to ${Math.round(RELEASE.macOS.bytes / 1_000_000)} MB with no change to the artwork.` },
-  { done: true, title: "Five cords and up to three charms on one rope", detail: "Plus eleven additional catalogue charms that arrive on their own, and one Customize window in place of the three it used to take." },
+  { done: true, title: "Nine rope styles and up to three charms on one rope", detail: "With one Customize window in place of the three it used to take." },
+  { done: true, title: `${CHARM_TOTAL} charms across ${COLLECTION_COUNT} categories`, detail: "Pokémon, One Piece, Naruto, Harry Potter, Game of Thrones, Air Jordan and more joined the original collections, the same on macOS and Windows." },
+  { done: true, title: "Pop-ups from the charm", detail: "News about new charms and the update card appear under the charm, swing with it, and leave on their own. Nothing is kept afterwards." },
   { done: true, title: "Native Windows ARM64 build", detail: "A separate native build for Snapdragon machines rather than running the x64 build under emulation. Almost nothing else in this category publishes one." },
-  { done: true, title: "Connected artwork finished for every charm", detail: `All ${CHARM_TOTAL} charms now ship both renderings — the plain drawing and the connected one with the thread ending at that charm's own loop. Six collections shipped before their connected art did; none fall back any more.` },
+  { done: true, title: "Connected artwork for the original collections", detail: "Every charm from the 2.0 collections has both renderings on this site: the plain drawing and the connected one with the thread ending at that charm's own loop." },
   { done: true, title: "Charm artwork optimised", detail: "Several SVGs carried over 500 KB of embedded raster each. Re-encoding took the artwork directory from 38.4 MB to 8.3 MB with verified visual parity." },
 ];
 
 const NEXT: Item[] = [
   { done: false, title: "Windows code signing", detail: "The Windows installer is unsigned, so SmartScreen shows a warning once on first run. A certificate removes it. This is the single biggest friction point in the Windows install today." },
   { done: false, title: "Per-collection pages", detail: "So each collection can rank on its own terms rather than as a section of one product page." },
-  { done: false, title: "Surface the additional catalogue charms on the site", detail: `${ADDITIONAL_COUNT} charms ship with complete artwork but belong to no collection on the product page — the additional and lucky set that the app surfaces on its own. They are real and installed; the website simply does not list them, which is why counting the collections understated the library by a quarter.` },
+  { done: false, title: "Drawn artwork for the newest charms", detail: "The charms added since 2.0 show the app's own Library preview on this site. Drawn versions, with the thread ending at each charm's loop, will replace them." },
 ];
 
 const NOT_PLANNED: Item[] = [
   { done: false, title: "A paid tier", detail: "There is no upgrade to sell and none is planned. Hangly is free because it was not built to be a business." },
   { done: false, title: "Accounts or sign-in", detail: "Nothing about a charm on a cord requires knowing who you are." },
   { done: false, title: "Roaming characters", detail: "The charm hangs from a fixed anchor and is click-through, on purpose. Making it wander would break the one property the whole design exists to guarantee: that it cannot interrupt you." },
-  { done: false, title: "Advertising or analytics in the app", detail: "The privacy page lists everything that leaves your desktop. Adding to that list is not on the roadmap." },
+  { done: false, title: "Advertising, or selling data", detail: "Hangly shows no ads and sells nothing. The privacy page lists everything that leaves your desktop, and it changes before the app does." },
 ];
 
 const FAQS = [
@@ -56,7 +58,7 @@ const FAQS = [
   },
   {
     q: "How many charms does Hangly actually have?",
-    a: `${CHARM_TOTAL}, each shipping both renderings — the plain drawing and the connected one with the hanging thread. ${CHARM_IN_COLLECTIONS} of them are named across the ${COLLECTION_COUNT} collections on the product page; the other ${ADDITIONAL_COUNT} are additional and lucky charms the app surfaces on its own. Every figure is counted from the artwork directory at build time rather than written by hand.`,
+    a: `${CHARM_TOTAL}, across ${COLLECTION_COUNT} categories, the same on macOS and Windows, and every one is in a collection on the product page. The figure is counted at build time from the catalogue inside the shipped app, not written by hand.`,
   },
   {
     q: "Can I request a charm or a collection?",
@@ -149,8 +151,8 @@ export default function RoadmapPage() {
         <QuickAnswer>
           Hangly is at {RELEASE.macOS.version} on macOS and {RELEASE.windows} on Windows, both
           released together since 2.1.0. The next work is code-signing the Windows installer so
-          SmartScreen stops warning, finishing the connected artwork for six
-          of the {COLLECTIONS.length} collections, and giving each collection its own page. There
+          SmartScreen stops warning, drawing website artwork for the charms added since 2.0,
+          and giving each collection its own page. There
           is no paid tier planned, now or later.
         </QuickAnswer>
 
@@ -158,15 +160,15 @@ export default function RoadmapPage() {
           points={[
             `macOS is at ${RELEASE.macOS.version}; Windows is at ${RELEASE.windows}, released alongside it`,
             "Next up: a code-signing certificate to silence SmartScreen on Windows",
-            `Six of the ${COLLECTIONS.length} collections still need their connected artwork drawn`,
+            "The newest charms still show the app's preview on this site, until drawn versions replace them",
             "No dates are published — items ship when ready and the changelog records when",
             "No paid tier, no accounts and no roaming characters, ever",
           ]}
         />
 
         <Items
-          id="shipped" heading="Shipped in 2.0" mark="done"
-          intro="Version 2.0 was the largest release so far and the first that could update itself. These are done and live."
+          id="shipped" heading="Shipped" mark="done"
+          intro="Done and live, from 2.0, the first version that could update itself, to the current release."
           items={SHIPPED}
         />
 
@@ -175,29 +177,6 @@ export default function RoadmapPage() {
           intro="Roughly in order. The Windows items come first because the gap between the two platforms is the thing people notice most."
           items={NEXT}
         />
-
-        <section aria-labelledby="additional">
-          <h2 id="additional">The charms the website does not list</h2>
-          <p>
-            Hangly ships {CHARM_TOTAL} charms with complete artwork. Only{" "}
-            {CHARM_IN_COLLECTIONS} of them are named in the {COLLECTION_COUNT} collections on the
-            product page. The other {ADDITIONAL_COUNT} are the additional and lucky set — the special catalogue,
-            Diwali, winter, and luck charms from several cultures — which the app surfaces on its
-            own as the year turns.
-          </p>
-          <p>
-            That gap is the reason the site understated its own library for a while. Counting the
-            collections gives {CHARM_IN_COLLECTIONS}; counting what actually installs gives{" "}
-            {CHARM_TOTAL}. Every figure published now comes from{" "}
-            <code>scripts/generate-stats.mjs</code>, which counts the artwork directory at build
-            time, so the two can no longer drift apart.
-          </p>
-          <p>
-            Giving the additional set a home on the product page is on the list above. It is the
-            cheapest remaining content work and the only one that makes the published count and
-            the installed count the same number.
-          </p>
-        </section>
 
         <Items
           id="not-planned" heading="Deliberately not planned" mark="no"
@@ -229,7 +208,7 @@ export default function RoadmapPage() {
         </section>
 
         <InShort>
-          2.0 brought self-updating, a much smaller download, five cords and a native Windows
+          2.0 brought self-updating, a much smaller download, new rope styles and a native Windows
           ARM64 build. 2.1 brought Windows out of pre-release, released with the Mac build. Next is signing
           the Windows installer and finishing the connected artwork for six collections. No dates, no paid
           tier, and no plans to make the charm wander.

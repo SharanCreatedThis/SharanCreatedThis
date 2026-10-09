@@ -8,7 +8,7 @@
  * not a page, and query-string URLs would generate hundreds of near-duplicate
  * indexable pages out of one catalogue.
  *
- * With JavaScript off, the filter bar is absent and all 81 charms are visible,
+ * With JavaScript off, the filter bar is absent and every charm is visible,
  * which is the correct degradation for a page whose job is to list them.
  */
 

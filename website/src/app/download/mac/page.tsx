@@ -42,7 +42,7 @@ const FAQS = [
   },
   {
     q: "How does Hangly update itself on a Mac?",
-    a: "Through Sparkle. It checks weekly against the feed on this site and installs quietly in the background. There is a Check for Updates button on the About page if you would rather ask.",
+    a: "Through Sparkle. It checks the feed on this site every hour; when a new version is out, a card under the charm offers Update in Background, and one press downloads it and restarts Hangly into it. There is a Check for Updates button on the About page if you would rather ask.",
   },
   {
     q: "Where does Hangly put itself?",

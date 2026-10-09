@@ -188,7 +188,7 @@ export const PAGES: Record<PageKey, PageSeo> = {
     path: "/products/hangly/privacy",
     title: "Hangly · Privacy",
     description:
-      "What Hangly sends, what it never sends, and how to switch it off. Three things leave your desktop, and two of them are optional.",
+      "What Hangly sends: an installation record, anonymous usage events, crash reports and update checks. No account, and nothing from your screen or files.",
     image: "/og/hangly-privacy.png",
     changeFrequency: "yearly",
     priority: 0.3,
@@ -315,7 +315,6 @@ export function dynamicPages(): PageSeo[] {
     // to, which is what turns an assertion into something a reader can check.
     { path: "/charms", title: "Every Hangly charm", description: "The complete catalogue.", ...shared, priority: 0.9 },
     { path: "/charms/lucky", title: "Luck and protection charms", description: "Twelve cultural charms, free.", ...shared, priority: 0.8 },
-    { path: "/charms/seasonal", title: "Seasonal charms", description: "Eleven charms in four packs.", ...shared, priority: 0.7 },
     { path: "/faq", title: "Hangly FAQ", description: "Fifty answers about Hangly.", ...shared, priority: 0.8 },
     { path: "/compare", title: "Hangly compared", description: "Eight honest comparisons.", ...shared, priority: 0.7 },
     { path: "/guides", title: "Guides", description: "Desktop charms, pets and Mac customisation.", ...shared, priority: 0.7 },

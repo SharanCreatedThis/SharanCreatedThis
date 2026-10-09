@@ -163,7 +163,6 @@ export default function LuckyCharmsPage() {
           <h2 id="lucky-more">More</h2>
           <ul className="comparison-others">
             <li><Link href="/charms">Every Hangly charm</Link></li>
-            <li><Link href="/charms/seasonal">Seasonal charms</Link></li>
             <li><Link href="/compare/lucky-dangle">Hangly compared with Lucky Dangle</Link></li>
             <li><Link href="/guides/best-desktop-charm-apps-for-mac">Every desktop charm app, compared</Link></li>
             <li><Link href="/download">Download Hangly</Link></li>

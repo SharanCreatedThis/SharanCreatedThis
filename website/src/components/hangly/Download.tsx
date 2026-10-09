@@ -205,8 +205,9 @@ export function DownloadNote({ className = 'download-note' }: { className?: stri
       )}{' '}
       <span>•</span>{' '}
       <button type="button" className="platform-switch" onClick={openPlatformSheet} aria-haspopup="dialog">
-        All platforms
-      </button>
+        Other platforms
+      </button>{' '}
+      <span>•</span> <a className="platform-switch" href="/install">Install help</a>
     </p>
   );
 }
@@ -320,7 +321,8 @@ export function PlatformSheet() {
       </ul>
 
       <p className="platform-foot">
-        Hangly is free on every platform. Windows is young — it is finding its feet.
+        Hangly is free on every platform. On Windows, SmartScreen may ask first: choose More info, then Run anyway.
+        Help installing or removing Hangly is in the <a href="/install">install guide</a>.
       </p>
     </dialog>
   );

@@ -12,11 +12,17 @@
  * `Collections.tsx`, and the four that differ in formatting — "Cristiano
  * Ronaldo" against "Ronaldo 7" — were confirmed by hand against both files.
  *
+ * A charm with no website SVG shows the app's own Library preview as WebP,
+ * imported by `scripts/import-charm-previews.mjs` and listed in
+ * `charm-artwork-webp.json` (98 of the 161 in 2.3.1: everything added since 2.0,
+ * and the five Classic charms the app draws in code).
+ *
  * `scripts/validate-charm-artwork.mjs` re-checks every path on each build, so
  * a rename in either place fails rather than ships a broken image.
  */
 
 import { SHIPPED_CHARMS } from "@/lib/stats/hangly";
+import WEBP_ARTWORK_IDS from "@/data/hangly/charm-artwork-webp.json";
 
 /** Shipped charm id → the filename its artwork is stored under. */
 export const ARTWORK_ALIAS: Record<string, string> = {
@@ -40,31 +46,29 @@ export const ARTWORK_ALIAS: Record<string, string> = {
   realMadridCrest: "football28", fcBarcelonaCrest: "football29",
 };
 
+/** Charms shown from the app's preview (WebP) because the website has no SVG for them. */
+export const WEBP_ARTWORK = new Set<string>(WEBP_ARTWORK_IDS);
+
 /**
- * Charms the website has no artwork for.
- *
- * The five Classic charms are drawn procedurally in Swift rather than from a
- * vector, so no file exists to copy — see `docs/charms-build-plan.md`.
- * `spiderManSwinging` and `theWeeknd` shipped in 2.0 and were never copied
- * across. They render as a labelled placeholder rather than a broken image,
- * and they are left out of image schema, because a page may not claim an image
- * it does not have.
+ * Charms the website has no artwork for. Empty since 2.3.1's previews were
+ * imported. A charm listed here renders as a labelled placeholder rather than a
+ * broken image, and is left out of image schema, because a page may not claim
+ * an image it does not have.
  */
-export const CHARMS_WITHOUT_ARTWORK = new Set([
-  "circle", "star", "heart", "diamond", "camera",
-  "spiderManSwinging", "theWeeknd",
-]);
+export const CHARMS_WITHOUT_ARTWORK = new Set([] as string[]);
 
 const fileFor = (id: string) => ARTWORK_ALIAS[id] ?? id;
 
 /** Plain artwork path, or null when none exists. */
 export function artworkPath(id: string): string | null {
-  return CHARMS_WITHOUT_ARTWORK.has(id) ? null : `/charms/${fileFor(id)}.svg`;
+  if (CHARMS_WITHOUT_ARTWORK.has(id)) return null;
+  return WEBP_ARTWORK.has(id) ? `/charms/${id}.webp` : `/charms/${fileFor(id)}.svg`;
 }
 
-/** The rendering with the hanging thread, or null. */
+/** The rendering with the hanging thread, or null. A preview has no thread drawn in, so it is its own. */
 export function connectedArtworkPath(id: string): string | null {
-  return CHARMS_WITHOUT_ARTWORK.has(id) ? null : `/charms/connected/${fileFor(id)}.svg`;
+  if (CHARMS_WITHOUT_ARTWORK.has(id)) return null;
+  return WEBP_ARTWORK.has(id) ? `/charms/${id}.webp` : `/charms/connected/${fileFor(id)}.svg`;
 }
 
 export const ARTWORK_COVERAGE = {

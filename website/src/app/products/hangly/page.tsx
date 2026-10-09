@@ -7,7 +7,6 @@ import CreatorStudio from "@/components/hangly/CreatorStudio";
 import Collections from "@/components/hangly/Collections";
 import RopeStudio from "@/components/hangly/RopeStudio";
 import Setup from "@/components/hangly/Setup";
-import KeepInstalled from "@/components/hangly/KeepInstalled";
 import Creator from "@/components/hangly/Creator";
 import CommunityUpdates from "@/components/hangly/CommunityUpdates";
 import Faq from "@/components/hangly/Faq";
@@ -25,7 +24,7 @@ export default function Home() {
     <BreadcrumbJsonLd trail={[{ name: "Home", path: "/" }, { name: "Products", path: "/products" }, { name: "Hangly", path: PAGES.hangly.path }]} />
     <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(howTo).replace(/</g, "\\u003c") }} />
     <PageMotion /><a className="skip-link" href="#features">Skip to content</a>
-    <main><Hero /><Stats /><CreatorStudio /><Collections /><RopeStudio /><Demo /><Setup /><KeepInstalled /><Creator /><WhyHangly /><CommunityUpdates /><Faq /><CTA /></main>
+    <main><Hero /><Stats /><WhyHangly /><CreatorStudio /><Collections /><RopeStudio /><Demo /><Setup /><CommunityUpdates /><Faq /><Creator /><CTA /></main>
     <Footer /><PlatformSheet /><MobileDownloadCta />
   </>;
 }

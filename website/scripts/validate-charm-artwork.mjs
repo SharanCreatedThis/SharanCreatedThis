@@ -37,6 +37,9 @@ const without = new Set(
   [...withoutBody.slice(0, withoutBody.indexOf("]);")).matchAll(/"([^"]+)"/g)].map((m) => m[1]),
 );
 
+// Charms shown from the app's preview, imported by scripts/import-charm-previews.mjs.
+const webp = new Set(JSON.parse(read("src/data/hangly/charm-artwork-webp.json")));
+
 const errors = [];
 const warnings = [];
 const fileFor = (id) => alias[id] ?? id;
@@ -44,6 +47,13 @@ const fileFor = (id) => alias[id] ?? id;
 let resolved = 0;
 for (const charm of shipped.charms) {
   const file = fileFor(charm.id);
+  if (webp.has(charm.id)) {
+    const preview = `public/charms/${charm.id}.webp`;
+    if (!existsSync(join(root, preview))) errors.push(`${charm.id} is listed as a WebP preview, but ${preview} does not exist`);
+    else if (existsSync(join(root, `public/charms/${file}.svg`))) errors.push(`${charm.id} has an SVG now — rerun scripts/import-charm-previews.mjs to drop its preview`);
+    else resolved++;
+    continue;
+  }
   const plain = `public/charms/${file}.svg`;
   const exists = existsSync(join(root, plain));
 
@@ -74,9 +84,10 @@ for (const [id, file] of Object.entries(alias)) {
 const shippedIds = new Set(shipped.charms.map((c) => c.id));
 const used = new Set(shipped.charms.map((c) => fileFor(c.id)));
 const orphans = readdirSync(join(root, "public/charms"))
-  .filter((f) => f.endsWith(".svg"))
-  .map((f) => f.replace(/\.svg$/, ""))
+  .filter((f) => f.endsWith(".svg") || f.endsWith(".webp"))
+  .map((f) => f.replace(/\.(svg|webp)$/, ""))
   .filter((f) => !used.has(f) && !shippedIds.has(f));
+for (const id of webp) if (!shippedIds.has(id)) errors.push(`charm-artwork-webp.json lists ${id}, which is not in the shipped catalogue`);
 
 const ESC = String.fromCharCode(27);
 const c = (n, t) => `${ESC}[${n}m${t}${ESC}[0m`;

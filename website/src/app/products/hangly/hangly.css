@@ -186,6 +186,14 @@
 :where(.hangly-container) .collection-card.breaking-bad{background:radial-gradient(ellipse at 50% 30%,#4e8f5c3b,transparent 70%),#111713}
 :where(.hangly-container) .collection-card.friends{background:radial-gradient(ellipse at 50% 30%,#c95d4240,transparent 70%),#1a1412}
 :where(.hangly-container) .collection-card.dream-catcher{background:radial-gradient(ellipse at 50% 30%,#6b719942,transparent 70%),#13141a}
+:where(.hangly-container) .collection-card.harry-potter{background:radial-gradient(ellipse at 50% 30%,#a8812e3a,transparent 70%),#16130f}
+:where(.hangly-container) .collection-card.got{background:radial-gradient(ellipse at 50% 30%,#6f7f9438,transparent 70%),#121416}
+:where(.hangly-container) .collection-card.one-piece{background:radial-gradient(ellipse at 50% 30%,#c0392b38,transparent 70%),#181211}
+:where(.hangly-container) .collection-card.naruto{background:radial-gradient(ellipse at 50% 30%,#e0711f3a,transparent 70%),#181310}
+:where(.hangly-container) .collection-card.aot{background:radial-gradient(ellipse at 50% 30%,#7d6a4a3a,transparent 70%),#151310}
+:where(.hangly-container) .collection-card.pokemon{background:radial-gradient(ellipse at 50% 30%,#d4b0263a,transparent 70%),#17150e}
+:where(.hangly-container) .collection-card.ben10{background:radial-gradient(ellipse at 50% 30%,#3fae4a3a,transparent 70%),#101711}
+:where(.hangly-container) .collection-card.jordan{background:radial-gradient(ellipse at 50% 30%,#b8282f3a,transparent 70%),#181112}
 
 /* The privacy page: one column of prose, in the same voice as the rest. */
 :where(.hangly-container) .legal{padding:40px 0 120px;max-width:760px}
@@ -629,3 +637,5 @@
   :where(.hangly-container) .collection-filters button{min-height:44px}
   :where(.hangly-container) .creator h2{font-size:clamp(34px,9vw,43px);letter-spacing:-1.5px;text-wrap:balance}
 }
+/* Standalone text links get a 24 px target (WCAG 2.5.8); links inside a sentence are exempt and stay as text. */
+:where(.hangly-container) :is(.footer-top nav a,.footer-bottom a,.hero-bottom a,.highlight-copy a,.updates-links a){display:inline-flex;align-items:center;min-height:24px}

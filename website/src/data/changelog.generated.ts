@@ -44,6 +44,17 @@ export const RELEASES: Release[] = [
   {
     "product": "hangly",
     "name": "Hangly",
+    "platform": "Windows",
+    "version": "2.3.1",
+    "date": "2026-10-06",
+    "minimumSystem": "10.0",
+    "bytes": 0,
+    "notes": [],
+    "notesUrl": "https://github.com/SharanCreatedThis/Hangly-Windows/releases/tag/v2.3.1"
+  },
+  {
+    "product": "hangly",
+    "name": "Hangly",
     "platform": "macOS",
     "version": "2.3.0",
     "date": "2026-10-04",
@@ -94,16 +105,5 @@ export const RELEASES: Release[] = [
     "bytes": 17851522,
     "notes": [],
     "notesUrl": "https://www.sharancreatedthis.in/products/vision/release-notes.html"
-  },
-  {
-    "product": "hangly",
-    "name": "Hangly",
-    "platform": "Windows",
-    "version": "2.3.1",
-    "date": "",
-    "minimumSystem": "10.0",
-    "bytes": 0,
-    "notes": [],
-    "notesUrl": "https://github.com/SharanCreatedThis/Hangly-Windows/releases/tag/v2.3.1"
   }
 ];

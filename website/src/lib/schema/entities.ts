@@ -169,7 +169,7 @@ export const HANGLY_APP: AppFacts = {
   description:
     `A free desktop app for macOS and Windows that hangs a decorative charm from the top of your screen on a rope with real pendulum physics. ${HANGLY_COPY.growth}, plus custom charms from your own image.`,
   path: "/products/hangly",
-  operatingSystem: ["macOS 14", "Windows 10"],
+  operatingSystem: ["macOS 14 or later", "Windows 10 (version 1809) or later", "Windows 11 on ARM"],
   applicationCategory: "DesktopEnhancementApplication",
   applicationSubCategory: "Desktop customisation",
   softwareVersion: `macOS ${HANGLY_STATS.macVersion}; Windows ${HANGLY_STATS.windowsVersion}`,
@@ -180,8 +180,10 @@ export const HANGLY_APP: AppFacts = {
     HANGLY_COPY.exactWithCategories,
     "Custom charms from any image",
     `${HANGLY_STATS.ropeStyleCount} rope styles and adjustable size`,
-    "Click-through: never intercepts a click",
-    "Multiple charms and multi-monitor placement",
+    "Clicks pass through everywhere but the charm",
+    "Up to three charms on one rope, on the display you choose",
+    "Creator Studio with subject cut-out",
+    "One-press updates",
     "Native Windows ARM64 build",
   ],
 };
