@@ -75,6 +75,9 @@ export const CHECKED = "2026-09-24";
 /** Products read for the three long guides, a day later than the rest. */
 export const CHECKED_2 = "2026-09-25";
 
+/** Competitors re-read on 9 Oct 2026: prices, platforms and features changed since September. */
+export const CHECKED_3 = "2026-10-09";
+
 /* Shared entries, so a product is described identically wherever it appears.
    Entity consistency is the point: a knowledge graph treats two different
    descriptions of one product as evidence of uncertainty. */
@@ -83,7 +86,7 @@ export const HANGLY: GuideEntry = {
   url: "https://www.sharancreatedthis.in/products/hangly",
   what: "Hangs a charm from the top of your screen on a cord with real pendulum physics. 161 charms across 21 collections, plus any image of your own as a charm.",
   bestFor: "Anyone who wants decoration that never interrupts, on Mac or Windows",
-  platforms: "macOS 14+ (Apple Silicon & Intel), Windows 10+ (x64 & ARM64)",
+  platforms: "macOS 14+ (Apple Silicon & Intel), Windows 10 1809+ (x64), Windows 11 (native ARM64)",
   price: "Free",
   note: `Both builds are at ${RELEASE.macOS.version} and released together; the Windows build is not code-signed yet.`,
 };
@@ -91,11 +94,11 @@ export const HANGLY: GuideEntry = {
 export const LUCKY_DANGLE: GuideEntry = {
   name: "Lucky Dangle",
   url: "https://luckydangle.app",
-  what: "Choose a lucky charm and hang it from the top of your screen, where it sways while you work and stays out of every click.",
-  bestFor: "A simpler product, if its curated charm set is the one you want",
+  what: "Hangs a lucky charm from the top of your screen on Mac or Windows, where it sways and stays out of every click. A dozen traditional charms, each with a small ritual, plus your own photo (\"hang someone you love\") or any emoji.",
+  bestFor: "A polished, paid charm app with a ritual for each charm",
   platforms: "Mac and Windows",
-  price: "See their site",
-  note: "Does not publish a charm count or advertise custom images.",
+  price: "₹777 / $7.77 once; \"Extra Lucky\" ₹1,111 / $11.11 (9 Oct 2026)",
+  note: "Paid, once. No subscription, account or licence key, per their site.",
 };
 
 export const SCREEN_DANGLE: GuideEntry = {
@@ -111,11 +114,11 @@ export const SCREEN_DANGLE: GuideEntry = {
 export const DANGLEJOY: GuideEntry = {
   name: "DangleJoy",
   url: "https://danglejoy.com",
-  what: "Animated charms that hang, sway and move naturally on screen, with cultural icons and lucky symbols.",
-  bestFor: "Animated cultural and lucky charm designs",
-  platforms: "See their site",
-  price: "See their site",
-  note: "No published charm count, and custom images are not advertised.",
+  what: "Animated charms that hang, sway and move on screen: more than 30, from the Maneki Neko and Omamori to film stars, with your own custom charms.",
+  bestFor: "Cultural and celebrity charms, and Android as well as desktop",
+  platforms: "macOS 13+ (Mac App Store), Windows, Android",
+  price: "One-time: $3.99 on the Mac App Store; $4.99 lifetime elsewhere",
+  note: "Its site is in 12 languages, including Tamil, Hindi and Arabic.",
 };
 
 export const CHARMLY: GuideEntry = {
@@ -131,31 +134,31 @@ export const CHARMLY: GuideEntry = {
 export const SCREENCHARMS: GuideEntry = {
   name: "Screen Charms",
   url: "https://screencharms.com",
-  what: "A free macOS menu bar app that hangs a decorative charm from the top of the screen on a physics-based string, which you can swing and flick.",
-  bestFor: "A free, minimal Mac-only charm",
-  platforms: "macOS",
-  price: "Free",
-  note: "Mac only.",
+  what: "A macOS menu bar app that hangs a decorative charm on a physics string, with a Pomodoro focus timer that swings the charm and plays a wind chime when time is up.",
+  bestFor: "A Mac-only charm with a built-in focus timer",
+  platforms: "macOS 13+",
+  price: "Free with one charm (Turkey Nazar); PRO $4.99 once for the full library and custom images",
+  note: "Mac only. The free tier is a single charm; the library and custom images are PRO.",
 };
 
 export const DRISHTI_DANGLE: GuideEntry = {
   name: "Drishti Dangle",
   url: "https://drishtidangle.com",
-  what: "Indian-inspired desktop charms and musical wind chimes for Windows and Mac, with twelve designs.",
+  what: "Indian-inspired desktop charms and musical wind chimes for Windows and Mac: eight charms and four wind chimes, animated 3D models.",
   bestFor: "Indian-inspired charms and wind chimes specifically",
   platforms: "Windows and Mac",
-  price: "₹99",
-  note: "Paid, and the only one here offering musical wind chimes.",
+  price: "₹99 per device, once",
+  note: "On 9 Oct 2026 its site said \"Coming soon\" and purchases were temporarily unavailable. The only one here with musical wind chimes.",
 };
 
 export const BOOK_MY_LUCK: GuideEntry = {
   name: "Book My Luck",
   url: "https://bookmyluck.com",
-  what: "Choose a charm for your Mac or Windows desktop, watch it sway, and give it a playful flick. Twenty-two charms listed, and an emoji can be hung instead.",
-  bestFor: "A paid charm app with a published catalogue and bundle licensing",
+  what: "Choose a charm for your Mac or Windows desktop, watch it sway and give it a flick. Traditional charms plus Halloween and Christmas collections; an emoji can be hung instead.",
+  bestFor: "A paid charm app with seasonal collections and gift bundles",
   platforms: "macOS 14+, Windows 10 and 11",
-  price: "\u20b999 once; \u20b9297 for five licences",
-  note: "Paid rather than free, and the catalogue is 22 charms against Hangly's 161. They do publish a count, which most of this category does not.",
+  price: "Paid once per computer, priced by region (AED 36.49 on 9 Oct 2026)",
+  note: "Requires online licence activation. Bundles for gifting (buy 2, get 1 free).",
 };
 
 export const DESKTOP_GOOSE: GuideEntry = {
@@ -191,11 +194,11 @@ export const ONEKO: GuideEntry = {
 export const OPENPETS: GuideEntry = {
   name: "OpenPets",
   url: "https://openpets.dev",
-  what: "Free open-source desktop pets with a pet gallery, plugins and options.",
+  what: "Free open-source desktop pets with a pet gallery, a plugin SDK, optional coding-tool integrations and, since v4, an AI assistant you can type or talk to.",
   bestFor: "People who want open source and to modify the pet",
-  platforms: "See their site",
+  platforms: "Windows, macOS, Linux",
   price: "Free, open source",
-  note: "The only genuinely open-source option in this list.",
+  note: "The only genuinely open-source pet app in this list; increasingly an assistant as well as a pet.",
 };
 
 export const MICROJOYZ: GuideEntry = {
@@ -204,7 +207,7 @@ export const MICROJOYZ: GuideEntry = {
   what: "A desktop pet app for Mac with animated throwable pets, reminders, social features and mini-games.",
   bestFor: "The most feature-rich desktop pet on Mac",
   platforms: "macOS",
-  price: "See their site",
+  price: "$9.99, with a 3-day free trial",
   note: "Considerably more than decoration — reminders, social features, games.",
 };
 
@@ -213,9 +216,9 @@ export const CAT_FIDGET: GuideEntry = {
   url: "https://www.highroadsoftware.com/apps/catfidget",
   what: "A tiny desktop cat for the Mac menu bar you can pet, feed, drag and fling, with breeds and accessories.",
   bestFor: "A menu bar cat with no account or tracking",
-  platforms: "macOS",
-  price: "See their site",
-  note: "Their site states no account, ads, analytics or tracking.",
+  platforms: "macOS 14+ (Mac App Store)",
+  price: "Free, with an optional paid pass",
+  note: "Their site states no account, ads, analytics or tracking. The app is in 20 languages.",
 };
 
 export const DOCKITTY: GuideEntry = {
@@ -250,12 +253,62 @@ export const RUNCAT: GuideEntry = {
 
 export const TYPIBARA: GuideEntry = {
   name: "Typibara",
-  url: "https://www.typibara.com",
-  what: "A customisable typing companion that syncs with your keystrokes.",
+  url: "https://apps.apple.com/us/app/typibara/id6701996122",
+  what: "A customisable capybara typing companion that reacts to your keystrokes, with skins and per-app visibility.",
   bestFor: "Something that reacts while you write",
-  platforms: "macOS",
-  price: "See their site",
+  platforms: "macOS 14.6+ (Mac App Store)",
+  price: "$4.99",
   note: "Tied to typing; idle when you are not.",
+};
+
+export const DESK_DANGLE: GuideEntry = {
+  name: "Desk Dangle",
+  url: "https://deskdangle.com",
+  what: "A small companion that hangs from the screen edge or the MacBook notch and swings when flicked: evil eye, nimbu mirchi, superheroes and a cat, or any PNG, JPG or WebP of your own.",
+  bestFor: "A free charm that can hang from the MacBook notch",
+  platforms: "macOS 11+ (universal), Windows 10 and 11 (Microsoft Store or .exe)",
+  price: "Free",
+  note: "Free with no account; on the Microsoft Store. A small built-in set of charms.",
+};
+
+export const DESKCHARM: GuideEntry = {
+  name: "DeskCharm",
+  url: "https://github.com/shivawwww/deskcharm-app",
+  what: "An open-source, always-on-top charm on a simulated thread: ten charms from around the world, each with a click ritual, or any emoji.",
+  bestFor: "Developers who want to build and change a charm app themselves",
+  platforms: "Built from source (Tauri: macOS, Windows, Linux)",
+  price: "Free, MIT licence",
+  note: "No published installers on 9 Oct 2026: you build it with Node.js and Rust.",
+};
+
+export const GOOGLY_EYES: GuideEntry = {
+  name: "Googly Eyes",
+  url: "https://sindresorhus.com/googly-eyes",
+  what: "A pair of googly eyes in the Mac menu bar that follow the cursor and blink when you click.",
+  bestFor: "A tiny menu bar joke that also helps you find the cursor",
+  platforms: "macOS 26+",
+  price: "Free",
+  note: "Lives in the menu bar rather than hanging below it; needs the newest macOS.",
+};
+
+export const CHARMLING: GuideEntry = {
+  name: "Charmling",
+  url: "https://peerlist.io/abinesh_dev/project/charmling",
+  what: "Ninety-nine original 3D charms for the Mac menu bar on an elastic cord, photo charms, and charms that grow over time, such as a dragon that hatches.",
+  bestFor: "Charms that change and grow over time",
+  platforms: "macOS",
+  price: "Not published",
+  note: "Known only from its Peerlist listing on 9 Oct 2026; no site of its own was found.",
+};
+
+export const PETPALBAR: GuideEntry = {
+  name: "PetPalBar",
+  url: "https://apps.apple.com/us/app/petpalbar/id6744963097",
+  what: "A menu bar pet that reacts to your habits: drink water, take breaks, finish focus sessions.",
+  bestFor: "A wellbeing nudge with a face",
+  platforms: "macOS 13.5+ (Mac App Store)",
+  price: "$5.99",
+  note: "Not enough App Store ratings yet to show an average.",
 };
 
 

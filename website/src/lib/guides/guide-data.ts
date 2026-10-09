@@ -24,7 +24,8 @@ import { DESKTOP_GOOSE_ALTERNATIVES } from "./content/desktop-goose-alternatives
 import {
   HANGLY, LUCKY_DANGLE, SCREEN_DANGLE, DANGLEJOY, CHARMLY, SCREENCHARMS, DRISHTI_DANGLE,
   BOOK_MY_LUCK, DESKTOP_GOOSE, SHIMEJI, ONEKO, OPENPETS, MICROJOYZ, CAT_FIDGET, DOCKITTY,
-  DOCKLING, RUNCAT, TYPIBARA, CHECKED,
+  DOCKLING, RUNCAT, TYPIBARA, CHECKED, CHECKED_3, DESK_DANGLE, DESKCHARM, GOOGLY_EYES, CHARMLING, PETPALBAR,
+  PETS_THERAPY, VPET, BONGO_CAT,
 } from "./entries";
 
 export const GUIDES: Guide[] = [
@@ -34,20 +35,20 @@ export const GUIDES: Guide[] = [
   {
     slug: "best-desktop-charm-apps-for-mac",
     takeaways: [
-      "Hangly, Screen Dangle and Screen Charms are free; Drishti Dangle is \u20b999",
-      "Only Hangly and Screen Dangle also run on Windows, and only Hangly ships a native ARM64 build",
-      "Drishti Dangle is the only one with musical wind chimes",
+      "Free: Hangly, Screen Dangle and Desk Dangle; Screen Charms is free for one charm. Lucky Dangle, Book My Luck, DangleJoy and Drishti Dangle are paid once",
+      "Hangly has by far the largest free collection: 161 charms across 21 categories, plus your own images",
+      "Mac and Windows: Hangly, Lucky Dangle, Screen Dangle, Desk Dangle, Book My Luck, DangleJoy and Drishti Dangle. Only Hangly ships a native Windows ARM64 build",
       "Screen Dangle is a studio for building a charm; Hangly is a library of finished ones",
       "All of them are click-through, so none will interrupt your work",
     ],
     inShort:
-      "Four of the five are free, so the cost of trying is your time. Take Hangly for the widest ready-made collection and the only Windows ARM64 build, Screen Dangle if configuring the charm is the appeal, Drishti Dangle if you want wind chimes, and Screen Charms if you want the smallest possible Mac app.",
+      "Several are free, so the cost of trying is your time. Take Hangly for the largest free collection, your own images and the only native Windows ARM64 build; Screen Dangle if configuring the charm is the appeal; Desk Dangle for a free charm that hangs from the MacBook notch; Lucky Dangle if you want a ritual for every charm and do not mind paying; Drishti Dangle for wind chimes once it is on sale again.",
     title: "Best Desktop Charm Apps for Mac (2026)",
     description:
-      "Eight desktop charm apps for macOS compared — Hangly, Lucky Dangle, Screen Dangle, Charmly, Screen Charms, Drishti Dangle and more. Prices and platforms.",
+      "Twelve desktop charm apps for Mac compared: Hangly, Lucky Dangle, Screen Dangle, Desk Dangle, Screen Charms, Book My Luck and more. Prices, platforms, free options.",
     h1: "Best Desktop Charm Apps for Mac",
     summary:
-      "A desktop charm hangs from the top of your screen and sways, staying out of every click. For macOS in 2026 the free options are Hangly, Screen Dangle and Screen Charms; Drishti Dangle is paid at ₹99 and the only one with musical wind chimes. Hangly ships the widest collection and is the only one that also runs on Windows ARM64. If you want to build a charm rather than pick one, Screen Dangle. If you want a focused Mac-only app, Charmly or Screen Charms.",
+      "A desktop charm hangs from the top of your screen and sways, staying out of every click. On a Mac in October 2026 the free options are Hangly, Screen Dangle and Desk Dangle, with Screen Charms free for a single charm. Hangly has the largest free collection by far, 161 charms across 21 categories, takes your own images, and is the only one with a native Windows ARM64 build. Lucky Dangle ($7.77), Book My Luck, DangleJoy and Drishti Dangle are paid once. To build a charm rather than pick one, Screen Dangle; to hang one from the MacBook notch, Desk Dangle.",
     sections: [
       {
         heading: "What is a desktop charm app?",
@@ -64,9 +65,9 @@ export const GUIDES: Guide[] = [
         ],
         list: [
           "Do you want to pick a charm or build one? Screen Dangle is a studio; Hangly, Lucky Dangle and Book My Luck are collections you choose from.",
-          "Do you need Windows as well? Hangly, Screen Dangle, Lucky Dangle, Drishti Dangle and Book My Luck cover both. Charmly and Screen Charms are Mac only.",
-          "Do you want your own image as a charm? Hangly and Screen Dangle support it; the others do not advertise it.",
-          "Are you paying? Hangly, Screen Dangle and Screen Charms are free. Drishti Dangle is ₹99. Check the others' current pricing.",
+          "Do you need Windows as well? Hangly, Screen Dangle, Lucky Dangle, Desk Dangle, Book My Luck, DangleJoy and Drishti Dangle cover both, and Hangly also has a native ARM64 build. Charmly, Charmling and Screen Charms are Mac only.",
+          "Do you want your own image as a charm? Hangly, Screen Dangle, Desk Dangle and DangleJoy take any image; Lucky Dangle takes a photo; Screen Charms takes one on PRO.",
+          "Are you paying? Hangly, Screen Dangle and Desk Dangle are free; Screen Charms is free for one charm. Lucky Dangle is $7.77, Screen Charms PRO $4.99, DangleJoy $3.99 to $4.99, Drishti Dangle ₹99, and Book My Luck is priced by region.",
         ],
       },
       {
@@ -79,24 +80,24 @@ export const GUIDES: Guide[] = [
         ],
       },
     ],
-    entries: [HANGLY, SCREEN_DANGLE, LUCKY_DANGLE, CHARMLY, SCREENCHARMS, DRISHTI_DANGLE, DANGLEJOY, BOOK_MY_LUCK],
+    entries: [HANGLY, SCREEN_DANGLE, DESK_DANGLE, LUCKY_DANGLE, SCREENCHARMS, BOOK_MY_LUCK, DANGLEJOY, DRISHTI_DANGLE, CHARMLY, CHARMLING, DESKCHARM, GOOGLY_EYES],
     closing: [
       {
         heading: "The short answer",
         body: [
-          "For most people on a Mac, start with Hangly or Screen Dangle, because both are free and you can decide by using them. Take Hangly if you want a collection to choose from and the option of hanging your own photo; take Screen Dangle if configuring the charm yourself is the appeal.",
-          "If you specifically want Indian charms or wind chimes, Drishti Dangle is the only one here built around them, and ₹99 is a reasonable price for a thing you look at every day. If you want the smallest possible Mac-only app, Screen Charms or Charmly.",
+          "For most people on a Mac, start with a free one, because you can decide by using it. Take Hangly if you want a large collection to choose from and the option of hanging your own photo; Screen Dangle if configuring the charm yourself is the appeal; Desk Dangle if you want it hanging from the notch.",
+          "If you are happy to pay, Lucky Dangle gives each charm a small ritual, and Book My Luck adds seasonal collections. If you specifically want wind chimes, Drishti Dangle is the only one built around them. If you want a timer as well as a charm, Screen Charms.",
         ],
       },
     ],
     faqs: [
       {
         q: "What is the best desktop charm app for Mac?",
-        a: "For breadth and price, Hangly: free, 161 charms across 21 collections, custom charms from your own images, and the only one here that also ships a native Windows ARM64 build. Screen Dangle is equally free and better if you would rather build a charm than choose one. Drishti Dangle at ₹99 is the choice for Indian-inspired designs and wind chimes.",
+        a: "For breadth and price, Hangly: free, 161 charms across 21 collections, custom charms from your own images, and the only one here with a native Windows ARM64 build. Screen Dangle is equally free and better if you would rather build a charm than choose one; Desk Dangle is free and hangs from the MacBook notch. Of the paid ones, Lucky Dangle ($7.77) gives every charm a ritual.",
       },
       {
         q: "Are desktop charm apps free?",
-        a: "Several are. Hangly, Screen Dangle and Screen Charms are free. Drishti Dangle is ₹99. Lucky Dangle, DangleJoy, Charmly and Book My Luck list their own pricing on their sites.",
+        a: "Several are. Hangly, Screen Dangle and Desk Dangle are free, and Screen Charms is free for one charm. Lucky Dangle ($7.77 or $11.11), Screen Charms PRO ($4.99), DangleJoy ($3.99 to $4.99), Drishti Dangle (₹99) and Book My Luck (priced by region) are one-time purchases. Prices as of 9 October 2026.",
       },
       {
         q: "Do desktop charms get in the way of work?",
@@ -115,9 +116,11 @@ export const GUIDES: Guide[] = [
       { label: "Best Desktop Pets for Mac", href: "/guides/best-desktop-pets-for-mac" },
       { label: "Hangly vs Screen Dangle", href: "/compare/screen-dangle" },
       { label: "Hangly vs Lucky Dangle", href: "/compare/lucky-dangle" },
+      { label: "Hangly vs Desk Dangle", href: "/compare/desk-dangle" },
+      { label: "Hangly vs Screen Charms", href: "/compare/screen-charms" },
       { label: "Hangly FAQ", href: "/faq" },
     ],
-    checked: CHECKED,
+    checked: CHECKED_3,
   },
   {
     slug: "best-menu-bar-customisation-apps-for-mac",
@@ -200,59 +203,59 @@ export const GUIDES: Guide[] = [
   {
     slug: "lucky-dangle-alternatives",
     takeaways: [
-      "Hangly is the closest match: free, 161 charms, custom images, Windows including ARM64",
-      "Screen Dangle is also free and built around configuring your own charm",
-      "Drishti Dangle at \u20b999 for Indian designs and wind chimes",
-      "Screen Charms for a minimal Mac-only app",
-      "Lucky Dangle itself remains a reasonable choice if its charm set is the one you want",
+      "Lucky Dangle is paid: $7.77 (₹777), or $11.11 for Extra Lucky, as of 9 October 2026",
+      "Hangly is the closest free match: 161 charms across 21 categories, your own images, Mac and Windows including native ARM64",
+      "Screen Dangle and Desk Dangle are also free; Screen Dangle is built around configuring your own charm, Desk Dangle hangs from the MacBook notch",
+      "Drishti Dangle for Indian designs and wind chimes, once it is on sale again",
+      "Lucky Dangle itself remains a good choice if you want a ritual for every charm and do not mind paying",
     ],
     inShort:
-      "Most people leaving Lucky Dangle want more charms, their own images, or Windows \u2014 and Hangly covers all three at no cost. Screen Dangle suits the opposite instinct, building the charm yourself. Neither costs anything, so try both before deciding.",
+      "Lucky Dangle is a polished paid app. If you want the same idea for free, with far more charms, Hangly covers it on Mac and Windows; Screen Dangle suits the opposite instinct, building the charm yourself, and Desk Dangle hangs one from the notch. All three are free, so try them before paying.",
     title: "Lucky Dangle Alternatives (2026)",
     description:
-      "Seven alternatives to Lucky Dangle compared — Hangly, Screen Dangle, Charmly, Screen Charms and more. Free options, Windows support and custom charms.",
+      "Free Lucky Dangle alternatives compared: Hangly, Screen Dangle, Desk Dangle, Screen Charms and more, on Mac and Windows. Prices checked October 2026.",
     h1: "Lucky Dangle Alternatives",
     summary:
-      "If you want a free alternative to Lucky Dangle with a larger charm collection, Hangly is the closest match — 161 charms, custom charms from your own images, and Windows including ARM64. Screen Dangle is also free and suits people who prefer building a charm to picking one. For Indian designs and wind chimes, Drishti Dangle at ₹99. For a minimal Mac-only app, Screen Charms.",
+      "Lucky Dangle costs $7.77 (₹777) once. The closest free alternative is Hangly: 161 charms across 21 categories against Lucky Dangle's dozen, your own images as charms, and Mac and Windows including native ARM64. Screen Dangle is also free and suits people who prefer building a charm; Desk Dangle is free and hangs from the MacBook notch. For a ritual with every charm, Lucky Dangle itself is still worth its price.",
     sections: [
       {
         heading: "What Lucky Dangle does",
         body: [
-          "Lucky Dangle hangs a lucky charm from the top of your screen on Mac and Windows. Its own description: the charm sways while you work and stays out of every click. It is a focused product that does one thing.",
-          "People generally look for an alternative for one of three reasons — they want more charms than the curated set offers, they want to hang their own image, or they want something free.",
+          "Lucky Dangle hangs a lucky charm from the top of your screen on Mac and Windows. Its own description: the charm sways while you work, stays out of every click, and drops in when you call it. It offers a dozen traditional charms, each with a small ritual, plus your own photo or any emoji, for $7.77 (₹777) once, or $11.11 for Extra Lucky.",
+          "People generally look for an alternative for one of three reasons: they want something free, they want more charms than the curated set offers, or they want a native build for a Windows-on-ARM laptop.",
         ],
       },
       {
         heading: "What to compare on",
         body: [
           "Charm variety is the usual reason for switching, and it is the easiest thing to check: does the app publish how many charms it ships and what they are? Hangly publishes 21 named collections and a count; several competitors publish neither.",
-          "Custom images are the second. Being able to hang a photo, a logo or something you drew changes the app from a set of someone else's designs into something personal. Hangly and Screen Dangle both support this.",
+          "Custom images are the second. Being able to hang a photo, a logo or something you drew changes the app from a set of someone else's designs into something personal. Lucky Dangle takes a photo; Hangly, Screen Dangle and Desk Dangle take any image, free.",
           "Platform reach is the third, and it is worth being specific. Several apps say Windows without saying which Windows: a machine on Snapdragon needs an ARM64 build, and an x64 build running under emulation is slower and heavier. Hangly ships a native ARM64 binary.",
         ],
       },
     ],
-    entries: [HANGLY, SCREEN_DANGLE, CHARMLY, SCREENCHARMS, DRISHTI_DANGLE, DANGLEJOY, BOOK_MY_LUCK],
+    entries: [HANGLY, LUCKY_DANGLE, SCREEN_DANGLE, DESK_DANGLE, SCREENCHARMS, BOOK_MY_LUCK, DANGLEJOY, DRISHTI_DANGLE, CHARMLY],
     closing: [
       {
         heading: "The short answer",
         body: [
-          "Hangly is the closest alternative with more in it: free, 161 charms across 21 collections, your own images as charms, nine rope styles, and Windows including native ARM64. Screen Dangle if you would rather build a charm than choose one; also free.",
-          "If you liked Lucky Dangle's simplicity and just want fewer decisions, Screen Charms on Mac is about as minimal as this gets.",
+          "Hangly is the closest alternative with more in it, and it is free: 161 charms across 21 collections, your own images as charms, nine rope styles, and Windows including native ARM64. Screen Dangle if you would rather build a charm than choose one; Desk Dangle if you want it on the notch. Both are free too.",
+          "If what you liked about Lucky Dangle is its small ritual for each charm, that is its own, and paying for it is reasonable.",
         ],
       },
     ],
     faqs: [
       {
         q: "What is the best Lucky Dangle alternative?",
-        a: "Hangly, for most people: free, 161 charms across 21 collections, custom charms from your own images, nine rope styles, and Windows support including native ARM64. Screen Dangle is the better fit if you prefer configuring a charm yourself.",
+        a: "Hangly, for most people: free where Lucky Dangle costs $7.77, with 161 charms across 21 collections, custom charms from your own images, nine rope styles, and Windows including native ARM64. Screen Dangle is the better fit if you prefer configuring a charm yourself.",
       },
       {
         q: "Is there a free Lucky Dangle alternative?",
-        a: "Yes — Hangly, Screen Dangle and Screen Charms are all free. Hangly and Screen Dangle run on both Mac and Windows; Screen Charms is Mac only.",
+        a: "Yes: Hangly, Screen Dangle and Desk Dangle are free on both Mac and Windows, and Screen Charms is free on Mac for a single charm.",
       },
       {
         q: "Which Lucky Dangle alternative lets me use my own images?",
-        a: "Hangly turns any image into a charm, and Screen Dangle supports custom charms as part of its studio approach. The others do not advertise it.",
+        a: "Hangly, Screen Dangle and Desk Dangle turn any image into a charm for free; Screen Charms does it on PRO ($4.99). Lucky Dangle itself takes a photo.",
       },
     ],
     related: [
@@ -260,7 +263,7 @@ export const GUIDES: Guide[] = [
       { label: "Best Desktop Charm Apps for Mac", href: "/guides/best-desktop-charm-apps-for-mac" },
       { label: "Screen Dangle Alternatives", href: "/guides/screen-dangle-alternatives" },
     ],
-    checked: CHECKED,
+    checked: CHECKED_3,
   },
   {
     slug: "screen-dangle-alternatives",
@@ -295,13 +298,13 @@ export const GUIDES: Guide[] = [
         ],
       },
     ],
-    entries: [HANGLY, LUCKY_DANGLE, CHARMLY, SCREENCHARMS, DRISHTI_DANGLE, BOOK_MY_LUCK, DANGLEJOY],
+    entries: [HANGLY, DESK_DANGLE, LUCKY_DANGLE, SCREENCHARMS, BOOK_MY_LUCK, DANGLEJOY, DRISHTI_DANGLE, CHARMLY],
     closing: [
       {
         heading: "The short answer",
         body: [
           "Hangly, if you want finished collections rather than a blank charm: twenty-one of them, 161 designs, free, on Mac and Windows including ARM64, with custom images still available when nothing fits.",
-          "Drishti Dangle if you specifically want Indian-inspired charms and musical wind chimes, at ₹99. Screen Charms or Charmly if you want the smallest possible Mac-only option.",
+          "Desk Dangle if you want a free charm hanging from the MacBook notch. Drishti Dangle if you specifically want Indian-inspired charms and musical wind chimes, at ₹99 once it is on sale again. Screen Charms if you want a focus timer with your charm.",
         ],
       },
     ],
@@ -316,7 +319,7 @@ export const GUIDES: Guide[] = [
       },
       {
         q: "Are there free Screen Dangle alternatives?",
-        a: "Hangly and Screen Charms are both free. Hangly runs on Mac and Windows; Screen Charms is Mac only.",
+        a: "Hangly and Desk Dangle are free on Mac and Windows; Screen Charms is free on Mac for a single charm.",
       },
     ],
     related: [
@@ -324,15 +327,15 @@ export const GUIDES: Guide[] = [
       { label: "Lucky Dangle Alternatives", href: "/guides/lucky-dangle-alternatives" },
       { label: "Best Desktop Charm Apps for Mac", href: "/guides/best-desktop-charm-apps-for-mac" },
     ],
-    checked: CHECKED,
+    checked: CHECKED_3,
   },
   {
     slug: "charmly-alternatives",
     takeaways: [
       "The usual reasons to leave Charmly are wanting Windows or more charms",
       "Hangly covers both: free, 161 charms, Windows including native ARM64",
-      "Only Hangly turns your own images into charms",
-      "Screen Charms is the closest free Mac-only equivalent",
+      "Hangly, Screen Dangle and Desk Dangle turn your own images into charms for free",
+      "Screen Charms is the closest Mac-only equivalent, free for one charm",
       "Charmly is still the right pick if you want one charm and no settings",
     ],
     inShort:
@@ -359,13 +362,13 @@ export const GUIDES: Guide[] = [
         ],
       },
     ],
-    entries: [HANGLY, SCREENCHARMS, SCREEN_DANGLE, LUCKY_DANGLE, DRISHTI_DANGLE, BOOK_MY_LUCK, DANGLEJOY],
+    entries: [HANGLY, SCREENCHARMS, SCREEN_DANGLE, DESK_DANGLE, LUCKY_DANGLE, CHARMLING, DRISHTI_DANGLE, BOOK_MY_LUCK, DANGLEJOY],
     closing: [
       {
         heading: "The short answer",
         body: [
           "Hangly if you want the same idea with more in it and on both platforms: free, 161 charms across 21 collections, Windows including native ARM64, custom images, nine rope styles.",
-          "Screen Charms if you want to stay on Mac with something free and minimal. Drishti Dangle at ₹99 if Indian designs and wind chimes are what you are after.",
+          "Screen Charms if you want to stay on Mac with a focus timer as well. Desk Dangle if you want a free charm on the notch. Drishti Dangle at ₹99 if Indian designs and wind chimes are what you are after, once it is on sale again.",
         ],
       },
     ],
@@ -376,11 +379,11 @@ export const GUIDES: Guide[] = [
       },
       {
         q: "Is there a Charmly alternative for Windows?",
-        a: "Hangly runs on Windows 10 and later, including native ARM64. Screen Dangle, Lucky Dangle, Drishti Dangle and Book My Luck also list Windows support.",
+        a: "Hangly runs on Windows 10 and later, with a native ARM64 build for Windows 11 on ARM. Screen Dangle, Desk Dangle, Lucky Dangle, DangleJoy, Drishti Dangle and Book My Luck also list Windows support.",
       },
       {
         q: "Is there a free Charmly alternative for Mac?",
-        a: "Screen Charms and Hangly are both free on macOS. Screen Charms is Mac only; Hangly also runs on Windows.",
+        a: "Hangly, Screen Dangle and Desk Dangle are free on macOS and Windows; Screen Charms is free on Mac for a single charm.",
       },
     ],
     related: [
@@ -388,7 +391,217 @@ export const GUIDES: Guide[] = [
       { label: "Best Desktop Charm Apps for Mac", href: "/guides/best-desktop-charm-apps-for-mac" },
       { label: "Lucky Dangle Alternatives", href: "/guides/lucky-dangle-alternatives" },
     ],
-    checked: CHECKED,
+    checked: CHECKED_3,
+  },
+  /* ── Added 9 Oct 2026: guides for demand the crawl and search suggestions showed ───── */
+  {
+    slug: "desktop-pets-for-windows",
+    title: "Best Desktop Pets for Windows 10 and 11 (2026)",
+    description:
+      "Free desktop pets and companions for Windows 10 and 11 compared: Desktop Goose, Shimeji, Pets Therapy, OpenPets, VPet, Bongo Cat, and calm charms.",
+    h1: "Best Desktop Pets for Windows",
+    summary:
+      "The best free desktop pets for Windows 10 and 11 in October 2026 are Pets Therapy for the biggest library, OpenPets if you want open source and an AI assistant, Desktop Goose if you want to be pestered on purpose, and VPet or Bongo Cat if you want a game. If you want something on your screen that never moves on its own or asks for attention, a desktop charm such as Hangly is the calmer choice.",
+    takeaways: [
+      "Pets Therapy: the largest pet library, free, on Windows 10 and 11, Mac and Linux",
+      "OpenPets: free, open source, with plugins and an AI assistant",
+      "Desktop Goose: deliberately disruptive, for fun rather than work",
+      "VPet and Bongo Cat: closer to games, on Windows",
+      "Hangly: not a pet but a calm charm that never interrupts, free, with a native ARM64 build",
+    ],
+    inShort:
+      "Pick a pet for company and a charm for calm. Pets Therapy and OpenPets are the best free pets on Windows today; Desktop Goose is a joke you will enjoy for a week; Hangly is what to install if you want the desktop to feel like yours during real work.",
+    sections: [
+      {
+        heading: "What a desktop pet is, on Windows",
+        body: [
+          "A desktop pet is a small animated character that lives on top of your windows: it walks along the taskbar, chases the cursor, sleeps, or does something silly. The idea is as old as Windows itself; today's versions add physics, AI assistants and custom characters.",
+          "On Windows 10 and 11 most pets are free, and most ship as an ordinary installer, a Microsoft Store listing or a Steam app. Steam ones need Steam running, which is a heavier dependency than the rest.",
+        ],
+      },
+      {
+        heading: "How to choose",
+        body: ["Three questions settle it."],
+        list: [
+          "Do you want it to interrupt you? Desktop Goose does, on purpose. Pets Therapy, OpenPets and VPet mostly do not. A charm never does.",
+          "Do you want something to do? VPet and Bongo Cat are closer to games; Pets Therapy lets you feed and play; OpenPets now has an assistant.",
+          "Is your PC on ARM (Snapdragon)? Look for a native ARM64 build. Hangly has one; most pets run under x64 emulation.",
+        ],
+      },
+      {
+        heading: "Pet or charm?",
+        body: [
+          "A charm hangs from one point at the top of the screen and sways. It has no needs and never wanders, and clicks pass straight through everywhere but the charm itself. If you have tried pets and found them distracting during work, a charm is the version that stays.",
+        ],
+      },
+    ],
+    entries: [PETS_THERAPY, OPENPETS, DESKTOP_GOOSE, SHIMEJI, VPET, BONGO_CAT, DANGLEJOY, DESK_DANGLE, HANGLY],
+    closing: [
+      {
+        heading: "The short answer",
+        body: [
+          "For a free pet on Windows, start with Pets Therapy or OpenPets. For a laugh, Desktop Goose. For something you will keep during real work, a charm: Hangly is free on Windows 10 and 11, with 161 charms and a native ARM64 build.",
+        ],
+      },
+    ],
+    faqs: [
+      { q: "What is the best free desktop pet for Windows 11?", a: "Pets Therapy for the largest library, and OpenPets if you want open source and an AI assistant; both are free. If you want calm decoration rather than a pet, Hangly is free on Windows 11 with a native ARM64 build." },
+      { q: "Is there a desktop pet for Windows 10?", a: "Yes. Pets Therapy, OpenPets, Desktop Goose, Shimeji-ee and VPet all run on Windows 10, and so does Hangly, a desktop charm, on version 1809 and later." },
+      { q: "Do desktop pets slow down Windows?", a: "Not much, but a pet that walks and animates all day costs more than one that rests. A charm that stops simulating when it hangs still costs almost nothing." },
+      { q: "Should I get a desktop pet or a desktop charm on Windows?", a: "A pet if you want company that moves, reacts and sometimes interrupts; a charm if you want the screen to feel like yours without anything asking for attention. Hangly is a free charm for Windows 10 and 11." },
+    ],
+    related: [
+      { label: "Best Desktop Pets for Mac", href: "/guides/best-desktop-pets-for-mac" },
+      { label: "Desktop Goose Alternatives", href: "/guides/desktop-goose-alternatives" },
+      { label: "Hangly vs OpenPets", href: "/compare/openpets" },
+      { label: "Hangly for Windows", href: "/download/windows" },
+    ],
+    checked: CHECKED_3,
+  },
+  {
+    slug: "best-desktop-charm-apps-for-windows",
+    title: "Best Desktop Charm Apps for Windows (2026)",
+    description:
+      "Desktop charm apps for Windows 10 and 11 compared: Hangly, Desk Dangle, Screen Dangle, Lucky Dangle, DangleJoy and Book My Luck. Free and paid.",
+    h1: "Best Desktop Charm Apps for Windows",
+    summary:
+      "A desktop charm hangs a small ornament from the top of your Windows screen on a swinging cord and lets every click through. In October 2026 the free ones for Windows 10 and 11 are Hangly, Desk Dangle and Screen Dangle; Lucky Dangle ($7.77), DangleJoy ($4.99) and Book My Luck are paid once. Hangly has by far the largest free collection, 161 charms, and the only native Windows ARM64 build.",
+    takeaways: [
+      "Free on Windows: Hangly, Desk Dangle and Screen Dangle",
+      "Paid once: Lucky Dangle ($7.77), DangleJoy ($4.99), Book My Luck (by region)",
+      "Hangly has 161 charms across 21 collections and your own images",
+      "Only Hangly has a native build for Windows on ARM (Snapdragon)",
+      "Desk Dangle is on the Microsoft Store",
+    ],
+    inShort:
+      "On Windows, start with a free one: Hangly for the largest collection and ARM64, Desk Dangle for the Microsoft Store and simplicity, Screen Dangle for building a charm yourself. Pay for Lucky Dangle if you want its rituals.",
+    sections: [
+      {
+        heading: "What a desktop charm does on Windows",
+        body: [
+          "The charm hangs from the top edge of the screen above your windows, sways with simulated physics, and passes clicks to whatever is underneath. Its controls live in the system tray. On a laptop with Windows on ARM, a native ARM64 build matters: an x64 app runs under emulation, which costs more battery.",
+          "Installers for small independent apps are often not yet code-signed, so Windows SmartScreen may show \"Windows protected your PC\" the first time. Choose More info, then Run anyway, if you trust the source. Hangly's installer is in this position today.",
+        ],
+      },
+      {
+        heading: "How to choose",
+        body: ["Three questions."],
+        list: [
+          "Free or paid? Hangly, Desk Dangle and Screen Dangle are free; Lucky Dangle, DangleJoy and Book My Luck are one-time purchases.",
+          "Your own image? Hangly, Desk Dangle, Screen Dangle and DangleJoy take one; Lucky Dangle takes a photo; Book My Luck an emoji.",
+          "Windows on ARM? Only Hangly ships a native ARM64 build.",
+        ],
+      },
+    ],
+    entries: [HANGLY, DESK_DANGLE, SCREEN_DANGLE, LUCKY_DANGLE, DANGLEJOY, BOOK_MY_LUCK, DRISHTI_DANGLE],
+    closing: [
+      { heading: "The short answer", body: ["Hangly for the largest free collection and Windows on ARM; Desk Dangle for a free Microsoft Store install; Lucky Dangle if you will pay for a ritual with every charm."] },
+    ],
+    faqs: [
+      { q: "Which desktop charm apps for Windows are free?", a: "Hangly, Desk Dangle and Screen Dangle are free on Windows 10 and 11 (October 2026). Hangly has the largest collection, 161 charms." },
+      { q: "Can I hang an evil eye on my Windows desktop?", a: "Yes. Hangly, Desk Dangle, Lucky Dangle and Book My Luck all include a nazar (evil eye); Hangly's is free." },
+      { q: "Why does Windows warn me when I install a charm app?", a: "SmartScreen warns about installers that are new or not yet code-signed. Choose More info, then Run anyway, if you downloaded it from the developer's own site." },
+    ],
+    related: [
+      { label: "Best Desktop Charm Apps for Mac", href: "/guides/best-desktop-charm-apps-for-mac" },
+      { label: "Hangly vs Desk Dangle", href: "/compare/desk-dangle" },
+      { label: "Hangly for Windows", href: "/download/windows" },
+    ],
+    checked: CHECKED_3,
+  },
+  {
+    slug: "evil-eye-charm-for-your-computer",
+    title: "Evil Eye (Nazar) Charm for Your Computer Screen",
+    description:
+      "Hang an evil eye, the nazar boncuğu, from the top of your Mac or Windows screen. What the nazar means, and the free and paid apps that do it.",
+    h1: "An Evil Eye Charm for Your Computer",
+    summary:
+      "You can hang a nazar, the blue glass evil-eye bead, from the top of your computer screen with a desktop charm app: it sways on a cord and stays out of your clicks. Free options in October 2026 are Hangly (Mac and Windows), Desk Dangle (Mac and Windows) and Screen Charms (Mac, whose free charm is the Turkey Nazar). Lucky Dangle and Book My Luck include one in paid apps.",
+    takeaways: [
+      "The nazar boncuğu is a blue glass bead from Turkey and the eastern Mediterranean, worn against the evil eye",
+      "Free on Mac and Windows: Hangly and Desk Dangle; free on Mac: Screen Charms",
+      "Hangly also has the hamsa, nimbu-mirchi and Drishti Bommai among 161 charms",
+      "Paid: Lucky Dangle ($7.77) and Book My Luck",
+    ],
+    inShort: "Install a free charm app, choose the nazar, and it will hang at the top of your screen all day without getting in the way.",
+    sections: [
+      {
+        heading: "What the evil eye charm means",
+        body: [
+          "The nazar boncuğu, a blue glass bead with a white and dark-blue eye, is hung in homes, cars and cradles across Turkey, Greece and the wider Mediterranean and Middle East to turn back the envious look believed to bring misfortune: the evil eye. The hamsa, an open hand often with an eye in its palm, carries the same protective meaning across the Middle East and North Africa, and in India the nimbu-mirchi and the Drishti Bommai do the same work at doorways.",
+          "On a computer the charm is the same idea in a new place: something protective and personal at the edge of the screen you look at all day.",
+        ],
+      },
+      {
+        heading: "How to hang a nazar on your screen",
+        body: ["With Hangly, which is free:"],
+        list: [
+          "Download Hangly for Mac or Windows and open it.",
+          "Open the Library from the menu bar (Mac) or system tray (Windows) and choose the Nazar from the Protection collection.",
+          "Drag it to where it should hang along the top of the screen; it sways when you nudge it and lets every other click through.",
+        ],
+      },
+    ],
+    entries: [HANGLY, DESK_DANGLE, SCREENCHARMS, LUCKY_DANGLE, BOOK_MY_LUCK, CHARMLY, DESKCHARM],
+    closing: [{ heading: "The short answer", body: ["For a free evil eye on Mac or Windows, Hangly or Desk Dangle; on a Mac only, Screen Charms' free charm is a nazar too."] }],
+    faqs: [
+      { q: "Is there an evil eye app for my desktop?", a: "Yes. Desktop charm apps hang a nazar from the top of the screen. Hangly and Desk Dangle are free on Mac and Windows; Screen Charms is free on Mac." },
+      { q: "Can I put a nazar boncuğu on my Windows PC?", a: "Yes. Hangly runs on Windows 10 and 11 and includes the nazar in its Protection collection, free." },
+      { q: "What is the difference between the nazar and the hamsa?", a: "The nazar is a blue glass eye bead, mainly Turkish and Mediterranean; the hamsa is an open hand, from the Middle East and North Africa. Both protect against the evil eye, and Hangly includes both." },
+    ],
+    related: [
+      { label: "Luck and protection charms", href: "/charms/lucky" },
+      { label: "Nimbu-mirchi and Drishti Bommai on your desktop", href: "/guides/nimbu-mirchi-drishti-bommai-on-your-desktop" },
+      { label: "Best Desktop Charm Apps for Windows", href: "/guides/best-desktop-charm-apps-for-windows" },
+    ],
+    checked: CHECKED_3,
+  },
+  {
+    slug: "nimbu-mirchi-drishti-bommai-on-your-desktop",
+    title: "Nimbu-Mirchi and Drishti Bommai for Your Laptop Screen",
+    description:
+      "Hang a nimbu-mirchi or Drishti Bommai from the top of your laptop screen to ward off drishti. Free desktop charm apps for Mac and Windows.",
+    h1: "Nimbu-Mirchi and Drishti Bommai on Your Desktop",
+    summary:
+      "The nimbu-mirchi (a lemon and seven green chillies) and the Drishti Bommai (a fierce painted guardian face) are hung at Indian doorways, shops and new buildings to ward off drishti, the evil eye. You can hang either from the top of your laptop screen with a desktop charm app. Hangly has both, free, on Mac and Windows; Desk Dangle and Lucky Dangle have a nimbu-mirchi, and Drishti Dangle is built around Indian charms.",
+    takeaways: [
+      "Nimbu-mirchi: a lemon and seven chillies, traditionally replaced every week",
+      "Drishti Bommai: a South Indian guardian face that meets the first bad glance",
+      "Hangly has both, plus Vel, Vinayagar, Om and the nazar, free",
+      "Desk Dangle (free) and Lucky Dangle ($7.77, ₹777) include a nimbu-mirchi",
+    ],
+    inShort: "A free charm app puts a nimbu-mirchi or Drishti Bommai at the top of your screen, where it sways gently and never gets in the way of work.",
+    sections: [
+      {
+        heading: "What they are for",
+        body: [
+          "Drishti, from the Sanskrit for sight, is the belief that an envious or admiring look can bring misfortune: the same idea as the evil eye. Across India, a nimbu-mirchi hangs at the entrance of homes, shops and vehicles, often renewed on a Saturday, and in South India a Drishti Bommai, a fierce, tongue-out guardian face, is hung on houses and buildings under construction to draw that first look away.",
+          "Hanging one on your screen brings the same small ritual to the place you spend your working day.",
+        ],
+      },
+      {
+        heading: "How to hang one",
+        body: ["With Hangly, free on Mac and Windows:"],
+        list: [
+          "Download and open Hangly.",
+          "Open the Library and choose the Nimbu-mirchi or the Drishti Bommai from the Protection collection; Vel, Vinayagar, Om and Karuppu are in Spirituality.",
+          "Place it along the top of the screen. It sways when nudged and lets clicks through.",
+        ],
+      },
+    ],
+    entries: [HANGLY, DESK_DANGLE, LUCKY_DANGLE, DRISHTI_DANGLE, DANGLEJOY, CHARMLY, DESKCHARM],
+    closing: [{ heading: "The short answer", body: ["Hangly for both charms, free on Mac and Windows; Drishti Dangle if you want Indian charms with wind chimes, once it is on sale again."] }],
+    faqs: [
+      { q: "Can I put a nimbu-mirchi on my laptop?", a: "Yes. Desktop charm apps hang one from the top of the screen. Hangly and Desk Dangle are free on Mac and Windows; Lucky Dangle includes one for $7.77 (₹777)." },
+      { q: "Is there a Drishti Bommai app for the desktop?", a: "Yes. Hangly includes the Drishti Bommai in its Protection collection, free on Mac and Windows. Lucky Dangle has one too, and DeskCharm, an open-source project, includes one." },
+      { q: "Where should a Drishti Bommai be placed?", a: "Traditionally facing outward at the entrance or front of a house or building, where it meets visitors' eyes first. On a computer, the top of the screen is the natural equivalent." },
+    ],
+    related: [
+      { label: "Evil eye charm for your computer", href: "/guides/evil-eye-charm-for-your-computer" },
+      { label: "Hangly vs Drishti Dangle", href: "/compare/drishti-dangle" },
+      { label: "Luck and protection charms", href: "/charms/lucky" },
+    ],
+    checked: CHECKED_3,
   },
 ];
 

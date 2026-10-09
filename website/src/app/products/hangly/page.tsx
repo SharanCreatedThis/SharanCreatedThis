@@ -17,14 +17,20 @@ import { PlatformSheet } from "@/components/hangly/Download";
 import { BreadcrumbJsonLd } from "@/components/JsonLd";
 import { PAGES, absoluteUrl } from "@/lib/seo";
 import { HANGLY_MAC, HANGLY_PRODUCT, HANGLY_WINDOWS } from "@/lib/hangly-product";
+import { pageMetadata } from "@/lib/metadata";
+import { hanglyLanguageAlternates } from "@/data/hangly/locales";
+
+// The English page names its sixteen translations (/<code>/hangly), as each of them names it: hreflang is reciprocal.
+const base = pageMetadata("hangly");
+export const metadata = { ...base, alternates: { ...base.alternates, languages: hanglyLanguageAlternates() } };
 
 export default function Home() {
   const howTo = { "@context": "https://schema.org", "@type": "HowTo", name: "Create a custom Hangly charm", totalTime: "PT1M", step: ["Upload an image", "Remove its background", "Choose a rope", "Hang it on your desktop"].map((name, position) => ({ "@type": "HowToStep", position: position + 1, name })) };
   return <>
     <BreadcrumbJsonLd trail={[{ name: "Home", path: "/" }, { name: "Products", path: "/products" }, { name: "Hangly", path: PAGES.hangly.path }]} />
     <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(howTo).replace(/</g, "\\u003c") }} />
-    <PageMotion /><a className="skip-link" href="#features">Skip to content</a>
-    <main><Hero /><Stats /><WhyHangly /><CreatorStudio /><Collections /><RopeStudio /><Demo /><Setup /><CommunityUpdates /><Faq /><Creator /><CTA /></main>
+    <PageMotion /><a className="skip-link" href="#main-content">Skip to content</a>
+    <main id="main-content"><Hero /><Stats /><CreatorStudio /><Collections /><RopeStudio /><Demo /><Creator /><WhyHangly /><Setup /><CommunityUpdates /><Faq /><CTA /></main>
     <Footer /><PlatformSheet /><MobileDownloadCta />
   </>;
 }

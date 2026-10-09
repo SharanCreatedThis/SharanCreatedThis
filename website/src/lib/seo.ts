@@ -20,6 +20,7 @@
 import { profile } from "@/data/portfolio";
 import { HANGLY_COPY } from "@/lib/stats/hangly";
 import { COMPARISONS } from "@/lib/comparisons/comparison-data";
+import { HANGLY_LOCALES } from "@/data/hangly/locales";
 import { GUIDES } from "@/lib/guides/guide-data";
 
 /** No trailing slash: everything below joins onto this. */
@@ -177,7 +178,7 @@ export const PAGES: Record<PageKey, PageSeo> = {
   },
   hangly: {
     path: "/products/hangly",
-    title: "Hangly · Digital Charms That Swing On Your Desktop",
+    title: "Hangly · Free Desktop Charms That Swing on Mac & Windows",
     description:
       `Hang beautiful digital charms with real swinging physics on macOS or Windows. ${HANGLY_COPY.growth}. Free for macOS 14+ and Windows 10+.`,
     image: "/og/hangly.png",
@@ -316,13 +317,17 @@ export function dynamicPages(): PageSeo[] {
     { path: "/charms", title: "Every Hangly charm", description: "The complete catalogue.", ...shared, priority: 0.9 },
     { path: "/charms/lucky", title: "Luck and protection charms", description: "Twelve cultural charms, free.", ...shared, priority: 0.8 },
     { path: "/faq", title: "Hangly FAQ", description: "Fifty answers about Hangly.", ...shared, priority: 0.8 },
-    { path: "/compare", title: "Hangly compared", description: "Eight honest comparisons.", ...shared, priority: 0.7 },
+    { path: "/compare", title: "Hangly compared", description: `${COMPARISONS.length} honest comparisons.`, ...shared, priority: 0.7 },
     { path: "/guides", title: "Guides", description: "Desktop charms, pets and Mac customisation.", ...shared, priority: 0.7 },
     ...COMPARISONS.map((c) => ({
       path: `/compare/${c.slug}`, title: c.title, description: c.description, ...shared, priority: 0.6,
     })),
     ...GUIDES.map((g) => ({
       path: `/guides/${g.slug}`, title: g.title, description: g.description, ...shared, priority: 0.7,
+    })),
+    // Hangly in sixteen other languages (src/data/hangly/locales.ts).
+    ...HANGLY_LOCALES.map((l) => ({
+      path: `/${l.code}/hangly`, title: l.title, description: l.description, ...shared, priority: 0.8,
     })),
   ];
 }

@@ -84,7 +84,12 @@ const cards = [
 ];
 
 for (const [file, kicker, title, description, accent, charms, kind] of cards) await card({ file, kicker, title, description, accent, charms, kind });
-for (const slug of ["best-desktop-charm-apps-for-mac", "best-desktop-pets-for-mac", "best-mac-customization-apps", "best-menu-bar-customisation-apps-for-mac", "lucky-dangle-alternatives", "screen-dangle-alternatives", "charmly-alternatives", "desktop-goose-alternatives"]) await card({ file: `guides/${slug}.png`, kicker: "HANGLY GUIDE", title: slug.replaceAll("-", " "), description: "Clear, independent guidance for your desktop.", charms: ["nazar", "spiderMan"] });
-for (const slug of ["lucky-dangle", "screen-dangle", "danglejoy", "charmly", "shimeji", "desktop-goose", "runcat", "dockling"]) await card({ file: `compare/${slug}.png`, kicker: "HANGLY COMPARISON", title: `Hangly vs ${slug.replaceAll("-", " ")}`, description: "A clear, independent comparison.", charms: ["nazar"], kind: "compare" });
+// Every guide and comparison gets a card, read from the data that defines the pages, so a new page never ships pointing at a missing image.
+const slugsIn = async (file) => [...(await readFile(join(root, file), "utf8")).matchAll(/^\s{4}slug: "([a-z0-9-]+)",$/gm)].map((m) => m[1]);
+const guideSlugs = [...new Set([...(await slugsIn("src/lib/guides/guide-data.ts")), ...(await Promise.all(["best-desktop-pets-for-mac", "best-mac-customization-apps", "desktop-goose-alternatives"].map(async (f) => (await readFile(join(root, `src/lib/guides/content/${f}.ts`), "utf8")).match(/slug: "([a-z0-9-]+)"/)?.[1]))).filter(Boolean)])];
+const compareSlugs = await slugsIn("src/lib/comparisons/comparison-data.ts");
+const compareNames = Object.fromEntries([...(await readFile(join(root, "src/lib/comparisons/comparison-data.ts"), "utf8")).matchAll(/^\s{4}slug: "([a-z0-9-]+)",[\s\S]*?^\s{4}name: "([^"]+)",/gm)].map((m) => [m[1], m[2]]));
+for (const slug of guideSlugs) await card({ file: `guides/${slug}.png`, kicker: "HANGLY GUIDE", title: slug.replaceAll("-", " "), description: "Clear, independent guidance for your desktop.", charms: ["nazar", "spiderMan"] });
+for (const slug of compareSlugs) await card({ file: `compare/${slug}.png`, kicker: "HANGLY COMPARISON", title: `Hangly vs ${compareNames[slug] ?? slug.replaceAll("-", " ")}`, description: "A clear, independent comparison.", charms: ["nazar"], kind: "compare" });
 
 console.log("  social cards: generated premium cards for all route families");
