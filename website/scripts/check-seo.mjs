@@ -57,6 +57,7 @@ const NOT_IN_SITEMAP = new Set([
   // The private dashboard: noindex in its metadata and in public/_headers.
   "/admin",
   "/admin/notifications",
+  "/admin/users",
 ]);
 
 const pages = exportedPages().filter((path) => !NOT_IN_SITEMAP.has(path));

@@ -6,8 +6,10 @@
  * Reads two documents and nothing else: `stats/latest`, live (onSnapshot — liveStats rewrites it every 15 minutes),
  * and the nightly snapshot `stats/<day>` for the trend arrows. Both are written by Hangly's Cloud Functions from
  * Firestore aggregation queries, so opening this page costs two document reads whatever the number of users, and
- * nothing here ever lists /users or /crashReports (the rules would refuse it anyway).
+ * nothing here ever lists /users or /crashReports (the rules would refuse it anyway). Figures that are counts of
+ * installations link to the Users page (/admin/users), filtered to the same installations.
  */
+import Link from "next/link";
 import { useEffect, useMemo, useState } from "react";
 import { type User, onAuthStateChanged } from "firebase/auth";
 import { type Timestamp, doc, getDoc, onSnapshot } from "firebase/firestore";
@@ -166,17 +168,20 @@ function Body({ s, snap, now }: { s: Latest; snap: Snapshot | null; now: number 
         </dl>
       </section>
 
-      <h2 className="adm-h2">Overview</h2>
+      <div className="adm-h2-row">
+        <h2 className="adm-h2">Overview</h2>
+        <Link href="/admin/users" className="adm-more">View all users →</Link>
+      </div>
       <div className="adm-cards">
-        <Card label="Total users" value={fmt(s.totalUsers)} delta={trend(s.totalUsers, snap?.totalInstalls)} note={since} />
-        <Card label="Installed" value={fmt(s.installedUsers)} sub={pct(share(s.installedUsers, s.totalUsers))} />
-        <Card label="Uninstalled" value={fmt(s.uninstalledUsers)} sub={pct(share(s.uninstalledUsers, s.totalUsers))} />
-        <Card label="Active · 1 day" value={fmt(s.activeUsers1d)} delta={trend(s.activeUsers1d, snap?.activeUsers1d)} note={since} />
-        <Card label="Active · 7 days" value={fmt(s.activeUsers7d)} delta={trend(s.activeUsers7d, snap?.activeUsers7d)} note={since} />
-        <Card label="Active · 30 days" value={fmt(s.activeUsers30d)} delta={trend(s.activeUsers30d, snap?.activeUsers30d)} note={since} />
-        <Card label="Mac users" value={fmt(s.totalMacUsers)} sub={pct(share(s.totalMacUsers, s.totalUsers))} />
-        <Card label="Windows users" value={fmt(s.totalWindowsUsers)} sub={pct(share(s.totalWindowsUsers, s.totalUsers))} />
-        <Card label="Fatal crashes (all time)" value={fmt(s.totalCrashes)} sub={`${fmt(s.crashedUsers7d)} installs in 7 days`} />
+        <Card href="/admin/users" label="Total users" value={fmt(s.totalUsers)} delta={trend(s.totalUsers, snap?.totalInstalls)} note={since} />
+        <Card href="/admin/users?status=installed" label="Installed" value={fmt(s.installedUsers)} sub={pct(share(s.installedUsers, s.totalUsers))} />
+        <Card href="/admin/users?status=uninstalled" label="Uninstalled" value={fmt(s.uninstalledUsers)} sub={pct(share(s.uninstalledUsers, s.totalUsers))} />
+        <Card href="/admin/users?activity=1d" label="Active · 1 day" value={fmt(s.activeUsers1d)} delta={trend(s.activeUsers1d, snap?.activeUsers1d)} note={since} />
+        <Card href="/admin/users?activity=7d" label="Active · 7 days" value={fmt(s.activeUsers7d)} delta={trend(s.activeUsers7d, snap?.activeUsers7d)} note={since} />
+        <Card href="/admin/users?activity=30d" label="Active · 30 days" value={fmt(s.activeUsers30d)} delta={trend(s.activeUsers30d, snap?.activeUsers30d)} note={since} />
+        <Card href="/admin/users?platform=macos" label="Mac users" value={fmt(s.totalMacUsers)} sub={pct(share(s.totalMacUsers, s.totalUsers))} />
+        <Card href="/admin/users?platform=windows" label="Windows users" value={fmt(s.totalWindowsUsers)} sub={pct(share(s.totalWindowsUsers, s.totalUsers))} />
+        <Card href="/admin/users?sort=crashCount" label="Fatal crashes (all time)" value={fmt(s.totalCrashes)} sub={`${fmt(s.crashedUsers7d)} installs in 7 days`} />
         <Card label="Crash rate · 7 days" value={pct(s.crashRate * 100, 2)} sub="crashed ÷ active" />
         <Card label="Newest user seen" value={ago(s.newestUserSeenAt?.toDate() ?? null, now)} sub={when(s.newestUserSeenAt)} />
         <Card label="Imported from PostHog" value={fmt(s.importedUsers)} sub="before 2.1.0" />
@@ -196,14 +201,17 @@ function Body({ s, snap, now }: { s: Latest; snap: Snapshot | null; now: number 
         <Card label="Not on the latest" value={fmt(s.outdatedUsers)} sub={pct(s.outdatedUsersPercent)} />
         <Card label="Versions in use" value={fmt(versions.filter((v) => v.value !== "other").length)} />
       </div>
-      <Bars rows={versions.map((v) => ({ label: v.value, count: v.count, badge: v.value === s.latestVersion ? "latest" : undefined }))}
+      <Bars rows={versions.map((v) => ({ label: v.value, count: v.count, badge: v.value === s.latestVersion ? "latest" : undefined,
+        href: v.value === "other" ? undefined : `/admin/users?version=${encodeURIComponent(v.value)}` }))}
         total={s.totalUsers} caption="Users by version (lastKnownAppVersion)" />
 
       <h2 className="adm-h2">Platforms</h2>
       <div className="adm-grid two">
-        <Bars rows={(s.platforms ?? []).map((p) => ({ label: p.value === "macos" ? "macOS" : p.value === "windows" ? "Windows" : p.value, count: p.count }))}
+        <Bars rows={(s.platforms ?? []).map((p) => ({ label: p.value === "macos" ? "macOS" : p.value === "windows" ? "Windows" : p.value, count: p.count,
+          href: p.value === "macos" || p.value === "windows" ? `/admin/users?platform=${p.value}` : undefined }))}
           total={s.totalUsers} caption="Users by platform" />
-        <Bars rows={(s.architectures ?? []).map((a) => ({ label: a.value, count: a.count }))} total={s.totalUsers}
+        <Bars rows={(s.architectures ?? []).map((a) => ({ label: a.value, count: a.count,
+          href: ["x64", "arm64", "unknown"].includes(a.value) ? `/admin/users?arch=${a.value}` : undefined }))} total={s.totalUsers}
           caption="Users by architecture (unknown: Macs imported before 2.1.0)" />
         {Object.entries(s.architecturesByPlatform ?? {}).map(([platform, rows]) => (
           <Bars key={platform} rows={rows.map((a) => ({ label: a.value, count: a.count }))}
@@ -214,9 +222,9 @@ function Body({ s, snap, now }: { s: Latest; snap: Snapshot | null; now: number 
       <h2 className="adm-h2">Geography</h2>
       <p className="adm-muted adm-note">From the nightly scan ({when(s.computedAt)}). Located from the connection; the address is never stored.</p>
       <div className="adm-grid three">
-        <Table caption="Top countries" rows={(s.countries ?? []).slice(0, 20).map((c) => [countryName(c.value), c.count])} total={sumOf(s.countries)} />
-        <Table caption="Top states" rows={(s.regions ?? []).slice(0, 20).map((r) => [placeName(r.value), r.count])} total={sumOf(s.regions)} />
-        <Table caption="Top cities" rows={(s.cities ?? []).slice(0, 20).map((c) => [placeName(c.value), c.count])} total={sumOf(s.cities)} />
+        <Table caption="Top countries" rows={(s.countries ?? []).slice(0, 20).map((c) => [countryName(c.value), c.count, placeLink("country", c.value)])} total={sumOf(s.countries)} />
+        <Table caption="Top states" rows={(s.regions ?? []).slice(0, 20).map((r) => [placeName(r.value), r.count, placeLink("region", r.value)])} total={sumOf(s.regions)} />
+        <Table caption="Top cities" rows={(s.cities ?? []).slice(0, 20).map((c) => [placeName(c.value), c.count, placeLink("city", c.value)])} total={sumOf(s.cities)} />
       </div>
 
       <h2 className="adm-h2">Crashes</h2>
@@ -261,6 +269,17 @@ function Body({ s, snap, now }: { s: Latest; snap: Snapshot | null; now: number 
 }
 
 const sumOf = (rows?: Split[]) => (rows ?? []).reduce((t, r) => t + r.count, 0);
+/** The Users page filtered to a place from the nightly scan: "IN"; "Tamil Nadu, IN"; "Chennai, Tamil Nadu, IN". */
+const placeLink = (kind: "country" | "region" | "city", value: string): string | undefined => {
+  if (value === "unknown") return undefined;
+  const parts = value.split(", ");
+  const country = parts.at(-1) ?? "";
+  if (!/^[A-Z]{2}$/.test(country)) return undefined;
+  const p = new URLSearchParams({ country });
+  if (kind === "region" && parts.length >= 2) p.set("region", parts.slice(0, -1).join(", "));
+  if (kind === "city" && parts.length >= 2) p.set("city", parts[0]);
+  return `/admin/users?${p.toString()}`;
+};
 const placeName = (value: string) => {
   if (value === "unknown") return "Unknown";
   const parts = value.split(", ");
@@ -268,9 +287,9 @@ const placeName = (value: string) => {
   return /^[A-Z]{2}$/.test(code) ? [...parts.slice(0, -1), countryName(code)].join(", ") : value;
 };
 
-function Card({ label, value, sub, delta, note }: { label: string; value: string; sub?: string; delta?: number; note?: string }) {
-  return (
-    <div className="adm-card">
+function Card({ label, value, sub, delta, note, href }: { label: string; value: string; sub?: string; delta?: number; note?: string; href?: string }) {
+  const body = (
+    <>
       <p className="adm-label">{label}</p>
       <p className="adm-value">{value}</p>
       {delta !== undefined && (
@@ -279,11 +298,14 @@ function Card({ label, value, sub, delta, note }: { label: string; value: string
         </p>
       )}
       {sub && <p className="adm-sub">{sub}</p>}
-    </div>
+    </>
   );
+  return href
+    ? <Link href={href} className="adm-card adm-card-link" title="Open these users">{body}</Link>
+    : <div className="adm-card">{body}</div>;
 }
 
-function Bars({ rows, total, caption }: { rows: { label: string; count: number; badge?: string }[]; total: number; caption: string }) {
+function Bars({ rows, total, caption }: { rows: { label: string; count: number; badge?: string; href?: string }[]; total: number; caption: string }) {
   const max = Math.max(1, ...rows.map((r) => r.count));
   return (
     <div className="adm-panel">
@@ -291,7 +313,7 @@ function Bars({ rows, total, caption }: { rows: { label: string; count: number; 
       <ul className="adm-bars">
         {rows.map((r) => (
           <li key={r.label}>
-            <span className="adm-bar-label">{r.label}{r.badge && <em>{r.badge}</em>}</span>
+            <span className="adm-bar-label">{r.href ? <Link href={r.href}>{r.label}</Link> : r.label}{r.badge && <em>{r.badge}</em>}</span>
             <span className="adm-bar"><span style={{ width: `${(r.count / max) * 100}%` }} /></span>
             <span className="num">{fmt(r.count)}</span>
             <span className="num adm-muted">{pct(share(r.count, total))}</span>
@@ -302,15 +324,15 @@ function Bars({ rows, total, caption }: { rows: { label: string; count: number; 
   );
 }
 
-function Table({ caption, rows, total }: { caption: string; rows: [string, number][]; total: number }) {
+function Table({ caption, rows, total }: { caption: string; rows: [string, number, string?][]; total: number }) {
   return (
     <div className="adm-panel">
       <p className="adm-caption">{caption}</p>
       <table className="adm-table">
         <tbody>
-          {rows.map(([name, count]) => (
+          {rows.map(([name, count, href]) => (
             <tr key={name}>
-              <td>{name}</td>
+              <td>{href ? <Link href={href}>{name}</Link> : name}</td>
               <td className="num">{fmt(count)}</td>
               <td className="num adm-muted">{pct(share(count, total))}</td>
             </tr>

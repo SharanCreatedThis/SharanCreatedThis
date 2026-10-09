@@ -141,3 +141,137 @@
 .ntf-row-actions .armed { border-color: #ff7a7a; color: #ffb0b0; background: rgba(255,90,90,.08); }
 .ntf-setup { margin: -6px 0 14px; padding: 12px 16px; border-radius: 12px; border: 1px solid rgba(255,179,107,.3); background: rgba(255,122,26,.06); color: var(--muted); font-size: 13.5px; }
 .ntf-setup strong { color: var(--text); }
+
+/* Overview → Users: counts that open the installations they count. */
+.adm-h2-row { display: flex; align-items: baseline; justify-content: space-between; gap: 16px; }
+.adm-more { font-size: 14px; color: var(--accent); white-space: nowrap; }
+.adm-more:hover { text-decoration: underline; }
+a.adm-card-link { display: block; color: inherit; transition: border-color .15s, transform .15s; }
+a.adm-card-link:hover { border-color: var(--accent); }
+a.adm-card-link:focus-visible { outline: 2px solid var(--glow); outline-offset: 2px; }
+.adm-bar-label a, .adm-table td a { color: inherit; text-decoration: underline; text-decoration-color: rgba(255,255,255,.18); text-underline-offset: 3px; }
+.adm-bar-label a:hover, .adm-table td a:hover { color: var(--accent); text-decoration-color: var(--accent); }
+
+/* Users: an analytics table — dense, quiet, fast to scan. No glass here. */
+.usr { --row: 38px; font-size: 13.5px; }
+.usr .mono, .usr-table .mono { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 12.5px; }
+.usr-top { display: flex; justify-content: space-between; align-items: baseline; gap: 16px; margin-bottom: 14px; }
+.usr-count { font-size: 15px; color: var(--muted); font-variant-numeric: tabular-nums; }
+.usr-count strong { color: var(--text); font-family: 'Inter Tight', sans-serif; font-size: 20px; font-weight: 600; letter-spacing: -0.01em; }
+.usr-back { font-size: 13px; color: var(--muted); }
+.usr-back:hover { color: var(--text); }
+
+.usr-bar { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; margin-bottom: 10px; }
+.usr-search { flex: 1 1 380px; display: flex; align-items: center; gap: 8px; height: 40px; padding: 0 12px; border: 1px solid var(--border);
+  border-radius: 10px; background: var(--card); color: var(--muted); transition: border-color .15s; }
+.usr-search:focus-within { border-color: var(--accent); box-shadow: 0 0 0 3px rgba(255,122,26,.15); }
+.usr-search input { flex: 1; min-width: 0; height: 100%; border: 0; background: none; color: var(--text); font: inherit; font-size: 14px; outline: none; }
+.usr-search input::-webkit-search-cancel-button { display: none; }
+.usr-clear { display: inline-grid; place-items: center; width: 26px; height: 26px; border: 0; border-radius: 6px; background: none; color: var(--muted); cursor: pointer; }
+.usr-clear:hover { background: rgba(255,255,255,.06); color: var(--text); }
+.usr-spin { animation: usr-spin .8s linear infinite; }
+@keyframes usr-spin { to { transform: rotate(360deg); } }
+@media (prefers-reduced-motion: reduce) { .usr-spin { animation: none; } }
+
+.usr-btn { display: inline-flex; align-items: center; gap: 6px; height: 40px; padding: 0 12px; border: 1px solid var(--border); border-radius: 10px;
+  background: var(--card); color: var(--text); font: inherit; font-size: 13.5px; cursor: pointer; white-space: nowrap; }
+.usr-btn:hover:not(:disabled) { border-color: rgba(255,255,255,.25); }
+.usr-btn.on { border-color: var(--accent); color: var(--accent); }
+.usr-btn.icon { width: 40px; justify-content: center; padding: 0; font-size: 15px; }
+.usr-btn:disabled { opacity: .45; cursor: default; }
+.usr-btn:focus-visible, .usr-clear:focus-visible, .usr-copy:focus-visible { outline: 2px solid var(--glow); outline-offset: 2px; }
+.usr-badge { display: inline-grid; place-items: center; min-width: 18px; height: 18px; padding: 0 5px; border-radius: 999px; background: var(--accent);
+  color: #0b0b0b; font-size: 11px; font-weight: 600; }
+.usr-select { display: inline-flex; align-items: center; gap: 6px; height: 40px; padding: 0 4px 0 10px; border: 1px solid var(--border); border-radius: 10px;
+  background: var(--card); color: var(--muted); }
+.usr-select select, .usr-field select { height: 100%; border: 0; background: none; color: var(--text); font: inherit; font-size: 13.5px; padding-right: 6px; cursor: pointer; }
+.usr-select select:focus-visible, .usr-field select:focus-visible { outline: 2px solid var(--glow); outline-offset: 2px; border-radius: 6px; }
+.usr-select option, .usr-field option { background: #141414; color: var(--text); }
+.usr-linkbtn { border: 0; background: none; color: var(--accent); font: inherit; font-size: 13px; cursor: pointer; padding: 0; }
+
+.usr-panel { margin-bottom: 10px; padding: 14px 16px; border: 1px solid var(--border); border-radius: 12px; background: var(--card); }
+.usr-panel-head { display: flex; align-items: center; gap: 14px; margin-bottom: 12px; font-size: 13px; }
+.usr-panel-head .usr-linkbtn { margin-left: auto; }
+.usr-panel-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 12px 16px; }
+.usr-panel-note { font-size: 12px; margin-top: 12px !important; }
+.usr-field { display: grid; gap: 6px; }
+.usr-field > span { font-size: 12px; color: var(--muted); }
+.usr-field select { height: 36px; border: 1px solid var(--border); border-radius: 8px; background: #111; padding: 0 8px; }
+.usr-field select:disabled { opacity: .45; }
+.usr-segment { display: flex; border: 1px solid var(--border); border-radius: 8px; overflow: hidden; height: 36px; }
+.usr-segment button { flex: 1; border: 0; background: none; color: var(--muted); font: inherit; font-size: 13px; cursor: pointer; padding: 0 8px; }
+.usr-segment button + button { border-left: 1px solid var(--border); }
+.usr-segment button.on { background: rgba(255,122,26,.14); color: var(--text); }
+.usr-segment button:disabled { opacity: .45; cursor: default; }
+
+.usr-chips { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 10px; }
+.usr-chip { display: inline-flex; align-items: center; gap: 4px; height: 26px; padding: 0 4px 0 10px; border: 1px solid rgba(255,122,26,.4);
+  border-radius: 999px; background: rgba(255,122,26,.08); font-size: 12.5px; }
+.usr-chip.aside { border-color: var(--border); background: none; color: var(--muted); text-decoration: line-through; }
+.usr-chip button { display: inline-grid; place-items: center; width: 20px; height: 20px; border: 0; border-radius: 50%; background: none; color: inherit; cursor: pointer; }
+.usr-chip button:hover { background: rgba(255,255,255,.08); }
+.usr-note { font-size: 12.5px; color: var(--muted); margin: 0 0 10px !important; }
+
+/* The table scrolls sideways inside its frame; the page never does. The header stays while the rows scroll. */
+.usr-table-wrap { position: relative; border: 1px solid var(--border); border-radius: 12px; background: var(--card); overflow: auto;
+  max-height: calc(100vh - 220px); min-height: 240px; }
+.usr-table { width: 100%; border-collapse: separate; border-spacing: 0; font-variant-numeric: tabular-nums; }
+.usr-table th { position: sticky; top: 0; z-index: 1; background: #151515; text-align: left; font-weight: 500; font-size: 11.5px; letter-spacing: .02em;
+  color: var(--muted); padding: 10px 12px; border-bottom: 1px solid var(--border); white-space: nowrap; }
+.usr-table td { height: var(--row); padding: 0 12px; border-bottom: 1px solid rgba(255,255,255,.05); white-space: nowrap; max-width: 220px;
+  overflow: hidden; text-overflow: ellipsis; }
+.usr-table .num { text-align: right; }
+.usr-table tbody tr { cursor: pointer; transition: background .1s; }
+.usr-table tbody tr:hover { background: rgba(255,255,255,.035); }
+.usr-table tbody tr:focus-visible { outline: 2px solid var(--glow); outline-offset: -2px; }
+.usr-table tbody tr.open { background: rgba(255,122,26,.08); }
+.usr-table tbody tr.stale { opacity: .55; }
+.usr-name { font-weight: 500; color: var(--text); max-width: 200px; }
+.usr-id { display: inline-flex; align-items: center; gap: 4px; color: var(--muted); }
+.usr-copy { display: inline-grid; place-items: center; width: 22px; height: 22px; border: 0; border-radius: 5px; background: none; color: var(--muted); cursor: pointer; opacity: .6; }
+.usr-copy:hover { opacity: 1; background: rgba(255,255,255,.07); color: var(--text); }
+.usr-pill { display: inline-block; padding: 2px 8px; border-radius: 999px; font-size: 11.5px; background: rgba(255,255,255,.06); color: var(--muted); }
+.usr-pill.ok { background: rgba(61,220,132,.12); color: #6fe3a4; }
+.usr-pill.off { background: rgba(255,90,90,.12); color: #ff9a9a; }
+.usr-crash { color: #ff9a9a; font-weight: 500; }
+.usr-skel td span { display: block; height: 10px; border-radius: 4px; background: linear-gradient(90deg, rgba(255,255,255,.04), rgba(255,255,255,.09), rgba(255,255,255,.04));
+  background-size: 200% 100%; animation: usr-shimmer 1.2s ease-in-out infinite; }
+@keyframes usr-shimmer { to { background-position: -200% 0; } }
+@media (prefers-reduced-motion: reduce) { .usr-skel td span { animation: none; } }
+.usr-empty { padding: 48px 16px; text-align: center; color: var(--muted); }
+.usr-error { display: grid; gap: 12px; justify-items: center; color: var(--text); }
+
+.usr-pager { display: flex; justify-content: space-between; align-items: center; gap: 12px; margin-top: 12px; font-size: 13px; }
+.usr-pager div { display: flex; gap: 8px; }
+
+/* One installation: a drawer over the table, so the list keeps its place. */
+.usr-scrim { position: fixed; inset: 0; z-index: 40; background: rgba(0,0,0,.45); }
+.usr-drawer { position: fixed; top: 0; right: 0; bottom: 0; z-index: 41; width: min(560px, 100vw); overflow-y: auto; padding: 24px 24px 48px;
+  background: #121212; border-left: 1px solid var(--border); box-shadow: -24px 0 48px rgba(0,0,0,.4); }
+.usr-drawer-head { display: flex; justify-content: space-between; align-items: flex-start; gap: 16px; margin-bottom: 18px; }
+.usr-drawer-head h2 { font-family: 'Inter Tight', sans-serif; font-size: 24px; font-weight: 600; letter-spacing: -0.01em; word-break: break-word; }
+.usr-id-full { display: flex; align-items: center; gap: 6px; margin-top: 6px !important; color: var(--muted); font-size: 12.5px; word-break: break-all; }
+.usr-drawer-skel { display: grid; gap: 10px; }
+.usr-drawer-skel span { height: 14px; border-radius: 4px; background: rgba(255,255,255,.06); }
+.usr-section { padding: 14px 0; border-top: 1px solid var(--border); }
+.usr-section h3 { font-size: 11px; letter-spacing: .14em; text-transform: uppercase; color: var(--muted); font-weight: 600; margin-bottom: 10px; }
+.usr-section dl { display: grid; grid-template-columns: 1fr; gap: 6px; margin: 0; }
+.usr-section dl div { display: grid; grid-template-columns: 150px 1fr; gap: 12px; font-size: 13.5px; }
+.usr-section dt { color: var(--muted); }
+.usr-section dd { margin: 0; word-break: break-word; }
+.usr-crashes { padding: 14px 0; border-top: 1px solid var(--border); display: grid; gap: 8px; }
+.usr-crash-row { border: 1px solid var(--border); border-radius: 8px; padding: 8px 10px; }
+.usr-crash-row summary { display: flex; gap: 8px; align-items: center; cursor: pointer; font-size: 13px; flex-wrap: wrap; }
+.usr-crash-msg { font-size: 12.5px; margin: 8px 0 !important; color: var(--muted); }
+.usr-crash-row pre { max-height: 260px; overflow: auto; font-size: 11.5px; padding: 8px; border-radius: 6px; background: #0b0b0b; white-space: pre-wrap; }
+
+/* Narrower screens: the less-used columns go first; search, name and when stay. */
+@media (max-width: 1100px) { .usr-table .hide-md { display: none; } }
+@media (max-width: 640px) {
+  .usr-table .hide-sm { display: none; }
+  .usr-bar .usr-search { flex-basis: 100%; }
+  .usr-section dl div { grid-template-columns: 120px 1fr; }
+  .usr-table-wrap { max-height: none; }
+}
+:where(.hangly-container) .adm.wrap.adm-wide { width: min(1880px, calc(100% - 64px)); }
+@media (max-width: 800px) { :where(.hangly-container) .adm.wrap.adm-wide { width: calc(100% - 32px); } }
