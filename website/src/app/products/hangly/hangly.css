@@ -646,3 +646,70 @@
 :where(.hangly-container) .locale-list a{color:#d9a56f}
 :where(.hangly-container) .footer-languages{display:flex;flex-wrap:wrap;gap:6px 18px;font-size:12px;color:#8a8073;padding-bottom:24px}
 :where(.hangly-container) .footer-languages a{display:inline-flex;align-items:center;min-height:24px}
+
+/* Collection artwork stays inside its card even while gently rotating. */
+:where(.hangly-container) .collection-rail{align-items:flex-start;scroll-padding-inline:max(56px,calc((100vw - 1320px)/2))}
+:where(.hangly-container) .collection-top{gap:12px;align-items:center;min-height:20px;font-size:10px;letter-spacing:.8px}
+:where(.hangly-container) .collection-top span:last-child{font-size:9px;letter-spacing:.4px;color:#aaa094;text-align:right}
+:where(.hangly-container) .collection-preview{padding-inline:18px;gap:12px;height:248px;--collection-cord-length:46px}
+:where(.hangly-container) .collection-preview>div,
+:where(.hangly-container) .collection-preview>div:nth-child(2){flex:1 1 0;width:0;min-width:0;height:232px}
+:where(.hangly-container) .collection-preview>div:only-child{flex:0 0 132px;width:132px}
+:where(.hangly-container) .collection-preview .charm-art,
+:where(.hangly-container) .collection-preview>div:nth-child(2) .charm-art,
+:where(.hangly-container) .collection-preview>div:only-child .charm-art{max-width:100%;height:176px;object-position:50% 0;animation:none}
+:where(.hangly-container) .collection-copy>p{min-height:30px;line-height:1.5}
+:where(.hangly-container) .collection-copy h3{min-height:66px;line-height:1.1;gap:12px;margin:8px 0}
+:where(.hangly-container) .collection-copy h3 svg{flex-shrink:0}
+:where(.hangly-container) .collection-copy>span{min-height:72px}
+:where(.hangly-container) .collection-pick{min-height:60px}
+:where(.hangly-container) .collection-pick[aria-pressed="true"]{background:#ff7a1a12;color:var(--glow);border-radius:8px}
+:where(.hangly-container) .collection-card:hover .collection-preview>div:first-child{transform:rotate(3deg)}
+:where(.hangly-container) .collection-card:hover .collection-preview>div:nth-child(2){transform:rotate(-3deg)}
+:where(.hangly-container) .collection-card:hover .collection-preview>div:nth-child(3){transform:rotate(-3deg)}
+@media(max-width:800px){
+ :where(.hangly-container) .collection-rail{padding-inline:20px;scroll-padding-inline:20px;gap:16px}
+ :where(.hangly-container) .collection-card{flex-basis:min(350px,calc(100vw - 56px));scroll-snap-align:start}
+ :where(.hangly-container) .collection-preview{padding-inline:20px;gap:10px}
+ :where(.hangly-container) .collection-top{margin-inline:20px}
+ :where(.hangly-container) .collection-copy{padding-inline:20px}
+ :where(.hangly-container) .custom-collection-note{grid-template-columns:1fr;gap:16px;padding:26px}
+}
+
+/* A shared bottom baseline; the cord fills the space above each natural silhouette. */
+:where(.hangly-container) .collection-preview{height:248px;align-items:flex-start}
+:where(.hangly-container) .collection-preview>div,
+:where(.hangly-container) .collection-preview>div:nth-child(2),
+:where(.hangly-container) .collection-preview>div:only-child{height:222px}
+:where(.hangly-container) .collection-preview .collection-cord,
+:where(.hangly-container) .collection-preview>div:nth-child(2) .collection-cord{height:auto;min-height:46px;flex:1 0 46px}
+:where(.hangly-container) .collection-preview .charm-art,
+:where(.hangly-container) .collection-preview>div:nth-child(2) .charm-art,
+:where(.hangly-container) .collection-preview>div:only-child .charm-art{width:auto;height:auto;max-width:100%;max-height:176px;flex:0 0 auto;object-fit:contain;margin:0}
+
+/* Center each silhouette in the same preview band, with a connected flexible cord. */
+:where(.hangly-container) .collection-preview>div,
+:where(.hangly-container) .collection-preview>div:nth-child(2),
+:where(.hangly-container) .collection-preview>div:only-child{height:248px}
+:where(.hangly-container) .collection-preview>div::after{content:'';flex:1 0 0;width:1px}
+:where(.hangly-container) .collection-preview .collection-cord,
+:where(.hangly-container) .collection-preview>div:nth-child(2) .collection-cord{height:auto;min-height:0;flex:1 0 46px}
+
+/* Animate the complete hanging assembly, including its attached cord. */
+@media (hover:hover) and (prefers-reduced-motion:no-preference){
+ :where(.hangly-container) .collection-preview>div{transition:transform .65s cubic-bezier(.22,1,.36,1)}
+ :where(.hangly-container) .collection-card:hover .collection-preview>div:nth-child(odd){transform:rotate(4deg)}
+ :where(.hangly-container) .collection-card:hover .collection-preview>div:nth-child(even){transform:rotate(-4deg)}
+}
+
+/* Optical sizing uses alpha coverage: slim figures and broad poses carry similar weight. */
+:where(.hangly-container) .collection-card{flex-basis:410px}
+:where(.hangly-container) .collection-preview{padding-inline:22px;gap:14px}
+:where(.hangly-container) .collection-preview .charm-art,
+:where(.hangly-container) .collection-preview>div:nth-child(2) .charm-art,
+:where(.hangly-container) .collection-preview>div:only-child .charm-art{max-width:none;max-height:none;height:auto}
+@media(max-width:800px){
+ :where(.hangly-container) .collection-card{flex-basis:min(410px,calc(100vw - 40px))}
+ :where(.hangly-container) .collection-preview{padding-inline:18px;gap:12px}
+ :where(.hangly-container) .collection-preview .charm-art{zoom:.85}
+}

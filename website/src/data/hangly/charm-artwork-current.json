@@ -1,0 +1,1290 @@
+{
+  "nazar": {
+    "source": "Nazar Boncuğu.svg",
+    "sha256": "5912bac523fc52bb2989e48f10421e624f2d57107014db8a98cc5ebfb6cd94ed",
+    "path": "/charms/current/nazar.webp",
+    "connectionPercent": 37.813,
+    "displayWidth": 85.58,
+    "displayHeight": 137.61
+  },
+  "hamsa": {
+    "source": "Hamsa.svg",
+    "sha256": "4d96fa73dca706c53231b70ee039824735be10c9dab2e5570e9e0a924e7898a3",
+    "path": "/charms/current/hamsa.webp",
+    "connectionPercent": 37.5,
+    "displayWidth": 86.36,
+    "displayHeight": 164
+  },
+  "nimbuMirchi": {
+    "source": "Nimbu-mirchi.svg",
+    "sha256": "e8a165ac5b4fefc7f3f8bd7827aa7b316be79111221d86240c981ea973a52e29",
+    "path": "/charms/current/nimbuMirchi.webp",
+    "connectionPercent": 10.313,
+    "displayWidth": 100.37,
+    "displayHeight": 140.25
+  },
+  "ghanta": {
+    "source": "Ghanta.svg",
+    "sha256": "4bc0e5ee437fc2fdcc0ec61c841eef857deea35e9f64c419aa27a7ca56db0064",
+    "path": "/charms/current/ghanta.webp",
+    "connectionPercent": 46.719,
+    "displayWidth": 84.56,
+    "displayHeight": 164
+  },
+  "drishtiBommai": {
+    "source": "Dhrishti bomma.svg",
+    "sha256": "0c0cc4fb44e06e564c4132fcefda16afa6ac5bc60703885b93be93d70018ddb2",
+    "path": "/charms/current/drishtiBommai.webp",
+    "connectionPercent": 33.594,
+    "displayWidth": 78,
+    "displayHeight": 144.28
+  },
+  "panchangJie": {
+    "source": "Pánchang Jié.svg",
+    "sha256": "11bbbc0797bc92878a9177dd4b425f5c9eb9d6b185290dd7d4c10bc316b3042a",
+    "path": "/charms/current/panchangJie.webp",
+    "connectionPercent": 20.625,
+    "displayWidth": 74.06,
+    "displayHeight": 164
+  },
+  "daruma": {
+    "source": "Daruma.svg",
+    "sha256": "657dac591563b7ac38cd6e98a781eb47524db9eb1c3e8cb9d0fc8151cadad485",
+    "path": "/charms/current/daruma.webp",
+    "connectionPercent": 18.438,
+    "displayWidth": 82.26,
+    "displayHeight": 158.1
+  },
+  "manekiNeko": {
+    "source": "Maneki-neko.svg",
+    "sha256": "81df23ac599f79b34a8d897d761928d978d2ec2e6e4a3d2b531a54e647c82c63",
+    "path": "/charms/current/manekiNeko.webp",
+    "connectionPercent": 41.719,
+    "displayWidth": 79.75,
+    "displayHeight": 163.58
+  },
+  "horseshoe": {
+    "source": "Horseshoe.svg",
+    "sha256": "b1ec82334f59d45f1fe1ff78fd3692026d80fb0db7ec9e8c39c816caebd45169",
+    "path": "/charms/current/horseshoe.webp",
+    "connectionPercent": 82.958,
+    "displayWidth": 114.31,
+    "displayHeight": 148.12
+  },
+  "scarab": {
+    "source": "Scarab.svg",
+    "sha256": "c346b4df738034fbb98339bbacd21f9bc55b1e134905bfc355a58121c334211a",
+    "path": "/charms/current/scarab.webp",
+    "connectionPercent": 46.875,
+    "displayWidth": 74.31,
+    "displayHeight": 164
+  },
+  "himmeli": {
+    "source": "Himmeli.svg",
+    "sha256": "152a8b0ccf106f1aff4fa43a33a03a9f06e75fe2111fe6adec94b3d6d622d382",
+    "path": "/charms/current/himmeli.webp",
+    "connectionPercent": 37.188,
+    "displayWidth": 83.54,
+    "displayHeight": 164
+  },
+  "dreamCatcher": {
+    "source": "Dream Catcher.svg",
+    "sha256": "802b315d9c7c657fc0de5c1acc7271699fe0bf2bcbf74f0ca5221ff29d38aa42",
+    "path": "/charms/current/dreamCatcher.webp",
+    "connectionPercent": 9.531,
+    "displayWidth": 90.2,
+    "displayHeight": 164
+  },
+  "circle": {
+    "source": "Bead.svg",
+    "sha256": "aa952159aecce172a5ff7f397a9afbd503f09d028128ae9fbbf354443ba70bfd",
+    "path": "/charms/current/circle.webp",
+    "connectionPercent": 20.501,
+    "displayWidth": 86.46,
+    "displayHeight": 115.09
+  },
+  "star": {
+    "source": "Star.svg",
+    "sha256": "856b289ffb4475948a72d644507015ad1ed6f375a23e3c542ac9f46ea6553300",
+    "path": "/charms/current/star.webp",
+    "connectionPercent": 38.15,
+    "displayWidth": 120.89,
+    "displayHeight": 130.71
+  },
+  "heart": {
+    "source": "Heart.svg",
+    "sha256": "c5f77cb212102833fb7f73999046c8c064efd60d414a6178e1430bba2eff5e61",
+    "path": "/charms/current/heart.webp",
+    "connectionPercent": 14.12,
+    "displayWidth": 93.48,
+    "displayHeight": 100.69
+  },
+  "diamond": {
+    "source": "Diamond.svg",
+    "sha256": "ecd51cc12d0e0b571457eaf568e06205331b9ceb29c39b0ec20c63993fb723b4",
+    "path": "/charms/current/diamond.webp",
+    "connectionPercent": 22.044,
+    "displayWidth": 113,
+    "displayHeight": 117.48
+  },
+  "camera": {
+    "source": "Camera.svg",
+    "sha256": "cbe43b73c2aa2c39b6ce6b2e0bfa5dd23d5a905df7d61fe102d7291abb59013b",
+    "path": "/charms/current/camera.webp",
+    "connectionPercent": 11.111,
+    "displayWidth": 97.97,
+    "displayHeight": 80.82
+  },
+  "spiderMan": {
+    "source": "Avengers/Spider-Man.svg",
+    "sha256": "1fb6d9fabca6abf054cfc49c4ca80173e4d0381e26094fb65813602fc4c54a95",
+    "path": "/charms/current/spiderMan.webp",
+    "connectionPercent": 14.063,
+    "displayWidth": 98.16,
+    "displayHeight": 152.86
+  },
+  "spiderManSwinging": {
+    "source": "Avengers/Spider-Man Swinging.svg",
+    "sha256": "90c2c05a6fbc617f73b0e59c0626804468cdfa0dbc89b52c6a8aa651e12a4804",
+    "path": "/charms/current/spiderManSwinging.webp",
+    "connectionPercent": 45.156,
+    "displayWidth": 80.97,
+    "displayHeight": 164
+  },
+  "captainAmericaShield": {
+    "source": "Avengers/Captain-America.svg",
+    "sha256": "477ba58499f549a7629b658a8bf044edd5f4c4ba8ff58c6286c707a0dc0025d3",
+    "path": "/charms/current/captainAmericaShield.webp",
+    "connectionPercent": 8.688,
+    "displayWidth": 88.16,
+    "displayHeight": 99.37
+  },
+  "ironManHelmet": {
+    "source": "Avengers/Iron-Man.svg",
+    "sha256": "284da021398dc10536c36e3615682107c813c681fbf9f984d22ae3f352a7211b",
+    "path": "/charms/current/ironManHelmet.webp",
+    "connectionPercent": 8.438,
+    "displayWidth": 73.26,
+    "displayHeight": 116.35
+  },
+  "thorHammer": {
+    "source": "Avengers/Thor Mjölnir.svg",
+    "sha256": "9c4de0aa09bbb6aca0cdd7e7bb7fe5a1834b842485f898582d080a5ea577ed67",
+    "path": "/charms/current/thorHammer.webp",
+    "connectionPercent": 66.719,
+    "displayWidth": 90.2,
+    "displayHeight": 164
+  },
+  "hulkFist": {
+    "source": "Avengers/Hulk.svg",
+    "sha256": "1172a48ae1c34036e70b2813ace5ccb9fa2b30db9e7edcaef982e4233b19b5d0",
+    "path": "/charms/current/hulkFist.webp",
+    "connectionPercent": 11.594,
+    "displayWidth": 88.33,
+    "displayHeight": 101.58
+  },
+  "batmanSymbol": {
+    "source": "DC/Bat-Man.svg",
+    "sha256": "91b72044cf6300f9a22e57cdce972ab38061d8ff03710a37bf889767cd10c168",
+    "path": "/charms/current/batmanSymbol.webp",
+    "connectionPercent": 17.46,
+    "displayWidth": 124,
+    "displayHeight": 81.38
+  },
+  "supermanShield": {
+    "source": "DC/Super-Man.svg",
+    "sha256": "9e8cd4294f7c39b503fc8bb1a43cfe6ebcf4e57f4e247b61d6d21ae83289bf2f",
+    "path": "/charms/current/supermanShield.webp",
+    "connectionPercent": 18.63,
+    "displayWidth": 116.55,
+    "displayHeight": 113.39
+  },
+  "wonderWomanEmblem": {
+    "source": "DC/Wonder Woman.svg",
+    "sha256": "e02fd0aaf234c4b6f3b75f26c7244f573e6e95a0f10a85371007cad639efbd20",
+    "path": "/charms/current/wonderWomanEmblem.webp",
+    "connectionPercent": 13.801,
+    "displayWidth": 103.04,
+    "displayHeight": 94.88
+  },
+  "shazamLightning": {
+    "source": "DC/Flash.svg",
+    "sha256": "def0d0237e5d0326b432324deb17e4c4f01d09e637ddba6b6592b6bf78984ebd",
+    "path": "/charms/current/shazamLightning.webp",
+    "connectionPercent": 19.063,
+    "displayWidth": 64.83,
+    "displayHeight": 164
+  },
+  "greenLanternRing": {
+    "source": "DC/Green Lantern.svg",
+    "sha256": "7759265d01ed9099a832cac2e8a786ca32538cd007cd887519d8077e3829d05e",
+    "path": "/charms/current/greenLanternRing.webp",
+    "connectionPercent": 23.064,
+    "displayWidth": 89.51,
+    "displayHeight": 113.19
+  },
+  "vel": {
+    "source": "Tamil Gods/Muruga Vel.svg",
+    "sha256": "e90f294593d0e1f1d305bbd9d4f31e3bb356af40049a06f5fd0314bbb72328ca",
+    "path": "/charms/current/vel.webp",
+    "connectionPercent": 20.781,
+    "displayWidth": 33.06,
+    "displayHeight": 164
+  },
+  "vinayagarCoin": {
+    "source": "Tamil Gods/Vinayaga.svg",
+    "sha256": "551aa3e5f6fe7db838d162f9591ab202d795a25e980fc66fb92c3330694f3f57",
+    "path": "/charms/current/vinayagarCoin.webp",
+    "connectionPercent": 44.375,
+    "displayWidth": 86.63,
+    "displayHeight": 152.73
+  },
+  "omSymbol": {
+    "source": "Tamil Gods/OM.svg",
+    "sha256": "a3e1836caae59daa11050ba3b69d7a9dac173177cf93d67e2af98693f8e47f11",
+    "path": "/charms/current/omSymbol.webp",
+    "connectionPercent": 47.188,
+    "displayWidth": 93.02,
+    "displayHeight": 164
+  },
+  "karuppuStatue": {
+    "source": "Tamil Gods/Karuppu.svg",
+    "sha256": "cec2285194a91ea9ce0566785c58dc5a61213b6bb473851762d969db34404635",
+    "path": "/charms/current/karuppuStatue.webp",
+    "connectionPercent": 37.969,
+    "displayWidth": 67.65,
+    "displayHeight": 164
+  },
+  "templeBell": {
+    "source": "Tamil Gods/Mani.svg",
+    "sha256": "fe8e86a20edc958cb730b0c3db5bd5321ec28f1d7a86090fe64bb3bed51301e5",
+    "path": "/charms/current/templeBell.webp",
+    "connectionPercent": 56.25,
+    "displayWidth": 72.01,
+    "displayHeight": 164
+  },
+  "btsMemberOne": {
+    "source": "BTS/RM.svg",
+    "sha256": "30915ab443f61ebcefadeb06248327a850df313d8626b0c807b43c3b42a708bb",
+    "path": "/charms/current/btsMemberOne.webp",
+    "connectionPercent": 13.125,
+    "displayWidth": 52.02,
+    "displayHeight": 164
+  },
+  "btsMemberTwo": {
+    "source": "BTS/Jin.svg",
+    "sha256": "2be767afbe78de9307797cf39fd19c5bd26e40bde0b84ade4aa0f03eff59e975",
+    "path": "/charms/current/btsMemberTwo.webp",
+    "connectionPercent": 7.344,
+    "displayWidth": 61.76,
+    "displayHeight": 164
+  },
+  "btsMemberThree": {
+    "source": "BTS/SUGA.svg",
+    "sha256": "1ab0e9fe447ad96cf3e7459473eb2c5369631d29446c3b90bd4e8a1f6a1d9b67",
+    "path": "/charms/current/btsMemberThree.webp",
+    "connectionPercent": 12.5,
+    "displayWidth": 47.41,
+    "displayHeight": 164
+  },
+  "btsMemberFour": {
+    "source": "BTS/j-hope.svg",
+    "sha256": "9e8589a65972ccf2acd0315b7c0078f0d09cc2291ef7ba7e357ab0e71adb1813",
+    "path": "/charms/current/btsMemberFour.webp",
+    "connectionPercent": 13.125,
+    "displayWidth": 57.66,
+    "displayHeight": 164
+  },
+  "btsMemberFive": {
+    "source": "BTS/Jimin.svg",
+    "sha256": "9a5cd9de9eb9212c98236ca5a747d9a4273a35422e3ab9921e24bf0c1dc9052d",
+    "path": "/charms/current/btsMemberFive.webp",
+    "connectionPercent": 13.281,
+    "displayWidth": 54.84,
+    "displayHeight": 164
+  },
+  "btsMemberSix": {
+    "source": "BTS/V.svg",
+    "sha256": "2fa66786ae17a7fefb82834ab16ba610cc0c7ce44afb88fb7a57521216f7e859",
+    "path": "/charms/current/btsMemberSix.webp",
+    "connectionPercent": 13.125,
+    "displayWidth": 49.71,
+    "displayHeight": 164
+  },
+  "btsMemberSeven": {
+    "source": "BTS/Jungkook.svg",
+    "sha256": "2b68042cebaa70f66d08ccc54c78e2271feb6539b447d291f771e426df39f49d",
+    "path": "/charms/current/btsMemberSeven.webp",
+    "connectionPercent": 14.063,
+    "displayWidth": 67.65,
+    "displayHeight": 164
+  },
+  "ronaldoJersey": {
+    "source": "Football/Ronaldo 7.svg",
+    "sha256": "2d6b0ce09df2ff80a65d01dc90c2e98bc13ed776b1c93c90326278f3d3692f14",
+    "path": "/charms/current/ronaldoJersey.webp",
+    "connectionPercent": 10.645,
+    "displayWidth": 88.76,
+    "displayHeight": 114.64
+  },
+  "messiJersey": {
+    "source": "Football/Messi 10.svg",
+    "sha256": "a508240d23509bb5554e2932947246df89d962f71bac57a5ace6f7c755809bde",
+    "path": "/charms/current/messiJersey.webp",
+    "connectionPercent": 10.24,
+    "displayWidth": 88.45,
+    "displayHeight": 115.17
+  },
+  "neymarJersey": {
+    "source": "Football/Neymar 10.svg",
+    "sha256": "8cc086b256cad9bfd29ae4649e29af904440bec61827a5e65a810181f976cd0b",
+    "path": "/charms/current/neymarJersey.webp",
+    "connectionPercent": 10.227,
+    "displayWidth": 89.02,
+    "displayHeight": 114.24
+  },
+  "realMadridCrest": {
+    "source": "Football/Real Madrid.svg",
+    "sha256": "e2c9c212b4eb6d5db21b1cd65e757fc584d90dbca8bfd7c1773ce761428eda4a",
+    "path": "/charms/current/realMadridCrest.webp",
+    "connectionPercent": 13.75,
+    "displayWidth": 81.19,
+    "displayHeight": 121.4
+  },
+  "fcBarcelonaCrest": {
+    "source": "Football/FC Barcelona.svg",
+    "sha256": "239151b55b42d7dabaf08f90a456c1dd5233e7a406935c7c45a28dd2099ba7db",
+    "path": "/charms/current/fcBarcelonaCrest.webp",
+    "connectionPercent": 12.039,
+    "displayWidth": 90.47,
+    "displayHeight": 97.07
+  },
+  "billieEilish": {
+    "source": "Music/Billie Eilish.svg",
+    "sha256": "51f644aa4241a3ea7fd65d4f3b8cf069abcc62d816756e7f8575b31791ccf2d5",
+    "path": "/charms/current/billieEilish.webp",
+    "connectionPercent": 2.813,
+    "displayWidth": 71.08,
+    "displayHeight": 121.32
+  },
+  "xxxtentacion": {
+    "source": "Music/XXXTentacion.svg",
+    "sha256": "d31914c8c81c2230662c9be596126cb72c87f52c53aad6d6466790eb6afd3466",
+    "path": "/charms/current/xxxtentacion.webp",
+    "connectionPercent": 4.219,
+    "displayWidth": 62.34,
+    "displayHeight": 131.24
+  },
+  "michaelJackson": {
+    "source": "Music/Michael Jackson.svg",
+    "sha256": "6eb9b6f7fc443147e75f7ceee45db57cbb48ba367f2a5096c1c2e0d17f8cf200",
+    "path": "/charms/current/michaelJackson.webp",
+    "connectionPercent": 3.906,
+    "displayWidth": 79.58,
+    "displayHeight": 152.95
+  },
+  "taylorSwift": {
+    "source": "Music/Taylor Swift.svg",
+    "sha256": "cdfa73d043ea75bf66b03c35261e49e5254af6a239189c5d105d410dff64d4fc",
+    "path": "/charms/current/taylorSwift.webp",
+    "connectionPercent": 3.281,
+    "displayWidth": 80.83,
+    "displayHeight": 126.49
+  },
+  "juiceWrld": {
+    "source": "Music/Juice WRLD.svg",
+    "sha256": "b0b7a2d1724abb22ca471512353cdf2250c240148f4b6b105ae379eab1c91cc1",
+    "path": "/charms/current/juiceWrld.webp",
+    "connectionPercent": 3.75,
+    "displayWidth": 70.65,
+    "displayHeight": 131.06
+  },
+  "theWeeknd": {
+    "source": "Music/The Weeknd.svg",
+    "sha256": "27cbbaa0f28a56ec148cde7378747c90ff5241f39302fa0f7a30813ae9fe284e",
+    "path": "/charms/current/theWeeknd.webp",
+    "connectionPercent": 5.781,
+    "displayWidth": 111.82,
+    "displayHeight": 156.59
+  },
+  "rachelGreen": {
+    "source": "Friends/Rachel Green.svg",
+    "sha256": "d53ae492a5eeb8b0367381997238ec18a5ebf06503b017afc496b0e3e8888cc5",
+    "path": "/charms/current/rachelGreen.webp",
+    "connectionPercent": 1.719,
+    "displayWidth": 58.42,
+    "displayHeight": 164
+  },
+  "monicaGeller": {
+    "source": "Friends/Monica Geller.svg",
+    "sha256": "66a78aa88dd8e226c844142877cd4aa786cd7153f5a46f0e9997106f8e2ec619",
+    "path": "/charms/current/monicaGeller.webp",
+    "connectionPercent": 1.719,
+    "displayWidth": 43.82,
+    "displayHeight": 164
+  },
+  "rossGeller": {
+    "source": "Friends/Ross Geller.svg",
+    "sha256": "2b9e56496f82a5f9a99c563c6656cb6de19f25db099e596e85ba99039771d415",
+    "path": "/charms/current/rossGeller.webp",
+    "connectionPercent": 2.5,
+    "displayWidth": 64.32,
+    "displayHeight": 164
+  },
+  "joeyTribbiani": {
+    "source": "Friends/Joey Tribbiani.svg",
+    "sha256": "cc896562d6c09456fc781e2ae967b39771739126234982009267b19626dfbf4c",
+    "path": "/charms/current/joeyTribbiani.webp",
+    "connectionPercent": 2.344,
+    "displayWidth": 57.14,
+    "displayHeight": 164
+  },
+  "chandlerBing": {
+    "source": "Friends/Chandler Bing.svg",
+    "sha256": "9605deae7819f93dab382848e6c469c6f94342f756eb643c43c3eb2f3806054a",
+    "path": "/charms/current/chandlerBing.webp",
+    "connectionPercent": 2.188,
+    "displayWidth": 56.63,
+    "displayHeight": 164
+  },
+  "phoebeBuffay": {
+    "source": "Friends/Phoebe Buffay.svg",
+    "sha256": "d330df8b3fa3b109d8b3eebf7904d82c38a1c18ee581a5509107fea8f60b2e03",
+    "path": "/charms/current/phoebeBuffay.webp",
+    "connectionPercent": 5.156,
+    "displayWidth": 81.78,
+    "displayHeight": 159.58
+  },
+  "walterWhite": {
+    "source": "Breaking Bad/Walter White.svg",
+    "sha256": "b9f90cb0cdb5c26bba91a3a7e9277831934c04d56c1b263f819edcab568f7111",
+    "path": "/charms/current/walterWhite.webp",
+    "connectionPercent": 3.438,
+    "displayWidth": 67.61,
+    "displayHeight": 163.27
+  },
+  "jessePinkman": {
+    "source": "Breaking Bad/Jesse Pinkman.svg",
+    "sha256": "6f356c590042cb695cb3cd86103a4da2d12aa5614d8dc15c060047c67ba3f1f7",
+    "path": "/charms/current/jessePinkman.webp",
+    "connectionPercent": 2.969,
+    "displayWidth": 59.19,
+    "displayHeight": 164
+  },
+  "saulGoodman": {
+    "source": "Breaking Bad/Saul Goodman.svg",
+    "sha256": "176b85df304698bfed100dc9c6a947f034ea4f123964770a983bf41584098f9e",
+    "path": "/charms/current/saulGoodman.webp",
+    "connectionPercent": 2.5,
+    "displayWidth": 59.45,
+    "displayHeight": 164
+  },
+  "gusFring": {
+    "source": "Breaking Bad/Gus Fring.svg",
+    "sha256": "9a277d39edbdf11be78089fea482dab9c68cf9080edcb0028a30c804e99cc328",
+    "path": "/charms/current/gusFring.webp",
+    "connectionPercent": 2.969,
+    "displayWidth": 57.14,
+    "displayHeight": 164
+  },
+  "mikeEhrmantraut": {
+    "source": "Breaking Bad/Mike Ehrmantraut.svg",
+    "sha256": "cd89ae29568c7ce86ed52e968d4e51c8f5e5856827b50571c9f18da2e7204bcc",
+    "path": "/charms/current/mikeEhrmantraut.webp",
+    "connectionPercent": 2.344,
+    "displayWidth": 56.89,
+    "displayHeight": 164
+  },
+  "heisenberg": {
+    "source": "Breaking Bad/Heisenberg.svg",
+    "sha256": "de5921331a366abd91d6a11b27b15e8585146c6ed251e3bae4feb91ee7a62116",
+    "path": "/charms/current/heisenberg.webp",
+    "connectionPercent": 2.813,
+    "displayWidth": 74.46,
+    "displayHeight": 152.73
+  },
+  "rv": {
+    "source": "Breaking Bad/RV.svg",
+    "sha256": "dd21133fb80c2b2a6e07afef80ee7de655d71e5ff3336723354115521e419b09",
+    "path": "/charms/current/rv.webp",
+    "connectionPercent": 3.583,
+    "displayWidth": 115.21,
+    "displayHeight": 73.69
+  },
+  "eleven": {
+    "source": "Stranger Things/Eleven.svg",
+    "sha256": "33ea27bde71e1d8a2b2b960c7cddca662960bf477208270fdbd9f4d8b7df787d",
+    "path": "/charms/current/eleven.webp",
+    "connectionPercent": 2.656,
+    "displayWidth": 56.37,
+    "displayHeight": 164
+  },
+  "mikeWheeler": {
+    "source": "Stranger Things/Mike Wheeler.svg",
+    "sha256": "7fcf83f51491ae3371fde508a0d9f87f40c5c9c8f80fdf9ac841b42452cbebe1",
+    "path": "/charms/current/mikeWheeler.webp",
+    "connectionPercent": 1.563,
+    "displayWidth": 55.86,
+    "displayHeight": 164
+  },
+  "dustinHenderson": {
+    "source": "Stranger Things/Dustin Henderson.svg",
+    "sha256": "91ccfaa789597cad76b5760a1dd2b9209dce35e798f50148cb77a78d9c76c26c",
+    "path": "/charms/current/dustinHenderson.webp",
+    "connectionPercent": 2.656,
+    "displayWidth": 69.15,
+    "displayHeight": 153.67
+  },
+  "lucasSinclair": {
+    "source": "Stranger Things/Lucas Sinclair.svg",
+    "sha256": "04761ac8ae117355f864fc809fc0c7047d340f91b0eb4a94ecab4575b0fcd41b",
+    "path": "/charms/current/lucasSinclair.webp",
+    "connectionPercent": 2.656,
+    "displayWidth": 64.32,
+    "displayHeight": 164
+  },
+  "willByers": {
+    "source": "Stranger Things/Will Byers.svg",
+    "sha256": "f11f64e6febafad6a1689687933da1c149aff83124d4883bb2ad9013cc3ff96c",
+    "path": "/charms/current/willByers.webp",
+    "connectionPercent": 1.719,
+    "displayWidth": 53.56,
+    "displayHeight": 164
+  },
+  "demogorgon": {
+    "source": "Stranger Things/Demogorgon.svg",
+    "sha256": "4eee7dd64296d8900ce717d61cca59ec79d7f7253859c4203695a806d5fa9bdc",
+    "path": "/charms/current/demogorgon.webp",
+    "connectionPercent": 7.187,
+    "displayWidth": 93.99,
+    "displayHeight": 153.06
+  },
+  "spiderManGwen": {
+    "source": "Avengers/Spider-Man and Gwen.svg",
+    "sha256": "13e670483393e02e11df5a0cea0232730d4273852bf15852be453beaa0982603",
+    "path": "/charms/current/spiderManGwen.webp",
+    "connectionPercent": 30.625,
+    "displayWidth": 32.8,
+    "displayHeight": 164
+  },
+  "eyeOfAgamotto": {
+    "source": "Avengers/Eye of Agamotto.svg",
+    "sha256": "13a2a7fd3ff944497fed73a4c7e003262134ec529ba3785376670f9c237cf756",
+    "path": "/charms/current/eyeOfAgamotto.webp",
+    "connectionPercent": 2.364,
+    "displayWidth": 99.53,
+    "displayHeight": 87.71
+  },
+  "stormbreaker": {
+    "source": "Avengers/Stormbreaker.svg",
+    "sha256": "92a3bd503f3ea2fdbf4fa1286938123f9b7d900217fead7ec45cc20e1fadd960",
+    "path": "/charms/current/stormbreaker.webp",
+    "connectionPercent": 5.938,
+    "displayWidth": 82.26,
+    "displayHeight": 164
+  },
+  "doctorDoom": {
+    "source": "Avengers/Doctor Doom.svg",
+    "sha256": "2855d1911c8f469d0fb681e55126d8313b77dfe6ebae3278105d3391b632a025",
+    "path": "/charms/current/doctorDoom.webp",
+    "connectionPercent": 15.469,
+    "displayWidth": 82.98,
+    "displayHeight": 131.13
+  },
+  "deadpoolWolverine": {
+    "source": "Avengers/Deadpool and Wolverine.svg",
+    "sha256": "730ae9f26bfc086964d85c69ad2b40f8c4d87c023908e11c8b325bd0e83b99c4",
+    "path": "/charms/current/deadpoolWolverine.webp",
+    "connectionPercent": 16.856,
+    "displayWidth": 102.27,
+    "displayHeight": 131.46
+  },
+  "luffy": {
+    "source": "One Piece/Monkey D. Luffy.svg",
+    "sha256": "b9b00b3a363fa1dfcc10ad5ca806b8ba3705d4dac16479d8122ef78791789227",
+    "path": "/charms/current/luffy.webp",
+    "connectionPercent": 6.094,
+    "displayWidth": 89.77,
+    "displayHeight": 124.9
+  },
+  "zoro": {
+    "source": "One Piece/Roronoa Zoro.svg",
+    "sha256": "72a0703980cb7702977e1299a8d285c416126a600e869c883df39e727b7d8bbd",
+    "path": "/charms/current/zoro.webp",
+    "connectionPercent": 3.099,
+    "displayWidth": 119.23,
+    "displayHeight": 120.22
+  },
+  "nami": {
+    "source": "One Piece/Nami.svg",
+    "sha256": "4dc3d5ff45f253541907121ba9315832d56e91ae638e4cd8da0fdde0b6f6eb2f",
+    "path": "/charms/current/nami.webp",
+    "connectionPercent": 13.906,
+    "displayWidth": 95.01,
+    "displayHeight": 151.63
+  },
+  "usopp": {
+    "source": "One Piece/Usopp.svg",
+    "sha256": "091665042e112cc48fb7e023eef5dc649f975f877199e4f030bd5ff2578ff9fe",
+    "path": "/charms/current/usopp.webp",
+    "connectionPercent": 6.181,
+    "displayWidth": 95.88,
+    "displayHeight": 126.05
+  },
+  "sanji": {
+    "source": "One Piece/Sanji.svg",
+    "sha256": "759cf7df208e7105f69b31bff7fd84e823e90dbcb3be45af3f1b6c4be04f56d9",
+    "path": "/charms/current/sanji.webp",
+    "connectionPercent": 13.281,
+    "displayWidth": 85.64,
+    "displayHeight": 129.27
+  },
+  "chopper": {
+    "source": "One Piece/Tony Tony Chopper.svg",
+    "sha256": "3943d5f97bd3bc1ba7070ab7fdc3ad0a43bc84eb0e65c9e41c4329108f0e37dc",
+    "path": "/charms/current/chopper.webp",
+    "connectionPercent": 3.529,
+    "displayWidth": 102.24,
+    "displayHeight": 108.64
+  },
+  "robin": {
+    "source": "One Piece/Nico Robin.svg",
+    "sha256": "0dd7f48f87ad1abba32602711f126cfc4863f5854d83da832ac65090b30d14e7",
+    "path": "/charms/current/robin.webp",
+    "connectionPercent": 6.96,
+    "displayWidth": 111.67,
+    "displayHeight": 127.02
+  },
+  "ace": {
+    "source": "One Piece/Portgas D. Ace.svg",
+    "sha256": "3be77efa3200608db66851201ec7e0a742be1a58fdce0f184b4fd1926db508b2",
+    "path": "/charms/current/ace.webp",
+    "connectionPercent": 5.469,
+    "displayWidth": 85.79,
+    "displayHeight": 127.39
+  },
+  "harryPotter": {
+    "source": "Harry Potter/Harry Potter.svg",
+    "sha256": "fdebac6772906d0426090f35066505de04965997e7939d5e016d359a9d033a87",
+    "path": "/charms/current/harryPotter.webp",
+    "connectionPercent": 5.469,
+    "displayWidth": 71.89,
+    "displayHeight": 154.92
+  },
+  "hermioneGranger": {
+    "source": "Harry Potter/Hermione Granger.svg",
+    "sha256": "850187b92ad6cb6269d25f3cd9ffec089ffacd49e41e90413e521e084b48f33d",
+    "path": "/charms/current/hermioneGranger.webp",
+    "connectionPercent": 4.375,
+    "displayWidth": 71.9,
+    "displayHeight": 158.68
+  },
+  "ronWeasley": {
+    "source": "Harry Potter/Ron Weasley.svg",
+    "sha256": "9d73fe1b2468676af8c5f8c7a5db6679665e0ab8334bee71487a1290a3b5254d",
+    "path": "/charms/current/ronWeasley.webp",
+    "connectionPercent": 3.906,
+    "displayWidth": 69.1,
+    "displayHeight": 150.93
+  },
+  "albusDumbledore": {
+    "source": "Harry Potter/Albus Dumbledore.svg",
+    "sha256": "fde61a860d083725886fc44e8b6b7dd304e0e63b9c5255f861abe2a74475df3f",
+    "path": "/charms/current/albusDumbledore.webp",
+    "connectionPercent": 2.188,
+    "displayWidth": 62.97,
+    "displayHeight": 138.96
+  },
+  "lordVoldemort": {
+    "source": "Harry Potter/Lord Voldemort.svg",
+    "sha256": "322ae56e78ef5137463f53b7754293a505d60892cc9fd13c515b8feabba586cf",
+    "path": "/charms/current/lordVoldemort.webp",
+    "connectionPercent": 10.469,
+    "displayWidth": 69.78,
+    "displayHeight": 133.31
+  },
+  "hedwig": {
+    "source": "Harry Potter/Hedwig.svg",
+    "sha256": "eba7b3235bb81bc6b0c4fe405f186e0e5d05b5f3a5210270568716f0965adf1c",
+    "path": "/charms/current/hedwig.webp",
+    "connectionPercent": 3.281,
+    "displayWidth": 74.8,
+    "displayHeight": 127.32
+  },
+  "goldenSnitch": {
+    "source": "Harry Potter/Golden Snitch.svg",
+    "sha256": "03a57396c6b6c70f53bffadc2b8c5d86510e1b9e863be546d499e95bc956df51",
+    "path": "/charms/current/goldenSnitch.webp",
+    "connectionPercent": 65,
+    "displayWidth": 111.21,
+    "displayHeight": 164
+  },
+  "deathlyHallows": {
+    "source": "Harry Potter/Deathly Hallows.svg",
+    "sha256": "86378dcd0245c37bc48a58f38a4ba6cdd4832e098ea3639f072851c1c08e3580",
+    "path": "/charms/current/deathlyHallows.webp",
+    "connectionPercent": 40.938,
+    "displayWidth": 124,
+    "displayHeight": 121.16
+  },
+  "benTennyson": {
+    "source": "Ben 10/Ben Tennyson.svg",
+    "sha256": "47329cee23dfdc2dc47c6108b52643e2ffbb80d755a737e9a5e1dab6b7a1e52c",
+    "path": "/charms/current/benTennyson.webp",
+    "connectionPercent": 2.031,
+    "displayWidth": 72.52,
+    "displayHeight": 164
+  },
+  "fourArms": {
+    "source": "Ben 10/Four Arms.svg",
+    "sha256": "2a159ef68d393d46e0837570b43b52387ce6d01a69aba4b5ae2d50607b68abb2",
+    "path": "/charms/current/fourArms.webp",
+    "connectionPercent": 18.75,
+    "displayWidth": 96.42,
+    "displayHeight": 129.91
+  },
+  "heatblast": {
+    "source": "Ben 10/Heatblast.svg",
+    "sha256": "62d32b5daaba5a538c69b80848176fdacebdefa0d4c2806690ac587f629e36de",
+    "path": "/charms/current/heatblast.webp",
+    "connectionPercent": 13.438,
+    "displayWidth": 100.86,
+    "displayHeight": 163
+  },
+  "xlr8": {
+    "source": "Ben 10/XLR8.svg",
+    "sha256": "872c6a899b0f9064b8438c7543ce528234ea31ef401ca6bd5200ab5ed0c84658",
+    "path": "/charms/current/xlr8.webp",
+    "connectionPercent": 2.5,
+    "displayWidth": 86.1,
+    "displayHeight": 164
+  },
+  "diamondhead": {
+    "source": "Ben 10/Diamondhead.svg",
+    "sha256": "03f3b12904b50233f7547a0ee6cc62a816ff1fa96af3b163ffefdcd28d8d58c4",
+    "path": "/charms/current/diamondhead.webp",
+    "connectionPercent": 8.125,
+    "displayWidth": 95.19,
+    "displayHeight": 132.15
+  },
+  "cannonbolt": {
+    "source": "Ben 10/Cannonbolt.svg",
+    "sha256": "f314a4c54706978c4143b1b1fe4b6d1d4cd8912a7c5a164ec5210f884a2efcfa",
+    "path": "/charms/current/cannonbolt.webp",
+    "connectionPercent": 3.493,
+    "displayWidth": 94.29,
+    "displayHeight": 106.86
+  },
+  "upgrade": {
+    "source": "Ben 10/Upgrade.svg",
+    "sha256": "3d57a87742bf2676e9ad189141f5e81ea3c5a280f0bf4b6c01ef3bb62a5927ec",
+    "path": "/charms/current/upgrade.webp",
+    "connectionPercent": 4.688,
+    "displayWidth": 75.92,
+    "displayHeight": 136.88
+  },
+  "wildmutt": {
+    "source": "Ben 10/Wildmutt.svg",
+    "sha256": "0b6f0a47ae614dbe94c620b1024e102810fe65789a54511819e41376541c3c85",
+    "path": "/charms/current/wildmutt.webp",
+    "connectionPercent": 5.133,
+    "displayWidth": 94.98,
+    "displayHeight": 111.8
+  },
+  "omnitrix": {
+    "source": "Ben 10/Omnitrix.svg",
+    "sha256": "b43fc853e2e66d8477248cd8a37787f3368af14acf155a811b6aa92bff1cec21",
+    "path": "/charms/current/omnitrix.webp",
+    "connectionPercent": 4.51,
+    "displayWidth": 90,
+    "displayHeight": 95.63
+  },
+  "erenYeager": {
+    "source": "Attack on Titan/Eren Yeager.svg",
+    "sha256": "31c231a1738cc0012393a2d89bdf35e44cbbb13eb83a5e97a0c68ae1f3629548",
+    "path": "/charms/current/erenYeager.webp",
+    "connectionPercent": 5,
+    "displayWidth": 95.64,
+    "displayHeight": 128.59
+  },
+  "mikasaAckerman": {
+    "source": "Attack on Titan/Mikasa Ackerman.svg",
+    "sha256": "5ab4d3b7b1e3cd05df5a8cf365bac483f8991d0152f25db0c4c8aa9b7faf4b61",
+    "path": "/charms/current/mikasaAckerman.webp",
+    "connectionPercent": 5.625,
+    "displayWidth": 92.62,
+    "displayHeight": 150.46
+  },
+  "leviAckerman": {
+    "source": "Attack on Titan/Levi Ackerman.svg",
+    "sha256": "f8a92ce74ceaf7892ee9e884b31db62cbce036ea90d747ccb1fdd15f50d762e3",
+    "path": "/charms/current/leviAckerman.webp",
+    "connectionPercent": 4.214,
+    "displayWidth": 104.53,
+    "displayHeight": 134.36
+  },
+  "arminArlert": {
+    "source": "Attack on Titan/Armin Arlert.svg",
+    "sha256": "c0563b26563b7ea38a61602344be384e1d3759997308087be76f755d810653cf",
+    "path": "/charms/current/arminArlert.webp",
+    "connectionPercent": 3.594,
+    "displayWidth": 89.03,
+    "displayHeight": 154.41
+  },
+  "colossalTitan": {
+    "source": "Attack on Titan/Colossal Titan.svg",
+    "sha256": "7e3871c946a16f28f4987107d8cdc2f507aed7f434ff96df4e8bf0162f4db6c7",
+    "path": "/charms/current/colossalTitan.webp",
+    "connectionPercent": 3.75,
+    "displayWidth": 73.84,
+    "displayHeight": 119.64
+  },
+  "attackTitan": {
+    "source": "Attack on Titan/Attack Titan.svg",
+    "sha256": "52fcf80daf4f7fcbe829b818a365bf89b09d9c776b076317283ce2ceb18c8ab8",
+    "path": "/charms/current/attackTitan.webp",
+    "connectionPercent": 3.75,
+    "displayWidth": 77.31,
+    "displayHeight": 116.97
+  },
+  "surveyCorpsEmblem": {
+    "source": "Attack on Titan/Survey Corps Emblem.svg",
+    "sha256": "13cd840a2a566f8b98436770826426a604206ec95328168d3e02da9a0b1dec3a",
+    "path": "/charms/current/surveyCorpsEmblem.webp",
+    "connectionPercent": 12.188,
+    "displayWidth": 75.71,
+    "displayHeight": 114.55
+  },
+  "cadetCorpsEmblem": {
+    "source": "Attack on Titan/Cadet Corps Emblem.svg",
+    "sha256": "cde7b08511e627b8d26c94ac93ea855c31cbf0a5e593ac8f75ae1070ad4e4d96",
+    "path": "/charms/current/cadetCorpsEmblem.webp",
+    "connectionPercent": 12.812,
+    "displayWidth": 73.81,
+    "displayHeight": 114.38
+  },
+  "narutoUzumaki": {
+    "source": "Naruto/Naruto Uzumaki.svg",
+    "sha256": "db1caa0242444ce94d9ea8bb4fb4e5f458abe1a76814a8424bde11dac361007e",
+    "path": "/charms/current/narutoUzumaki.webp",
+    "connectionPercent": 6.25,
+    "displayWidth": 91.15,
+    "displayHeight": 146.21
+  },
+  "sasukeUchiha": {
+    "source": "Naruto/Sasuke Uchiha.svg",
+    "sha256": "92e2ae2d83efa3a289cc2b628e464de39c1bf49fbda2507d0daf0acd6764503b",
+    "path": "/charms/current/sasukeUchiha.webp",
+    "connectionPercent": 4.688,
+    "displayWidth": 92.75,
+    "displayHeight": 154.98
+  },
+  "kakashiHatake": {
+    "source": "Naruto/Kakashi Hatake.svg",
+    "sha256": "d7bf6c09f5ca25451eb974115fb7a276e3a33e89ad8e80f9312412c626335840",
+    "path": "/charms/current/kakashiHatake.webp",
+    "connectionPercent": 4.688,
+    "displayWidth": 70.03,
+    "displayHeight": 161.8
+  },
+  "itachiUchiha": {
+    "source": "Naruto/Itachi Uchiha.svg",
+    "sha256": "b6fce656aa134730794900567b73544b2edf95423868e4a2725fc85edac18adf",
+    "path": "/charms/current/itachiUchiha.webp",
+    "connectionPercent": 5,
+    "displayWidth": 82.9,
+    "displayHeight": 142.24
+  },
+  "minatoNamikaze": {
+    "source": "Naruto/Minato Namikaze.svg",
+    "sha256": "fdd4fe1f39252019076477aa5f23d2fbaa9c156e897fccb2ee15817445732f6d",
+    "path": "/charms/current/minatoNamikaze.webp",
+    "connectionPercent": 7.031,
+    "displayWidth": 93.07,
+    "displayHeight": 150.41
+  },
+  "kurama": {
+    "source": "Naruto/Kurama.svg",
+    "sha256": "27efa91f21f711ca78a6ffa3286ece0db5e347cd629739bbef30ada6681b84ea",
+    "path": "/charms/current/kurama.webp",
+    "connectionPercent": 10.469,
+    "displayWidth": 84.28,
+    "displayHeight": 131.56
+  },
+  "akatsukiCloud": {
+    "source": "Naruto/Akatsuki Cloud.svg",
+    "sha256": "ed20d99aa72393652c81773d830573fd85b5b5d98803bd5c99ab36ddc4c20084",
+    "path": "/charms/current/akatsukiCloud.webp",
+    "connectionPercent": 24.276,
+    "displayWidth": 111.63,
+    "displayHeight": 104.42
+  },
+  "sharingan": {
+    "source": "Naruto/Mangekyo Sharingan.svg",
+    "sha256": "aa8c0d6d50356531d47ab95a1367d0c2a0a54c4cd9904bf248c6cae31c8c1828",
+    "path": "/charms/current/sharingan.webp",
+    "connectionPercent": 21.417,
+    "displayWidth": 87.09,
+    "displayHeight": 112.68
+  },
+  "maxMayfield": {
+    "source": "Stranger Things/Max Mayfield.svg",
+    "sha256": "93d3df4b401284c33d239ae686f448ec5023b69376732a68453de91227ca63c5",
+    "path": "/charms/current/maxMayfield.webp",
+    "connectionPercent": 8.136,
+    "displayWidth": 94.6,
+    "displayHeight": 116.28
+  },
+  "steveHarrington": {
+    "source": "Stranger Things/Steve Harrington.svg",
+    "sha256": "eb9ef4a9338189e546b5a380d59a64fbdc7303470a0ba2d085feefb7f0a2ba33",
+    "path": "/charms/current/steveHarrington.webp",
+    "connectionPercent": 10.417,
+    "displayWidth": 105.56,
+    "displayHeight": 137.23
+  },
+  "jonSnow": {
+    "source": "Game of Thrones/Jon Snow.svg",
+    "sha256": "f2ef886639993469fd0053ef03e0c273948083a0802328501848e861dfc93860",
+    "path": "/charms/current/jonSnow.webp",
+    "connectionPercent": 8.556,
+    "displayWidth": 95.55,
+    "displayHeight": 111.68
+  },
+  "daenerysTargaryen": {
+    "source": "Game of Thrones/Daenerys Targaryen.svg",
+    "sha256": "817609cd37b0f2394cf61e999c7015e85bf5e7371c7011f1ec7c47ce05ee5696",
+    "path": "/charms/current/daenerysTargaryen.webp",
+    "connectionPercent": 5.625,
+    "displayWidth": 81.1,
+    "displayHeight": 110.91
+  },
+  "tyrionLannister": {
+    "source": "Game of Thrones/Tyrion Lannister.svg",
+    "sha256": "6715a845d73dd5d7b32a308757254dec20575ee373c2678621a85f6ee88f3cd7",
+    "path": "/charms/current/tyrionLannister.webp",
+    "connectionPercent": 2.188,
+    "displayWidth": 73.31,
+    "displayHeight": 129.25
+  },
+  "nightKing": {
+    "source": "Game of Thrones/Night King.svg",
+    "sha256": "0833fc977d652f0944634fe28a63bed1e50fd2b1eccdc6cde7344496e452f309",
+    "path": "/charms/current/nightKing.webp",
+    "connectionPercent": 8.75,
+    "displayWidth": 87.85,
+    "displayHeight": 123.84
+  },
+  "houseStark": {
+    "source": "Game of Thrones/House Stark.svg",
+    "sha256": "75cd4b38f8d51d9c4d9ab340ae1b0023e140362ed7e9477a39f362f4219b44ae",
+    "path": "/charms/current/houseStark.webp",
+    "connectionPercent": 21.978,
+    "displayWidth": 122.12,
+    "displayHeight": 115.76
+  },
+  "houseTargaryen": {
+    "source": "Game of Thrones/House Targaryen.svg",
+    "sha256": "7d40e211c341a8b51fa9be11fede7b10541a55015d58cd74fef03dae994f22da",
+    "path": "/charms/current/houseTargaryen.webp",
+    "connectionPercent": 17.597,
+    "displayWidth": 88.63,
+    "displayHeight": 109.12
+  },
+  "houseLannister": {
+    "source": "Game of Thrones/House Lannister.svg",
+    "sha256": "a5b0f0494034933ec8c97eb1c3e2c53cb1663966ba2158586f06fc2bf0f5d5a0",
+    "path": "/charms/current/houseLannister.webp",
+    "connectionPercent": 18.601,
+    "displayWidth": 96.74,
+    "displayHeight": 126.77
+  },
+  "ironThrone": {
+    "source": "Game of Thrones/Iron Throne.svg",
+    "sha256": "aa7b1722ae5e6b0c900d4b8c289c7d4fc83b1438271658f28cc721cf2d844990",
+    "path": "/charms/current/ironThrone.webp",
+    "connectionPercent": 16.782,
+    "displayWidth": 91.37,
+    "displayHeight": 110.02
+  },
+  "rudraksha": {
+    "source": "Spirituality/Rudraksha.svg",
+    "sha256": "d95724258a2ad8f9f30175ddf9d71cda66f4575fa7d9510ac54ec1ac4dcfbbf4",
+    "path": "/charms/current/rudraksha.webp",
+    "connectionPercent": 15.781,
+    "displayWidth": 89.88,
+    "displayHeight": 120.34
+  },
+  "shivaLingam": {
+    "source": "Spirituality/Shiva Lingam.svg",
+    "sha256": "570ee0d472f4ba1ef0222d7cebf9de10c3fb0a182f167f9aa1f9e5c76d27715a",
+    "path": "/charms/current/shivaLingam.webp",
+    "connectionPercent": 7.5,
+    "displayWidth": 84.29,
+    "displayHeight": 119.88
+  },
+  "buddha": {
+    "source": "Spirituality/Buddha.svg",
+    "sha256": "ceb6bf7454a35e97e4c439a810ec2e092a6d68b105ec717fa7bf24883613e781",
+    "path": "/charms/current/buddha.webp",
+    "connectionPercent": 20.313,
+    "displayWidth": 91.91,
+    "displayHeight": 129.57
+  },
+  "hanuman": {
+    "source": "Spirituality/Hanuman.svg",
+    "sha256": "f17bcc55cc7fca1b2bafe8d0d015d547485148bffc64ca07dda1711b5eef38ed",
+    "path": "/charms/current/hanuman.webp",
+    "connectionPercent": 14.935,
+    "displayWidth": 124,
+    "displayHeight": 79.57
+  },
+  "kaaba": {
+    "source": "Spirituality/Kaaba.svg",
+    "sha256": "1141f36e9580d203f1d9d85309cd6fafcf2efc7e99a3667f485c847dfbcb47cf",
+    "path": "/charms/current/kaaba.webp",
+    "connectionPercent": 4.308,
+    "displayWidth": 88.63,
+    "displayHeight": 81.43
+  },
+  "greenDome": {
+    "source": "Spirituality/Green Dome.svg",
+    "sha256": "b7126dbf58d710db833dabceae3aa0fb57e6d275c60e672e99b93d6a9e99ee08",
+    "path": "/charms/current/greenDome.webp",
+    "connectionPercent": 34.219,
+    "displayWidth": 90.81,
+    "displayHeight": 121.34
+  },
+  "crescentAndStar": {
+    "source": "Spirituality/Crescent and Star.svg",
+    "sha256": "f0014a48c1f76292128b02160237c43bb95ea3247ac0fe11742067a8975a5563",
+    "path": "/charms/current/crescentAndStar.webp",
+    "connectionPercent": 2.697,
+    "displayWidth": 112.34,
+    "displayHeight": 112.8
+  },
+  "allahPendant": {
+    "source": "Spirituality/Allah Pendant.svg",
+    "sha256": "4144bb9bb7fa5f037421cf496bb4186c2cd50c35e029b8de161d3957e4768956",
+    "path": "/charms/current/allahPendant.webp",
+    "connectionPercent": 16.151,
+    "displayWidth": 87.99,
+    "displayHeight": 106.68
+  },
+  "cross": {
+    "source": "Spirituality/Cross.svg",
+    "sha256": "26642d952bfa506290a3dd25f554ef241b7134d8c14b28e5adb10254163dc044",
+    "path": "/charms/current/cross.webp",
+    "connectionPercent": 14.063,
+    "displayWidth": 114.36,
+    "displayHeight": 158.42
+  },
+  "dove": {
+    "source": "Spirituality/Dove of Peace.svg",
+    "sha256": "e9ead05ab9c18f35e035e0160ee6a461530fabe9c41a50773d62ce7f6da153be",
+    "path": "/charms/current/dove.webp",
+    "connectionPercent": 40.064,
+    "displayWidth": 101.66,
+    "displayHeight": 132.15
+  },
+  "prayingAngel": {
+    "source": "Spirituality/Praying Angel.svg",
+    "sha256": "1ba2f334e7be63bff44730187eda83693b4d194112bdfdc6b91779fbb6df5106",
+    "path": "/charms/current/prayingAngel.webp",
+    "connectionPercent": 11.25,
+    "displayWidth": 75.54,
+    "displayHeight": 117.34
+  },
+  "sacredHeart": {
+    "source": "Spirituality/Sacred Heart.svg",
+    "sha256": "50a9f523e84a2fecac277c7497467f5e8eacacc560351a529b9d890f0cdd9cca",
+    "path": "/charms/current/sacredHeart.webp",
+    "connectionPercent": 22.5,
+    "displayWidth": 98.04,
+    "displayHeight": 137.59
+  },
+  "airJordan1Chicago": {
+    "source": "Air Jordan/Air Jordan 1 Chicago.svg",
+    "sha256": "ee4ca72fecabe0b861837d4e71fb8f79a6ce2b89b3dfc07f62990fcba368c42e",
+    "path": "/charms/current/airJordan1Chicago.webp",
+    "connectionPercent": 18.651,
+    "displayWidth": 117.03,
+    "displayHeight": 122.88
+  },
+  "airJordan1Bred": {
+    "source": "Air Jordan/Air Jordan 1 Bred Patent.svg",
+    "sha256": "be523be874c1dee1b67fed8d48109d007432d7d4e5699ea5f7e39206136cf080",
+    "path": "/charms/current/airJordan1Bred.webp",
+    "connectionPercent": 17.474,
+    "displayWidth": 116.36,
+    "displayHeight": 115.15
+  },
+  "airJordan4FireRed": {
+    "source": "Air Jordan/Air Jordan 4 Fire Red.svg",
+    "sha256": "e92d7c7400062d116491c989c281a251e87b2554fb93cbf19c196439e5642f7e",
+    "path": "/charms/current/airJordan4FireRed.webp",
+    "connectionPercent": 13.717,
+    "displayWidth": 118.28,
+    "displayHeight": 111.38
+  },
+  "airJordan11Concord": {
+    "source": "Air Jordan/Air Jordan 11 Concord.svg",
+    "sha256": "bffb4fa2052e36af88f0855b219c24c8b8d7bf5c75b6dbe271392143f0a93a8a",
+    "path": "/charms/current/airJordan11Concord.webp",
+    "connectionPercent": 20.039,
+    "displayWidth": 114.76,
+    "displayHeight": 124.08
+  },
+  "airJordan3": {
+    "source": "Air Jordan/Air Jordan 3.svg",
+    "sha256": "54dba95b81cdb6acde2fd2da8e27f0d2a62846d846afccce96af6fd3aafe58eb",
+    "path": "/charms/current/airJordan3.webp",
+    "connectionPercent": 14.348,
+    "displayWidth": 117.69,
+    "displayHeight": 112.79
+  },
+  "airJordan6Carmine": {
+    "source": "Air Jordan/Air Jordan 6 Carmine.svg",
+    "sha256": "48230ed40e065dbe76b6f86599b2ef0f0ec895d522ff6ac1a235b755f1871ca3",
+    "path": "/charms/current/airJordan6Carmine.webp",
+    "connectionPercent": 17.421,
+    "displayWidth": 118.35,
+    "displayHeight": 108.98
+  },
+  "airJordan5": {
+    "source": "Air Jordan/Air Jordan 5.svg",
+    "sha256": "087de21c378c9a81480f68b6982d4bd0b19b44565483141c56d6ad8691a74bd5",
+    "path": "/charms/current/airJordan5.webp",
+    "connectionPercent": 22.676,
+    "displayWidth": 119.48,
+    "displayHeight": 109.77
+  },
+  "offWhiteJordan1": {
+    "source": "Air Jordan/Off-White Air Jordan 1.svg",
+    "sha256": "0991b16f39250898abb65c6137e7d1ed3065f723913aef5c7f01fe3ead32343b",
+    "path": "/charms/current/offWhiteJordan1.webp",
+    "connectionPercent": 20.57,
+    "displayWidth": 111.84,
+    "displayHeight": 114.4
+  },
+  "pikachu": {
+    "source": "Pokemon/Pikachu.svg",
+    "sha256": "994fc0f582a1f118765a717e38b51f72153cbed99bd274603a53d59fb4371cd3",
+    "path": "/charms/current/pikachu.webp",
+    "connectionPercent": 19.926,
+    "displayWidth": 108.13,
+    "displayHeight": 120.97
+  },
+  "charmander": {
+    "source": "Pokemon/Charmander.svg",
+    "sha256": "3f2d1baa44af6b2eb279d402964f56f923d0bd013bf2efe1d6a3d8d7b8220fb4",
+    "path": "/charms/current/charmander.webp",
+    "connectionPercent": 8.438,
+    "displayWidth": 102.3,
+    "displayHeight": 118.71
+  },
+  "squirtle": {
+    "source": "Pokemon/Squirtle.svg",
+    "sha256": "a9462911c0690fcc20ee9e45a509246551d221496e1b2f39c3d730d669c82cad",
+    "path": "/charms/current/squirtle.webp",
+    "connectionPercent": 5.754,
+    "displayWidth": 106.6,
+    "displayHeight": 111.93
+  },
+  "bulbasaur": {
+    "source": "Pokemon/Bulbasaur.svg",
+    "sha256": "f14d8f01340d57c34031882a975c11e6b9d6b08f2fa27b41035b49168cd03604",
+    "path": "/charms/current/bulbasaur.webp",
+    "connectionPercent": 11.788,
+    "displayWidth": 93.37,
+    "displayHeight": 99.02
+  },
+  "charizard": {
+    "source": "Pokemon/Charizard.svg",
+    "sha256": "82e457f7bce43ab4c4d16095d3f5ee51ad771f271611538e0136177841aa2735",
+    "path": "/charms/current/charizard.webp",
+    "connectionPercent": 35.714,
+    "displayWidth": 111.39,
+    "displayHeight": 110.46
+  },
+  "dragonair": {
+    "source": "Pokemon/Dragonair.svg",
+    "sha256": "5afca02eb84bf10ccd0ff8eac4b2815f1659a20eba7a597720c2409e1632c587",
+    "path": "/charms/current/dragonair.webp",
+    "connectionPercent": 17.101,
+    "displayWidth": 104.36,
+    "displayHeight": 133.49
+  },
+  "mewtwo": {
+    "source": "Pokemon/Mewtwo.svg",
+    "sha256": "eed74565f8b490279db3e3328bf63ec408aa419595c0e8c0579c5ab4f2d2469e",
+    "path": "/charms/current/mewtwo.webp",
+    "connectionPercent": 24.483,
+    "displayWidth": 110.09,
+    "displayHeight": 144.26
+  },
+  "umbreon": {
+    "source": "Pokemon/Umbreon.svg",
+    "sha256": "74935f184dc244f176940ee480d3a6ecc00bc7ef5e608ffd9eca2509c9c26582",
+    "path": "/charms/current/umbreon.webp",
+    "connectionPercent": 12.683,
+    "displayWidth": 108.71,
+    "displayHeight": 139.28
+  },
+  "ashAndPikachu": {
+    "source": "Pokemon/Ash and Pikachu.svg",
+    "sha256": "62473981f95d007a06dd111543332616dc0a4ae00144b3dbb08f1b74bc5e32bf",
+    "path": "/charms/current/ashAndPikachu.webp",
+    "connectionPercent": 9.677,
+    "displayWidth": 122.6,
+    "displayHeight": 134.6
+  },
+  "pokeBall": {
+    "source": "Pokemon/Poke Ball.svg",
+    "sha256": "6f8066896de00a6b84fd099a7f2ccbd4e1454be6fe7a9c881abbb0c23dbcceee",
+    "path": "/charms/current/pokeBall.webp",
+    "connectionPercent": 2.84,
+    "displayWidth": 89.19,
+    "displayHeight": 91.61
+  },
+  "ronaldoPortugal": {
+    "source": "Football/Ronaldo Portugal.svg",
+    "sha256": "59951e9e899d30443a3548598fd06932f52ac455aa4320b74e85deeb34e26a36",
+    "path": "/charms/current/ronaldoPortugal.webp",
+    "connectionPercent": 17.508,
+    "displayWidth": 122.58,
+    "displayHeight": 161.9
+  },
+  "ronaldoBicycleKick": {
+    "source": "Football/Ronaldo Bicycle Kick.svg",
+    "sha256": "5412f2ebf13427db86c6012bff8dfa2280810a2ef83d00596e93b3de0e208050",
+    "path": "/charms/current/ronaldoBicycleKick.webp",
+    "connectionPercent": 41.414,
+    "displayWidth": 124,
+    "displayHeight": 153.45
+  },
+  "ballonDor": {
+    "source": "Football/Ballon d'Or.svg",
+    "sha256": "238ac54766c3bc5d018704858f5a3a0a759a5e6f9bff204005f07be4fc6510bb",
+    "path": "/charms/current/ballonDor.webp",
+    "connectionPercent": 2.782,
+    "displayWidth": 84.64,
+    "displayHeight": 107.74
+  },
+  "championsLeagueTrophy": {
+    "source": "Football/Champions League Trophy.svg",
+    "sha256": "284114053110bfb1ca5e2be25732d7d5af35c79645f0c828b433e76f31e72264",
+    "path": "/charms/current/championsLeagueTrophy.webp",
+    "connectionPercent": 17.188,
+    "displayWidth": 89.24,
+    "displayHeight": 128.63
+  },
+  "messi": {
+    "source": "Football/Messi.svg",
+    "sha256": "b8e4cf91edd8fec2f2407ae2a7189ed78e80bcaadb61b787140dcb38ec02ebd2",
+    "path": "/charms/current/messi.webp",
+    "connectionPercent": 2.656,
+    "displayWidth": 79.03,
+    "displayHeight": 125.19
+  }
+}

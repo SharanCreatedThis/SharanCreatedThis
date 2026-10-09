@@ -14,7 +14,7 @@ export { DownloadButton, DownloadNote, PlatformSheet, openPlatformSheet } from '
 // collections have no connected rendering drawn yet, and guessing the path is
 // what had thirty charms rendering as broken images.
 export function charmArt(name: string) { return CHARM_ART[name] ?? `/charms/${name}.svg`; }
-export function Charm({ name, alt, className = '' }: { name: string; alt?: string; className?: string }) { return <img className={`charm-art ${className}`} src={charmArt(name)} alt={alt ?? ''} draggable={false} loading="lazy" decoding="async"/>; }
+export function Charm({ name, alt, className = '', style }: { name: string; alt?: string; className?: string; style?: React.CSSProperties }) { return <img style={style} className={`charm-art ${className}`} src={charmArt(name)} alt={alt ?? ''} draggable={false} loading="lazy" decoding="async"/>; }
 export function Reveal({ children, className = '' }: { children: React.ReactNode; className?: string }) {
   const reduced = useReducedMotion();
   const interactive = /feature-card|stat/.test(className);

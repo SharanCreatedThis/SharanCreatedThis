@@ -57,6 +57,7 @@ function charmNames() {
 const names = charmNames();
 if (names.length === 0) throw new Error("no charms found — has the shipped catalogue changed shape?");
 
+const current = JSON.parse(readFileSync(join(root, "src/data/hangly/charm-artwork-current.json"), "utf8"));
 const resolved = {};
 const fallbacks = [];
 const missing = [];
@@ -67,7 +68,9 @@ for (const name of names) {
   const plain = `/charms/${file}.svg`;
   // The app's own Library preview, for charms the website has no SVG of (scripts/import-charm-previews.mjs).
   const preview = `/charms/${name}.webp`;
-  if (existsSync(join(root, "public", connected))) {
+  if (current[name] && existsSync(join(root, "public", current[name].path))) {
+    resolved[name] = current[name].path;
+  } else if (existsSync(join(root, "public", connected))) {
     resolved[name] = connected;
   } else if (existsSync(join(root, "public", plain))) {
     resolved[name] = plain;

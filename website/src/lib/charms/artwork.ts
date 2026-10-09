@@ -1,3 +1,4 @@
+import currentArtwork from "@/data/hangly/charm-artwork-current.json";
 /**
  * Where each charm's artwork lives on the website.
  *
@@ -61,12 +62,16 @@ const fileFor = (id: string) => ARTWORK_ALIAS[id] ?? id;
 
 /** Plain artwork path, or null when none exists. */
 export function artworkPath(id: string): string | null {
+  const current = (currentArtwork as Record<string, { path: string }>)[id];
+  if (current) return current.path;
   if (CHARMS_WITHOUT_ARTWORK.has(id)) return null;
   return WEBP_ARTWORK.has(id) ? `/charms/${id}.webp` : `/charms/${fileFor(id)}.svg`;
 }
 
 /** The rendering with the hanging thread, or null. A preview has no thread drawn in, so it is its own. */
 export function connectedArtworkPath(id: string): string | null {
+  const current = (currentArtwork as Record<string, { path: string }>)[id];
+  if (current) return current.path;
   if (CHARMS_WITHOUT_ARTWORK.has(id)) return null;
   return WEBP_ARTWORK.has(id) ? `/charms/${id}.webp` : `/charms/connected/${fileFor(id)}.svg`;
 }

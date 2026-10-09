@@ -3,6 +3,7 @@ import { motion, useReducedMotion } from "framer-motion";
 import { useRef, useState } from "react";
 import { ArrowLeft, ArrowRight, ArrowUpRight } from "lucide-react";
 import { Charm, Label, Reveal } from "./shared";
+import currentArtwork from "@/data/hangly/charm-artwork-current.json";
 import { CHARM_COLLECTIONS } from "@/data/charms.generated";
 
 /**
@@ -37,13 +38,22 @@ const COPY: Record<string, { eyebrow: string; description: string; filter?: Filt
 const FILTERS = ["All", "Luck & spirit", "Pop culture", "Anime & cartoons", "Music", "Sports & style", "Custom"] as const;
 type Filter = (typeof FILTERS)[number];
 
-export const collections = CHARM_COLLECTIONS.map((category) => ({
+const closingCategories = ["classic", "luck", "ritual"];
+const orderedCategories = [
+  ...CHARM_COLLECTIONS.filter(category => !closingCategories.includes(category.id)),
+  ...closingCategories.flatMap(id => CHARM_COLLECTIONS.filter(category => category.id === id)),
+];
+
+export const collections = orderedCategories.map((category) => ({
   name: category.name,
   eyebrow: COPY[category.id]?.eyebrow ?? "",
   description: COPY[category.id]?.description ?? "",
   className: COPY[category.id]?.className ?? "",
   filter: COPY[category.id]?.filter,
   charms: category.charms,
+  previewCharms: category.id === "marvel"
+    ? ["captainAmericaShield", "ironManHelmet", "thorHammer"].flatMap(id => category.charms.filter(([name]) => name === id))
+    : category.charms.slice(0, 3),
 }));
 // The same 161 charms ship on macOS and Windows (2.3.1), from one catalogue.
 const curatedCollections = collections.map(collection => ({ ...collection, availability: "Both" as const }));
@@ -63,7 +73,7 @@ export default function Collections() {
     const el = rail.current?.children[next] as HTMLElement | undefined;
     if (el && rail.current)
       rail.current.scrollTo({
-        left: el.offsetLeft - rail.current.offsetLeft,
+        left: el.offsetLeft - (rail.current.children[0] as HTMLElement).offsetLeft,
         behavior: matchMedia("(prefers-reduced-motion: reduce)").matches
           ? "instant"
           : "smooth",
@@ -86,7 +96,7 @@ export default function Collections() {
             <br />
             Find the ones that feel like you.
           </p>
-          <div className="rail-controls">
+          {filter !== "Custom" && <div className="rail-controls">
             <button
               aria-label="Previous collection"
               onClick={() => move(-1)}
@@ -104,10 +114,10 @@ export default function Collections() {
             <span>
               {String(active + 1).padStart(2, "0")} <i>/ {String(visibleCollections.length).padStart(2, "0")}</i>
             </span>
-          </div>
+          </div>}
         </div>
       </Reveal>
-      <div className="collection-filters wrap" role="group" aria-label="Filter charm collections">{FILTERS.map(item => <button key={item} type="button" aria-pressed={filter === item} onClick={() => { setFilter(item); setActive(0); requestAnimationFrame(() => rail.current?.scrollTo({ left: 0, behavior: 'smooth' })); }}>{item}</button>)}</div>
+      <div className="collection-filters wrap" role="group" aria-label="Filter charm collections">{FILTERS.map(item => <button key={item} type="button" aria-pressed={filter === item} onClick={() => { setFilter(item); setActive(0); requestAnimationFrame(() => rail.current?.scrollTo({ left: 0, behavior: 'instant' })); }}>{item}</button>)}</div>
       {filter === "Custom" ? <div className="custom-collection-note wrap"><strong>Make your own.</strong><span>Creator Studio turns an image, artwork, logo, or memory into a charm for your desktop.</span><a href="#create">Open Creator Studio <ArrowUpRight size={15}/></a></div> : <div
         className="collection-rail"
         ref={rail}
@@ -115,12 +125,13 @@ export default function Collections() {
           if (!rail.current) return;
           const first = rail.current.children[0] as HTMLElement;
           const second = rail.current.children[1] as HTMLElement | undefined;
+          if (!first) return;
           const width = second ? second.offsetLeft - first.offsetLeft : first.offsetWidth;
           const atEnd =
             rail.current.scrollLeft + rail.current.clientWidth >=
             rail.current.scrollWidth - 3;
           setActive(
-            atEnd
+            atEnd && rail.current.scrollWidth > rail.current.clientWidth + 3
               ? visibleCollections.length - 1
               : Math.min(
                   visibleCollections.length - 1,
@@ -141,7 +152,7 @@ export default function Collections() {
             aria-label={`${collection.name} collection`}
           >
             <div className="collection-top">
-              <span>COLLECTION {String(i + 1).padStart(2, "0")}</span>
+              <span>COLLECTION {String(collections.findIndex(item => item.name === collection.name) + 1).padStart(2, "0")}</span>
               <span>AVAILABLE ON {collection.availability.toUpperCase()}</span>
             </div>
             <div className="collection-preview">
@@ -151,11 +162,11 @@ export default function Collections() {
                       ([name]) => name === previews[collection.name],
                     )!,
                   ]
-                : collection.charms.slice(0, 3)
+                : collection.previewCharms
               ).map(([name, alt]) => (
                 <div key={name}>
                   <span className="collection-cord" />
-                  <Charm name={name} alt={alt} />
+                  <Charm name={name} alt={alt} style={{ width: `${(currentArtwork as Record<string, {displayWidth: number}>)[name]?.displayWidth ?? 100}px`, backgroundImage: `linear-gradient(to bottom, #b79042 ${(currentArtwork as Record<string, {connectionPercent: number}>)[name]?.connectionPercent ?? 0}%, transparent 0)`, backgroundSize: "1px 100%", backgroundPosition: "top center", backgroundRepeat: "no-repeat" }}/>
                 </div>
               ))}
             </div>
@@ -197,7 +208,7 @@ export default function Collections() {
         ))}
       </div>}
       <p className="collection-footnote wrap">
-        Small keepsakes. Big feelings. <span>← Swipe to explore →</span>
+        Small keepsakes. Big feelings. {filter !== "Custom" && <span>← Swipe to explore →</span>}
       </p>
     </section>
   );
