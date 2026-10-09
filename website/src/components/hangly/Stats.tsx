@@ -3,7 +3,7 @@ import { Reveal } from './shared';
 import { HANGLY_STATS } from '@/lib/stats/hangly';
 const stats=[
  {icon:Shapes,value:`${HANGLY_STATS.marketingCharmCount} charms`,label:'a little collection for every mood'},
- {icon:Users,value:`${HANGLY_STATS.marketingUserCount} users`,label:'making their desktops feel like home'},
+ {icon:Users,value:`${HANGLY_STATS.marketingInstallCount} installs`,label:'on Mac and Windows desktops so far'},
  {icon:Palette,value:'Your style',label:'make every hanging charm feel like yours'},
  {icon:Feather,value:'Light as air',label:'a tiny companion that stays out of the way'},
 ];

@@ -36,7 +36,6 @@ const GROUPS: { heading: string; links: { label: string; href: string }[] }[] = 
       { label: "Guides", href: "/guides" },
       { label: "FAQ", href: "/faq" },
       { label: "Luck & protection charms", href: "/charms/lucky" },
-      { label: "Seasonal charms", href: "/charms/seasonal" },
       { label: "Charm apps for Mac", href: "/guides/best-desktop-charm-apps-for-mac" },
       { label: "Desktop pets for Mac", href: "/guides/best-desktop-pets-for-mac" },
     ],

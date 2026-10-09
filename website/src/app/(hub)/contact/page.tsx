@@ -5,6 +5,8 @@ import { Prose, ProseFaq, ProseLinks } from "@/components/hub/Prose";
 import { profile } from "@/data/portfolio";
 import { ID, breadcrumb, faqNode, serialise } from "@/lib/schema/entities";
 import { absoluteUrl } from "@/lib/seo";
+import { HANGLY_COPY } from "@/lib/stats/hangly";
+import { RELEASE } from "@/data/stats.generated";
 
 export const metadata = pageMetadata("contact");
 
@@ -164,16 +166,16 @@ export default function Contact() {
       <Prose id="what-is-hangly" heading="What Hangly is">
         <p>
           Hangly hangs a decorative charm from the top of your screen on a cord, where it sways
-          with real pendulum physics. It is click-through, so it never intercepts a click, and it
+          with real pendulum physics. It is click-through everywhere but the charm itself, and it
           never takes keyboard focus — which means it is safe during a meeting, a demo or a screen
           share, unlike a desktop pet that roams.
         </p>
         <p>
-          It ships eighty-one charms across fourteen collections, takes any image of your own as a
+          It ships {HANGLY_COPY.exactWithCategories}, takes any image of your own as a
           charm, offers several cord styles and adjustable sizing, and supports multiple charms
           and multi-monitor placement. It is free on macOS 14 or newer and Windows 10 or newer,
           including a native Windows ARM64 build — which almost nothing else in its category
-          offers. Both builds are at 2.1 and are released together; the Windows build is not
+          offers. Both builds are at {RELEASE.macOS.version} and are released together; the Windows build is not
           code-signed yet.
         </p>
         <ProseLinks

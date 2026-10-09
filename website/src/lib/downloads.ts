@@ -43,7 +43,7 @@ export const BUILDS: Record<BuildId, Build> = {
     requirement: "macOS 14+",
     detail: "Apple Silicon & Intel",
     architecture: "A universal build: one download runs natively on Apple Silicon and on Intel Macs.",
-    updater: "Checks weekly through Sparkle and installs in the background. There is a Check for Updates button on the About page for anyone who would rather ask.",
+    updater: "Checks every hour through Sparkle. When a new version is out, a card under the charm offers Update in Background: one press downloads it, and Hangly restarts into it by itself. There is a Check for Updates button on the About page for anyone who would rather ask.",
     firstRun: "It opens. The app is signed and notarised, so Gatekeeper has nothing to warn about.",
   },
   "windows-x64": {
@@ -54,7 +54,7 @@ export const BUILDS: Record<BuildId, Build> = {
     requirement: "Windows 10+",
     detail: "Intel & AMD 64-bit",
     architecture: "For any Intel or AMD 64-bit machine, which is nearly every Windows PC.",
-    updater: "Updates itself through Velopack: it checks once a day and installs quietly while you are away from the PC, then shows what is new.",
+    updater: "Updates through Velopack. Hangly checks every hour; when a new version is out, a card under the charm offers Update in Background: one press downloads it, and Hangly restarts into it by itself.",
     firstRun: "SmartScreen may show a blue \"Windows protected your PC\" panel, because the build is not yet code-signed. Choose More info, then Run anyway.",
   },
   "windows-arm64": {
@@ -65,7 +65,7 @@ export const BUILDS: Record<BuildId, Build> = {
     requirement: "Windows 11+",
     detail: "Snapdragon & ARM64",
     architecture: "A native ARM64 build for Snapdragon and other ARM machines. The x64 build also runs there under emulation; this one does not need it.",
-    updater: "Updates itself through Velopack: it checks once a day and installs quietly while you are away from the PC, then shows what is new.",
+    updater: "Updates through Velopack. Hangly checks every hour; when a new version is out, a card under the charm offers Update in Background: one press downloads it, and Hangly restarts into it by itself.",
     firstRun: "SmartScreen may show a blue \"Windows protected your PC\" panel, because the build is not yet code-signed. Choose More info, then Run anyway.",
   },
 };

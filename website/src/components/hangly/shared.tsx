@@ -34,4 +34,4 @@ export function Parallax({ children, className = '', distance = 30 }: { children
   return <div ref={target} className={className}><motion.div style={{ y: reduced ? 0 : y }}>{children}</motion.div></div>;
 }
 export function Label({ children }: {children: React.ReactNode}) { return <p className="eyebrow"><span/>{children}</p>; }
-export function Logo() { return <a className="logo" href="#" aria-label="Hangly home"><span className="logo-icon"><i/><i/><i/></span>hangly<span className="logo-dot">®</span></a>; }
+export function Logo() { return <a className="logo" href="#" aria-label="Hangly home"><span className="logo-icon"><i/><i/><i/></span>hangly<span className="logo-dot">™</span></a>; }

@@ -33,6 +33,7 @@ export type Charm = {
 export const LICENSED_CATEGORIES = new Set([
   "marvel", "dc", "bts", "footballLegends", "musicLegends",
   "friends", "breakingBad", "strangerThings",
+  "onePiece", "harryPotter", "ben10", "attackOnTitan", "naruto", "gameOfThrones", "airJordan", "pokemon",
 ]);
 
 export const CHARMS: Charm[] = SHIPPED_CHARMS as Charm[];
@@ -57,16 +58,8 @@ export const categoryName = (id: string) =>
 export const LUCKY_CATEGORIES = ["protection", "luck", "ritual"] as const;
 export const luckyCharms = () => charmsIn(...LUCKY_CATEGORIES);
 
-export const seasonalCharms = () => charmsIn("seasonal");
 export const classicCharms = () => charmsIn("classic");
 
-/** The four seasonal packs, from SeasonalPack.swift in the application. */
-export const SEASONAL_PACKS: { id: string; name: string; window: string; charms: string[] }[] = [
-  { id: "halloween", name: "Halloween", window: "1–31 October", charms: ["bat", "ghost", "pumpkin"] },
-  { id: "diwali", name: "Diwali", window: "Moves with the lunar calendar — editable in the app", charms: ["lotus", "lantern", "diya"] },
-  { id: "christmas", name: "Christmas", window: "1–26 December", charms: ["snowflake", "candyCane", "bell"] },
-  { id: "newYear", name: "New Year", window: "27 December – 6 January", charms: ["firework", "luckyCoin"] },
-];
 
 export type CharmGroup = { key: string; label: string; charms: Charm[] };
 

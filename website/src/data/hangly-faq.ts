@@ -20,6 +20,7 @@
  * Grouped so the page can render sections; `ALL_FAQS` flattens them for schema.
  */
 
+import { RELEASE } from "@/data/stats.generated";
 export type Faq = {
   q: string;
   a: string;
@@ -65,11 +66,11 @@ export const FAQ_GROUPS: FaqGroup[] = [
       },
       {
         q: "What platforms does Hangly support?",
-        a: "macOS 14 Sonoma and later on both Apple Silicon and Intel, and Windows 10 and later on both x64 and ARM64. The website detects which build your machine needs and offers that one, with the other two a click away.",
+        a: "macOS 14 Sonoma and later on both Apple Silicon and Intel; Windows 10 (version 1809 or later, kept up to date) and Windows 11 on x64; and Windows 11 on ARM with a native ARM64 build. The website detects which build your machine needs and offers that one, with the other two a click away.",
       },
       {
         q: "Does Hangly work on Windows?",
-        a: "Yes. The Windows build is at 2.1, released alongside the macOS build, and it updates itself. One caveat: it is not code-signed yet, so SmartScreen warns once on first run.",
+        a: `Yes. The Windows build is at ${RELEASE.windows}, released alongside the macOS build, and it updates itself. One caveat: it is not code-signed yet, so SmartScreen warns once on first run.`,
       },
       {
         q: "Does Hangly work on Windows ARM?",
@@ -100,7 +101,7 @@ export const FAQ_GROUPS: FaqGroup[] = [
       },
       {
         q: "How many charms are there?",
-        a: "Eighty-one, across fourteen categories — protection charms like the Nazar and Drishti Bommai, Tamil spiritual symbols, luck charms from Japan and China, eleven seasonal charms, and collections for Marvel, DC, BTS, Stranger Things, Friends, Breaking Bad, Football Legends and Music Legends. Every one is listed on the charms page.",
+        a: "161, across 21 categories, the same on macOS and Windows: protection and luck charms like the Nazar, Drishti Bommai and Daruma, spiritual symbols of many faiths, and collections for Marvel, DC, BTS, Pokémon, One Piece, Naruto, Attack on Titan, Ben 10, Harry Potter, Game of Thrones, Stranger Things, Friends, Breaking Bad, Football Legends, Music Legends and Air Jordan. Every one is listed on the charms page.",
       },
       {
         q: "Can I use my own image as a charm?",
@@ -108,7 +109,7 @@ export const FAQ_GROUPS: FaqGroup[] = [
       },
       {
         q: "Can I change the cord?",
-        a: "Yes. Golden thread, silver chain or a neon glow, and the charm's size is adjustable too.",
+        a: "Yes. There are nine rope styles, from thread and leather to gold chain, neon and spider thread, and the charm's size is adjustable too.",
       },
       {
         q: "Can I hang more than one charm at a time?",
@@ -154,7 +155,7 @@ export const FAQ_GROUPS: FaqGroup[] = [
       },
       {
         q: "Does Hangly collect my data?",
-        a: "Almost nothing, and what it does collect is described in full on the privacy page. Nothing about what is on your screen, in your files or in other applications is ever read or sent.",
+        a: "Some. Every copy registers an installation record: a random ID, the nickname you choose, your city (worked out from your connection, which is not stored), your versions and when Hangly was used. It also sends a few anonymous usage events and crash reports. There is no switch to turn the record off. Nothing about your screen, your files, other apps or the images you turn into charms is read or sent. The privacy page lists all of it.",
       },
       {
         q: "Does Hangly need screen recording permission?",
@@ -162,7 +163,7 @@ export const FAQ_GROUPS: FaqGroup[] = [
       },
       {
         q: "Is Hangly open source?",
-        a: "The Windows build is published openly on GitHub, where the releases and their notes are public. The application source is not currently open.",
+        a: "The Windows build is published openly on GitHub, where the releases and their notes are public. The Windows app's source is public there too, under the MIT licence. The Mac app's source is not public.",
       },
       {
         q: "How does Hangly update itself?",
@@ -176,7 +177,7 @@ export const FAQ_GROUPS: FaqGroup[] = [
     faqs: [
       {
         q: "What is the best desktop charm app?",
-        a: "For a charm that hangs and swings rather than wanders, Hangly is the most complete free option: it is the only one in this category shipping on macOS and Windows including ARM64, with custom charms from your own images, eighty-one designs, adjustable cords, and no paid tier. Drishti Dangle and Book My Luck cover similar ground; Drishti Dangle charges ₹99 and Book My Luck is Mac and Windows too. Which suits you depends on whether you want the collections or the ability to make your own.",
+        a: "For a charm that hangs and swings rather than wanders, Hangly is the most complete free option: it is the only one in this category shipping on macOS and Windows including ARM64, with custom charms from your own images, 161 designs, nine rope styles, and no paid tier. Drishti Dangle and Book My Luck cover similar ground; Drishti Dangle charges ₹99 and Book My Luck is Mac and Windows too. Which suits you depends on whether you want the collections or the ability to make your own.",
       },
       {
         q: "What is the difference between a desktop charm and a desktop pet?",
@@ -200,15 +201,15 @@ export const FAQ_GROUPS: FaqGroup[] = [
       },
       {
         q: "How is Hangly different from Lucky Dangle?",
-        a: "Both hang a charm from the top of the screen on Mac and Windows. Hangly adds custom charms made from your own images, fourteen themed collections, three cord styles and adjustable sizing, and it is free.",
+        a: "Both hang a charm from the top of the screen on Mac and Windows. Hangly adds custom charms made from your own images, 21 themed collections, nine rope styles and adjustable sizing, and it is free.",
       },
       {
         q: "How is Hangly different from Screen Dangle?",
-        a: "Screen Dangle is also free and also covers Mac and Windows. Hangly's difference is the collections — Marvel, DC, BTS, Tamil Divine, protection charms — and turning your own images into charms. Screen Dangle leans towards a customisation studio; Hangly towards a library you pick from.",
+        a: "Screen Dangle is also free and also covers Mac and Windows. Hangly's difference is the collections — Marvel, DC, BTS, Spirituality, protection charms — and turning your own images into charms. Screen Dangle leans towards a customisation studio; Hangly towards a library you pick from.",
       },
       {
         q: "How is Hangly different from Drishti Dangle?",
-        a: "Drishti Dangle focuses on Indian-inspired charms and musical wind chimes and costs ₹99. Hangly includes Indian charms — Nazar, Drishti Bommai, Vel, Vinayagar, Om, temple bell — alongside ten other collections, and is free.",
+        a: "Drishti Dangle focuses on Indian-inspired charms and musical wind chimes and costs ₹99. Hangly includes Indian charms — Nazar, Drishti Bommai, Vel, Vinayagar, Om, temple bell — among its 21 collections, and is free.",
       },
       {
         q: "How is Hangly different from Dockling?",
@@ -216,7 +217,7 @@ export const FAQ_GROUPS: FaqGroup[] = [
       },
       {
         q: "How is Hangly different from Charmly?",
-        a: "Charmly hangs a good-luck charm on a cord with pendulum physics, on Mac. Hangly does the same and adds Windows including ARM64, custom charms from your images, and fourteen collections.",
+        a: "Charmly hangs a good-luck charm on a cord with pendulum physics, on Mac. Hangly does the same and adds Windows including ARM64, custom charms from your images, and 21 collections.",
       },
       {
         q: "Is there a free desktop charm app for Windows?",
@@ -251,7 +252,7 @@ export const FAQ_GROUPS: FaqGroup[] = [
       },
       {
         q: "Which Hangly version am I running?",
-        a: "The About screen inside the app shows the version. Both macOS and Windows are currently at 2.1.",
+        a: `The About screen inside the app shows the version. macOS is currently at ${RELEASE.macOS.version} and Windows at ${RELEASE.windows}.`,
       },
       {
         q: "How do I report a bug or ask for a charm?",
@@ -259,7 +260,7 @@ export const FAQ_GROUPS: FaqGroup[] = [
       },
       {
         q: "Will there be more charms?",
-        a: "Yes. Eighty-one charms ship today across fourteen collections plus a seasonal and lucky set, and more are planned. Requests are welcome — a named character or a specific cultural symbol is far more actionable than a category.",
+        a: "Yes. 161 charms ship today across 21 collections, and more are planned. Requests are welcome — a named character or a specific cultural symbol is far more actionable than a category.",
       },
       {
         q: "Does Hangly work offline?",

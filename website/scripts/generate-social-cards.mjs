@@ -4,6 +4,8 @@ import { dirname, join } from "node:path";
 
 const root = join(import.meta.dirname, "..");
 const output = join(root, "public", "og");
+// The charm count on the Hangly card, from the catalogue the shipped app reads (never typed: it was "80+" at 161).
+const shipped = JSON.parse(await readFile(join(root, "src/data/hangly/charm-library.shipped.json"), "utf8"));
 const width = 1200;
 const height = 630;
 
@@ -67,9 +69,9 @@ const cards = [
   ["contact.png", "LET'S TALK", "Make something memorable", "Film, photography and product collaborations.", "#ff7a1a", [], "story"],
   ["vision.png", "FACE RECOGNITION", "Vision", "A more natural way into your Mac.", "#73bfff", [], "vision"],
   ["vision-docs.png", "GETTING STARTED", "Vision documentation", "Privacy, setup and recognition guidance.", "#73bfff", [], "vision"],
-  ["hangly.png", "80+ CHARMS · macOS + WINDOWS", "Hangly", "Digital charms with real swinging physics.", "#ff7a1a", ["spiderMan", "nazar", "hamsa"], "story"],
+  ["hangly.png", `${shipped.charms.length} CHARMS · macOS + WINDOWS`, "Hangly", "Digital charms with real swinging physics.", "#ff7a1a", ["spiderMan", "nazar", "hamsa"], "story"],
   ["hangly-privacy.png", "PRIVACY", "Hangly, quietly personal", "What leaves your desktop, and what never does.", "#d7a75e", ["nazar"], "story"],
-  ["faq.png", "HANGY FAQ", "Answers for your desktop", "Everything you need to know about Hangly.", "#ff7a1a", ["nazar", "hamsa"], "story"],
+  ["faq.png", "HANGLY FAQ", "Answers for your desktop", "Everything you need to know about Hangly.", "#ff7a1a", ["nazar", "hamsa"], "story"],
   ["changelog.png", "RELEASE NOTES", "What changed", "Every Hangly and Vision release in one place.", "#bc89ff", ["spiderMan"], "story"],
   ["guides.png", "GUIDES", "Choose your kind of magic", "Independent advice for desktop charm apps.", "#ff7a1a", ["nazar", "spiderMan"], "story"],
   ["compare.png", "HONEST COMPARISONS", "Hangly, compared", "Clear answers for desktop charm apps.", "#ff7a1a", ["nazar"], "compare"],

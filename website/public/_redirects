@@ -8,3 +8,7 @@
 
 # The archive moved off the site; old links follow it.
 /products/hangly/releases/*  https://downloads.sharancreatedthis.in/:splat  301
+
+# Pages that were removed.
+/charms/seasonal  /charms  301
+/charms/seasonal/  /charms  301

@@ -5,109 +5,140 @@ export type CharmCollection = { name: string; description: string; charms: strin
 export const COLLECTIONS: CharmCollection[] = [
   {
     "name": "Protection",
-    "description": "A little luck. A little protection. A feeling of home.",
+    "description": "",
     "charms": [
-      "Nazar / Evil Eye",
-      "Drishti Bommai",
-      "Hamsa"
+      "Nazar boncuğu",
+      "Hamsa",
+      "Nimbu-mirchi",
+      "Drishti bommai",
+      "Scarab",
+      "Dream Catcher"
+    ]
+  },
+  {
+    "name": "Luck & Fortune",
+    "description": "",
+    "charms": [
+      "Pánchángjié",
+      "Daruma",
+      "Maneki-neko",
+      "Horseshoe"
+    ]
+  },
+  {
+    "name": "Ritual & Home",
+    "description": "",
+    "charms": [
+      "Ghanta",
+      "Himmeli"
+    ]
+  },
+  {
+    "name": "Classic",
+    "description": "",
+    "charms": [
+      "Bead",
+      "Star",
+      "Heart",
+      "Diamond",
+      "Camera"
     ]
   },
   {
     "name": "Marvel",
-    "description": "For the hero behind the screen.",
+    "description": "",
     "charms": [
       "Spider-Man",
+      "Spider-Man Swinging",
       "Captain America Shield",
       "Iron Man Helmet",
       "Thor Hammer",
-      "Hulk Fist"
+      "Hulk Fist",
+      "Spider-Man and Gwen",
+      "Eye of Agamotto",
+      "Stormbreaker",
+      "Doctor Doom",
+      "Deadpool and Wolverine"
     ]
   },
   {
     "name": "DC",
-    "description": "Iconic symbols. Extraordinary company.",
+    "description": "",
     "charms": [
-      "Batman",
-      "Superman",
-      "Wonder Woman",
-      "Flash",
-      "Green Lantern"
+      "Batman Symbol",
+      "Superman Shield",
+      "Wonder Woman Emblem",
+      "Shazam Lightning",
+      "Green Lantern Ring"
     ]
   },
   {
-    "name": "Tamil Divine",
-    "description": "Sacred symbols. Familiar stories. Close to home.",
+    "name": "Spirituality",
+    "description": "",
     "charms": [
       "Vel",
-      "Vinayagar",
-      "Om",
-      "Karuppu",
-      "Temple Bell"
+      "Vinayagar Coin",
+      "OM Symbol",
+      "Karuppu Statue",
+      "Temple Bell",
+      "Rudraksha",
+      "Shiva Lingam",
+      "Buddha",
+      "Hanuman",
+      "Kaaba",
+      "Green Dome",
+      "Crescent and Star",
+      "Allah Pendant",
+      "Cross",
+      "Dove of Peace",
+      "Praying Angel",
+      "Sacred Heart"
     ]
   },
   {
     "name": "BTS",
-    "description": "A little purple in your everyday.",
+    "description": "",
     "charms": [
-      "Jin",
-      "Suga",
-      "J-Hope",
       "RM",
+      "Jin",
+      "SUGA",
+      "j-hope",
       "Jimin",
       "V",
-      "Jung Kook"
+      "Jungkook"
     ]
   },
   {
-    "name": "Football",
-    "description": "A little piece of match day, always within reach.",
+    "name": "Football Legends",
+    "description": "",
     "charms": [
-      "Cristiano Ronaldo",
-      "Lionel Messi",
-      "Neymar Jr.",
+      "Ronaldo 7",
+      "Messi 10",
+      "Neymar 10",
       "Real Madrid",
-      "FC Barcelona"
+      "FC Barcelona",
+      "Ronaldo Portugal",
+      "Ronaldo Bicycle Kick",
+      "Ballon d'Or",
+      "Champions League Trophy",
+      "Messi"
     ]
   },
   {
-    "name": "Stranger Things",
-    "description": "For late-night mysteries and the bravest of friends.",
-    "charms": [
-      "Eleven",
-      "Mike Wheeler",
-      "Dustin Henderson",
-      "Lucas Sinclair",
-      "Will Byers",
-      "Demogorgon"
-    ]
-  },
-  {
-    "name": "Singers",
-    "description": "A little music for every moment on your desktop.",
+    "name": "Music Legends",
+    "description": "",
     "charms": [
       "Billie Eilish",
-      "XXXTENTACION",
+      "XXXTentacion",
       "Michael Jackson",
       "Taylor Swift",
-      "Juice WRLD"
-    ]
-  },
-  {
-    "name": "Breaking Bad",
-    "description": "A little danger. A lot of story.",
-    "charms": [
-      "Walter White",
-      "Jesse Pinkman",
-      "Saul Goodman",
-      "Gus Fring",
-      "Mike Ehrmantraut",
-      "Heisenberg",
-      "The RV"
+      "Juice WRLD",
+      "The Weeknd"
     ]
   },
   {
     "name": "Friends",
-    "description": "The one with your favorite everyday keepsakes.",
+    "description": "",
     "charms": [
       "Rachel Green",
       "Monica Geller",
@@ -118,10 +149,145 @@ export const COLLECTIONS: CharmCollection[] = [
     ]
   },
   {
-    "name": "Dream Catcher",
-    "description": "A quiet little talisman for your day.",
+    "name": "Breaking Bad",
+    "description": "",
     "charms": [
-      "Dream Catcher"
+      "Walter White",
+      "Jesse Pinkman",
+      "Saul Goodman",
+      "Gus Fring",
+      "Mike Ehrmantraut",
+      "Heisenberg",
+      "RV"
+    ]
+  },
+  {
+    "name": "Stranger Things",
+    "description": "",
+    "charms": [
+      "Eleven",
+      "Mike Wheeler",
+      "Dustin Henderson",
+      "Lucas Sinclair",
+      "Will Byers",
+      "Demogorgon",
+      "Max Mayfield",
+      "Steve Harrington"
+    ]
+  },
+  {
+    "name": "One Piece",
+    "description": "",
+    "charms": [
+      "Monkey D. Luffy",
+      "Roronoa Zoro",
+      "Nami",
+      "Usopp",
+      "Sanji",
+      "Tony Tony Chopper",
+      "Nico Robin",
+      "Portgas D. Ace"
+    ]
+  },
+  {
+    "name": "Harry Potter",
+    "description": "",
+    "charms": [
+      "Harry Potter",
+      "Hermione Granger",
+      "Ron Weasley",
+      "Albus Dumbledore",
+      "Lord Voldemort",
+      "Hedwig",
+      "Golden Snitch",
+      "Deathly Hallows"
+    ]
+  },
+  {
+    "name": "Ben 10",
+    "description": "",
+    "charms": [
+      "Ben Tennyson",
+      "Four Arms",
+      "Heatblast",
+      "XLR8",
+      "Diamondhead",
+      "Cannonbolt",
+      "Upgrade",
+      "Wildmutt",
+      "Omnitrix"
+    ]
+  },
+  {
+    "name": "Attack on Titan",
+    "description": "",
+    "charms": [
+      "Eren Yeager",
+      "Mikasa Ackerman",
+      "Levi Ackerman",
+      "Armin Arlert",
+      "Colossal Titan",
+      "Attack Titan",
+      "Survey Corps Emblem",
+      "Cadet Corps Emblem"
+    ]
+  },
+  {
+    "name": "Naruto",
+    "description": "",
+    "charms": [
+      "Naruto Uzumaki",
+      "Sasuke Uchiha",
+      "Kakashi Hatake",
+      "Itachi Uchiha",
+      "Minato Namikaze",
+      "Kurama",
+      "Akatsuki Cloud",
+      "Mangekyō Sharingan"
+    ]
+  },
+  {
+    "name": "Game of Thrones",
+    "description": "",
+    "charms": [
+      "Jon Snow",
+      "Daenerys Targaryen",
+      "Tyrion Lannister",
+      "Night King",
+      "House Stark",
+      "House Targaryen",
+      "House Lannister",
+      "Iron Throne"
+    ]
+  },
+  {
+    "name": "Air Jordan",
+    "description": "",
+    "charms": [
+      "Air Jordan 1 Chicago",
+      "Air Jordan 1 Bred Patent",
+      "Air Jordan 4 Fire Red",
+      "Air Jordan 11 Concord",
+      "Air Jordan 3",
+      "Air Jordan 6 Carmine",
+      "Air Jordan 5",
+      "Off-White Air Jordan 1"
+    ]
+  },
+  {
+    "name": "Pokémon",
+    "description": "",
+    "charms": [
+      "Pikachu",
+      "Charmander",
+      "Squirtle",
+      "Bulbasaur",
+      "Charizard",
+      "Dragonair",
+      "Mewtwo",
+      "Umbreon",
+      "Ash and Pikachu",
+      "Poké Ball"
     ]
   }
 ];
@@ -133,7 +299,7 @@ export const COLLECTIONS: CharmCollection[] = [
  * This is the honest public figure. It is not the collection total: twenty
  * seasonal and lucky charms ship without belonging to a named collection.
  */
-export const CHARM_TOTAL = 81;
+export const CHARM_TOTAL = 161;
 
 /** Categories in the shipped catalogue, with their sizes. */
 export const SHIPPED_CATEGORIES = [
@@ -158,14 +324,9 @@ export const SHIPPED_CATEGORIES = [
     "charms": 5
   },
   {
-    "id": "seasonal",
-    "name": "Seasonal",
-    "charms": 11
-  },
-  {
     "id": "marvel",
     "name": "Marvel",
-    "charms": 6
+    "charms": 11
   },
   {
     "id": "dc",
@@ -174,8 +335,8 @@ export const SHIPPED_CATEGORIES = [
   },
   {
     "id": "tamilSpiritual",
-    "name": "Tamil Spiritual",
-    "charms": 5
+    "name": "Spirituality",
+    "charms": 17
   },
   {
     "id": "bts",
@@ -185,7 +346,7 @@ export const SHIPPED_CATEGORIES = [
   {
     "id": "footballLegends",
     "name": "Football Legends",
-    "charms": 5
+    "charms": 10
   },
   {
     "id": "musicLegends",
@@ -205,7 +366,47 @@ export const SHIPPED_CATEGORIES = [
   {
     "id": "strangerThings",
     "name": "Stranger Things",
-    "charms": 6
+    "charms": 8
+  },
+  {
+    "id": "onePiece",
+    "name": "One Piece",
+    "charms": 8
+  },
+  {
+    "id": "harryPotter",
+    "name": "Harry Potter",
+    "charms": 8
+  },
+  {
+    "id": "ben10",
+    "name": "Ben 10",
+    "charms": 9
+  },
+  {
+    "id": "attackOnTitan",
+    "name": "Attack on Titan",
+    "charms": 8
+  },
+  {
+    "id": "naruto",
+    "name": "Naruto",
+    "charms": 8
+  },
+  {
+    "id": "gameOfThrones",
+    "name": "Game of Thrones",
+    "charms": 8
+  },
+  {
+    "id": "airJordan",
+    "name": "Air Jordan",
+    "charms": 8
+  },
+  {
+    "id": "pokemon",
+    "name": "Pokémon",
+    "charms": 10
   }
 ];
 
@@ -214,39 +415,18 @@ export const SHIPPED_CATEGORIES = [
 export const WEBSITE_ARTWORK = 75;
 
 /** Charms the website names in a collection. Not the shipped total. */
-export const CHARM_IN_COLLECTIONS = 55;
+export const CHARM_IN_COLLECTIONS = 161;
 
 /** Categories in the shipped catalogue. */
-export const COLLECTION_COUNT = 14;
+export const COLLECTION_COUNT = 21;
 
 /** Seasonal and lucky charms that belong to no collection. */
-export const SEASONAL = [
-  "bat",
-  "bell",
-  "candyCane",
-  "daruma",
-  "diya",
-  "firework",
-  "ghanta",
-  "ghost",
-  "himmeli",
-  "horseshoe",
-  "lantern",
-  "lotus",
-  "luckyCoin",
-  "manekiNeko",
-  "nimbuMirchi",
-  "panchangJie",
-  "pumpkin",
-  "scarab",
-  "shazamLightning",
-  "snowflake"
-];
+export const SEASONAL = [];
 
-export const SEASONAL_COUNT = 11;
+export const SEASONAL_COUNT = 0;
 
 /** Deprecated alias. Prefer CHARM_IN_COLLECTIONS, or CHARM_TOTAL to quote. */
-export const CHARM_COUNT = 55;
+export const CHARM_COUNT = 161;
 
 export const ARTWORK = {"plain":75,"connected":75,"complete":75};
 
@@ -260,4 +440,4 @@ export const RELEASE = {
   "windows": "2.3.1"
 };
 
-export const GENERATED_AT = "2026-10-06";
+export const GENERATED_AT = "2026-10-09";

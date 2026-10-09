@@ -13,8 +13,9 @@
  * adjacent to the product instead of the product.
  *
  * **The source of truth is the shipped binary.** `charm-library.shipped.json`
- * was extracted from `Hangly-2.0.0.dmg` — `CFBundleShortVersionString 2.0.0`,
- * `CFBundleVersion 200` — at `Contents/Resources/CharmLibrary.json`. That is
+ * was extracted from `Hangly-2.3.1.dmg` — `CFBundleShortVersionString 2.3.1`,
+ * `CFBundleVersion 231` — at `Contents/Resources/CharmLibrary.json` (9 Oct 2026;
+ * the DMG's SHA-256 begins 714b60b8). Windows 2.3.1 ships the same catalogue. That is
  * the file the running application reads, so it cannot disagree with what a
  * user has installed.
  *
@@ -32,20 +33,17 @@ export const HANGLY_STATS = {
   windowsCharmCount: HANGLY_WINDOWS.charms,
   /** Shared across both platform builds. */
   ropeStyleCount: HANGLY_MAC.ropeStyles,
-  /** Verified cumulative community figure. */
-  userCount: HANGLY_PRODUCT.users,
-  marketingCharmCount: HANGLY_MARKETING.charms,
-  marketingUserCount: HANGLY_MARKETING.users,
+  /** Installations ever registered, rounded down: see installsEvidence in product.json. Not people. */
+  installCount: HANGLY_PRODUCT.installs,
+  /** The exact shipped count; the site no longer rounds it to "100+". */
+  marketingCharmCount: String(HANGLY_MAC.charms),
+  marketingInstallCount: HANGLY_MARKETING.installs,
   macVersion: HANGLY_RELEASES.macOS,
   /** Backward-compatible macOS release reference for catalogue copy. */
   appVersion: HANGLY_RELEASES.macOS,
   windowsVersion: HANGLY_RELEASES.windows,
   /** Catalogue dimensions used by the library reference pages. */
   categoryCount: HANGLY_PRODUCT.catalogue.macCategories,
-  /** Internal catalogue total retained for legacy reference pages. */
-  seasonalCharmCount: HANGLY_PRODUCT.catalogue.seasonalCharms,
-  /** Public name for the same additional catalogue total. */
-  additionalCharmCount: HANGLY_PRODUCT.catalogue.seasonalCharms,
 } as const;
 
 /** Category names and sizes, read from the shipped catalogue rather than typed. */
@@ -67,12 +65,12 @@ export const SHIPPED_CHARMS = shipped.charms;
  * digits next to the word "charm".
  */
 export const HANGLY_COPY = {
-  marketing: `${HANGLY_STATS.marketingCharmCount} charms`,
-  users: `${HANGLY_STATS.marketingUserCount} users`,
-  mac: `${HANGLY_STATS.marketingCharmCount} charms`,
-  windows: `${HANGLY_STATS.marketingCharmCount} charms`,
+  marketing: `${HANGLY_STATS.charmCount} charms`,
+  installs: `${HANGLY_STATS.marketingInstallCount} installs`,
+  mac: `${HANGLY_STATS.charmCount} charms`,
+  windows: `${HANGLY_STATS.windowsCharmCount} charms`,
   ropes: `${HANGLY_STATS.ropeStyleCount} rope styles`,
-  exact: `${HANGLY_STATS.marketingCharmCount} charms`,
-  exactWithCategories: `${HANGLY_STATS.marketingCharmCount} charms`,
-  growth: `${HANGLY_STATS.marketingCharmCount} charms for macOS and Windows`,
+  exact: `${HANGLY_STATS.charmCount} charms`,
+  exactWithCategories: `${HANGLY_STATS.charmCount} charms across ${HANGLY_STATS.categoryCount} categories`,
+  growth: `${HANGLY_STATS.charmCount} charms for macOS and Windows`,
 } as const;

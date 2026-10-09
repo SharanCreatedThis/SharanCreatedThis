@@ -16,7 +16,7 @@ const PATH = "/charms";
 const URL_ = absoluteUrl(PATH);
 const TITLE = "Every Hangly Charm — The Complete Catalogue";
 const DESCRIPTION =
-  "Every charm Hangly ships, with what each one is and where it comes from. Protection charms, luck charms, Tamil spiritual symbols, seasonal sets and more. Free.";
+  "Every charm Hangly ships, what each one is and where it comes from: protection and luck charms, spiritual symbols, and Marvel, DC, Pokémon and more. Free.";
 
 export const metadata: Metadata = {
   title: TITLE,
@@ -37,16 +37,12 @@ const FAQS = [
     a: `${HANGLY_CATEGORIES.map((c) => `${c.name} (${c.charms})`).join(", ")}.`,
   },
   {
-    q: "Do the seasonal charms only appear in season?",
-    a: `No. All ${HANGLY_STATS.charmCount} charms can be chosen by hand at any time of year. What the calendar changes is what the app puts on the rope by default — the Halloween set in October, Diwali, Christmas and New Year in their turn — and it puts back whatever was there when the season ends.`,
-  },
-  {
     q: "Where do the charms come from?",
     a: `${regionsIn().length} places, from Turkey and Tamil Nadu to Japan, China, Finland and Ancient Egypt. Each charm records its own origin, and the meanings given here are the ones the app itself carries.`,
   },
   {
     q: "Is this every charm, or only some of them?",
-    a: `Every one. This page lists all ${HANGLY_STATS.charmCount} charms in Hangly ${HANGLY_STATS.appVersion}, including the ones the app surfaces seasonally. It is generated from the application's own catalogue, so nothing can be missing from it that is present in the app.`,
+    a: `Every one. This page lists all ${HANGLY_STATS.charmCount} charms in Hangly ${HANGLY_STATS.appVersion}, on macOS and Windows alike. It is generated from the application's own catalogue, so nothing can be missing from it that is present in the app.`,
   },
 ];
 
@@ -101,16 +97,15 @@ export default function CharmsPage() {
         <QuickAnswer>
           Hangly ships {HANGLY_COPY.exactWithCategories}, free, on macOS and Windows. They range
           from protection charms like the nazar and the drishti bommai, through luck charms from
-          Japan, China and Europe, to Tamil spiritual symbols and {HANGLY_STATS.seasonalCharmCount}{" "}
-          seasonal charms that arrive on their own. Any image of your own can be a charm too.
+          Japan, China and Europe, to spiritual symbols of many faiths and characters from Marvel, DC,
+          Pokémon, One Piece and more. Any image of your own can be a charm too.
         </QuickAnswer>
 
         <KeyTakeaways
           points={[
             `${HANGLY_STATS.charmCount} charms across ${HANGLY_STATS.categoryCount} categories, all free`,
             `${regionsIn().length} regions represented, from Turkey to Tamil Nadu to Ancient Egypt`,
-            `${HANGLY_STATS.seasonalCharmCount} seasonal charms in four packs, which arrive on their own and hand the rope back afterwards`,
-            "Every charm is selectable by hand at any time of year",
+            "The same catalogue on macOS and Windows",
             "Any image of your own becomes a charm, at no cost",
           ]}
         />
@@ -164,7 +159,6 @@ export default function CharmsPage() {
           <h2 id="charms-more">More</h2>
           <ul className="comparison-others">
             <li><Link href="/charms/lucky">Luck, protection and ritual charms</Link></li>
-            <li><Link href="/charms/seasonal">Seasonal charms</Link></li>
             <li><Link href="/products/hangly">The Hangly product page</Link></li>
             <li><Link href="/products/hangly/stats">Statistics and specifications</Link></li>
             <li><Link href="/download">Download Hangly</Link></li>

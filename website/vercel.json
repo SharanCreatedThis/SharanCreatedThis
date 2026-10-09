@@ -20,6 +20,11 @@
       "source": "/products/vision/download",
       "destination": "/products/vision/Vision-1.1.dmg",
       "permanent": false
+    },
+    {
+      "source": "/charms/seasonal",
+      "destination": "/charms",
+      "permanent": true
     }
   ]
 }

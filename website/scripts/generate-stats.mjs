@@ -23,7 +23,7 @@ const root = join(dirname(fileURLToPath(import.meta.url)), "..");
 const read = (p) => readFileSync(join(root, p), "utf8");
 
 /* ── the shipped catalogue ─────────────────────────────────────────────────
-   Extracted from Hangly-2.0.0.dmg at Contents/Resources/CharmLibrary.json —
+   Extracted from Hangly-2.3.1.dmg at Contents/Resources/CharmLibrary.json —
    the file the running application reads. Counting website artwork instead is
    how this figure was wrong three times running. */
 const shipped = JSON.parse(read("src/data/hangly/charm-library.shipped.json"));
@@ -34,26 +34,22 @@ const shippedCategories = shipped.categories.map((c) => ({
   charms: shipped.charms.filter((x) => x.category === c.id).length,
 }));
 
-/* ── collections and charms, from the component that renders them ──────── */
-const src = read("src/components/hangly/Collections.tsx");
-const listStart = src.indexOf("export const collections");
-const list = src.slice(listStart, src.indexOf("\n];", listStart));
-
-const collections = [];
-for (const block of list.split(/\n  \{\n/).slice(1)) {
-  const name = (block.match(/name:\s*"([^"]+)"/) || [])[1];
-  const description = (block.match(/description:\s*"([^"]+)"/) || [, ""])[1];
-  // Each charm is a ["id", "Label"] pair.
-  const charms = [...block.matchAll(/\[\s*"([A-Za-z0-9]+)"\s*,\s*"([^"]+)"\s*\]/g)].map((m) => m[2]);
-  if (name) collections.push({ name, description, charms });
-}
+/* ── collections and charms ───────────────────────────────────────────────
+   The product page's collections strip is generated from the shipped catalogue
+   (scripts/generate-charm-manifest.mjs), so its collections are the catalogue's
+   categories, in the app's order, with every charm in them. */
+const collections = shipped.categories
+  .map((c) => ({
+    name: c.name,
+    description: "",
+    charms: shipped.charms.filter((x) => x.category === c.id).map((x) => x.name),
+  }))
+  .filter((c) => c.charms.length > 0);
 
 /* ── artwork actually on disk ──────────────────────────────────────────────
    This is the authoritative count. A charm exists for a user when its artwork
-   ships, not when a marketing page mentions it: twenty of these are seasonal
-   and lucky charms that arrive on their own and are named in no collection,
-   which is exactly why counting the collections alone understated the library
-   by a quarter. */
+   ships, not when a marketing page mentions it. Charms without an SVG show the
+   app's preview as WebP (public/charms/<id>.webp), which this does not count. */
 const svgs = (dir) => (existsSync(join(root, dir)) ? readdirSync(join(root, dir)).filter((f) => f.endsWith(".svg")).map((f) => f.replace(/\.svg$/, "")) : []);
 const plain = svgs("public/charms");
 const connected = svgs("public/charms/connected");
@@ -61,8 +57,6 @@ const connected = svgs("public/charms/connected");
 // one with the hanging thread, which ends at that charm's own loop.
 const complete = plain.filter((n) => connected.includes(n)).sort();
 const artwork = { plain: plain.length, connected: connected.length, complete: complete.length };
-
-const inCollections = new Set(collections.flatMap((c) => c.charms));
 
 /* ── versions, from the same feeds the updaters read ───────────────────── */
 const feed = (p) => {
@@ -88,8 +82,8 @@ const charmTotal = collections.reduce((n, c) => n + c.charms.length, 0);
 const collectionIds = new Set(
   collections.flatMap((c) => c.charms).map((label) => label),
 );
-const listedIds = [...(list.matchAll(/\[\s*"([A-Za-z0-9]+)"\s*,\s*"/g))].map((m) => m[1]);
-const seasonal = complete.filter((n) => !listedIds.includes(n)).sort();
+// Every shipped charm is in a collection now; the seasonal packs left the app in 2.1.0.
+const seasonal = [];
 
 writeFileSync(
   join(root, "src/data/stats.generated.ts"),

@@ -3,7 +3,7 @@
  *
  * A charm with no artwork renders a labelled placeholder rather than a broken
  * image or nothing at all. Seven ship without a website file, and hiding them
- * would misrepresent the catalogue — the page says 81, so it shows 81.
+ * would misrepresent the catalogue — the page states the full count, so it shows every charm.
  */
 
 import { artworkPath, type Charm } from "@/lib/charms";

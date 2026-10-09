@@ -8,6 +8,7 @@ import { DownloadButton, DownloadNote, PlatformSheet } from "@/components/hangly
 import { SITE_NAME, absoluteUrl } from "@/lib/seo";
 import { ID } from "@/lib/schema/entities";
 import { InShort, QuickAnswer } from "@/components/aeo/AnswerBlocks";
+import { RELEASE } from "@/data/stats.generated";
 
 /**
  * The FAQ, as its own indexable page.
@@ -101,7 +102,7 @@ export default function FaqPage() {
         <QuickAnswer>
           Hangly is a free desktop app for macOS 14+ and Windows 10+ that hangs a decorative charm
           from the top of your screen on a cord, swaying with real pendulum physics. It is
-          click-through, so it never intercepts a click or takes keyboard focus. There is no
+          click-through everywhere but the charm itself, and never takes keyboard focus. There is no
           account, no trial and no paid tier, and it updates itself once installed.
         </QuickAnswer>
 
@@ -135,8 +136,8 @@ export default function FaqPage() {
         ))}
 
         <InShort>
-          Free on both platforms, safe during a screen share because it cannot intercept a click,
-          and self-updating after install. Both are at 2.1 and released together; Windows shows a
+          Free on both platforms, click-through everywhere but the charm itself,
+          and self-updating after install. Both are at {RELEASE.macOS.version} and released together; Windows shows a
           SmartScreen warning once because it is not code-signed yet. If a question here is unanswered, the guides cover the wider category
           and the comparisons cover specific rivals.
         </InShort>

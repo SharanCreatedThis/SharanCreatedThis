@@ -150,6 +150,13 @@ if (hangly?.offSite) {
   );
 }
 
+// Pages that were removed, sent permanently to the page that replaced them, so links and search results still land.
+const RETIRED = [
+  // The seasonal packs left the app in 2.1.0 (Mac 80d53fa); every charm is now on /charms.
+  { from: "/charms/seasonal", to: "/charms" },
+];
+redirects.push("", "# Pages that were removed.", ...RETIRED.flatMap((r) => [`${r.from}  ${r.to}  301`, `${r.from}/  ${r.to}  301`]));
+
 writeFileSync(join(root, "public/_redirects"), `${redirects.join("\n")}\n`);
 
 // ---------------------------------------------------------------------------
@@ -160,13 +167,16 @@ writeFileSync(
   `${JSON.stringify(
     {
       $schema: "https://openapi.vercel.sh/vercel.json",
-      redirects: routes.map((route) => ({
-        source: route.from,
-        destination: route.to,
-        // Never permanent: the destination changes with every release, and a 308
-        // would sit in browser caches long after it stopped being true.
-        permanent: false,
-      })),
+      redirects: [
+        ...routes.map((route) => ({
+          source: route.from,
+          destination: route.to,
+          // Never permanent: the destination changes with every release, and a 308
+          // would sit in browser caches long after it stopped being true.
+          permanent: false,
+        })),
+        ...RETIRED.map((r) => ({ source: r.from, destination: r.to, permanent: true })),
+      ],
     },
     null,
     2,
